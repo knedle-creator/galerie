@@ -3,7 +3,7 @@ import { $, $$, esc, pl } from './util.js';
 import { S, save, exportBackup, importBackup, resetAll, getUserPacks, setUserPacks } from './store.js';
 import { app, route, go, toHome, toast, modal } from './ui.js';
 import { PACKS, ITEMS, KINDS, LOAD_ERRORS, validatePack, loadAll, status } from './packs.js';
-import { hasTTS, voiceCount, micOK, englishVoices, voiceGender, speak } from './speech.js';
+import { hasTTS, voiceCount, micOK, englishVoices, voiceGender, speak, clearCast } from './speech.js';
 
 const SAMPLE = { f: 'Hi, I’m Mia. The mural is huge and very colourful.', m: 'Hi, I’m Leo. I was paddling on the river.' };
 const voiceList = g => englishVoices().filter(v => voiceGender(v) !== (g === 'f' ? 'm' : 'f')).slice(0, 8);
@@ -12,7 +12,7 @@ function voiceGroup(g) {
   if (!vs.length) return '';
   const cur = S[key] && vs.some(v => v.name === S[key]) ? S[key] : null;
   return `<h3 style="margin-top:1.2rem">${g === 'f' ? '👧 Ženský hlas' : '👦 Mužský hlas'}</h3>
-    <p class="cz" style="margin:.2rem 0 .5rem">${g === 'f' ? 'Mluví ve cvičeních a za Miu a další dívky a ženy.' : 'Mluví za Lea, průvodce, úředníka a další muže.'}</p>
+    <p class="cz" style="margin:.2rem 0 .5rem">${g === 'f' ? 'Mluví ve cvičeních a za Miu a další dívky a ženy.' : 'Mluví za Lea, průvodce, úředníka a další muže.'} Když v rozhovoru mluví dvě ženy (nebo dva muži), druhá postava dostane jiný hlas automaticky.</p>
     <div class="items">
      <label class="item" style="cursor:pointer"><input type="radio" name="${key}" value="" ${cur ? '' : 'checked'} style="width:1.3rem;height:1.3rem;flex:none">
       <span class="tx"><b>Vybrat automaticky</b><small>nejlepší dostupný (bez internetu sám přepne)</small></span></label>
@@ -109,7 +109,7 @@ function panel() {
     speak(SAMPLE[b.dataset.g], { force: true, voice: englishVoices().find(x => x.name === b.dataset.try) });
   });
   $$('input[name=voiceF],input[name=voiceM]').forEach(r => r.onchange = () => {
-    S[r.name] = r.value || null; save(); toast('Hlas je vybraný.');
+    S[r.name] = r.value || null; save(); clearCast(); toast('Hlas je vybraný.');
     const g = r.name === 'voiceF' ? 'f' : 'm';
     speak(SAMPLE[g], { force: true, who: g === 'f' ? 'Mia' : 'Leo' });
   });

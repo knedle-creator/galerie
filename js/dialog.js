@@ -1,8 +1,8 @@
 // Rozhovory: 1 poslech bez textu → 2 otázky → 3 text s překladem → 4 hraní role.
 import { $, $$, esc, rand, shuffle, sleep, OK } from './util.js';
 import { S, save } from './store.js';
-import { app, route, go } from './ui.js';
-import { speak, stopAll, hasTTS, speakWidget, PEOPLE, newToken, token } from './speech.js';
+import { app, route, go, onLeave } from './ui.js';
+import { speak, stopAll, hasTTS, speakWidget, PEOPLE, newToken, token, castVoices, clearCast } from './speech.js';
 import { item } from './packs.js';
 import { sfx, celebrate, withKapka, kapka } from './fx.js';
 
@@ -15,6 +15,8 @@ route('dialog', ({ key }) => {
   const pr = S.prog[key] || (S.prog[key] = {});
   const step = pr.run && STEPS.some(s => s[0] === pr.run.step) ? pr.run.step : (hasTTS ? 'listen' : 'text');
   D = { key, d: it.data, step, qi: 0, tries: 0, me: null, ri: -1 };
+  castVoices([...it.data.people, ...it.data.lines.map(l => l.who)]); // každá postava jiný hlas
+  onLeave(clearCast);
   S.last = key; setStep(step);
 });
 

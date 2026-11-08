@@ -1,6 +1,6 @@
 /* Service worker: díky němu appka funguje bez internetu.
    Když změníš kód nebo přidáš balíček, zvyš číslo VERZE, ať si telefon stáhne novou kopii. */
-const VERZE = 'klaudie-v1';
+const VERZE = 'klaudie-v2';
 const ZAKLAD = [
   './', 'index.html', 'manifest.webmanifest', 'css/app.css',
   'js/main.js', 'js/util.js', 'js/store.js', 'js/speech.js', 'js/packs.js', 'js/ui.js',

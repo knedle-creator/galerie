@@ -41,10 +41,45 @@ const personGender = w => w.gender || (w.pitch >= 1.05 ? 'f' : w.pitch <= 0.95 ?
 const NARRATOR = { pitch: 1, voice: 0, gender: 'f' }; // hlas ve cvičeních
 
 let netBroken = false; // hlas přes internet jednou selhal → do konce sezení jen hlasy v telefonu
+const usablePool = () => {
+  if (netBroken || navigator.onLine === false) { const loc = VO.filter(v => v.localService); if (loc.length) return loc; }
+  return VO;
+};
+
+/* ---- obsazení rolí v rozhovoru: každá postava jiný hlas ---- */
+let CAST = {};      // jméno postavy -> {voice, shift}
+let castNames = [];
+export const clearCast = () => { CAST = {}; castNames = []; };
+export function castVoices(names) {
+  CAST = {}; castNames = [...new Set(names)];
+  const pool = usablePool(), used = [];
+  for (const n of castNames) {
+    const w = PEOPLE[n] || NARRATOR, g = personGender(w);
+    const fit = v => { const vg = voiceGender(v); return !g ? 100 : vg === g ? 200 : vg === null ? 100 : 0; };
+    let pick = null, shift = 0;
+    // 1) hlas vybraný rodiči, pokud ho ještě nemá jiná postava
+    const prefName = g === 'm' ? S.voiceM : S.voiceF;
+    const pref = prefName && pool.find(v => v.name === prefName);
+    if (pref && !used.includes(pref)) pick = pref;
+    // 2) nejlepší volný hlas: správné pohlaví > neznámé pohlaví, britský > jiný anglický přízvuk
+    if (!pick) {
+      const free = pool.filter(v => !used.includes(v) && fit(v) > 0 && voiceScore(v) >= 20)
+        .sort((a, b) => (fit(b) + voiceScore(b)) - (fit(a) + voiceScore(a)));
+      if (free[0]) pick = free[0];
+    }
+    // 3) žádný další vhodný hlas: stejný hlas, ale jiná výška (aby se postavy daly rozeznat)
+    if (!pick) {
+      const again = used.find(v => fit(v) === 200) || used.find(v => fit(v) === 100) || pool[0];
+      if (again) { pick = again; shift = used.filter(v => v === again).length; }
+    }
+    if (pick) { used.push(pick); CAST[n] = { voice: pick, shift }; }
+  }
+  return CAST;
+}
+
 function pickVoice(w) {
   if (!VO.length) return null;
-  let pool = VO;
-  if (netBroken || navigator.onLine === false) { const loc = VO.filter(v => v.localService); if (loc.length) pool = loc; }
+  const pool = usablePool();
   const g = personGender(w);
   // hlas vybraný rodiči pro ženské / mužské role
   const prefName = g === 'm' ? S.voiceM : S.voiceF;
@@ -91,8 +126,15 @@ function speakOne(text, o) {
       const u = new SpeechSynthesisUtterance(t);
       const w = PEOPLE[o.who] || NARRATOR;
       u.rate = slow ? 0.68 : 0.92; u.lang = 'en-GB';
-      const v = o.voice || pickVoice(w); if (v) { u.voice = v; u.lang = v.lang; }
-      u.pitch = o.voice ? 1 : pitchFor(w, v);
+      const c = !o.voice && CAST[o.who];
+      const v = o.voice || (c ? c.voice : pickVoice(w)); if (v) { u.voice = v; u.lang = v.lang; }
+      let pitch = o.voice ? 1 : pitchFor(w, v);
+      if (c && c.shift) { // druhá postava se stejným hlasem: znatelně jiná výška
+        const up = personGender(w) !== 'm';
+        pitch = up ? pitch * Math.pow(1.2, c.shift) : pitch * Math.pow(0.82, c.shift);
+        u.rate *= up ? 1.05 : 0.95;
+      }
+      u.pitch = Math.max(0.3, Math.min(1.9, pitch));
       let done = false, started = false; const fin = () => { if (!done) { done = true; res(); } };
       // Selhání: hlas přes internet → zkusit znovu hlasem v telefonu. Jinak (jednou) vysvětlit, že je to telefonem.
       const fail = () => {
@@ -100,6 +142,7 @@ function speakOne(text, o) {
         if (v && !v.localService && !o._retry && VO.some(x => x.localService)) {
           netBroken = true; done = true;
           try { speechSynthesis.cancel(); } catch (e) {}
+          if (castNames.length) castVoices(castNames); // obsadit role znovu jen hlasy z telefonu
           speakOne(text, { ...o, voice: null, _retry: true }).then(res);
           return;
         }
