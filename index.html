@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F6F3FB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17122A" media="(prefers-color-scheme: dark)">
+<title>Klaudiina galerie</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header class="hdr" id="hdr">
+  <button class="btn ghost small" id="hb" aria-label="Zpět">← Zpět</button>
+  <div class="bar" id="hbar" hidden><i></i></div>
+  <span class="grow"></span>
+  <button class="btn ghost small" id="hh" aria-label="Domů" title="Domů">🏠</button>
+  <button class="btn ghost small" id="hp">Pauza</button>
+</header>
+<main class="wrap" id="app"><p class="loading">Načítám…</p></main>
+<div id="ov"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="wrap">Appka potřebuje zapnutý JavaScript.</p></noscript>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

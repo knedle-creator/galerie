@@ -1,0 +1,1250 @@
+{
+ "schema": 1,
+ "id": "harmonize2-unit2",
+ "course": "harmonize2",
+ "courseTitle": "Harmonize 2",
+ "order": 2,
+ "title": "Unit 2 Art and design",
+ "cz": "Umění a design",
+ "version": 1,
+ "people": {
+  "Mia": {
+   "e": "👧",
+   "pitch": 1.2,
+   "voice": 0
+  },
+  "Leo": {
+   "e": "👦",
+   "pitch": 0.8,
+   "voice": 1
+  },
+  "Guide": {
+   "e": "🧑‍🏫",
+   "pitch": 0.95,
+   "voice": 1
+  }
+ },
+ "lessons": [
+  {
+   "id": "adj",
+   "art": "a1",
+   "title": "Six pairs of twins",
+   "cz": "Přídavná jména a jejich dvojčata",
+   "intro": "<p>Každé slovo tady má dvojče, které znamená skoro totéž. Když umíš obě, zní tvoje angličtina mnohem líp.</p>",
+   "words": [
+    [
+     "🐘",
+     "huge / enormous",
+     "obrovský"
+    ],
+    [
+     "🌸",
+     "pretty / attractive",
+     "hezký"
+    ],
+    [
+     "🤢",
+     "awful / terrible",
+     "hrozný"
+    ],
+    [
+     "🌈",
+     "bright / colourful",
+     "zářivý, barevný"
+    ],
+    [
+     "🤩",
+     "brilliant / incredible",
+     "úžasný"
+    ],
+    [
+     "👽",
+     "unusual / strange",
+     "neobvyklý, zvláštní"
+    ]
+   ],
+   "ex": [
+    {
+     "t": "mc",
+     "q": "🐘 Jak se řekne <b>obrovský</b>?",
+     "opts": [
+      "huge",
+      "pretty",
+      "awful",
+      "bright"
+     ],
+     "a": "huge"
+    },
+    {
+     "t": "mc",
+     "q": "🌈 Jak se řekne <b>barevný</b>?",
+     "opts": [
+      "colourful",
+      "strange",
+      "terrible",
+      "huge"
+     ],
+     "a": "colourful"
+    },
+    {
+     "t": "mc",
+     "q": "Co znamená <b>awful</b>?",
+     "say": "awful",
+     "opts": [
+      "hrozný",
+      "hezký",
+      "úžasný",
+      "obrovský"
+     ],
+     "a": "hrozný"
+    },
+    {
+     "t": "pair",
+     "q": "Spoj dvojčata.",
+     "pairs": [
+      [
+       "huge",
+       "enormous"
+      ],
+      [
+       "pretty",
+       "attractive"
+      ],
+      [
+       "awful",
+       "terrible"
+      ]
+     ]
+    },
+    {
+     "t": "pair",
+     "q": "Spoj dvojčata.",
+     "pairs": [
+      [
+       "bright",
+       "colourful"
+      ],
+      [
+       "brilliant",
+       "incredible"
+      ],
+      [
+       "unusual",
+       "strange"
+      ]
+     ]
+    },
+    {
+     "t": "gap",
+     "s": "“That modern painting is huge!” “Wow! It’s really ___.”",
+     "opts": [
+      "enormous",
+      "pretty",
+      "strange"
+     ],
+     "a": "enormous",
+     "why": "Huge = enormous, obě znamenají obrovský."
+    },
+    {
+     "t": "dict",
+     "a": "This painting is brilliant."
+    },
+    {
+     "t": "gap",
+     "s": "“These clothes are nice and colourful.” “You’re right. They’re very ___.”",
+     "opts": [
+      "bright",
+      "awful",
+      "huge"
+     ],
+     "a": "bright",
+     "why": "Colourful = bright, barevný a zářivý."
+    },
+    {
+     "t": "mc",
+     "q": "Které slovo sem nepatří?",
+     "opts": [
+      "huge",
+      "enormous",
+      "pretty"
+     ],
+     "a": "pretty",
+     "why": "Huge a enormous jsou dvojčata (obrovský). Pretty znamená hezký."
+    },
+    {
+     "t": "build",
+     "cz": "Líbí se mi tahle nástěnná malba, protože je hodně neobvyklá.",
+     "a": "I like this mural because it’s very unusual.",
+     "extra": [
+      "is",
+      "strange"
+     ]
+    },
+    {
+     "t": "speak",
+     "a": "Wow! It’s really enormous."
+    }
+   ],
+   "type": "lesson"
+  },
+  {
+   "id": "mat",
+   "art": "a2",
+   "title": "What is it made of?",
+   "cz": "Materiály",
+   "intro": "<p>Z čeho je to vyrobené? Anglicky se ptáš <b>What is it made of?</b> a odpovídáš <b>It’s made of wood.</b></p>",
+   "words": [
+    [
+     "🪵",
+     "wood",
+     "dřevo"
+    ],
+    [
+     "🪟",
+     "glass",
+     "sklo"
+    ],
+    [
+     "🧴",
+     "plastic",
+     "plast"
+    ],
+    [
+     "🔩",
+     "metal",
+     "kov"
+    ],
+    [
+     "📄",
+     "paper",
+     "papír"
+    ],
+    [
+     "📦",
+     "cardboard",
+     "karton"
+    ],
+    [
+     "👕",
+     "cotton",
+     "bavlna"
+    ],
+    [
+     "🧶",
+     "wool",
+     "vlna"
+    ],
+    [
+     "👞",
+     "leather",
+     "kůže"
+    ]
+   ],
+   "ex": [
+    {
+     "t": "mc",
+     "q": "🪵 Jak se řekne <b>dřevo</b>?",
+     "opts": [
+      "wood",
+      "wool",
+      "glass",
+      "paper"
+     ],
+     "a": "wood"
+    },
+    {
+     "t": "mc",
+     "q": "🧶 Jak se řekne <b>vlna</b>?",
+     "opts": [
+      "wool",
+      "wood",
+      "cotton",
+      "leather"
+     ],
+     "a": "wool",
+     "why": "Pozor na dvojici wood (dřevo) a wool (vlna). Liší se jen koncem."
+    },
+    {
+     "t": "listen",
+     "say": "leather",
+     "cz": "kůže",
+     "opts": [
+      "leather",
+      "metal",
+      "paper",
+      "cotton"
+     ],
+     "a": "leather"
+    },
+    {
+     "t": "pair",
+     "q": "Spoj obrázek se slovem.",
+     "pairs": [
+      [
+       "📦",
+       "cardboard"
+      ],
+      [
+       "🪟",
+       "glass"
+      ],
+      [
+       "👕",
+       "cotton"
+      ],
+      [
+       "🔩",
+       "metal"
+      ]
+     ]
+    },
+    {
+     "t": "gap",
+     "s": "🧣 My scarf is made of ___.",
+     "opts": [
+      "wool",
+      "glass",
+      "paper"
+     ],
+     "a": "wool"
+    },
+    {
+     "t": "gap",
+     "s": "My beads are made of ___. They’re shiny and you can see through them.",
+     "opts": [
+      "glass",
+      "leather",
+      "cotton"
+     ],
+     "a": "glass",
+     "why": "Skrz sklo je vidět. Glass = sklo."
+    },
+    {
+     "t": "dict",
+     "a": "The box is made of cardboard."
+    },
+    {
+     "t": "gap",
+     "s": "Picasso painted on wood and also on textiles such as ___.",
+     "opts": [
+      "cotton",
+      "metal",
+      "glass"
+     ],
+     "a": "cotton",
+     "why": "Textile je látka. Z materiálů je látka jen cotton (bavlna)."
+    },
+    {
+     "t": "build",
+     "cz": "Ta čepice je z bavlny.",
+     "a": "The cap is made of cotton.",
+     "extra": [
+      "from",
+      "wool"
+     ]
+    },
+    {
+     "t": "build",
+     "cz": "Moje boty jsou z kůže.",
+     "a": "My shoes are made of leather.",
+     "extra": [
+      "is",
+      "plastic"
+     ]
+    },
+    {
+     "t": "speak",
+     "a": "My scarf is made of wool."
+    }
+   ],
+   "type": "lesson"
+  },
+  {
+   "id": "art",
+   "art": "a3",
+   "title": "Art and artists",
+   "cz": "Umění a umělci",
+   "intro": "<p>Činnost a člověk, který ji dělá. Většinou přidáš na konec <b>-er</b>, <b>-or</b> nebo <b>-ist</b>.</p>",
+   "words": [
+    [
+     "🎨",
+     "painting → painter",
+     "malování → malíř"
+    ],
+    [
+     "📷",
+     "photography → photographer",
+     "fotografování → fotograf"
+    ],
+    [
+     "🗿",
+     "sculpture → sculptor",
+     "socha → sochař"
+    ],
+    [
+     "👗",
+     "design → designer",
+     "navrhování → návrhář"
+    ],
+    [
+     "✏️",
+     "illustration → illustrator",
+     "ilustrace → ilustrátor"
+    ],
+    [
+     "🎷",
+     "music → musician",
+     "hudba → hudebník"
+    ],
+    [
+     "💃",
+     "dance → dancer",
+     "tanec → tanečník"
+    ],
+    [
+     "🧱",
+     "street art → street artist",
+     "pouliční umění → pouliční umělec"
+    ]
+   ],
+   "ex": [
+    {
+     "t": "mc",
+     "q": "🎨 Kdo maluje obrazy?",
+     "opts": [
+      "painter",
+      "painting",
+      "dancer",
+      "designer"
+     ],
+     "a": "painter",
+     "why": "Painting je malování nebo obraz. Painter je člověk, který maluje."
+    },
+    {
+     "t": "mc",
+     "q": "🗿 Kdo dělá sochy?",
+     "opts": [
+      "sculptor",
+      "sculpture",
+      "musician",
+      "photographer"
+     ],
+     "a": "sculptor"
+    },
+    {
+     "t": "pair",
+     "q": "Spoj činnost s člověkem.",
+     "pairs": [
+      [
+       "music",
+       "musician"
+      ],
+      [
+       "dance",
+       "dancer"
+      ],
+      [
+       "design",
+       "designer"
+      ],
+      [
+       "photography",
+       "photographer"
+      ]
+     ]
+    },
+    {
+     "t": "pair",
+     "q": "Spoj činnost s člověkem.",
+     "pairs": [
+      [
+       "painting",
+       "painter"
+      ],
+      [
+       "sculpture",
+       "sculptor"
+      ],
+      [
+       "illustration",
+       "illustrator"
+      ],
+      [
+       "street art",
+       "street artist"
+      ]
+     ]
+    },
+    {
+     "t": "gap",
+     "s": "Banksy is a famous ___. You can see his paintings on walls around the world.",
+     "opts": [
+      "street artist",
+      "sculptor",
+      "dancer"
+     ],
+     "a": "street artist"
+    },
+    {
+     "t": "gap",
+     "s": "My sister wants to become a clothes ___.",
+     "opts": [
+      "designer",
+      "design",
+      "musician"
+     ],
+     "a": "designer",
+     "why": "Chce se stát člověkem, takže potřebuješ tvar pro člověka: designer."
+    },
+    {
+     "t": "dict",
+     "a": "Banksy is a famous street artist."
+    },
+    {
+     "t": "gap",
+     "s": "I bought a new camera because I love ___.",
+     "opts": [
+      "photography",
+      "photographer",
+      "painting"
+     ],
+     "a": "photography",
+     "why": "Miluješ činnost, ne člověka: photography."
+    },
+    {
+     "t": "gap",
+     "s": "My uncle plays the trumpet, saxophone and piano. He’s the best ___ I know.",
+     "opts": [
+      "musician",
+      "music",
+      "dancer"
+     ],
+     "a": "musician"
+    },
+    {
+     "t": "build",
+     "cz": "Chtěla bych být ilustrátorkou.",
+     "a": "I would like to be an illustrator.",
+     "extra": [
+      "illustration",
+      "a"
+     ]
+    },
+    {
+     "t": "speak",
+     "a": "I would like to be an illustrator."
+    }
+   ],
+   "type": "lesson"
+  },
+  {
+   "id": "pc",
+   "art": "a4",
+   "title": "What were you doing?",
+   "cz": "Past continuous",
+   "intro": "<p>Past continuous říká, co se <b>zrovna dělo</b> v nějakém okamžiku v minulosti. Jako když zastavíš video uprostřed jízdy.</p>\n  <div class=\"rule\"><b>I / he / she / it</b> was + -ing<br><b>you / we / they</b> were + -ing</div>\n  <div class=\"rule\">At five o’clock I <b>was paddling</b> on the river.<br>They <b>weren’t</b> wearing warm clothes.<br><b>Were</b> you standing at the front?</div>",
+   "words": [],
+   "ex": [
+    {
+     "t": "gap",
+     "s": "I ___ watching the artists at work.",
+     "opts": [
+      "was",
+      "were"
+     ],
+     "a": "was",
+     "why": "K „I“ patří was."
+    },
+    {
+     "t": "gap",
+     "s": "They ___ painting a huge mural.",
+     "opts": [
+      "was",
+      "were"
+     ],
+     "a": "were",
+     "why": "K „they“ patří were."
+    },
+    {
+     "t": "gap",
+     "s": "Some artists were ___ street art near our school.",
+     "opts": [
+      "creating",
+      "create",
+      "created"
+     ],
+     "a": "creating",
+     "why": "Po was/were vždycky přijde sloveso s -ing."
+    },
+    {
+     "t": "gap",
+     "s": "The painter was very busy. He ___ talking.",
+     "opts": [
+      "wasn’t",
+      "weren’t",
+      "didn’t"
+     ],
+     "a": "wasn’t",
+     "why": "He → was, zápor wasn’t."
+    },
+    {
+     "t": "gap",
+     "s": "___ they painting a huge mural?",
+     "opts": [
+      "Were",
+      "Was",
+      "Did"
+     ],
+     "a": "Were",
+     "why": "Otázka: was/were jde na začátek. A k „they“ patří were."
+    },
+    {
+     "t": "dict",
+     "a": "They were painting a huge mural."
+    },
+    {
+     "t": "build",
+     "cz": "V pět hodin jsem pádlovala na řece.",
+     "a": "At five o’clock I was paddling on the river.",
+     "extra": [
+      "were",
+      "paddled"
+     ]
+    },
+    {
+     "t": "build",
+     "cz": "Cestou domů jsme se smáli.",
+     "a": "We were laughing on the journey home.",
+     "extra": [
+      "was",
+      "laughed"
+     ]
+    },
+    {
+     "t": "type",
+     "s": "It was a warm day, so I ___ summer clothes.",
+     "hint": "wear",
+     "a": [
+      "was wearing"
+     ]
+    },
+    {
+     "t": "type",
+     "s": "Everyone was happy because it ___.",
+     "hint": "not rain",
+     "a": [
+      "wasn’t raining",
+      "was not raining"
+     ]
+    },
+    {
+     "t": "speak",
+     "a": "At five o’clock I was paddling on the river."
+    }
+   ],
+   "type": "lesson"
+  },
+  {
+   "id": "ps",
+   "art": "a5",
+   "title": "Suddenly…",
+   "cz": "Past simple × past continuous",
+   "intro": "<p>Představ si, že jedeš trať. Jízda trvá dlouho, to je <b>past continuous</b>. Najednou ti spadne čepice, to je krátký okamžik, <b>past simple</b>.</p>\n  <div class=\"rule\">I <b>was reading</b> when my phone <b>rang</b>.<br><span class=\"cz\">dlouhý děj ← přerušil ho krátký</span></div>\n  <div class=\"rule\"><b>While</b> I was studying, my friend texted me.<br><span class=\"cz\">while = zatímco (u dlouhého děje)</span></div>",
+   "words": [],
+   "ex": [
+    {
+     "t": "mc",
+     "q": "Která věta dává větší smysl?",
+     "opts": [
+      "I suddenly saw Luna at the art gallery.",
+      "I was suddenly seeing Luna at the art gallery."
+     ],
+     "a": "I suddenly saw Luna at the art gallery.",
+     "why": "Suddenly = najednou. To je krátký okamžik, na ten patří past simple."
+    },
+    {
+     "t": "mc",
+     "q": "Která věta dává větší smysl?",
+     "opts": [
+      "It was snowing at the time of the accident.",
+      "It snowed at the time of the accident."
+     ],
+     "a": "It was snowing at the time of the accident.",
+     "why": "Sněžilo dlouho a nehoda se stala uprostřed. Dlouhý děj = past continuous."
+    },
+    {
+     "t": "gap",
+     "s": "I was walking to school when I ___ some incredible street art.",
+     "opts": [
+      "saw",
+      "was seeing"
+     ],
+     "a": "saw",
+     "why": "Uviděla jsi to v jednom okamžiku: past simple."
+    },
+    {
+     "t": "gap",
+     "s": "While I ___, my friend texted me.",
+     "opts": [
+      "was studying",
+      "studied"
+     ],
+     "a": "was studying",
+     "why": "Po while je dlouhý děj: past continuous."
+    },
+    {
+     "t": "dict",
+     "a": "While I was studying, my friend texted me."
+    },
+    {
+     "t": "gap",
+     "s": "Someone stole the painting while the guard ___.",
+     "opts": [
+      "was sleeping",
+      "slept"
+     ],
+     "a": "was sleeping"
+    },
+    {
+     "t": "build",
+     "cz": "Pádlovala jsem, když se mi zlomilo pádlo.",
+     "a": "I was paddling when my paddle broke.",
+     "extra": [
+      "were",
+      "paddled"
+     ]
+    },
+    {
+     "t": "type",
+     "s": "We ___ the window while we were playing football.",
+     "hint": "break",
+     "a": [
+      "broke"
+     ],
+     "why": "Rozbití okna je krátký okamžik: past simple. Break je nepravidelné sloveso."
+    },
+    {
+     "t": "type",
+     "s": "My phone rang while I ___ TV.",
+     "hint": "watch",
+     "a": [
+      "was watching"
+     ]
+    },
+    {
+     "t": "speak",
+     "a": "I was reading when my phone rang."
+    }
+   ],
+   "type": "lesson"
+  },
+  {
+   "id": "fin",
+   "art": "a6",
+   "title": "The lost painting",
+   "cz": "Finále: záhada ztraceného obrazu",
+   "intro": "<p>V italském městě Piacenza čistili zahradníci zeď galerie. Najednou ve zdi něco našli… Všechno, co ses naučila, teď použiješ dohromady.</p>",
+   "words": [],
+   "ex": [
+    {
+     "t": "gap",
+     "s": "Some gardeners at an art gallery ___ cleaning plants from a wall.",
+     "opts": [
+      "were",
+      "was",
+      "are"
+     ],
+     "a": "were"
+    },
+    {
+     "t": "gap",
+     "s": "Suddenly, they found something in a ___ bag inside the wall.",
+     "opts": [
+      "plastic",
+      "glass",
+      "wood"
+     ],
+     "a": "plastic",
+     "why": "Sáček (bag) bývá z plastu."
+    },
+    {
+     "t": "gap",
+     "s": "It was an old ___.",
+     "opts": [
+      "painting",
+      "painter",
+      "painted"
+     ],
+     "a": "painting",
+     "why": "Našli věc, obraz. Painter je člověk."
+    },
+    {
+     "t": "gap",
+     "s": "Someone ___ this famous painting from the gallery 23 years earlier.",
+     "opts": [
+      "stole",
+      "gave",
+      "left"
+     ],
+     "a": "stole",
+     "why": "Steal → stole = ukradl."
+    },
+    {
+     "t": "dict",
+     "a": "Someone stole the painting."
+    },
+    {
+     "t": "gap",
+     "s": "The manager was very ___ to see it.",
+     "opts": [
+      "surprised",
+      "relaxed",
+      "disappointed"
+     ],
+     "a": "surprised"
+    },
+    {
+     "t": "gap",
+     "s": "The artist Gustav Klimt was famous for his bright and ___ paintings.",
+     "opts": [
+      "colourful",
+      "awful",
+      "terrible"
+     ],
+     "a": "colourful",
+     "why": "Bright a colourful jsou dvojčata."
+    },
+    {
+     "t": "mc",
+     "q": "Co znamená <b>incredible</b>?",
+     "say": "incredible",
+     "opts": [
+      "úžasný",
+      "hrozný",
+      "zvláštní",
+      "obrovský"
+     ],
+     "a": "úžasný"
+    },
+    {
+     "t": "build",
+     "cz": "Ten obraz byl uvnitř zdi.",
+     "a": "The painting was inside the wall.",
+     "extra": [
+      "were",
+      "painter"
+     ]
+    },
+    {
+     "t": "speak",
+     "a": "That’s incredible! Was the painting OK?"
+    }
+   ],
+   "type": "lesson"
+  }
+ ],
+ "practice": [
+  {
+   "id": "vys",
+   "title": "Výslovnost",
+   "ex": [
+    {
+     "t": "speak",
+     "a": "colourful"
+    },
+    {
+     "t": "speak",
+     "a": "sculpture"
+    },
+    {
+     "t": "speak",
+     "a": "leather"
+    },
+    {
+     "t": "speak",
+     "a": "enormous"
+    },
+    {
+     "t": "speak",
+     "a": "photographer"
+    },
+    {
+     "t": "speak",
+     "a": "incredible"
+    },
+    {
+     "t": "speak",
+     "a": "The mural is huge and very colourful."
+    },
+    {
+     "t": "speak",
+     "a": "We were laughing on the journey home."
+    }
+   ]
+  },
+  {
+   "id": "dik",
+   "title": "Diktát",
+   "ex": [
+    {
+     "t": "dict",
+     "a": "The mural was very colourful."
+    },
+    {
+     "t": "dict",
+     "a": "My scarf is made of wool."
+    },
+    {
+     "t": "dict",
+     "a": "She was painting a forest scene."
+    },
+    {
+     "t": "dict",
+     "a": "We weren’t wearing warm clothes."
+    },
+    {
+     "t": "dict",
+     "a": "Were you standing at the front?"
+    },
+    {
+     "t": "dict",
+     "a": "I saw some incredible street art."
+    },
+    {
+     "t": "dict",
+     "a": "The sculptor was working on a huge sculpture."
+    },
+    {
+     "t": "dict",
+     "a": "It was snowing when we arrived."
+    }
+   ]
+  }
+ ],
+ "dialogs": [
+  {
+   "id": "d1",
+   "title": "At the street art festival",
+   "cz": "Na festivalu pouličního umění",
+   "people": [
+    "Mia",
+    "Leo"
+   ],
+   "lines": [
+    {
+     "who": "Mia",
+     "en": "Leo, look at this mural! It’s enormous!",
+     "cz": "Leo, podívej na tuhle nástěnnou malbu! Je obrovská!"
+    },
+    {
+     "who": "Leo",
+     "en": "Wow, it’s really huge. And it’s very colourful.",
+     "cz": "Páni, je fakt obrovská. A je hodně barevná."
+    },
+    {
+     "who": "Mia",
+     "en": "I love the snake. It’s a bit strange, but it’s brilliant.",
+     "cz": "Miluju toho hada. Je trochu zvláštní, ale je úžasný."
+    },
+    {
+     "who": "Leo",
+     "en": "Who painted it?",
+     "cz": "Kdo ji namaloval?"
+    },
+    {
+     "who": "Mia",
+     "en": "A street artist from Glasgow. She was painting it all week.",
+     "cz": "Pouliční umělkyně z Glasgow. Malovala ji celý týden."
+    },
+    {
+     "who": "Leo",
+     "en": "Was she using paint or chalk?",
+     "cz": "Používala barvy, nebo křídu?"
+    },
+    {
+     "who": "Mia",
+     "en": "Paint. Chalk washes away when it rains.",
+     "cz": "Barvy. Křídu smyje déšť."
+    },
+    {
+     "who": "Leo",
+     "en": "Cool. I’d like to be a street artist one day.",
+     "cz": "Super. Jednou bych chtěl být pouliční umělec."
+    }
+   ],
+   "qs": [
+    {
+     "q": "What does Mia love in the mural?",
+     "opts": [
+      "the snake",
+      "the bird",
+      "the crocodile"
+     ],
+     "a": "the snake",
+     "line": 2
+    },
+    {
+     "q": "Where is the street artist from?",
+     "opts": [
+      "Glasgow",
+      "London",
+      "Seattle"
+     ],
+     "a": "Glasgow",
+     "line": 4
+    },
+    {
+     "q": "How long was she painting the mural?",
+     "opts": [
+      "all week",
+      "one hour",
+      "all year"
+     ],
+     "a": "all week",
+     "line": 4
+    },
+    {
+     "q": "Why didn’t she use chalk?",
+     "opts": [
+      "Rain washes it away.",
+      "It’s too expensive.",
+      "It isn’t colourful."
+     ],
+     "a": "Rain washes it away.",
+     "line": 6
+    }
+   ]
+  },
+  {
+   "id": "d2",
+   "title": "Why didn’t you answer?",
+   "cz": "Proč jsi to nebrala?",
+   "people": [
+    "Leo",
+    "Mia"
+   ],
+   "lines": [
+    {
+     "who": "Leo",
+     "en": "Hi Mia! I called you at six yesterday, but you didn’t answer.",
+     "cz": "Ahoj Mio! Volal jsem ti včera v šest, ale nebrala jsi to."
+    },
+    {
+     "who": "Mia",
+     "en": "Sorry! At six I was paddling on the river.",
+     "cz": "Promiň! V šest jsem pádlovala na řece."
+    },
+    {
+     "who": "Leo",
+     "en": "In the rain? It was raining all evening!",
+     "cz": "V dešti? Celý večer pršelo!"
+    },
+    {
+     "who": "Mia",
+     "en": "Yes. We were training for a race. I was wearing my rain jacket.",
+     "cz": "Jo. Trénovali jsme na závod. Měla jsem na sobě bundu do deště."
+    },
+    {
+     "who": "Leo",
+     "en": "And what were you doing at eight? I called again.",
+     "cz": "A co jsi dělala v osm? Volal jsem znovu."
+    },
+    {
+     "who": "Mia",
+     "en": "I was making a bracelet. My phone was in my bag.",
+     "cz": "Dělala jsem náramek. Telefon jsem měla v tašce."
+    },
+    {
+     "who": "Leo",
+     "en": "A bracelet? What is it made of?",
+     "cz": "Náramek? Z čeho je?"
+    },
+    {
+     "who": "Mia",
+     "en": "Glass beads and cotton. I can make one for you!",
+     "cz": "Ze skleněných korálků a bavlny. Můžu udělat jeden i pro tebe!"
+    },
+    {
+     "who": "Leo",
+     "en": "Really? Thanks, that’s brilliant!",
+     "cz": "Vážně? Díky, to je skvělé!"
+    }
+   ],
+   "qs": [
+    {
+     "q": "What was Mia doing at six?",
+     "opts": [
+      "paddling on the river",
+      "making a bracelet",
+      "painting a mural"
+     ],
+     "a": "paddling on the river",
+     "line": 1
+    },
+    {
+     "q": "What was the weather like?",
+     "opts": [
+      "It was raining.",
+      "It was snowing.",
+      "It was sunny."
+     ],
+     "a": "It was raining.",
+     "line": 2
+    },
+    {
+     "q": "What was Mia doing at eight?",
+     "opts": [
+      "making a bracelet",
+      "training for a race",
+      "watching TV"
+     ],
+     "a": "making a bracelet",
+     "line": 5
+    },
+    {
+     "q": "What is the bracelet made of?",
+     "opts": [
+      "glass beads and cotton",
+      "wool and leather",
+      "plastic and metal"
+     ],
+     "a": "glass beads and cotton",
+     "line": 7
+    }
+   ]
+  },
+  {
+   "id": "d3",
+   "title": "The lost painting",
+   "cz": "Ztracený obraz",
+   "people": [
+    "Guide",
+    "Mia"
+   ],
+   "lines": [
+    {
+     "who": "Guide",
+     "en": "Welcome to our gallery. This painting is very special.",
+     "cz": "Vítejte v naší galerii. Tenhle obraz je výjimečný."
+    },
+    {
+     "who": "Mia",
+     "en": "Why? It looks quite unusual.",
+     "cz": "Proč? Vypadá docela neobvykle."
+    },
+    {
+     "who": "Guide",
+     "en": "Someone stole it twenty years ago. Last year a gardener found it.",
+     "cz": "Někdo ho před dvaceti lety ukradl. Loni ho našel zahradník."
+    },
+    {
+     "who": "Mia",
+     "en": "Really? Where did he find it?",
+     "cz": "Vážně? Kde ho našel?"
+    },
+    {
+     "who": "Guide",
+     "en": "He was cleaning a wall when he saw a plastic bag inside it.",
+     "cz": "Čistil zeď, když v ní uviděl plastový sáček."
+    },
+    {
+     "who": "Mia",
+     "en": "That’s incredible! Was the painting OK?",
+     "cz": "To je neuvěřitelné! Byl obraz v pořádku?"
+    },
+    {
+     "who": "Guide",
+     "en": "Yes, it was in good condition. We were all very surprised.",
+     "cz": "Ano, byl v dobrém stavu. Všichni jsme byli moc překvapení."
+    },
+    {
+     "who": "Mia",
+     "en": "I’d like to be a painter one day. Or maybe an illustrator.",
+     "cz": "Jednou bych chtěla být malířka. Nebo možná ilustrátorka."
+    }
+   ],
+   "qs": [
+    {
+     "q": "When did someone steal the painting?",
+     "opts": [
+      "twenty years ago",
+      "last year",
+      "yesterday"
+     ],
+     "a": "twenty years ago",
+     "line": 2
+    },
+    {
+     "q": "What was the gardener doing?",
+     "opts": [
+      "He was cleaning a wall.",
+      "He was painting a wall.",
+      "He was watching TV."
+     ],
+     "a": "He was cleaning a wall.",
+     "line": 4
+    },
+    {
+     "q": "Where was the painting?",
+     "opts": [
+      "in a plastic bag",
+      "in a glass box",
+      "in a cardboard box"
+     ],
+     "a": "in a plastic bag",
+     "line": 4
+    },
+    {
+     "q": "What would Mia like to be?",
+     "opts": [
+      "a painter or an illustrator",
+      "a sculptor",
+      "a photographer"
+     ],
+     "a": "a painter or an illustrator",
+     "line": 7
+    }
+   ]
+  }
+ ],
+ "readings": [],
+ "writing": [
+  {
+   "id": "w1",
+   "title": "Můj obraz",
+   "e": "🖌️",
+   "task": "Describe a picture you painted or drew. What is it? What colours are in it? Is it unusual? What do you like about it?",
+   "cz": "Popiš obrázek, který jsi namalovala nebo nakreslila. Stačí 3–5 vět.",
+   "placeholder": "My picture is…",
+   "focus": "adjectives from Unit 2 (huge, colourful, unusual, brilliant, pretty, strange) and materials"
+  },
+  {
+   "id": "w2",
+   "title": "Včera v pět",
+   "e": "🕔",
+   "task": "What were you doing yesterday at five o’clock? And at seven? And at nine?",
+   "cz": "Napiš 3–5 vět, co jsi včera dělala v různé hodiny. Použij was/were + -ing.",
+   "placeholder": "Yesterday at five o’clock I was…",
+   "focus": "past continuous (was/were + -ing)"
+  },
+  {
+   "id": "w3",
+   "title": "Neobvyklá výstava",
+   "e": "🏛️",
+   "task": "Imagine you are organizing an unusual art exhibition. What is the title? Where is it? What kind of art is in it? What is unusual about it?",
+   "cz": "Vymysli neobvyklou výstavu a popiš ji ve 4–6 větách.",
+   "placeholder": "The exhibition is called…",
+   "focus": "art and artists vocabulary, materials, adjectives"
+  },
+  {
+   "id": "w4",
+   "title": "Proč jsem to nebrala",
+   "e": "📱",
+   "task": "Your friend called you twice yesterday, but you didn’t answer. Write a message and explain what you were doing.",
+   "cz": "Napiš kamarádce zprávu (3–5 vět).",
+   "placeholder": "Hi! Sorry, when you called I was…",
+   "focus": "past continuous and past simple (when, while)"
+  }
+ ],
+ "missions": []
+}

@@ -1,0 +1,128 @@
+{
+ "schema": 1,
+ "id": "nz-01-cesta",
+ "course": "nz",
+ "courseTitle": "Nový Zéland",
+ "order": 1,
+ "title": "Getting there",
+ "cz": "Cesta na druhý konec světa",
+ "version": 1,
+ "subjects": ["angličtina", "zeměpis", "přírodopis"],
+ "people": {
+  "Mia": {"e": "👧", "pitch": 1.2, "voice": 0},
+  "Officer": {"e": "👮", "pitch": 0.85, "voice": 1}
+ },
+ "lessons": [
+  {
+   "id": "nz1-airport",
+   "type": "lesson",
+   "art": "a2",
+   "title": "At the airport",
+   "cz": "Na letišti",
+   "intro": "<p>Než přistaneš v Aucklandu, projdeš několika letišti. Tahle slova budeš slyšet a číst všude kolem sebe.</p>",
+   "words": [
+    ["✈️", "flight", "let"],
+    ["🛂", "passport", "cestovní pas"],
+    ["🧳", "luggage / suitcase", "zavazadla / kufr"],
+    ["🎫", "boarding pass", "palubní vstupenka"],
+    ["🚪", "gate", "odletová brána"],
+    ["⏰", "delay", "zpoždění"],
+    ["🍎", "declare", "nahlásit (na celnici)"],
+    ["🌏", "southern hemisphere", "jižní polokoule"],
+    ["🕛", "time difference", "časový posun"],
+    ["🥱", "jet lag", "únava z časového posunu"]
+   ],
+   "ex": [
+    {"t": "mc", "q": "🛂 Jak se řekne <b>cestovní pas</b>?", "opts": ["passport", "flight", "gate", "delay"], "a": "passport"},
+    {"t": "mc", "q": "🚪 Kde čekáš, než nastoupíš do letadla?", "opts": ["at the gate", "at the luggage", "at the delay"], "a": "at the gate"},
+    {"t": "listen", "say": "boarding pass", "cz": "palubní vstupenka", "opts": ["boarding pass", "passport", "suitcase", "flight"], "a": "boarding pass"},
+    {"t": "pair", "q": "Spoj slovo s překladem.", "pairs": [["flight", "let"], ["delay", "zpoždění"], ["luggage", "zavazadla"], ["jet lag", "únava z časového posunu"]]},
+    {"t": "gap", "s": "“Can I see your ___, please?” “Here you are.”", "opts": ["passport", "gate", "delay"], "a": "passport"},
+    {"t": "gap", "s": "Our flight has a two-hour ___. We are waiting at the gate.", "opts": ["delay", "luggage", "passport"], "a": "delay", "why": "Letadlo nestihlo odletět včas, má zpoždění: delay."},
+    {"t": "dict", "a": "How long are you staying?"},
+    {"t": "gap", "s": "In New Zealand you must ___ all food in your bag.", "opts": ["declare", "delay", "fly"], "a": "declare", "why": "Declare = nahlásit. Jídlo se na Novém Zélandu musí vždycky nahlásit."},
+    {"t": "build", "cz": "Jsme na dovolené s rodinou.", "a": "We are on holiday with my family.", "extra": ["in", "is"]},
+    {"t": "build", "cz": "Minulý měsíc jsem pádlovala na řece.", "a": "I was paddling on a river last month.", "extra": ["were", "paddled"]},
+    {"t": "speak", "a": "Good morning. Here you are."}
+   ]
+  }
+ ],
+ "practice": [],
+ "dialogs": [
+  {
+   "id": "nz1-d1",
+   "title": "Welcome to New Zealand",
+   "cz": "Vítej na Novém Zélandu",
+   "people": ["Officer", "Mia"],
+   "lines": [
+    {"who": "Officer", "en": "Good morning. Welcome to New Zealand. Can I see your passport, please?", "cz": "Dobré ráno. Vítejte na Novém Zélandu. Můžu vidět váš pas?"},
+    {"who": "Mia", "en": "Good morning. Here you are.", "cz": "Dobré ráno. Tady je."},
+    {"who": "Officer", "en": "Thank you. Why are you visiting New Zealand?", "cz": "Děkuji. Proč navštěvujete Nový Zéland?"},
+    {"who": "Mia", "en": "We’re on holiday with my family.", "cz": "Jsme tu na dovolené s rodinou."},
+    {"who": "Officer", "en": "How long are you staying?", "cz": "Jak dlouho tu zůstanete?"},
+    {"who": "Mia", "en": "For one month.", "cz": "Měsíc."},
+    {"who": "Officer", "en": "Have you got any food in your bag?", "cz": "Máte v tašce nějaké jídlo?"},
+    {"who": "Mia", "en": "Yes, I’ve got some biscuits. I declared them on my card.", "cz": "Ano, mám sušenky. Uvedla jsem je na příletové kartičce."},
+    {"who": "Officer", "en": "Great. And is this sports equipment?", "cz": "Výborně. A tohle je sportovní vybavení?"},
+    {"who": "Mia", "en": "Yes, it’s my paddle. I was paddling on a river in Europe last month.", "cz": "Ano, to je moje pádlo. Minulý měsíc jsem pádlovala na řece v Evropě."},
+    {"who": "Officer", "en": "OK, we need to check it. Then you can go. Enjoy your stay!", "cz": "Dobře, musíme ho zkontrolovat. Pak můžete jít. Užijte si pobyt!"}
+   ],
+   "qs": [
+    {"q": "Why is Mia visiting New Zealand?", "opts": ["She’s on holiday with her family.", "She’s visiting a friend.", "She’s going to a race."], "a": "She’s on holiday with her family.", "line": 3},
+    {"q": "How long is Mia staying?", "opts": ["for one month", "for one week", "for one year"], "a": "for one month", "line": 5},
+    {"q": "What food has she got in her bag?", "opts": ["some biscuits", "an apple", "a sandwich"], "a": "some biscuits", "line": 7},
+    {"q": "What does the officer need to check?", "opts": ["her paddle", "her biscuits", "her phone"], "a": "her paddle", "line": 10}
+   ]
+  }
+ ],
+ "readings": [
+  {
+   "id": "nz1-r1",
+   "title": "Why is it summer in December?",
+   "cz": "Proč je v prosinci léto?",
+   "subject": "zeměpis",
+   "paragraphs": [
+    {"en": "New Zealand is in the southern hemisphere, on the other side of the world from the Czech Republic.", "cz": "Nový Zéland leží na jižní polokouli, na druhé straně světa než Česko."},
+    {"en": "When it is winter in Europe, it is summer in New Zealand. In December the days there are long and warm.", "cz": "Když je v Evropě zima, na Novém Zélandu je léto. V prosinci jsou tam dny dlouhé a teplé."},
+    {"en": "Why? The Earth is tilted. In December the southern half of the Earth leans towards the Sun, so it gets more sunlight.", "cz": "Proč? Zemská osa je nakloněná. V prosinci se jižní polovina Země naklání ke Slunci, a proto dostává víc slunečního světla."},
+    {"en": "There is also a big time difference. In December, New Zealand is twelve hours ahead of the Czech Republic. When you are having lunch at home, people in Auckland are going to bed.", "cz": "Je tam také velký časový posun. V prosinci je Nový Zéland o dvanáct hodin napřed. Když doma obědváš, lidé v Aucklandu jdou spát."},
+    {"en": "After a long flight, many people have jet lag. They feel tired in the day and they can’t sleep at night.", "cz": "Po dlouhém letu má spousta lidí jet lag. Přes den jsou unavení a v noci nemůžou spát."}
+   ],
+   "glossary": [["hemisphere", "polokoule"], ["tilted", "nakloněný"], ["lean towards", "naklánět se k"], ["sunlight", "sluneční světlo"], ["ahead", "napřed"], ["tired", "unavený"]],
+   "qs": [
+    {"q": "When is it summer in New Zealand?", "opts": ["in December", "in July", "in April"], "a": "in December"},
+    {"q": "In December, how many hours ahead of the Czech Republic is New Zealand?", "opts": ["twelve", "two", "six"], "a": "twelve"},
+    {"q": "Why is it summer there in December?", "opts": ["The southern half of the Earth leans towards the Sun.", "New Zealand is very near the Sun.", "New Zealand is a hot country."], "a": "The southern half of the Earth leans towards the Sun."},
+    {"q": "What is jet lag?", "opts": ["You feel tired in the day and can’t sleep at night.", "Your flight has a delay.", "You lose your luggage."], "a": "You feel tired in the day and can’t sleep at night."}
+   ],
+   "think": "Zkus doma: posviť baterkou na glóbus nebo míč a nakloň ho. Která polovina dostane víc světla?"
+  },
+  {
+   "id": "nz1-r2",
+   "title": "Don’t bring an apple!",
+   "cz": "Jablko nevoz!",
+   "subject": "přírodopis",
+   "paragraphs": [
+    {"en": "New Zealand has many plants and animals that live nowhere else in the world.", "cz": "Na Novém Zélandu žije spousta rostlin a zvířat, které nežijí nikde jinde na světě."},
+    {"en": "Insects, seeds or diseases from other countries can be very dangerous for them.", "cz": "Hmyz, semínka nebo nemoci z jiných zemí pro ně můžou být velmi nebezpečné."},
+    {"en": "That’s why the rules at the airport are very strict. You must declare all food and plants. You must also declare sports equipment that you used outdoors, for example for camping, walking or water sports.", "cz": "Proto jsou pravidla na letišti velmi přísná. Musíš nahlásit všechno jídlo a rostliny. Nahlásit musíš i sportovní vybavení, které jsi používala venku, třeba na kempování, túry nebo vodní sporty."},
+    {"en": "Dogs at the airport sniff the bags. If you forget an apple in your bag, you can get a big fine.", "cz": "Psi na letišti očichávají zavazadla. Když zapomeneš v tašce jablko, můžeš dostat vysokou pokutu."}
+   ],
+   "glossary": [["nowhere else", "nikde jinde"], ["insect", "hmyz"], ["seed", "semínko"], ["disease", "nemoc"], ["strict", "přísný"], ["equipment", "vybavení"], ["sniff", "čichat"], ["fine", "pokuta"]],
+   "qs": [
+    {"q": "Why are the airport rules so strict?", "opts": ["To protect plants and animals that live only in New Zealand.", "Because there are too many tourists.", "Because dogs like apples."], "a": "To protect plants and animals that live only in New Zealand."},
+    {"q": "What must you declare?", "opts": ["food, plants and outdoor sports equipment", "only your passport", "your phone and your books"], "a": "food, plants and outdoor sports equipment"},
+    {"q": "What do the dogs at the airport do?", "opts": ["They sniff the bags.", "They check passports.", "They carry the luggage."], "a": "They sniff the bags."}
+   ],
+   "think": "Proč myslíš, že cizí hmyz může ostrovním zvířatům uškodit víc než zvířatům v Evropě?"
+  }
+ ],
+ "writing": [
+  {"id": "nz1-w1", "title": "Můj batoh do letadla", "e": "🎒", "task": "What have you got in your bag for the long flight? Why?", "cz": "Napiš 3–5 vět, co si bereš do letadla a proč.", "placeholder": "In my bag I’ve got…", "focus": "have got, materials, adjectives"}
+ ],
+ "missions": [
+  {"id": "nz1-m1", "where": "letiště", "cz": "Najdi na letišti ceduli o biosecurity. Vyfoť ji a doma ji přelož."},
+  {"id": "nz1-m2", "where": "pasová kontrola", "cz": "Pozdrav úředníka anglicky: „Good morning.“ A až ti vrátí pas: „Thank you.“"},
+  {"id": "nz1-m3", "where": "první den", "cz": "Zjisti, kolik je hodin doma v Česku, když je v Aucklandu poledne."}
+ ]
+}
