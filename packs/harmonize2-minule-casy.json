@@ -1,0 +1,193 @@
+{
+ "schema": 1,
+ "id": "harmonize2-minule-casy",
+ "course": "harmonize2",
+ "courseTitle": "Harmonize 2",
+ "order": 2.5,
+ "title": "Past simple × past continuous",
+ "cz": "Minulý čas prostý a průběhový",
+ "version": 1,
+ "people": {},
+ "lessons": [
+  {
+   "id": "ps1",
+   "art": "a1",
+   "title": "Yesterday I won!",
+   "cz": "Past simple: stalo se a skončilo",
+   "intro": "<p><b>Past simple</b> říká, co se v minulosti <b>stalo a skončilo</b>. Jako fotka: cvak, a je hotovo.</p><div class=\"rule\">Pravidelná slovesa dostanou <b>-ed</b>:<br>paint → <b>painted</b>, play → <b>played</b>, visit → <b>visited</b></div><div class=\"rule\">Nepravidelná mají vlastní tvar. Ten se učíš zpaměti:<br>go → <b>went</b>, see → <b>saw</b>, win → <b>won</b></div><div class=\"rule\">Poznáš ho podle slov:<br><b>yesterday</b>, <b>last</b> week, two days <b>ago</b>, <b>in</b> 2025<br><span class=\"cz\">včera, minulý týden, před dvěma dny, v roce 2025</span></div>",
+   "words": [
+    ["🚶", "go → went", "jít → šla"],
+    ["👀", "see → saw", "vidět → viděla"],
+    ["📿", "make → made", "vyrobit → vyrobila"],
+    ["🛍️", "buy → bought", "koupit → koupila"],
+    ["🏆", "win → won", "vyhrát → vyhrála"],
+    ["🤕", "fall → fell", "spadnout → spadla"]
+   ],
+   "ex": [
+    {"t": "gap", "s": "Yesterday I ___ a picture of a kiwi.", "opts": ["painted", "paint", "painting"], "a": "painted", "why": "Yesterday = včera, věc je hotová. Paint je pravidelné, takže přidáš -ed."},
+    {"t": "mc", "q": "🏆 Jaký je minulý tvar slovesa <b>win</b>?", "opts": ["won", "winned", "wins", "winning"], "a": "won", "why": "Win je nepravidelné: win → won."},
+    {"t": "pair", "q": "Spoj sloveso s jeho minulým tvarem.", "pairs": [["go", "went"], ["see", "saw"], ["buy", "bought"], ["make", "made"]]},
+    {"t": "gap", "s": "Last weekend we ___ to a race in Prague.", "opts": ["went", "go", "goed"], "a": "went", "why": "Go je nepravidelné: go → went. Tvar goed neexistuje."},
+    {"t": "listen", "say": "fell", "cz": "spadla", "opts": ["fell", "fall", "felt", "fill"], "a": "fell"},
+    {"t": "gap", "s": "My friend ___ me some glass beads two days ago.", "opts": ["gave", "give", "gived"], "a": "gave", "why": "Give → gave. Two days ago = před dvěma dny, věc je hotová."},
+    {"t": "dict", "a": "I made a bracelet yesterday."},
+    {"t": "type", "s": "Last summer we ___ a lot of ice cream.", "hint": "eat", "a": ["ate"], "why": "Eat je nepravidelné: eat → ate."},
+    {"t": "type", "s": "I ___ my grandma on Sunday.", "hint": "visit", "a": ["visited"], "why": "Visit je pravidelné: stačí přidat -ed."},
+    {"t": "build", "cz": "Minulý týden jsem vyhrála závod.", "a": "I won a race last week.", "extra": ["win", "was"]},
+    {"t": "speak", "a": "I won a race last week."}
+   ]
+  },
+  {
+   "id": "ps2",
+   "art": "a2",
+   "title": "Did you see it?",
+   "cz": "Past simple: otázka a zápor",
+   "intro": "<p>V otázce a v záporu pomáhá malé slovo <b>did</b>. A pozor: sloveso se pak vrací do <b>základního tvaru</b>.</p><div class=\"rule\">I went. → I <b>didn’t go</b>.<br><span class=\"cz\">ne „didn’t went“, minulost už nese didn’t</span></div><div class=\"rule\"><b>Did</b> you <b>see</b> the mural?<br>Yes, I <b>did</b>. / No, I <b>didn’t</b>.</div>",
+   "ex": [
+    {"t": "gap", "s": "I ___ go to school yesterday. I was ill.", "opts": ["didn’t", "don’t", "wasn’t"], "a": "didn’t", "why": "Yesterday = minulost. Zápor je didn’t + základní tvar (go)."},
+    {"t": "mc", "q": "Která věta je správně?", "opts": ["She didn’t see the mural.", "She didn’t saw the mural."], "a": "She didn’t see the mural.", "why": "Po didn’t se sloveso vrací do základního tvaru: see, ne saw."},
+    {"t": "gap", "s": "___ you watch the race on TV?", "opts": ["Did", "Were", "Do"], "a": "Did", "why": "Otázka v minulosti začíná Did. Were patří k -ing (were you watching)."},
+    {"t": "gap", "s": "“Did you like the film?” “Yes, I ___.”", "opts": ["did", "liked", "was"], "a": "did", "why": "Krátká odpověď: Yes, I did. / No, I didn’t."},
+    {"t": "mc", "q": "Která otázka je správně?", "opts": ["Did they win the match?", "Did they won the match?", "They did win the match?"], "a": "Did they win the match?", "why": "Did jde na začátek a sloveso zůstane v základním tvaru: win."},
+    {"t": "dict", "a": "We didn’t have any homework."},
+    {"t": "type", "s": "My brother ___ his room. It’s still a mess!", "hint": "not tidy", "a": ["didn’t tidy", "did not tidy"], "why": "Zápor v minulosti: didn’t + základní tvar tidy."},
+    {"t": "type", "s": "What ___ you do at the weekend?", "hint": "do", "a": ["did"], "why": "Otázka v minulosti: What did you do…?"},
+    {"t": "build", "cz": "Neviděla jsem tvoje korálky.", "a": "I didn’t see your beads.", "extra": ["saw", "don’t"]},
+    {"t": "build", "cz": "Šla jsi včera do galerie?", "a": "Did you go to the gallery yesterday?", "extra": ["went", "Were"]},
+    {"t": "speak", "a": "What did you do at the weekend?"}
+   ]
+  },
+  {
+   "id": "pc1",
+   "art": "a3",
+   "title": "Pause the video",
+   "cz": "Past continuous: zrovna to probíhalo",
+   "intro": "<p><b>Past continuous</b> říká, co se v nějakou chvíli <b>zrovna dělo</b>. Jako když zastavíš video: na obrázku je vidět, že se něco děje, ale ještě to neskončilo.</p><div class=\"rule\"><b>I / he / she / it</b> was + -ing<br><b>you / we / they</b> were + -ing</div><div class=\"rule\">At seven o’clock I <b>was having</b> breakfast.<br>Zápor: <b>wasn’t</b> / <b>weren’t</b><br>Otázka: <b>Were</b> you sleeping?</div>",
+   "ex": [
+    {"t": "mc", "q": "Co říká <b>past continuous</b>?", "opts": ["Co se v tu chvíli zrovna dělo.", "Co se stalo a skončilo.", "Co se stane zítra."], "a": "Co se v tu chvíli zrovna dělo.", "why": "Past continuous je zastavené video: děj zrovna probíhá."},
+    {"t": "gap", "s": "At eight o’clock yesterday I ___ breakfast.", "opts": ["was having", "were having", "having"], "a": "was having", "why": "V osm snídaně zrovna probíhala. K „I“ patří was + -ing."},
+    {"t": "gap", "s": "My parents ___ watching TV when I came home.", "opts": ["were", "was", "did"], "a": "were", "why": "My parents = they, a k they patří were."},
+    {"t": "gap", "s": "She was ___ a dragon on her T-shirt.", "opts": ["drawing", "draw", "drew"], "a": "drawing", "why": "Po was/were přijde vždycky sloveso s -ing."},
+    {"t": "gap", "s": "It ___ raining, so we didn’t need umbrellas.", "opts": ["wasn’t", "weren’t", "didn’t"], "a": "wasn’t", "why": "It → was, zápor wasn’t."},
+    {"t": "gap", "s": "___ you sleeping when I phoned?", "opts": ["Were", "Was", "Did"], "a": "Were", "why": "Otázka: were jde na začátek. K „you“ patří were."},
+    {"t": "dict", "a": "The sun was shining and the birds were singing."},
+    {"t": "type", "s": "At ten o’clock last night I ___ a book.", "hint": "read", "a": ["was reading"]},
+    {"t": "type", "s": "Mum and Dad ___ dinner at seven.", "hint": "cook", "a": ["were cooking"]},
+    {"t": "build", "cz": "Celé odpoledne jsme malovaly.", "a": "We were painting all afternoon.", "extra": ["was", "painted"]},
+    {"t": "speak", "a": "We were painting all afternoon."}
+   ]
+  },
+  {
+   "id": "kdy",
+   "art": "a4",
+   "title": "Which one?",
+   "cz": "Kdy se co používá",
+   "intro": "<p>Jak poznáš, který čas použít? Zeptej se sama sebe: <b>skončilo to</b>, nebo <b>to zrovna probíhalo</b>?</p><div class=\"rule\">✔️ <b>Past simple</b>: stalo se a skončilo.<br>Krátká věc, nebo věci jedna po druhé.<br><span class=\"cz\">yesterday, last week, ago, then, suddenly</span><br>I <b>did</b> my homework yesterday.</div><div class=\"rule\">⏳ <b>Past continuous</b>: zrovna to probíhalo.<br>Dlouhá věc v určitou chvíli, pozadí příběhu.<br><span class=\"cz\">at five o’clock, at this time yesterday, while, all day</span><br>At five o’clock I <b>was doing</b> my homework.</div>",
+   "words": [
+    ["📅", "yesterday", "včera"],
+    ["⏪", "ago", "před (časem)"],
+    ["🗓️", "last week", "minulý týden"],
+    ["⏳", "at that moment", "v tu chvíli"]
+   ],
+   "ex": [
+    {"t": "mc", "q": "Které slovo ukazuje na <b>past simple</b>?", "opts": ["yesterday", "while", "at that moment"], "a": "yesterday", "why": "Yesterday říká, kdy se věc stala a skončila."},
+    {"t": "mc", "q": "Které slovo ukazuje na <b>past continuous</b>?", "opts": ["while", "ago", "last week"], "a": "while", "why": "While = zatímco. Po něm bývá dlouhý děj, který zrovna probíhal."},
+    {"t": "gap", "s": "I ___ my homework yesterday evening.", "opts": ["did", "was doing"], "a": "did", "why": "Úkol jsi udělala a bylo hotovo. Yesterday → past simple."},
+    {"t": "gap", "s": "At this time yesterday I ___ in the river.", "opts": ["was swimming", "swam"], "a": "was swimming", "why": "„V tuhle dobu včera“ = zrovna to probíhalo → past continuous."},
+    {"t": "gap", "s": "Two years ago we ___ to Scotland.", "opts": ["went", "were going"], "a": "went", "why": "Ago → hotová věc v minulosti → past simple."},
+    {"t": "mc", "q": "Která věta popisuje věci <b>jednu po druhé</b>?", "opts": ["I got up, had a shower and went to school.", "I was getting up, was having a shower and was going to school."], "a": "I got up, had a shower and went to school.", "why": "Každá věc skončí a pak přijde další. Na to stačí past simple."},
+    {"t": "gap", "s": "It was a lovely evening. The sun ___ and people were walking in the park.", "opts": ["was shining", "shone"], "a": "was shining", "why": "Popisuješ, co se zrovna dělo kolem. Takové pozadí příběhu bývá v past continuous."},
+    {"t": "dict", "a": "I did my homework yesterday."},
+    {"t": "type", "s": "Last week my team ___ the match.", "hint": "win", "a": ["won"], "why": "Last week → hotová věc. Win → won."},
+    {"t": "type", "s": "At midnight everyone in my house ___.", "hint": "sleep", "a": ["was sleeping"], "why": "O půlnoci to zrovna probíhalo. Everyone se počítá jako jeden člověk (jako he/she), takže was sleeping."},
+    {"t": "speak", "a": "At this time yesterday I was swimming in the river."}
+   ]
+  },
+  {
+   "id": "kdyz",
+   "art": "a5",
+   "title": "When the phone rang…",
+   "cz": "Oba časy v jedné větě: when a while",
+   "intro": "<p>Často jsou oba časy v jedné větě. Dlouhý děj je jako <b>řeka</b>, která teče. Krátký děj je jako <b>kámen</b>, který do ní najednou spadne.</p><div class=\"rule\">I <b>was paddling</b> when I <b>saw</b> a big fish.<br><span class=\"cz\">dlouhý děj (was + -ing) + when + krátký děj (past simple)</span></div><div class=\"rule\"><b>While</b> we <b>were walking</b>, it <b>started</b> to rain.<br><span class=\"cz\">while = zatímco, patří k dlouhému ději</span></div>",
+   "words": [
+    ["⚡", "when", "když"],
+    ["🌊", "while", "zatímco"],
+    ["💥", "suddenly", "najednou"]
+   ],
+   "ex": [
+    {"t": "gap", "s": "I was paddling when I ___ a big fish.", "opts": ["saw", "was seeing"], "a": "saw", "why": "Ryba se objevila najednou. Krátký okamžik → past simple."},
+    {"t": "gap", "s": "While we ___ to the station, it started to rain.", "opts": ["were walking", "walked"], "a": "were walking", "why": "Po while je dlouhý děj → past continuous."},
+    {"t": "gap", "s": "She was drawing when her pencil ___.", "opts": ["broke", "was breaking"], "a": "broke", "why": "Tužka se zlomila v jednom okamžiku → past simple. Break → broke."},
+    {"t": "gap", "s": "___ we were watching a film, the lights went out.", "opts": ["While", "During", "Ago"], "a": "While", "why": "While + dlouhý děj. During se pojí jen s podstatným jménem (during the film)."},
+    {"t": "mc", "q": "<i>I was reading when the phone rang.</i><br>Která část je <b>dlouhý děj</b> (řeka)?", "opts": ["I was reading", "the phone rang"], "a": "I was reading", "why": "Čtení trvalo. Telefon zazvonil najednou a přerušil ho."},
+    {"t": "mc", "q": "Která věta dává větší smysl?", "opts": ["When I opened the door, my dog was sleeping.", "When I was opening the door, my dog slept."], "a": "When I opened the door, my dog was sleeping.", "why": "Pes spal dlouho (past continuous) a ty jsi v jednom okamžiku otevřela dveře (past simple)."},
+    {"t": "dict", "a": "While I was making a bracelet, my sister came in."},
+    {"t": "type", "s": "I ___ a shower when the water went cold.", "hint": "have", "a": ["was having"], "why": "Sprchování trvalo a voda zchladla uprostřed → was having."},
+    {"t": "type", "s": "We were having lunch when Grandad ___.", "hint": "arrive", "a": ["arrived"], "why": "Děda přišel v jednom okamžiku → past simple, pravidelné -ed."},
+    {"t": "build", "cz": "Spadla mi čepice do vody, zatímco jsem pádlovala.", "a": "My cap fell into the water while I was paddling.", "extra": ["fall", "were"]},
+    {"t": "speak", "a": "I was paddling when I saw a big fish."}
+   ]
+  },
+  {
+   "id": "zavod",
+   "art": "a6",
+   "title": "The race",
+   "cz": "Finále: příběh ze závodu",
+   "intro": "<p>Příběh ze závodu na divoké vodě. Všechno, co ses naučila, teď použiješ dohromady.</p><div class=\"rule\">U každé věty se zeptej:<br>⏳ <b>zrovna to probíhalo?</b> → was / were + -ing<br>✔️ <b>stalo se a skončilo?</b> → past simple</div>",
+   "ex": [
+    {"t": "gap", "s": "Last Saturday I ___ a slalom race on the river.", "opts": ["had", "was having", "have"], "a": "had", "why": "Last Saturday → hotová věc v minulosti → past simple. Have → had."},
+    {"t": "gap", "s": "It was a cold morning and it ___.", "opts": ["was raining", "rains", "raining"], "a": "was raining", "why": "Popisuješ pozadí, co se zrovna dělo → was raining."},
+    {"t": "gap", "s": "My friends ___ on the bank and cheering.", "opts": ["were standing", "was standing", "stood"], "a": "were standing", "why": "My friends = they → were. A „and cheering“ ukazuje, že jde o -ing."},
+    {"t": "gap", "s": "I was paddling through gate 5 when my paddle ___ a rock.", "opts": ["hit", "was hitting", "hitted"], "a": "hit", "why": "Náraz byl krátký okamžik → past simple. Hit je nepravidelné a tvar se nemění: hit → hit."},
+    {"t": "gap", "s": "I didn’t ___. I kept going!", "opts": ["stop", "stopped", "stopping"], "a": "stop", "why": "Po didn’t se sloveso vrací do základního tvaru."},
+    {"t": "mc", "q": "Proč je ve větě <b>was paddling</b>?", "opts": ["Pádlování trvalo a náraz přišel uprostřed.", "Pádlování skončilo ještě před nárazem.", "Je to otázka."], "a": "Pádlování trvalo a náraz přišel uprostřed.", "why": "Řeka a kámen: dlouhý děj (was paddling) přerušil krátký (hit)."},
+    {"t": "dict", "a": "I didn’t stop. I kept going!"},
+    {"t": "type", "s": "At the finish, my coach ___ for me.", "hint": "wait", "a": ["was waiting"], "why": "Trenér tam čekal už nějakou dobu → was waiting."},
+    {"t": "type", "s": "“___ you win?” “No, but I tried my best!”", "hint": "do", "a": ["did"], "why": "Otázka v minulosti začíná Did."},
+    {"t": "build", "cz": "Nevyhrála jsem, ale byla jsem na sebe pyšná.", "a": "I didn’t win, but I was proud of myself.", "extra": ["won", "were"]},
+    {"t": "speak", "a": "I didn’t win, but I was proud of myself."}
+   ]
+  }
+ ],
+ "practice": [
+  {
+   "id": "vys",
+   "title": "Výslovnost: minulé časy",
+   "ex": [
+    {"t": "speak", "a": "painted"},
+    {"t": "speak", "a": "watched"},
+    {"t": "speak", "a": "bought"},
+    {"t": "speak", "a": "I didn’t go to school."},
+    {"t": "speak", "a": "Did you see the mural?"},
+    {"t": "speak", "a": "They were laughing."},
+    {"t": "speak", "a": "I was reading when the phone rang."},
+    {"t": "speak", "a": "While we were walking, it started to rain."}
+   ]
+  },
+  {
+   "id": "dik",
+   "title": "Diktát: minulé časy",
+   "ex": [
+    {"t": "dict", "a": "We went to the gallery last week."},
+    {"t": "dict", "a": "She bought some glass beads."},
+    {"t": "dict", "a": "I didn’t see the race."},
+    {"t": "dict", "a": "Did you win the match?"},
+    {"t": "dict", "a": "They were playing football."},
+    {"t": "dict", "a": "It wasn’t raining."},
+    {"t": "dict", "a": "I was drawing when my pencil broke."},
+    {"t": "dict", "a": "While I was paddling, I saw a big fish."}
+   ]
+  }
+ ],
+ "writing": [
+  {
+   "id": "w1",
+   "title": "Můj skvělý den",
+   "e": "📸",
+   "task": "Write about a great day in the past. Where were you? What did you do? What was happening around you? Did anything surprising happen?",
+   "cz": "Napiš o skvělém dni z minulosti. Stačí 4–6 vět. Zkus použít oba časy.",
+   "placeholder": "Last summer I…",
+   "focus": "past simple (went, saw, did, didn’t…) and past continuous (was/were + -ing) with when and while"
+  }
+ ]
+}
