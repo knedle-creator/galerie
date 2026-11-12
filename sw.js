@@ -1,6 +1,6 @@
 /* Service worker: díky němu appka funguje bez internetu.
    Když změníš kód nebo přidáš balíček, zvyš číslo VERZE, ať si telefon stáhne novou kopii. */
-const VERZE = 'klaudie-v2';
+const VERZE = 'klaudie-v5';
 const ZAKLAD = [
   './', 'index.html', 'manifest.webmanifest', 'css/app.css',
   'js/main.js', 'js/util.js', 'js/store.js', 'js/speech.js', 'js/packs.js', 'js/ui.js',
@@ -19,6 +19,12 @@ self.addEventListener('install', e => {
       const idx = await (await fetch('packs/index.json', { cache: 'no-store' })).json();
       await Promise.all((idx.packs || []).map(f => c.add('packs/' + f).catch(() => {})));
     } catch (err) { /* offline při instalaci: balíčky se dočtou příště */ }
+    // nahrané hlasy (audio/index.json + jeden .json a .bin na balíček)
+    try {
+      const a = await (await fetch('audio/index.json', { cache: 'no-store' })).json();
+      await c.put('audio/index.json', new Response(JSON.stringify(a), { headers: { 'Content-Type': 'application/json' } }));
+      await Promise.all((a.bundles || []).flatMap(b => [`audio/${b}.json`, `audio/${b}.bin`]).map(u => c.add(u).catch(() => {})));
+    } catch (err) { /* bez nahrávek appka mluví hlasem telefonu */ }
     self.skipWaiting();
   })());
 });
