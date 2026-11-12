@@ -3,7 +3,7 @@ import { $, $$, esc, pl } from './util.js';
 import { S, save, exportBackup, importBackup, resetAll, getUserPacks, setUserPacks } from './store.js';
 import { app, route, go, toHome, toast, modal } from './ui.js';
 import { PACKS, ITEMS, KINDS, LOAD_ERRORS, validatePack, loadAll, status } from './packs.js';
-import { hasTTS, voiceCount, micOK, englishVoices, voiceGender, speak, clearCast } from './speech.js';
+import { hasTTS, voiceCount, micOK, englishVoices, voiceGender, speak, clearCast, castVoices, gendersUnknown, recCount } from './speech.js';
 
 const SAMPLE = { f: 'Hi, I’m Mia. The mural is huge and very colourful.', m: 'Hi, I’m Leo. I was paddling on the river.' };
 const voiceList = g => englishVoices().filter(v => voiceGender(v) !== (g === 'f' ? 'm' : 'f')).slice(0, 8);
@@ -21,9 +21,25 @@ function voiceGroup(g) {
       <span class="tx"><b>${esc(v.name)}</b><small>${esc(v.lang)}${v.localService ? '' : ' · přes internet'}</small></span>
       <button class="say" type="button" data-try="${esc(v.name)}" data-g="${g}" aria-label="Přehrát ukázku">▶</button></label>`).join('')}</div>`;
 }
+// Telefon nepozná, který hlas je ženský a který mužský (Chrome na Androidu): jeden seznam a vysvětlení.
+function voiceGroupUnknown() {
+  const vs = englishVoices().slice(0, 8);
+  const cur = S.voiceF && vs.some(v => v.name === S.voiceF) ? S.voiceF : null;
+  return `<h3 style="margin-top:1.2rem">🔊 Hlas</h3>
+    <div class="tip"><p style="margin:0">Tenhle telefon nabízí pro každý jazyk jen jeden hlas a neprozradí, jestli je mužský, nebo ženský. Mužské postavy proto appka mluví <b>stejným hlasem, ale výrazně hlubším</b>. Když v rozhovoru mluví dvě ženy nebo dva muži, druhá postava dostane jiný anglický přízvuk (např. australský), pokud ho telefon má.</p>
+    <p style="margin:.5rem 0 0" class="cz">Který hlas se za „English United Kingdom“ skrývá, se nastavuje v Androidu: Nastavení → Usnadnění → Převod textu na řeč → u „Google“ ozubené kolo → Nainstalovat hlasová data → angličtina (Spojené království). Změna platí pro všechny postavy najednou.</p></div>
+    <div class="row"><button class="btn ghost small" type="button" id="trycast">▶ Poslechnout Miu a Lea</button></div>
+    <div class="items">
+     <label class="item" style="cursor:pointer"><input type="radio" name="voiceAll" value="" ${cur ? '' : 'checked'} style="width:1.3rem;height:1.3rem;flex:none">
+      <span class="tx"><b>Vybrat automaticky</b><small>britská angličtina</small></span></label>
+     ${vs.map(v => `<label class="item" style="cursor:pointer">
+      <input type="radio" name="voiceAll" value="${esc(v.name)}" ${v.name === cur ? 'checked' : ''} style="width:1.3rem;height:1.3rem;flex:none">
+      <span class="tx"><b>${esc(v.name)}</b><small>${esc(v.lang)}${v.localService ? '' : ' · přes internet'}</small></span>
+      <button class="say" type="button" data-try="${esc(v.name)}" data-g="f" aria-label="Přehrát ukázku">▶</button></label>`).join('')}</div>`;
+}
 function voicePicker() {
   if (!englishVoices().length) return '<p class="cz">Telefon zatím nenabízí žádný anglický hlas.</p>';
-  return `${voiceGroup('f')}${voiceGroup('m')}
+  return `${gendersUnknown() ? voiceGroupUnknown() : voiceGroup('f') + voiceGroup('m')}
     <p class="cz">Hlasy „přes internet“ (např. Google) znějí nejpřirozeněji, ale potřebují připojení a čtený anglický text posílají Googlu. Bez internetu appka sama použije hlas uložený v telefonu.</p>`;
 }
 
@@ -95,7 +111,11 @@ function panel() {
     <div class="stat"><span>Rozpoznávání řeči</span><span>${micOK ? 'dostupné' : 'nedostupné (cvičení jdou dokončit i bez něj)'}</span></div>
     <label class="toggle" style="margin-top:.6rem"><input type="checkbox" id="snd" ${S.sound ? 'checked' : ''}> Automaticky předčítat správné odpovědi</label>
     <label class="toggle"><input type="checkbox" id="sfx" ${S.sfx !== false ? 'checked' : ''}> Zvukové efekty, potlesk a maskot Kapka</label>
-    ${hasTTS ? voicePicker() : ''}
+    ${recCount() ? `<h3 style="margin-top:1.2rem">🎙️ Nahrané hlasy</h3>
+     <label class="toggle"><input type="checkbox" id="rec" ${S.rec !== false ? 'checked' : ''}> Používat nahrané hlasy (doporučeno)</label>
+     <p class="cz">Appka má ${pl(recCount(), 'nahranou větu', 'nahrané věty', 'nahraných vět')}: muži mluví mužským hlasem, ženy ženským, na každém telefonu stejně a i bez internetu. Hlas telefonu (níže) mluví jen tam, kde nahrávka není, např. u slov, která si Klaudie přidá sama.</p>
+     <div class="row"><button class="btn ghost small" type="button" id="tryrec">▶ Poslechnout nahrané hlasy</button></div>` : ''}
+    ${hasTTS ? `<h3 style="margin-top:1.2rem">📱 Hlas telefonu</h3>` + voicePicker() : ''}
     <p class="cz">Rozpoznávání řeči v Chromu posílá zvuk z mikrofonu ke zpracování na servery Googlu. Appka sama nic nikam neposílá, nemá analytiku ani reklamy a všechna data zůstávají v telefonu. Když nechcete, aby se mikrofon používal, zakažte ho této stránce v nastavení Chromu. Klaudie pak bude mluvit „nanečisto“ a porovnávat se se vzorem.</p>
     <p class="cz">Když chybí anglický hlas: Nastavení Androidu → Usnadnění → Převod textu na řeč → nainstalovat angličtinu (Velká Británie).</p></div>
 
@@ -111,8 +131,21 @@ function panel() {
   $$('input[name=voiceF],input[name=voiceM]').forEach(r => r.onchange = () => {
     S[r.name] = r.value || null; save(); clearCast(); toast('Hlas je vybraný.');
     const g = r.name === 'voiceF' ? 'f' : 'm';
-    speak(SAMPLE[g], { force: true, who: g === 'f' ? 'Mia' : 'Leo' });
+    speak(SAMPLE[g], { force: true, tts: true, who: g === 'f' ? 'Mia' : 'Leo' });
   });
+  $$('input[name=voiceAll]').forEach(r => r.onchange = () => {
+    S.voiceF = S.voiceM = r.value || null; save(); clearCast(); toast('Hlas je vybraný.');
+    speak(SAMPLE.f, { force: true, voice: englishVoices().find(x => x.name === r.value) });
+  });
+  const tc = $('#trycast');
+  if (tc) tc.onclick = async () => { castVoices(['Mia', 'Leo']); await speak(SAMPLE.f, { force: true, tts: true, who: 'Mia' }); await speak(SAMPLE.m, { force: true, tts: true, who: 'Leo' }); clearCast(); };
+  const rc = $('#rec'); if (rc) rc.onchange = e => { S.rec = e.target.checked; save(); };
+  // ukázka nahrávek: první věta Mii a Lea z prvního rozhovoru
+  const tr = $('#tryrec');
+  if (tr) tr.onclick = async () => {
+    const d = ITEMS.find(i => i.kind === 'dialog'); if (!d) return;
+    for (const l of d.data.lines.slice(0, 3)) await speak(l.en, { force: true, who: l.who });
+  };
   const fx = $('#sfx'); if (fx) fx.onchange = e => { S.sfx = e.target.checked; save(); };
   $('#out').onclick = () => { unlocked = false; toHome(); };
   $('#cpin').onclick = () => { S.pin = null; save(); unlocked = false; lock(); };

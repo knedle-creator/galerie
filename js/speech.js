@@ -52,27 +52,35 @@ let castNames = [];
 export const clearCast = () => { CAST = {}; castNames = []; };
 export function castVoices(names) {
   CAST = {}; castNames = [...new Set(names)];
-  const pool = usablePool(), used = [];
+  const pool = usablePool(), taken = []; // {v, g}: kdo už jaký hlas má
+  const byScore = (a, b) => voiceScore(b) - voiceScore(a);
   for (const n of castNames) {
     const w = PEOPLE[n] || NARRATOR, g = personGender(w);
-    const fit = v => { const vg = voiceGender(v); return !g ? 100 : vg === g ? 200 : vg === null ? 100 : 0; };
-    let pick = null, shift = 0;
-    // 1) hlas vybraný rodiči, pokud ho ještě nemá jiná postava
+    const free = v => !taken.some(t => t.v === v);
+    const ok = v => voiceScore(v) >= 20;
+    let pick = null;
+    // 1) hlas vybraný rodiči, pokud ho ještě nemá jiná postava stejného pohlaví
     const prefName = g === 'm' ? S.voiceM : S.voiceF;
     const pref = prefName && pool.find(v => v.name === prefName);
-    if (pref && !used.includes(pref)) pick = pref;
-    // 2) nejlepší volný hlas: správné pohlaví > neznámé pohlaví, britský > jiný anglický přízvuk
-    if (!pick) {
-      const free = pool.filter(v => !used.includes(v) && fit(v) > 0 && voiceScore(v) >= 20)
-        .sort((a, b) => (fit(b) + voiceScore(b)) - (fit(a) + voiceScore(a)));
-      if (free[0]) pick = free[0];
+    if (pref && !taken.some(t => t.v === pref && t.g === g)) pick = pref;
+    // 2) volný hlas se správným pohlavím
+    if (!pick && g) pick = pool.filter(v => free(v) && ok(v) && voiceGender(v) === g).sort(byScore)[0];
+    // 3) telefon pohlaví nezná: postava opačného pohlaví smí mít stejný (britský) hlas, odliší ji výška
+    if (!pick && g) {
+      const sh = taken.find(t => voiceGender(t.v) === null && t.g && t.g !== g && !taken.some(x => x.v === t.v && x.g === g));
+      if (sh) pick = sh.v;
     }
-    // 3) žádný další vhodný hlas: stejný hlas, ale jiná výška (aby se postavy daly rozeznat)
+    // 4) jiný volný hlas s neznámým pohlavím (třeba australská nebo irská angličtina)
+    const notOpposite = v => !g || voiceGender(v) !== (g === 'f' ? 'm' : 'f');
+    if (!pick) pick = pool.filter(v => free(v) && ok(v) && notOpposite(v)).sort(byScore)[0];
+    if (!pick) pick = pool.filter(v => free(v) && notOpposite(v)).sort(byScore)[0]; // i americká je lepší než stejný hlas
+    // 5) nic dalšího není: stejný hlas, ale znatelně jiná výška
+    let shift = 0;
     if (!pick) {
-      const again = used.find(v => fit(v) === 200) || used.find(v => fit(v) === 100) || pool[0];
-      if (again) { pick = again; shift = used.filter(v => v === again).length; }
+      const again = (taken.find(t => t.g === g) || taken[0] || {}).v || pool[0];
+      if (again) { pick = again; shift = taken.filter(t => t.v === again && t.g === g).length; }
     }
-    if (pick) { used.push(pick); CAST[n] = { voice: pick, shift }; }
+    if (pick) { taken.push({ v: pick, g }); CAST[n] = { voice: pick, shift }; }
   }
   return CAST;
 }
@@ -101,20 +109,85 @@ function pitchFor(w, v) {
   const p = w.pitch || 1, g = personGender(w), vg = v ? voiceGender(v) : null;
   if (g === 'f' && vg === 'm') return Math.max(p, 1.35);
   if (g === 'm' && vg === 'f') return Math.min(p, 0.7);
-  return vg && g === vg ? 1 + (p - 1) * 0.4 : p; // správný hlas: výšku měníme jen trochu, ať zní přirozeně
+  if (vg && g === vg) return 1 + (p - 1) * 0.4; // správný hlas: výšku měníme jen trochu, ať zní přirozeně
+  // Android: pohlaví hlasu neznáme a bývá to žena → muže výrazně prohloubit
+  if (g === 'm') return Math.min(0.62 + (p - 0.8) * 0.5, 0.75);
+  if (g === 'f') return 1.05 + (p - 1) * 0.4;
+  return p;
 }
+// Telefon u hlasů nepozná pohlaví (typicky Chrome na Androidu: jeden hlas na jazyk).
+export const gendersUnknown = () => VO.length > 0 && !VO.some(v => voiceGender(v));
 
 let troubleShown = false, troubleHandler = null;
 export const onSpeechTrouble = fn => { troubleHandler = fn; };
 function trouble() { if (troubleShown) return; troubleShown = true; troubleHandler && troubleHandler(); }
 
+/* ---- nahrané hlasy (audio/*.bin, vytváří je nahrat-hlasy.rb) ---- */
+// Klíč nahrávky musí počítat stejně jako skript nahrat-hlasy.rb.
+const EMOJI = /[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}]/gu;
+const normKey = t => String(t).replace(EMOJI, '').replace(/\s+/g, ' ').trim().toLowerCase();
+function fnv(s) {
+  let h = 0x811c9dc5;
+  for (const b of new TextEncoder().encode(s)) { h ^= b; h = Math.imul(h, 0x01000193) >>> 0; }
+  return h.toString(16).padStart(8, '0');
+}
+const REC = new Map();   // klíč -> {b: balíček, o: začátek, l: délka}
+const BUNDLES = {};      // balíček -> Promise<Blob>
+let curAudio = null;
+export const recCount = () => REC.size;
+export async function loadRecordings() {
+  try {
+    const idx = await (await fetch('audio/index.json')).json();
+    await Promise.all((idx.bundles || []).map(async b => {
+      try {
+        const j = await (await fetch(`audio/${b}.json`)).json();
+        for (const [k, [o, l]] of Object.entries(j.clips || {})) if (!REC.has(k)) REC.set(k, { b, o, l });
+      } catch (e) { /* jeden balíček bez nahrávek nevadí */ }
+    }));
+    (idx.bundles || []).forEach(b => bundle(b).catch(() => {})); // načíst dopředu, ať první přehrání nečeká
+  } catch (e) { /* bez nahrávek mluví hlas telefonu */ }
+}
+const bundle = b => BUNDLES[b] || (BUNDLES[b] = fetch(`audio/${b}.bin`)
+  .then(r => { if (!r.ok) throw new Error('audio'); return r.blob(); })
+  .catch(e => { delete BUNDLES[b]; throw e; }));
+// Vrátí true, když nahrávku přehrál (nebo ji Klaudie mezitím zastavila), false = použij hlas telefonu.
+async function playRec(who, text, slow, tok) {
+  if (S.rec === false || !REC.size) return false;
+  const r = REC.get(fnv(`${who && PEOPLE[who] ? who : 'narrator'}|${normKey(text)}`));
+  if (!r) return false;
+  let blob;
+  try { blob = await bundle(r.b); } catch (e) { return false; }
+  if (tok !== playToken) return true;
+  const url = URL.createObjectURL(blob.slice(r.o, r.o + r.l, 'audio/mp4'));
+  return new Promise(res => {
+    const a = new Audio(url);
+    a.preservesPitch = true; a.playbackRate = slow ? 0.75 : 1;
+    curAudio = a;
+    let done = false;
+    const fin = ok => { if (done) return; done = true; if (curAudio === a) curAudio = null; setTimeout(() => URL.revokeObjectURL(url), 1000); res(ok); };
+    a.onended = () => fin(true);
+    a.onpause = () => { if (!a.ended) fin(true); };   // zastaveno (Stop, Pauza, jiná obrazovka)
+    a.onerror = () => fin(false);
+    a.play().catch(() => fin(false));
+    setTimeout(() => fin(true), 30000);
+  });
+}
+
 // Přečte text. Bez force jen tehdy, když je zapnutý automatický zvuk.
+// Nejdřív zkusí nahrávku; když není, mluví hlas telefonu.
 // Dlouhý text čte po větách (hlasy Google v Chromu jinak po ~15 s zmlknou).
 export async function speak(text, o = {}) {
-  if (!hasTTS || (!S.sound && !o.force)) return;
+  if (!S.sound && !o.force) return;
+  const tok = playToken;
+  if (!o.voice && !o.tts) {
+    if (curAudio) try { curAudio.pause(); } catch (e) {}
+    if (hasTTS) try { speechSynthesis.cancel(); } catch (e) {}
+    if (await playRec(o.who, text, o.slow ?? S.slow, tok)) return;
+    if (tok !== playToken) return;
+  }
+  if (!hasTTS) return;
   const t = String(text);
   const parts = t.length > 140 ? t.split(/(?<=[.!?])\s+/).filter(Boolean) : [t];
-  const tok = playToken;
   for (const p of parts) { if (tok !== playToken) return; await speakOne(p, o); }
 }
 function speakOne(text, o) {
@@ -160,6 +233,7 @@ function speakOne(text, o) {
 }
 export function stopAll() {
   playToken++;
+  if (curAudio) try { curAudio.pause(); } catch (e) {}
   if (hasTTS) try { speechSynthesis.cancel(); } catch (e) {}
   try { window._rec && window._rec.abort(); } catch (e) {}
 }

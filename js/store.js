@@ -16,7 +16,8 @@ export const defaults = () => ({
   pin: null,
   voiceF: null,  // ženský hlas vybraný rodiči (jméno)
   voiceM: null,  // mužský hlas vybraný rodiči
-  sfx: true      // zvukové efekty a maskot
+  sfx: true,     // zvukové efekty a maskot
+  rec: true      // nahrané hlasy (když jsou k dispozici)
 });
 
 export let S = defaults();

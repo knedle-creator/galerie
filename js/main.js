@@ -2,7 +2,7 @@
 import { load } from './store.js';
 import { loadAll } from './packs.js';
 import { initChrome, render, modal } from './ui.js';
-import { onSpeechTrouble } from './speech.js';
+import { onSpeechTrouble, loadRecordings } from './speech.js';
 
 // Telefon nemluví: vina telefonu, nikdy její. Vysvětlit a nabídnout cestu dál.
 onSpeechTrouble(() => modal(`<div class="big">🔇</div><h2 style="text-align:center;margin-top:.5rem">Telefon teď nemluví</h2>
@@ -23,6 +23,7 @@ async function start() {
   load();
   initChrome();
   await loadAll();
+  loadRecordings(); // nahrané hlasy se načítají na pozadí, appka mezitím běží
   if (!history.state) history.replaceState({ name: 'home', params: {}, d: 0 }, '');
   render(history.state);
 }
