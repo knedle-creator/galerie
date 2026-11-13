@@ -5,6 +5,7 @@ import { app, route, go, toast, setProgress } from './ui.js';
 import { speak, hasTTS } from './speech.js';
 import { allWords } from './packs.js';
 import { sfx, celebrate, kapka } from './fx.js';
+import { g } from './profile.js';
 
 const MAXBOX = 5;
 const boxInfo = b => b <= 1 ? ['b1', 'ještě ne'] : b <= 3 ? ['b2', 'skoro'] : ['b3', 'umím'];
@@ -75,7 +76,7 @@ route('flash', () => {
     if (i >= pool.length) {
       celebrate(false);
       app.innerHTML = `<div class="card" style="margin-top:1rem"><div class="kapka-big">${kapka('cheer', 100)}</div><h2 style="text-align:center">Kartičky prošlé</h2>
-        <p>Prošla jsi ${pool.length} ${pool.length === 1 ? 'kartičku' : pool.length < 5 ? 'kartičky' : 'kartiček'}. ${knew ? `${knew}× sis vzpomněla a ${knew === 1 ? 'to slovo se posunulo' : 'ta slova se posunula'} o krabičku dál.` : 'Slova, která si zatím nepamatuješ, ti ukážu znovu příště.'}</p>
+        <p>${g('Prošla', 'Prošel')} jsi ${pool.length} ${pool.length === 1 ? 'kartičku' : pool.length < 5 ? 'kartičky' : 'kartiček'}. ${knew ? `${knew}× sis ${g('vzpomněla', 'vzpomněl')} a ${knew === 1 ? 'to slovo se posunulo' : 'ta slova se posunula'} o krabičku dál.` : 'Slova, která si zatím nepamatuješ, ti ukážu znovu příště.'}</p>
         <p class="cz">Opakování po kouskách funguje líp než jedno dlouhé učení.</p>
         <div class="actions"><button class="btn pink wide" id="again">Dalších 5 kartiček</button><button class="btn ghost wide" id="bk">Zpět do slovníčku</button></div></div>`;
       $('#again').onclick = () => go('flash', {}, { replace: true });
@@ -91,7 +92,7 @@ route('flash', () => {
     speak(w.en);
     $('#show').onclick = () => {
       $('#ans').hidden = false;
-      $('#fa').innerHTML = '<button class="btn pink wide" id="yes">👍 Věděla jsem</button><button class="btn ghost wide" id="no">Ještě ne</button>';
+      $('#fa').innerHTML = `<button class="btn pink wide" id="yes">👍 ${g('Věděla', 'Věděl')} jsem</button><button class="btn ghost wide" id="no">Ještě ne</button>`;
       const mark = ok => { if (ok) sfx.ok(); const x = S.vocab.find(v => v.id === w.id); if (x) { x.box = ok ? Math.min(MAXBOX, x.box + 1) : 1; x.seen = new Date().toISOString(); save(); } if (ok) knew++; i++; card(); };
       $('#yes').onclick = () => mark(true);
       $('#no').onclick = () => mark(false);

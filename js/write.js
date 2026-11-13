@@ -5,6 +5,7 @@ import { app, route, go } from './ui.js';
 import { speak, hasTTS } from './speech.js';
 import { item } from './packs.js';
 import { celebrate, kapka } from './fx.js';
+import { g } from './profile.js';
 
 const words = t => { t = t.trim(); return t ? t.split(/\s+/).length : 0; };
 
@@ -20,9 +21,9 @@ route('write', ({ key }) => {
    <p class="cz" id="wc" aria-live="polite"></p>
    <details><summary><b>Než to uložíš</b></summary><ul class="check">
     <li><label><input type="checkbox"> Začíná každá věta velkým písmenem a končí tečkou?</label></li>
-    <li><label><input type="checkbox"> Použila jsi aspoň dvě slova z lekce?</label></li>
+    <li><label><input type="checkbox"> ${g('Použila', 'Použil')} jsi aspoň dvě slova z lekce?</label></li>
     <li><label><input type="checkbox"> Má každá věta sloveso?</label></li>
-    <li><label><input type="checkbox"> Přečetla sis text ještě jednou nahlas?</label></li></ul></details>
+    <li><label><input type="checkbox"> ${g('Přečetla', 'Přečetl')} sis text ještě jednou nahlas?</label></li></ul></details>
    <div class="actions"><button class="btn pink wide" id="fin">✅ Hotovo, uložit</button></div>
    <div id="wfb" aria-live="polite"></div></div>
    ${mine.length ? `<div class="card"><h3>Tvoje texty k tomuhle tématu</h3>${mine.slice().reverse().map(t => `<div class="saved"><small>${esc(t.date)}</small><p lang="en">${esc(t.text).replace(/\n/g, '<br>')}</p></div>`).join('')}</div>` : ''}`;
@@ -38,7 +39,7 @@ route('write', ({ key }) => {
     S.drafts[key] = ''; delete pr.run; pr.done = true; pr.doneAt = new Date().toISOString(); save();
     celebrate(true);
     app.innerHTML = `<div class="card" style="margin-top:1rem"><div class="kapka-big">${kapka('cheer', 110)}</div><h2 style="text-align:center">Text je uložený</h2>
-     <p>Napsala jsi vlastní text v angličtině. To je úplně jiná úroveň než doplňovat slova: vymýšlíš, skládáš věty a rozhoduješ sama.</p>
+     <p>${g('Napsala', 'Napsal')} jsi vlastní text v angličtině. To je úplně jiná úroveň než doplňovat slova: vymýšlíš, skládáš věty a rozhoduješ ${g('sama', 'sám')}.</p>
      <div class="actions"><button class="btn pink wide" id="wl">Zpět</button></div></div>`;
     $('#wl').onclick = () => history.back();
   };

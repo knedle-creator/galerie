@@ -5,6 +5,7 @@ import { app, route, go, onLeave } from './ui.js';
 import { speak, stopAll, hasTTS, speakWidget, PEOPLE, newToken, token, castVoices, clearCast } from './speech.js';
 import { item } from './packs.js';
 import { sfx, celebrate, withKapka, kapka } from './fx.js';
+import { P, g } from './profile.js';
 
 const STEPS = [['listen', '1 Poslech'], ['quiz', '2 Otázky'], ['text', '3 Text'], ['role', '4 Role']];
 const who = n => PEOPLE[n] || { e: '🙂' };
@@ -56,7 +57,7 @@ function draw() {
   } else if (D.step === 'quiz') {
     const qs = d.qs || [];
     if (D.qi >= qs.length) {
-      body = `<div class="fb ok"><h3>Otázky máš za sebou</h3><p>Odpovídala jsi jen podle toho, co jsi slyšela. Přesně tahle dovednost se hodí v testu i na závodech v cizině.</p></div>
+      body = `<div class="fb ok"><h3>Otázky máš za sebou</h3><p>${g('Odpovídala', 'Odpovídal')} jsi jen podle toho, co jsi ${g('slyšela', 'slyšel')}. ${P.t.listenSkill}</p></div>
        <div class="actions"><button class="btn wide" id="nextstep">Teď si přečti text</button></div>`;
     } else {
       const Q = qs[D.qi];
@@ -127,7 +128,7 @@ async function roleNext() {
   $$('.dl').forEach(x => x.classList.remove('cur'));
   if (D.ri >= d.lines.length) {
     const pr = S.prog[D.key]; pr.done = true; pr.doneAt = new Date().toISOString(); delete pr.run; save();
-    fb(`<div class="fb ok"><div class="kapka-big">${kapka('cheer', 96)}</div><h3>Zahrála jsi celou roli 🎭</h3><p>Mluvila jsi v rozhovoru anglicky od začátku do konce. Příště si můžeš zahrát i tu druhou postavu.</p></div>`);
+    fb(`<div class="fb ok"><div class="kapka-big">${kapka('cheer', 96)}</div><h3>${g('Zahrála', 'Zahrál')} jsi celou roli 🎭</h3><p>${g('Mluvila', 'Mluvil')} jsi v rozhovoru anglicky od začátku do konce. Příště si můžeš zahrát i tu druhou postavu.</p></div>`);
     celebrate(true);
     $('#acts').innerHTML = '<button class="btn pink wide" id="again">Zahrát druhou roli</button><button class="btn ghost wide" id="dl">Zpět</button>';
     $('#again').onclick = () => { D.me = d.people.find(p => p !== D.me) || D.me; D.ri = -1; draw(); roleNext(); };

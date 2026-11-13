@@ -3,16 +3,19 @@ import { $, $$, esc, pl } from './util.js';
 import { S, save, exportBackup, importBackup, resetAll, getUserPacks, setUserPacks } from './store.js';
 import { app, route, go, toHome, toast, modal } from './ui.js';
 import { PACKS, ITEMS, KINDS, LOAD_ERRORS, validatePack, loadAll, status } from './packs.js';
-import { hasTTS, voiceCount, micOK, englishVoices, voiceGender, speak, clearCast, castVoices, gendersUnknown, recCount } from './speech.js';
+import { hasTTS, voiceCount, micOK, englishVoices, voiceGender, speak, clearCast, castVoices, gendersUnknown, recCount, PEOPLE } from './speech.js';
+import { P, g } from './profile.js';
 
-const SAMPLE = { f: 'Hi, I’m Mia. The mural is huge and very colourful.', m: 'Hi, I’m Leo. I was paddling on the river.' };
+const SAMPLE = { f: 'Hello! I can swim and I can play the piano.', m: 'Hello! I can ride a bike and I can play football.' };
+// Ukázková postava daného pohlaví z balíčků (ženy mají vyšší hlas, muži nižší).
+const sampleWho = gg => Object.keys(PEOPLE).find(n => { const w = PEOPLE[n]; return (w.gender || (w.pitch >= 1.05 ? 'f' : w.pitch <= 0.95 ? 'm' : null)) === gg; });
 const voiceList = g => englishVoices().filter(v => voiceGender(v) !== (g === 'f' ? 'm' : 'f')).slice(0, 8);
 function voiceGroup(g) {
   const vs = voiceList(g), key = g === 'f' ? 'voiceF' : 'voiceM';
   if (!vs.length) return '';
   const cur = S[key] && vs.some(v => v.name === S[key]) ? S[key] : null;
   return `<h3 style="margin-top:1.2rem">${g === 'f' ? '👧 Ženský hlas' : '👦 Mužský hlas'}</h3>
-    <p class="cz" style="margin:.2rem 0 .5rem">${g === 'f' ? 'Mluví ve cvičeních a za Miu a další dívky a ženy.' : 'Mluví za Lea, průvodce, úředníka a další muže.'} Když v rozhovoru mluví dvě ženy (nebo dva muži), druhá postava dostane jiný hlas automaticky.</p>
+    <p class="cz" style="margin:.2rem 0 .5rem">${g === 'f' ? 'Mluví ve cvičeních a za dívky a ženy v rozhovorech.' : 'Mluví za chlapce a muže v rozhovorech.'} Když v rozhovoru mluví dvě ženy (nebo dva muži), druhá postava dostane jiný hlas automaticky.</p>
     <div class="items">
      <label class="item" style="cursor:pointer"><input type="radio" name="${key}" value="" ${cur ? '' : 'checked'} style="width:1.3rem;height:1.3rem;flex:none">
       <span class="tx"><b>Vybrat automaticky</b><small>nejlepší dostupný (bez internetu sám přepne)</small></span></label>
@@ -28,7 +31,7 @@ function voiceGroupUnknown() {
   return `<h3 style="margin-top:1.2rem">🔊 Hlas</h3>
     <div class="tip"><p style="margin:0">Tenhle telefon nabízí pro každý jazyk jen jeden hlas a neprozradí, jestli je mužský, nebo ženský. Mužské postavy proto appka mluví <b>stejným hlasem, ale výrazně hlubším</b>. Když v rozhovoru mluví dvě ženy nebo dva muži, druhá postava dostane jiný anglický přízvuk (např. australský), pokud ho telefon má.</p>
     <p style="margin:.5rem 0 0" class="cz">Který hlas se za „English United Kingdom“ skrývá, se nastavuje v Androidu: Nastavení → Usnadnění → Převod textu na řeč → u „Google“ ozubené kolo → Nainstalovat hlasová data → angličtina (Spojené království). Změna platí pro všechny postavy najednou.</p></div>
-    <div class="row"><button class="btn ghost small" type="button" id="trycast">▶ Poslechnout Miu a Lea</button></div>
+    <div class="row"><button class="btn ghost small" type="button" id="trycast">▶ Poslechnout ženský a mužský hlas</button></div>
     <div class="items">
      <label class="item" style="cursor:pointer"><input type="radio" name="voiceAll" value="" ${cur ? '' : 'checked'} style="width:1.3rem;height:1.3rem;flex:none">
       <span class="tx"><b>Vybrat automaticky</b><small>britská angličtina</small></span></label>
@@ -43,7 +46,7 @@ function voicePicker() {
     <p class="cz">Hlasy „přes internet“ (např. Google) znějí nejpřirozeněji, ale potřebují připojení a čtený anglický text posílají Googlu. Bez internetu appka sama použije hlas uložený v telefonu.</p>`;
 }
 
-const hash = s => { let h = 5381; for (const c of 'klaudie:' + s) h = ((h << 5) + h + c.charCodeAt(0)) | 0; return String(h >>> 0); };
+const hash = s => { let h = 5381; for (const c of P.id + ':' + s) h = ((h << 5) + h + c.charCodeAt(0)) | 0; return String(h >>> 0); };
 let unlocked = false;
 
 route('parent', () => unlocked ? panel() : lock());
@@ -82,7 +85,7 @@ function panel() {
   const recent = ITEMS.filter(i => S.prog[i.key]?.doneAt).sort((a, b) => S.prog[b.key].doneAt.localeCompare(S.prog[a.key].doneAt)).slice(0, 10);
   const mis = ITEMS.filter(i => i.kind === 'mission' && S.missions[i.key]);
   const up = getUserPacks();
-  app.innerHTML = `<header class="hero"><h1>Pro rodiče</h1><p>Tady nic nevidí Klaudie, pokud nezná PIN.</p></header>
+  app.innerHTML = `<header class="hero"><h1>Pro rodiče</h1><p>Tady nic nevidí ${esc(P.name)}, pokud nezná PIN.</p></header>
    <div class="card"><h2>Postup</h2>${rows || '<p>Žádné balíčky.</p>'}
     <div class="stat"><span>Úlohy „co mi ještě nejde“</span><span>${S.mist.length}</span></div>
     <div class="stat"><span>Můj slovníček</span><span>${pl(S.vocab.length, 'slovo', 'slova', 'slov')} (${S.vocab.filter(v => v.box >= 4).length} umí)</span></div>
@@ -113,10 +116,10 @@ function panel() {
     <label class="toggle"><input type="checkbox" id="sfx" ${S.sfx !== false ? 'checked' : ''}> Zvukové efekty, potlesk a maskot Kapka</label>
     ${recCount() ? `<h3 style="margin-top:1.2rem">🎙️ Nahrané hlasy</h3>
      <label class="toggle"><input type="checkbox" id="rec" ${S.rec !== false ? 'checked' : ''}> Používat nahrané hlasy (doporučeno)</label>
-     <p class="cz">Appka má ${pl(recCount(), 'nahranou větu', 'nahrané věty', 'nahraných vět')}: muži mluví mužským hlasem, ženy ženským, na každém telefonu stejně a i bez internetu. Hlas telefonu (níže) mluví jen tam, kde nahrávka není, např. u slov, která si Klaudie přidá sama.</p>
+     <p class="cz">Appka má ${pl(recCount(), 'nahranou větu', 'nahrané věty', 'nahraných vět')}: muži mluví mužským hlasem, ženy ženským, na každém telefonu stejně a i bez internetu. Hlas telefonu (níže) mluví jen tam, kde nahrávka není, např. u slov, která si ${esc(P.name)} přidá ${g('sama', 'sám')}.</p>
      <div class="row"><button class="btn ghost small" type="button" id="tryrec">▶ Poslechnout nahrané hlasy</button></div>` : ''}
     ${hasTTS ? `<h3 style="margin-top:1.2rem">📱 Hlas telefonu</h3>` + voicePicker() : ''}
-    <p class="cz">Rozpoznávání řeči v Chromu posílá zvuk z mikrofonu ke zpracování na servery Googlu. Appka sama nic nikam neposílá, nemá analytiku ani reklamy a všechna data zůstávají v telefonu. Když nechcete, aby se mikrofon používal, zakažte ho této stránce v nastavení Chromu. Klaudie pak bude mluvit „nanečisto“ a porovnávat se se vzorem.</p>
+    <p class="cz">Rozpoznávání řeči v Chromu posílá zvuk z mikrofonu ke zpracování na servery Googlu. Appka sama nic nikam neposílá, nemá analytiku ani reklamy a všechna data zůstávají v telefonu. Když nechcete, aby se mikrofon používal, zakažte ho této stránce v nastavení Chromu. ${esc(P.name)} pak bude mluvit „nanečisto“ a porovnávat se se vzorem.</p>
     <p class="cz">Když chybí anglický hlas: Nastavení Androidu → Usnadnění → Převod textu na řeč → nainstalovat angličtinu (Velká Británie).</p></div>
 
    <div class="card"><h2>Ostatní</h2>
@@ -131,14 +134,14 @@ function panel() {
   $$('input[name=voiceF],input[name=voiceM]').forEach(r => r.onchange = () => {
     S[r.name] = r.value || null; save(); clearCast(); toast('Hlas je vybraný.');
     const g = r.name === 'voiceF' ? 'f' : 'm';
-    speak(SAMPLE[g], { force: true, tts: true, who: g === 'f' ? 'Mia' : 'Leo' });
+    speak(SAMPLE[g], { force: true, tts: true, who: sampleWho(g) });
   });
   $$('input[name=voiceAll]').forEach(r => r.onchange = () => {
     S.voiceF = S.voiceM = r.value || null; save(); clearCast(); toast('Hlas je vybraný.');
     speak(SAMPLE.f, { force: true, voice: englishVoices().find(x => x.name === r.value) });
   });
   const tc = $('#trycast');
-  if (tc) tc.onclick = async () => { castVoices(['Mia', 'Leo']); await speak(SAMPLE.f, { force: true, tts: true, who: 'Mia' }); await speak(SAMPLE.m, { force: true, tts: true, who: 'Leo' }); clearCast(); };
+  if (tc) tc.onclick = async () => { const f = sampleWho('f'), m = sampleWho('m'); castVoices([f, m].filter(Boolean)); await speak(SAMPLE.f, { force: true, tts: true, who: f }); await speak(SAMPLE.m, { force: true, tts: true, who: m }); clearCast(); };
   const rc = $('#rec'); if (rc) rc.onchange = e => { S.rec = e.target.checked; save(); };
   // ukázka nahrávek: první věta Mii a Lea z prvního rozhovoru
   const tr = $('#tryrec');
@@ -168,7 +171,7 @@ function panel() {
     try {
       const blob = new Blob([await exportBackup()], { type: 'application/json' });
       const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-      a.download = `klaudie-zaloha-${new Date().toISOString().slice(0, 10)}.json`;
+      a.download = `${P.id}-zaloha-${new Date().toISOString().slice(0, 10)}.json`;
       document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
     } catch (err) { $('#bres').innerHTML = '<div class="fb try"><p>Zálohu se nepodařilo vytvořit.</p></div>'; }
   };

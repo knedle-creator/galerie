@@ -1,6 +1,7 @@
 // Řeč: hlas telefonu (TTS) a mikrofon. Logika převzatá z prototypu.
 import { S } from './store.js';
 import { esc } from './util.js';
+import { g } from './profile.js';
 
 export const PEOPLE = {};   // postavy z balíčků: {e, pitch, voice}
 export const hasTTS = 'speechSynthesis' in window && typeof window.SpeechSynthesisUtterance !== 'undefined';
@@ -150,7 +151,7 @@ export async function loadRecordings() {
 const bundle = b => BUNDLES[b] || (BUNDLES[b] = fetch(`audio/${b}.bin`)
   .then(r => { if (!r.ok) throw new Error('audio'); return r.blob(); })
   .catch(e => { delete BUNDLES[b]; throw e; }));
-// Vrátí true, když nahrávku přehrál (nebo ji Klaudie mezitím zastavila), false = použij hlas telefonu.
+// Vrátí true, když nahrávku přehrál (nebo ji dítě mezitím zastavilo), false = použij hlas telefonu.
 async function playRec(who, text, slow, tok) {
   if (S.rec === false || !REC.size) return false;
   const r = REC.get(fnv(`${who && PEOPLE[who] ? who : 'narrator'}|${normKey(text)}`));
@@ -287,7 +288,7 @@ export function speakWidget(el, target, onDone, who) {
      <div class="row">${hasTTS ? '<button class="btn ghost" data-a="model">🔊 Vzor</button>' : ''}
      ${micOK ? '<button class="btn pink" data-a="mic">🎤 Teď mluvím já</button>' : ''}</div>
      ${micOK ? '' : `<p class="cz">Řekni to nahlas${hasTTS ? ' a porovnej se vzorem' : ''}. Jak to šlo?</p>
-       <div class="row"><button class="btn" data-a="self">👍 Řekla jsem to</button>${hasTTS ? '<button class="btn ghost" data-a="slow">🐢 Vzor pomalu</button>' : ''}</div>`}
+       <div class="row"><button class="btn" data-a="self">👍 ${g('Řekla', 'Řekl')} jsem to</button>${hasTTS ? '<button class="btn ghost" data-a="slow">🐢 Vzor pomalu</button>' : ''}</div>`}
      <div class="status" aria-live="polite"></div>
      <p><button class="linkbtn" data-a="skip">Teď mluvit nemůžu, přeskočit</button></p>`;
     el.querySelectorAll('[data-a]').forEach(b => b.onclick = () => act(b.dataset.a, b));
@@ -308,7 +309,7 @@ export function speakWidget(el, target, onDone, who) {
       else { st('<div class="fb ok"><p>Telefony rozumí dětem hůř než lidi, takže to vůbec nevadí. Důležité je, že mluvíš nahlas. Jdeme dál.</p></div>'); setTimeout(() => done(true), 2200); return; }
     } catch (err) {
       if (['not-allowed', 'service-not-allowed', 'audio-capture', 'unsupported', 'network', 'language-not-supported'].includes(err)) {
-        micOK = false; render(); st('<p class="cz">Mikrofon v telefonu teď nejde použít. Nevadí, zkusíme to bez něj: řekni to nahlas sama pro sebe.</p>'); return;
+        micOK = false; render(); st(`<p class="cz">Mikrofon v telefonu teď nejde použít. Nevadí, zkusíme to bez něj: řekni to nahlas ${g('sama', 'sám')} pro sebe.</p>`); return;
       }
       if (err === 'aborted') return;
       st('<div class="fb try"><p>Telefon nic nezachytil. Podrž ho blíž a zkus to znovu.</p></div>');

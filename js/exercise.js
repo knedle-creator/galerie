@@ -5,7 +5,8 @@ import { app, route, go, toHome, setProgress, onLeave } from './ui.js';
 import { speak, hasTTS, speakWidget, token } from './speech.js';
 import { sfx, celebrate, withKapka, kapka } from './fx.js';
 import { item, exRef, artOf, ITEMS } from './packs.js';
-import { openItem } from './home.js';
+import { openItem, artHtml } from './home.js';
+import { P, g } from './profile.js';
 
 /* ---------- úvod lekce ---------- */
 export function wordList(ws) {
@@ -19,7 +20,7 @@ route('lesson', ({ key }) => {
   app.innerHTML = `<div class="card"><h2>${esc(L.title)}</h2>${L.cz ? `<p class="cz">${esc(L.cz)}</p>` : ''}${safeHtml(L.intro || '')}
    ${L.words && L.words.length ? wordList(L.words) + (hasTTS ? '<p class="cz">Klepni na 🔊 a poslechni si výslovnost.</p>' : '') : ''}
    <div class="actions">${run
-     ? `<button class="btn pink wide" id="go">Pokračovat tam, kde jsem skončila (${run.n + 1}/${run.total})</button><button class="linkbtn" id="fresh">Začít lekci od začátku</button>`
+     ? `<button class="btn pink wide" id="go">Pokračovat tam, kde jsem ${g('skončila', 'skončil')} (${run.n + 1}/${run.total})</button><button class="linkbtn" id="fresh">Začít lekci od začátku</button>`
      : `<button class="btn pink wide" id="go">${S.prog[key]?.done ? 'Zopakovat lekci' : 'Začít lekci'}</button>`}</div></div>`;
   wireSay();
   $('#go').onclick = () => go('play', { key }, { replace: false });
@@ -86,7 +87,7 @@ function show(opt = {}) {
   } else if (E.t === 'dict') {
     E._copy = noVoice;
     body = noVoice
-      ? `<p class="q">Opiš větu.</p><p class="cz">Telefon teď neumí přehrát zvuk, tak si větu přečti a napiš ji sama.</p><p class="big-sent">${esc(E.a)}</p>
+      ? `<p class="q">Opiš větu.</p><p class="cz">Telefon teď neumí přehrát zvuk, tak si větu přečti a napiš ji ${g('sama', 'sám')}.</p><p class="big-sent">${esc(E.a)}</p>
          <input class="inp" id="inp" autocomplete="off" autocapitalize="sentences" spellcheck="false" aria-label="Věta">`
       : `<p class="q">Poslechni si větu a napiš ji.</p><div class="row"><button class="btn ghost" id="p1">🔊 Přehrát</button><button class="btn ghost" id="p2">🐢 Pomalu</button></div>
          <input class="inp" id="inp" autocomplete="off" autocapitalize="sentences" spellcheck="false" aria-label="Co slyšíš">
@@ -131,7 +132,7 @@ function full() {
 function good() {
   answered = true;
   const f = full();
-  fb(true, `<h3>${rand(OK)}</h3>${f ? `<p><b>${esc(f)}</b></p>` : ''}${tries > 0 ? '<p>Napodruhé, ale sama. Tohle se počítá.</p>' : ''}`);
+  fb(true, `<h3>${rand(OK)}</h3>${f ? `<p><b>${esc(f)}</b></p>` : ''}${tries > 0 ? `<p>Napodruhé, ale ${g('sama', 'sám')}. Tohle se počítá.</p>` : ''}`);
   sfx.ok();
   if (f && cur.t !== 'dict') later(() => speak(f), S.sfx !== false ? 450 : 0); // nejdřív „ding“, pak věta
   if (run.mode === 'review') { S.mist = S.mist.filter(x => x !== cur.id); run.fixed++; save(); }
@@ -169,7 +170,7 @@ function pick(b) {
   if (E.t === 'gap') $('#blank').textContent = v;
   if (v === E.a) { b.classList.add('right'); $$('.opt').forEach(x => x.disabled = true); good(); return; }
   b.classList.add('wrong'); b.disabled = true;
-  if (tries === 0) bad(false, esc(E.why || (E.t === 'gap' ? 'Podívej se ještě jednou na celou větu. Jednu možnost už jsi vyřadila.' : E.t === 'listen' ? 'Pusť si slovo ještě jednou 🔊 a poslouchej začátek. Jednu možnost už jsi vyřadila.' : 'Zkus to ještě jednou. Jednu možnost už jsi vyřadila.')));
+  if (tries === 0) bad(false, esc(E.why || (E.t === 'gap' ? `Podívej se ještě jednou na celou větu. Jednu možnost už jsi ${g('vyřadila', 'vyřadil')}.` : E.t === 'listen' ? `Pusť si slovo ještě jednou 🔊 a poslouchej začátek. Jednu možnost už jsi ${g('vyřadila', 'vyřadil')}.` : `Zkus to ještě jednou. Jednu možnost už jsi ${g('vyřadila', 'vyřadil')}.`)));
   else { $$('.opt').forEach(x => { x.disabled = true; if (x.dataset.v === E.a) x.classList.add('right'); }); bad(true); }
 }
 function wirePairs() {
@@ -183,7 +184,7 @@ function wirePairs() {
     const l = sel.dataset.side === 'l' ? sel : b, r = sel.dataset.side === 'l' ? b : sel;
     if (map[l.dataset.v] === r.dataset.v) {
       [l, r].forEach(x => { x.classList.remove('sel'); x.classList.add('done'); x.disabled = true; }); left--; sel = null; if (left) sfx.tap(); else sfx.ok();
-      if (!left) { answered = true; fb(true, `<h3>${rand(OK)}</h3><p>${miss ? `Všechny dvojice spojené. ${miss}× jsi zkusila jinou dvojici a pak našla správnou.` : 'Všechny dvojice spojené napoprvé.'}</p>`); cont(true); }
+      if (!left) { answered = true; fb(true, `<h3>${rand(OK)}</h3><p>${miss ? `Všechny dvojice spojené. ${miss}× jsi ${g('zkusila', 'zkusil')} jinou dvojici a pak ${g('našla', 'našel')} správnou.` : 'Všechny dvojice spojené napoprvé.'}</p>`); cont(true); }
     } else { miss++; sfx.soft(); [l, r].forEach(x => { x.classList.remove('sel'); x.classList.add('shake'); setTimeout(() => x.classList.remove('shake'), 400); }); sel = null; }
   });
 }
@@ -238,14 +239,14 @@ function finish() {
   let title, text, head;
   if (mode === 'review') {
     title = 'Opakování hotové'; head = `<div class="kapka-big">${kapka('cheer', 110)}</div>`;
-    text = run.fixed ? `Opravila jsi ${run.fixed} ${run.fixed === 1 ? 'věc, která ti předtím nešla' : run.fixed < 5 ? 'věci, které ti předtím nešly' : 'věcí, které ti předtím nešly'}. Přesně takhle se mozek učí: chyba ukáže, kam přidat.` : 'Prošla jsi všechno, co ti nešlo. Co zůstalo, zkusíme zase příště.';
+    text = run.fixed ? `${g('Opravila', 'Opravil')} jsi ${run.fixed} ${run.fixed === 1 ? 'věc, která ti předtím nešla' : run.fixed < 5 ? 'věci, které ti předtím nešly' : 'věcí, které ti předtím nešly'}. Přesně takhle se mozek učí: chyba ukáže, kam přidat.` : `${g('Prošla', 'Prošel')} jsi všechno, co ti nešlo. Co zůstalo, zkusíme zase příště.`;
   } else {
     const pr = S.prog[run.key] || (S.prog[run.key] = {});
     delete pr.run; pr.done = true; pr.doneAt = new Date().toISOString(); save();
     const back = run.requeued.length;
-    if (mode === 'lesson') { title = 'Obraz visí v galerii!'; head = `<div class="endart"><div class="fr"><div class="art ${artOf(it.data)}"></div></div>${kapka('cheer', 84)}</div>`; }
+    if (mode === 'lesson') { title = P.t.lessonDone; head = `<div class="endart"><div class="fr">${artHtml(it.data)}</div>${kapka('cheer', 84)}</div>`; }
     else { title = `${it.data.title}: hotovo`; head = `<div class="kapka-big">${kapka('cheer', 110)}</div>`; }
-    text = back ? `Dokončila jsi to a ${back}× ses vrátila k něčemu, co napoprvé nevyšlo. Každý takový návrat je kus učení.` : `Dokončila jsi celou ${mode === 'lesson' ? 'lekci' : 'sadu'}. Vydržela jsi u toho až do konce.`;
+    text = back ? `${g('Dokončila', 'Dokončil')} jsi to a ${back}× ses ${g('vrátila', 'vrátil')} k něčemu, co napoprvé nevyšlo. Každý takový návrat je kus učení.` : `${g('Dokončila', 'Dokončil')} jsi celou ${mode === 'lesson' ? 'lekci' : 'sadu'}. ${g('Vydržela', 'Vydržel')} jsi u toho až do konce.`;
   }
   const m = S.mist.length;
   const next = mode === 'lesson' ? ITEMS.find(i => i.kind === 'lesson' && !S.prog[i.key]?.done) : null;

@@ -6,6 +6,7 @@ import { speak, hasTTS } from './speech.js';
 import { item, lookupWord } from './packs.js';
 import { sfx, celebrate, withKapka, kapka } from './fx.js';
 import { addToMyVocab } from './vocab.js';
+import { g } from './profile.js';
 
 const wrapWords = t => String(t).split(/([A-Za-z]+(?:['’][A-Za-z]+)*)/).map((s, i) => i % 2 ? `<span class="w" data-w="${esc(s)}">${esc(s)}</span>` : esc(s)).join('');
 
@@ -39,7 +40,7 @@ function showWord(raw, glossary, para) {
   const en = hit ? hit.en : raw;
   const c = sheet(`<p class="big-sent" style="margin:0">${esc(en)} ${hasTTS ? '<button class="say" id="wsay" aria-label="Přehrát">🔊</button>' : ''}</p>
     ${hit ? `<p style="font-size:1.2rem;margin:.3rem 0 0">${esc(hit.cz)}</p>`
-          : `<p class="cz">Tohle slovo zatím ve slovníčku nemám. Můžeš si překlad napsat sama:</p><input class="inp" id="wcz" placeholder="česky…" autocomplete="off">`}
+          : `<p class="cz">Tohle slovo zatím ve slovníčku nemám. Můžeš si překlad napsat ${g('sama', 'sám')}:</p><input class="inp" id="wcz" placeholder="česky…" autocomplete="off">`}
     <div class="actions"><button class="btn" id="wadd">＋ Přidat do mého slovníčku</button><button class="btn ghost" data-close>Zavřít</button></div>`);
   const ws = $('#wsay', c); if (ws) ws.onclick = () => speak(en, { force: true });
   speak(en);
@@ -57,7 +58,7 @@ function quiz(key, r) {
     const pr = S.prog[key]; pr.done = true; pr.doneAt = new Date().toISOString(); delete pr.run; save();
     celebrate(true);
     el.innerHTML = `<div class="card"><div class="kapka-big">${kapka('cheer', 110)}</div><h2 style="text-align:center">Čtení hotové</h2>
-      <p>Prokousala ses celým anglickým textem. Čtení je trénink trpělivosti a ty jsi vydržela.</p>
+      <p>${g('Prokousala', 'Prokousal')} ses celým anglickým textem. Čtení je trénink trpělivosti a ty jsi ${g('vydržela', 'vydržel')}.</p>
       ${r.think ? `<div class="tip"><b>💭 Na přemýšlení:</b> ${esc(r.think)}</div>` : ''}
       <div class="actions"><button class="btn pink wide" id="rdone">Hotovo</button></div></div>`;
     $('#rdone').onclick = () => history.back();

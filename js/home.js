@@ -3,8 +3,12 @@ import { esc, $, $$ } from './util.js';
 import { S } from './store.js';
 import { app, route, go } from './ui.js';
 import { PACKS, ITEMS, BY_ID, KINDS, courses, status, STATUS_LABEL, artOf, item } from './packs.js';
+import { P } from './profile.js';
 
-const COURSE_ICON = { harmonize2: '🎨', nz: '🥝' };
+const icon = id => P.courses[id] || '📚';
+// Hotová lekce: obraz (galerie), nebo odznak s obrázkem lekce (výprava).
+const firstEmoji = d => d.e || (d.words && d.words[0] && d.words[0][0]) || '⭐';
+export const artHtml = d => `<div class="art ${artOf(d)}"></div>${P.theme === 'vyprava' ? `<span class="badge-e">${esc(firstEmoji(d))}</span>` : ''}`;
 const ROUTE_OF = { lesson: 'lesson', practice: 'play', dialog: 'dialog', reading: 'reading', writing: 'write', mission: 'missions' };
 
 // Otevře položku. resume=true skočí rovnou do rozdělané lekce.
@@ -40,14 +44,14 @@ route('home', () => {
   const nx = nextUp(), m = S.mist.length;
   const cs = courses();
   app.innerHTML = `
-   <header class="hero" id="logo"><h1>Klaudiina galerie</h1><p>Angličtina po malých krocích. Jedna lekce trvá asi 5–8 minut.</p></header>
+   <header class="hero" id="logo"><h1>${esc(P.title)}</h1><p>${esc(P.t.tagline)}</p></header>
    ${nx ? `<button class="big-go" id="go"><b>${nx.label} →</b><span>${esc(nx.it.data.title)}${nx.it.data.cz ? ' · ' + esc(nx.it.data.cz) : ''}</span></button>`
-        : (PACKS.length ? `<button class="big-go" id="go"><b>Galerie je plná 🖼️</b><span>Všechny lekce máš hotové. Můžeš si kteroukoli zopakovat.</span></button>`
+        : (PACKS.length ? `<button class="big-go" id="go"><b>${esc(P.t.allDone)}</b><span>Všechny lekce máš hotové. Můžeš si kteroukoli zopakovat.</span></button>`
                         : `<div class="card"><p>Zatím tu nejsou žádné lekce. Požádej rodiče, ať nahrají balíček.</p></div>`)}
    ${cs.length ? `<h2 class="sec">Kurzy</h2><div class="courses">${cs.map(c => {
       const ls = ITEMS.filter(i => i.kind === 'lesson' && i.pack.course === c.id);
       const done = ls.filter(i => S.prog[i.key]?.done).length;
-      return `<button class="ccard" data-c="${esc(c.id)}"><span class="e">${COURSE_ICON[c.id] || '📚'}</span><span><b>${esc(c.title)}</b><small>${done} z ${ls.length} obrazů v galerii</small></span></button>`;
+      return `<button class="ccard" data-c="${esc(c.id)}"><span class="e">${icon(c.id)}</span><span><b>${esc(c.title)}</b><small>${done} z ${ls.length} ${esc(P.t.courseCount)}</small></span></button>`;
     }).join('')}</div>` : ''}
    <div class="tools">
     ${m ? `<button class="btn ghost wide" id="rev">💪 Procvičit, co mi ještě nejde (${m})</button>` : ''}
@@ -74,11 +78,11 @@ route('course', ({ id }) => {
   if (!c) return go('home', {}, { replace: true });
   const ls = ITEMS.filter(i => i.kind === 'lesson' && i.pack.course === id);
   const next = ls.find(i => !S.prog[i.key]?.done);
-  app.innerHTML = `<header class="hero"><h1>${COURSE_ICON[id] || '📚'} ${esc(c.title)}</h1><p>Hotová lekce = obraz v rámu. Všechno jde kdykoli otevřít znovu.</p></header>
+  app.innerHTML = `<header class="hero"><h1>${icon(id)} ${esc(c.title)}</h1><p>${esc(P.t.courseHint)}</p></header>
    <div class="wall">${ls.map(i => {
      const st = status(i), done = S.prog[i.key]?.done;
      return `<button class="piece ${next && next.key === i.key ? 'next' : ''}" data-key="${esc(i.key)}">
-      <div class="fr">${done ? `<div class="art ${artOf(i.data)}"></div>` : '<div class="empty">?</div>'}</div>
+      <div class="fr">${done ? artHtml(i.data) : '<div class="empty">?</div>'}</div>
       <div class="cap"><h3>${esc(i.data.title)}</h3><small>${esc(i.data.cz || '')}</small>
       ${st === 'doing' ? '<span class="tag half">Rozdělané</span>' : (next && next.key === i.key ? '<span class="tag">Na řadě</span>' : '')}</div></button>`;
    }).join('')}</div>

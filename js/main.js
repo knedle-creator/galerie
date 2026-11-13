@@ -1,5 +1,6 @@
 // Start appky: načte data, balíčky a ukáže první obrazovku.
 import { load } from './store.js';
+import { loadProfile } from './profile.js';
 import { loadAll } from './packs.js';
 import { initChrome, render, modal } from './ui.js';
 import { onSpeechTrouble, loadRecordings } from './speech.js';
@@ -20,6 +21,7 @@ import './missions.js';
 import './parent.js';
 
 async function start() {
+  await loadProfile(); // jméno, rod a vzhled (Klaudie / Robin) musí být známé dřív než data
   load();
   initChrome();
   await loadAll();

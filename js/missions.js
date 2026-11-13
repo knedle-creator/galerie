@@ -4,6 +4,7 @@ import { S, save, putPhoto, getPhoto, delPhoto } from './store.js';
 import { app, route, toast, onLeave, refresh } from './ui.js';
 import { ITEMS } from './packs.js';
 import { celebrate } from './fx.js';
+import { g } from './profile.js';
 
 const urls = [];
 
@@ -28,7 +29,7 @@ route('missions', ({ pack }) => {
        <p style="margin:.2rem 0 .4rem;font-weight:700">${esc(i.data.cz)}</p>
        <label class="toggle"><input type="checkbox" class="mdone" ${m.done ? 'checked' : ''}> Splněno</label>
        <label class="lbl" for="n-${esc(i.data.id)}">Poznámka</label>
-       <textarea class="note mnote" id="n-${esc(i.data.id)}" placeholder="Co se stalo? Co sis zapamatovala?">${esc(m.note || '')}</textarea>
+       <textarea class="note mnote" id="n-${esc(i.data.id)}" placeholder="Co se stalo? Co sis ${g('zapamatovala', 'zapamatoval')}?">${esc(m.note || '')}</textarea>
        <div class="row"><span class="btn ghost small filebtn">📷 ${m.photo ? 'Vyměnit fotku' : 'Přidat fotku'}<input type="file" accept="image/*" capture="environment" class="mfile" aria-label="Přidat fotku"></span>
        ${m.photo ? '<button class="btn ghost small mdel">Smazat fotku</button>' : ''}</div>
        <div class="mph"></div></div>`;

@@ -1,6 +1,7 @@
 // Načítání a kontrola balíčků z packs/*.json. Žádný obsah tady není natvrdo.
 import { S, getUserPacks } from './store.js';
 import { PEOPLE } from './speech.js';
+import { P } from './profile.js';
 
 export const PACKS = [];        // seřazené balíčky
 export const BY_ID = {};
@@ -9,14 +10,13 @@ export const LOAD_ERRORS = [];  // {file, errors[]}
 const DICT = new Map();         // anglické slovo -> čeština
 
 export const KINDS = {
-  lesson: { list: 'lessons', e: '🎨', label: 'Lekce' },
+  lesson: { list: 'lessons', e: P.lessonIcon, label: 'Lekce' },
   practice: { list: 'practice', e: '🗣️', label: 'Procvičování' },
   dialog: { list: 'dialogs', e: '🎧', label: 'Rozhovory' },
   reading: { list: 'readings', e: '📰', label: 'Čtení' },
   writing: { list: 'writing', e: '✍️', label: 'Psaní' },
   mission: { list: 'missions', e: '🧭', label: 'Mise' }
 };
-const COURSE_ORDER = ['harmonize2', 'nz'];
 const EX_TYPES = ['mc', 'listen', 'gap', 'pair', 'build', 'type', 'dict', 'speak'];
 
 /* ---------- kontrola balíčku ---------- */
@@ -100,7 +100,8 @@ export async function loadAll() {
   for (const [p, f] of loaded) p ? add(p, f) : LOAD_ERRORS.push({ file: f, errors: ['Soubor se nepodařilo načíst (chybí, nebo není platný JSON).'] });
   for (const [id, p] of Object.entries(getUserPacks())) add(p, `nahraný balíček ${id}`);
 
-  const co = c => { const i = COURSE_ORDER.indexOf(c); return i < 0 ? 99 : i; };
+  KINDS.lesson.e = P.lessonIcon;
+  const co = c => { const i = (P.courseOrder || []).indexOf(c); return i < 0 ? 99 : i; };
   PACKS.sort((a, b) => co(a.course) - co(b.course) || String(a.course).localeCompare(b.course) || (a.order ?? 99) - (b.order ?? 99));
 
   for (const p of PACKS) {
