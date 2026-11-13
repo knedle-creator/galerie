@@ -1,0 +1,12 @@
+{
+ "id": "klaudie",
+ "name": "Klaudie",
+ "title": "Klaudiina galerie",
+ "titleGen": "Klaudiiny galerie",
+ "gender": "f",
+ "theme": "galerie",
+ "courses": {"harmonize2": "🎨", "nz": "🥝"},
+ "courseOrder": ["harmonize2", "nz"],
+ "lessonIcon": "🎨",
+ "speechRate": 160
+}

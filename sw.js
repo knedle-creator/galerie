@@ -1,11 +1,13 @@
 /* Service worker: díky němu appka funguje bez internetu.
    Když změníš kód nebo přidáš balíček, zvyš číslo VERZE, ať si telefon stáhne novou kopii. */
-const VERZE = 'klaudie-v5';
+const VERZE = 'klaudie-v6';
+// Robinova appka běží na stejném webu (knedle-creator.github.io), proto maže jen svoje staré kopie.
+const APP = VERZE.replace(/-v\d+$/, '');
 const ZAKLAD = [
   './', 'index.html', 'manifest.webmanifest', 'css/app.css',
   'js/main.js', 'js/util.js', 'js/store.js', 'js/speech.js', 'js/packs.js', 'js/ui.js',
   'js/home.js', 'js/exercise.js', 'js/dialog.js', 'js/reading.js', 'js/vocab.js',
-  'js/write.js', 'js/missions.js', 'js/parent.js', 'js/fx.js',
+  'js/write.js', 'js/missions.js', 'js/parent.js', 'js/fx.js', 'js/profile.js', 'profile.json',
   'data/dictionary.json', 'packs/index.json',
   'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png'
 ];
@@ -31,7 +33,7 @@ self.addEventListener('install', e => {
 
 self.addEventListener('activate', e => {
   e.waitUntil((async () => {
-    for (const k of await caches.keys()) if (k !== VERZE) await caches.delete(k);
+    for (const k of await caches.keys()) if (k !== VERZE && k.startsWith(APP + '-v')) await caches.delete(k);
     await self.clients.claim();
   })());
 });
