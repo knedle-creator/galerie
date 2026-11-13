@@ -239,3 +239,26 @@ details summary{cursor:pointer;min-height:2.4rem;padding:.3rem 0}
 .confetti i{position:absolute;top:-12px;width:9px;height:14px;border-radius:2px;animation-name:fall;animation-timing-function:cubic-bezier(.2,.6,.4,1);animation-fill-mode:forwards}
 @keyframes fall{0%{transform:translate(0,0) rotate(0);opacity:1}85%{opacity:1}100%{transform:translate(var(--dx),105vh) rotate(var(--r));opacity:0}}
 @media (prefers-reduced-motion: reduce){.shake,.kapka,.kapka.cheer,.kapka.think,.opt.right{animation:none}.bar i,.av{transition:none}}
+
+/* ---- Robinova výprava: modrá a oranžová, hotová lekce = kulatý odznak ---- */
+:root[data-app="vyprava"]{
+  --bg:#F1F6FA; --surface:#FFFFFF; --ink:#13263A; --soft:#56677A; --line:#D8E3EC;
+  --violet:#1D6FB8; --pink:#C8520F; --teal:#1F9D6B; --sun:#F2B705; --sky:#3FA9F5;
+  --frame:#C9962E; --hi:#E2F0FB; --onacc:#FFFFFF;
+}
+@media (prefers-color-scheme: dark){
+  :root[data-app="vyprava"]:not([data-theme="light"]){
+    --bg:#0F1B26; --surface:#172836; --ink:#E6F0F7; --soft:#9DB2C4; --line:#2A4152;
+    --violet:#6CB4F0; --pink:#FF9A5A; --teal:#4CD6A0; --sun:#F7C64F; --sky:#7FC4FF;
+    --frame:#D9A845; --hi:#1F3A50; --onacc:#0F1B26;
+  }
+}
+:root[data-app="vyprava"][data-theme="dark"]{
+  --bg:#0F1B26; --surface:#172836; --ink:#E6F0F7; --soft:#9DB2C4; --line:#2A4152;
+  --violet:#6CB4F0; --pink:#FF9A5A; --teal:#4CD6A0; --sun:#F7C64F; --sky:#7FC4FF;
+  --frame:#D9A845; --hi:#1F3A50; --onacc:#0F1B26;
+}
+[data-app="vyprava"] .fr{border-radius:50%;aspect-ratio:1;border-width:8px;box-shadow:0 5px 0 rgba(0,0,0,.12)}
+[data-app="vyprava"] .piece.next .fr{outline-offset:4px}
+[data-app="vyprava"] .cap{text-align:center}
+.badge-e{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:58%;aspect-ratio:1;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-size:clamp(1.6rem,9vw,2.6rem);line-height:1;box-shadow:0 2px 0 rgba(0,0,0,.15)}
