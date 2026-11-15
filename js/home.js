@@ -1,15 +1,15 @@
 // Domů, kurz, balíček, Studio a seznamy položek.
 import { esc, $, $$ } from './util.js';
-import { S } from './store.js';
+import { S, save } from './store.js';
 import { app, route, go } from './ui.js';
-import { PACKS, ITEMS, BY_ID, KINDS, courses, status, STATUS_LABEL, artOf, item } from './packs.js';
+import { PACKS, ITEMS, BY_ID, KINDS, courses, status, STATUS_LABEL, artOf, item, hasSubjects, subjects } from './packs.js';
 import { P } from './profile.js';
 
 const icon = id => P.courses[id] || '📚';
 // Hotová lekce: obraz (galerie), nebo odznak s obrázkem lekce (výprava).
 const firstEmoji = d => d.e || (d.words && d.words[0] && d.words[0][0]) || '⭐';
 export const artHtml = d => `<div class="art ${artOf(d)}"></div>${P.theme === 'vyprava' ? `<span class="badge-e">${esc(firstEmoji(d))}</span>` : ''}`;
-const ROUTE_OF = { lesson: 'lesson', practice: 'play', dialog: 'dialog', reading: 'reading', writing: 'write', mission: 'missions' };
+const ROUTE_OF = { lesson: 'lesson', practice: 'play', dialog: 'dialog', reading: 'reading', writing: 'write', mission: 'missions', game: 'game' };
 
 // Otevře položku. resume=true skočí rovnou do rozdělané lekce.
 export function openItem(it, resume = false) {
@@ -20,7 +20,7 @@ export function openItem(it, resume = false) {
 }
 
 function nextUp() {
-  const doing = ITEMS.filter(i => i.kind !== 'mission' && S.prog[i.key]?.run);
+  const doing = ITEMS.filter(i => i.kind !== 'mission' && i.kind !== 'game' && S.prog[i.key]?.run);
   const last = doing.find(i => i.key === S.last) || doing[0];
   if (last) return { it: last, label: 'Pokračovat', resume: true };
   const fresh = ITEMS.find(i => i.kind === 'lesson' && !S.prog[i.key]?.done);
@@ -40,9 +40,32 @@ export function wireRows(root = app) {
   $$('.item[data-key]', root).forEach(b => b.onclick = () => openItem(item(b.dataset.key), true));
 }
 
+// Karta kurzu: ikona, název a kolik lekcí je hotových.
+function courseCard(c) {
+  const ls = ITEMS.filter(i => i.kind === 'lesson' && i.pack.course === c.id);
+  const gs = ITEMS.filter(i => i.kind === 'game' && i.pack.course === c.id);
+  const done = ls.filter(i => S.prog[i.key]?.done).length;
+  const sub = ls.length ? `${done} z ${ls.length} ${P.t.courseCount}` : `${gs.length} ${gs.length === 1 ? 'hra' : 'hry'}`;
+  return `<button class="ccard" data-c="${esc(c.id)}"><span class="e">${icon(c.id)}</span><span><b>${esc(c.title)}</b><small>${esc(sub)}</small></span></button>`;
+}
+// Karta předmětu na úvodní obrazovce.
+function subjectCard(s) {
+  const its = ITEMS.filter(i => i.pack._subject === s.id);
+  const ls = its.filter(i => i.kind === 'lesson'), done = ls.filter(i => S.prog[i.key]?.done).length;
+  const sub = !its.length ? 'Lekce přibudou' : ls.length ? `${done} z ${ls.length} lekcí` : `${its.length} ${its.length === 1 ? 'hra' : 'hry'}`;
+  return `<button class="subj${its.length ? '' : ' none'}" data-s="${esc(s.id)}"${its.length ? '' : ' aria-disabled="true"'}><span class="e">${esc(s.e || '📚')}</span><b>${esc(s.title)}</b><small>${esc(sub)}</small></button>`;
+}
+function openSubject(id) {
+  const s = subjects().find(x => x.id === id); if (!s) return;
+  if (!s.list.length) return; // prázdný předmět: zatím nic
+  if (s.list.length === 1 && !s.tools) return go('course', { id: s.list[0].id });
+  go('subject', { id });
+}
+
 route('home', () => {
   const nx = nextUp(), m = S.mist.length;
   const cs = courses();
+  if (hasSubjects()) return homeSubjects(nx, m);
   app.innerHTML = `
    <header class="hero" id="logo"><h1>${esc(P.title)}</h1><p>${esc(P.t.tagline)}</p></header>
    ${nx ? `<button class="big-go" id="go"><b>${nx.label} →</b><span>${esc(nx.it.data.title)}${nx.it.data.cz ? ' · ' + esc(nx.it.data.cz) : ''}</span></button>`
@@ -65,12 +88,52 @@ route('home', () => {
   const r = $('#rev'); if (r) r.onclick = () => go('play', { mode: 'review' });
   $('#voc').onclick = () => go('vocab');
   $('#stu').onclick = () => go('studio');
-  // Rodičovská sekce: podržet nadpis 3 sekundy.
+  holdForParent();
+});
+
+// Úvodní obrazovka s předměty (Klaudie). Robin bez předmětů má dál rovnou kurzy.
+function homeSubjects(nx, m) {
+  const ss = subjects();
+  app.innerHTML = `
+   <header class="hero" id="logo"><h1>${esc(P.title)}</h1><p>${esc(P.t.tagline)}</p></header>
+   ${nx ? `<button class="big-go" id="go"><b>${nx.label} →</b><span>${esc(nx.it.data.title)}${nx.it.data.cz ? ' · ' + esc(nx.it.data.cz) : ''}</span></button>`
+        : (PACKS.length ? `<button class="big-go" id="go"><b>${esc(P.t.allDone)}</b><span>Všechny lekce máš hotové. Můžeš si kteroukoli zopakovat.</span></button>`
+                        : `<div class="card"><p>Zatím tu nejsou žádné lekce. Požádej rodiče, ať nahrají balíček.</p></div>`)}
+   <h2 class="sec">Předměty</h2><div class="subjects">${ss.map(subjectCard).join('')}</div>
+   ${m ? `<div class="tools"><button class="btn ghost wide" id="rev">💪 Procvičit, co mi ještě nejde (${m})</button></div>` : ''}
+   <p class="foot">Všechno se ukládá jen v tomhle telefonu.</p>`;
+  const gb = $('#go');
+  if (gb) gb.onclick = () => nx ? openItem(nx.it, nx.resume) : (ss.find(s => s.list.length) && openSubject(ss.find(s => s.list.length).id));
+  $$('.subj').forEach(b => b.onclick = () => openSubject(b.dataset.s));
+  const r = $('#rev'); if (r) r.onclick = () => go('play', { mode: 'review' });
+  holdForParent();
+}
+// Rodičovská sekce: podržet nadpis 3 sekundy.
+function holdForParent() {
   const logo = $('#logo'); let t = null;
   const stop = () => { clearTimeout(t); t = null; logo.classList.remove('holding'); };
   logo.addEventListener('pointerdown', () => { stop(); logo.classList.add('holding'); t = setTimeout(() => { stop(); go('parent'); }, 3000); });
   ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => logo.addEventListener(ev, stop));
   logo.addEventListener('contextmenu', e => e.preventDefault());
+}
+
+route('subject', ({ id }) => {
+  const s = subjects().find(x => x.id === id);
+  if (!s) return go('home', {}, { replace: true });
+  app.innerHTML = `<header class="hero"><h1>${esc(s.e || '')} ${esc(s.title)}</h1>${s.cz ? `<p>${esc(s.cz)}</p>` : ''}</header>
+   ${s.list.length ? `<div class="courses">${s.list.map(courseCard).join('')}</div>` : '<div class="card"><p>Lekce sem brzy přibudou.</p></div>'}
+   ${s.tools ? `<div class="tools">
+    <button class="btn ghost wide" id="voc">📚 Slovníček</button>
+    <button class="btn ghost wide" id="stu">🎧 Studio: rozhovory, čtení, psaní, mise</button></div>` : ''}`;
+  $$('.ccard').forEach(b => b.onclick = () => go('course', { id: b.dataset.c }));
+  const v = $('#voc'); if (v) v.onclick = () => go('vocab');
+  const st = $('#stu'); if (st) st.onclick = () => go('studio');
+});
+
+route('game', ({ key }) => {
+  const it = item(key); if (!it || it.kind !== 'game') return go('home', {}, { replace: true });
+  const pr = S.prog[key] || (S.prog[key] = {}); pr.opened = true; S.last = null; save();
+  app.innerHTML = `<div class="gamebox"><iframe class="game" src="${esc(it.data.src)}" title="${esc(it.data.title)}" allow="autoplay"></iframe></div>`;
 });
 
 route('course', ({ id }) => {
@@ -78,18 +141,21 @@ route('course', ({ id }) => {
   if (!c) return go('home', {}, { replace: true });
   const ls = ITEMS.filter(i => i.kind === 'lesson' && i.pack.course === id);
   const next = ls.find(i => !S.prog[i.key]?.done);
-  app.innerHTML = `<header class="hero"><h1>${icon(id)} ${esc(c.title)}</h1><p>${esc(P.t.courseHint)}</p></header>
-   <div class="wall">${ls.map(i => {
+  const gs = ITEMS.filter(i => i.kind === 'game' && i.pack.course === id);
+  app.innerHTML = `<header class="hero"><h1>${icon(id)} ${esc(c.title)}</h1><p>${esc(ls.length ? P.t.courseHint : 'Hry si můžeš pouštět pořád dokola.')}</p></header>
+   ${gs.length ? `<div class="items">${gs.map(i => itemRow(i)).join('')}</div>` : ''}
+   ${ls.length ? `<div class="wall">${ls.map(i => {
      const st = status(i), done = S.prog[i.key]?.done;
      return `<button class="piece ${next && next.key === i.key ? 'next' : ''}" data-key="${esc(i.key)}">
       <div class="fr">${done ? artHtml(i.data) : '<div class="empty">?</div>'}</div>
       <div class="cap"><h3>${esc(i.data.title)}</h3><small>${esc(i.data.cz || '')}</small>
       ${st === 'doing' ? '<span class="tag half">Rozdělané</span>' : (next && next.key === i.key ? '<span class="tag">Na řadě</span>' : '')}</div></button>`;
-   }).join('')}</div>
+   }).join('')}</div>` : ''}
    <h2 class="sec">Celé balíčky</h2>
    <div class="items">${c.packs.map(p => `<button class="item" data-p="${esc(p.id)}"><span class="e">📦</span><span class="tx"><b>${esc(p.title)}</b><small>${esc(p.cz || '')}</small></span></button>`).join('')}</div>`;
   $$('.piece').forEach(b => b.onclick = () => go('lesson', { key: b.dataset.key }));
   $$('[data-p]').forEach(b => b.onclick = () => go('pack', { id: b.dataset.p }));
+  wireRows();
 });
 
 route('pack', ({ id }) => {

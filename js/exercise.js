@@ -1,4 +1,4 @@
-// Úvod lekce a přehrávač cvičení (mc, listen, gap, pair, build, type, dict, speak).
+// Úvod lekce a přehrávač cvičení (mc, listen, gap, pair, build, type, dict, speak, info, fill, num).
 import { $, $$, esc, norm, shuffle, rand, safeHtml, pl, OK, SPOKE } from './util.js';
 import { S, save } from './store.js';
 import { app, route, go, toHome, setProgress, onLeave } from './ui.js';
@@ -93,6 +93,11 @@ function show(opt = {}) {
          <input class="inp" id="inp" autocomplete="off" autocapitalize="sentences" spellcheck="false" aria-label="Co slyšíš">
          <p><button class="linkbtn" id="nv">Nic neslyším</button></p>`;
   } else if (E.t === 'speak') { body = `<p class="q">Řekni nahlas.</p><div id="spk"></div>`; check = false; }
+  else if (E.t === 'info') { body = `<div class="info">${safeHtml(E.html)}</div>`; check = false; }
+  else if (E.t === 'fill') {
+    body = `<p class="q">${safeHtml(E.q)}</p><div class="fillwrap" id="fill">${fillSvg(E)}</div>
+     <p class="cz fcount" id="fcount">Klepnutím dílek vybarvíš, dalším klepnutím ho zase odbarvíš.</p>`;
+  } else if (E.t === 'num') { body = `<p class="q">${safeHtml(E.q)}</p>${numForm(E)}`; }
 
   app.innerHTML = `<div class="card">${body}<div id="fb" aria-live="polite"></div>
    <div class="actions" id="acts">${check ? '<button class="btn wide" id="check">Zkontrolovat</button>' : ''}</div></div>`;
@@ -112,6 +117,15 @@ function show(opt = {}) {
     $('#p2').onclick = () => speak(E.a, { force: true, slow: true });
     setTimeout(() => cur === E && speak(E.a, { force: true, slow: false }), 400);
   }
+  if (E.t === 'info') { answered = true; cont(true, 'Rozumím, dál'); }
+  if (E.t === 'fill') wireFill();
+  if (E.t === 'num') {
+    $$('#numf input').forEach((i, k, all) => {
+      i.onkeydown = e => { if (e.key === 'Enter') { const n = all[k + 1]; n ? n.focus() : checkNum(); } };
+      i.oninput = () => { i.value = i.value.replace(/\D/g, '').slice(0, 3); };
+    });
+    $('#check').onclick = checkNum;
+  }
   if (E.t === 'speak') speakWidget($('#spk'), E.a, v => {
     if (answered) return; answered = true;
     if (v !== null) sfx.ok();
@@ -127,6 +141,8 @@ function full() {
   if (E.t === 'type') return E.s.replace('___', E.a[0]);
   if (['build', 'listen', 'dict', 'speak'].includes(E.t)) return E.a;
   if (E.t === 'mc') return /[áéíóúůýčďěňřšťž]/i.test(E.a) ? (E.say || '') : E.a;
+  if (E.t === 'fill') return E.show || pl(E.a, 'dílek', 'dílky', 'dílků');
+  if (E.t === 'num') return E.show || numText(E.a, E.form);
   return '';
 }
 function good() {
@@ -134,7 +150,7 @@ function good() {
   const f = full();
   fb(true, `<h3>${rand(OK)}</h3>${f ? `<p><b>${esc(f)}</b></p>` : ''}${tries > 0 ? `<p>Napodruhé, ale ${g('sama', 'sám')}. Tohle se počítá.</p>` : ''}`);
   sfx.ok();
-  if (f && cur.t !== 'dict') later(() => speak(f), S.sfx !== false ? 450 : 0); // nejdřív „ding“, pak věta
+  if (f && cur.t !== 'dict' && !cur._mute) later(() => speak(f), S.sfx !== false ? 450 : 0); // nejdřív „ding“, pak věta
   if (run.mode === 'review') { S.mist = S.mist.filter(x => x !== cur.id); run.fixed++; save(); }
   else if (tries > 0 && !S.mist.includes(cur.id)) { S.mist.push(cur.id); save(); }
   cont(true);
@@ -145,7 +161,7 @@ function bad(final, msg) {
   answered = true;
   fb(false, `<h3>Tohle si zapamatuj</h3><p>Správně je: <b>${esc(full())}</b></p>${msg ? `<p>${msg}</p>` : ''}${cur.why ? `<p>${esc(cur.why)}</p>` : ''}${run.mode !== 'review' ? '<p class="cz">Tahle úloha se ti ještě jednou vrátí na konci lekce.</p>' : ''}`);
   sfx.reveal();
-  const f = full(); later(() => speak(f), 400);
+  const f = full(); if (!cur._mute) later(() => speak(f), 400);
   if (!S.mist.includes(cur.id)) { S.mist.push(cur.id); save(); }
   cont(false);
 }
@@ -153,9 +169,9 @@ const fb = (ok, html) => { $('#fb').innerHTML = `<div class="fb ${ok ? 'ok' : 't
 // Spustí akci se zpožděním, jen pokud mezitím neodešla na jinou úlohu.
 const later = (fn, ms) => { const tk = token(); setTimeout(() => { if (tk === token()) fn(); }, ms); };
 
-function cont(ok) {
+function cont(ok, label = 'Pokračovat') {
   const a = $('#acts');
-  a.innerHTML = '<button class="btn pink wide" id="nx">Pokračovat</button>';
+  a.innerHTML = `<button class="btn pink wide" id="nx">${esc(label)}</button>`;
   const b = $('#nx'); b.focus({ preventScroll: true });
   b.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   b.onclick = () => {
@@ -179,7 +195,7 @@ function wirePairs() {
   const enSide = E.pairs.some(p => /[a-z]/i.test(p[0])) ? 'l' : 'r';
   $$('.pairs .opt').forEach(b => b.onclick = () => {
     if (b.classList.contains('done')) return;
-    if (b.dataset.side === enSide) speak(b.dataset.v);
+    if (b.dataset.side === enSide && !E._mute) speak(b.dataset.v);
     if (!sel || sel.dataset.side === b.dataset.side) { if (sel) sel.classList.remove('sel'); sel = b; b.classList.add('sel'); return; }
     const l = sel.dataset.side === 'l' ? sel : b, r = sel.dataset.side === 'l' ? b : sel;
     if (map[l.dataset.v] === r.dataset.v) {
@@ -205,6 +221,92 @@ function wireBuild() {
     else bad(true);
   };
 }
+/* ---------- vybarvi dílky (pizza nebo krabice) ---------- */
+function fillSvg(E) {
+  const parts = E.parts, wholes = E.wholes || 1, out = [];
+  for (let w = 0; w < wholes; w++) {
+    let shapes = '';
+    if (E.shape === 'pizza') {
+      const c = 80, r = 72;
+      for (let k = 0; k < parts; k++) {
+        const a1 = (k / parts) * 2 * Math.PI - Math.PI / 2, a2 = ((k + 1) / parts) * 2 * Math.PI - Math.PI / 2;
+        const x1 = c + r * Math.cos(a1), y1 = c + r * Math.sin(a1), x2 = c + r * Math.cos(a2), y2 = c + r * Math.sin(a2);
+        shapes += `<path class="part" data-part="${w}-${k}" tabindex="0" role="button" aria-label="Dílek ${k + 1}" d="M${c} ${c}L${x1.toFixed(1)} ${y1.toFixed(1)}A${r} ${r} 0 ${parts === 1 ? 1 : 0} 1 ${x2.toFixed(1)} ${y2.toFixed(1)}Z"/>`;
+      }
+      out.push(`<svg class="pz" viewBox="0 0 160 160" aria-label="Pizza na ${parts} dílků">${shapes}<circle class="rim" cx="80" cy="80" r="72"/></svg>`);
+    } else {
+      const cols = parts <= 3 ? parts : Math.ceil(parts / 2), rows = parts <= 3 ? 1 : 2, S = 44, G = 4, P = 6;
+      const W = P * 2 + cols * S + (cols - 1) * G, H = P * 2 + rows * S + (rows - 1) * G;
+      for (let k = 0; k < parts; k++) {
+        const x = P + (k % cols) * (S + G), y = P + Math.floor(k / cols) * (S + G);
+        shapes += `<rect class="part" data-part="${w}-${k}" tabindex="0" role="button" aria-label="Místo ${k + 1}" x="${x}" y="${y}" width="${S}" height="${S}" rx="6"/>`;
+      }
+      out.push(`<svg class="bx" viewBox="0 0 ${W} ${H}" style="width:${W * 1.25}px" aria-label="Krabice na ${parts} dílků"><rect class="rim" x="1" y="1" width="${W - 2}" height="${H - 2}" rx="10"/>${shapes}</svg>`);
+    }
+  }
+  return out.join('');
+}
+function wireFill() {
+  const cnt = $('#fcount');
+  const toggle = el => {
+    if (answered) return;
+    el.classList.toggle('on'); el.setAttribute('aria-pressed', el.classList.contains('on'));
+    sfx.tap();
+    const n = $$('#fill .part.on').length;
+    cnt.textContent = `Vybarveno: ${pl(n, 'dílek', 'dílky', 'dílků')}`;
+  };
+  $$('#fill .part').forEach(el => {
+    el.onclick = () => toggle(el);
+    el.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(el); } };
+  });
+  $('#check').onclick = checkFill;
+}
+function checkFill() {
+  if (answered) return;
+  const E = cur, n = $$('#fill .part.on').length;
+  if (!n && E.a) { fb(false, `<p>Klepni na dílky, které chceš vybarvit.</p>`); return; }
+  if (n === E.a) { $('#fill').classList.add('lock'); return good(); }
+  const msg = (n < E.a
+    ? `Máš ${pl(n, 'dílek', 'dílky', 'dílků')}. Kolik jich má být podle čísla nahoře ve zlomku?`
+    : `Máš ${pl(n, 'dílek', 'dílky', 'dílků')}, to je o ${n - E.a} víc. Klepnutím dílek zase odbarvíš.`) + (E.why ? ` ${esc(E.why)}` : '');
+  if (tries === 0) { bad(false, msg); return; }
+  // Ukázat správně: vybarvit přesně E.a dílků popořadě.
+  $$('#fill .part').forEach((el, k) => el.classList.toggle('on', k < E.a));
+  $('#fill').classList.add('lock');
+  bad(true);
+}
+
+/* ---------- napiš číslo nebo zlomek ---------- */
+const NUM_IDS = { int: ['n0'], frac: ['n1', 'n2'], mixed: ['n0', 'n1', 'n2'] };
+const numIn = (id, label) => `<input class="ninp" id="${id}" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="3" aria-label="${label}">`;
+function numForm(E) {
+  const lhs = E.lhs ? `<span class="lhs">${safeHtml(E.lhs)}</span><span class="eq">=</span>` : '';
+  const frac = `<span class="nfrac">${numIn('n1', 'čitatel (nahoře)')}<i></i>${numIn('n2', 'jmenovatel (dole)')}</span>`;
+  const right = E.form === 'int' ? numIn('n0', 'číslo') : E.form === 'frac' ? frac : `${numIn('n0', 'celé číslo')}${frac}`;
+  return `<div class="numf" id="numf">${lhs}${right}</div>${E.form === 'mixed' ? '<p class="cz">Vlevo celé číslo, vpravo zlomek.</p>' : ''}`;
+}
+export const numText = (a, form) => form === 'int' ? `${a[0]}` : form === 'frac' ? `${a[0]}/${a[1]}` : `${a[0]} ${a[1]}/${a[2]}`;
+function checkNum() {
+  if (answered) return;
+  const E = cur, ins = NUM_IDS[E.form].map(id => $('#' + id));
+  if (ins.some(i => i.value.trim() === '')) { fb(false, `<p>Vyplň ${ins.length > 1 ? 'všechna políčka' : 'políčko'}.</p>`); return; }
+  const v = ins.map(i => parseInt(i.value, 10));
+  const same = x => x.length === v.length && x.every((k, i) => k === v[i]);
+  if (same(E.a) || (E.alt || []).some(same)) { ins.forEach(i => { i.disabled = true; }); return good(); }
+  const a = E.a; let msg = '';
+  if (E.form === 'frac' && v[0] === a[1] && v[1] === a[0]) msg = 'Čísla jsou prohozená. Nahoru patří, kolik dílků máš, dolů, na kolik dílků je celek rozdělený.';
+  else if (E.form === 'mixed') {
+    if (v[0] !== a[0]) msg = 'Zkus znovu spočítat plné krabice. To je to celé číslo vlevo.';
+    else if (v[2] !== a[2]) msg = 'Celé číslo máš dobře. Dole ve zlomku zůstává, kolik míst má jedna krabice.';
+    else msg = 'Celé číslo máš dobře. Teď spočítej dílky, které zbyly v poslední krabici.';
+  }
+  if (E.why) msg = msg ? `${msg} ${esc(E.why)}` : esc(E.why);
+  if (!msg) msg = 'Zkus to ještě jednou. Klidně si to nakresli.';
+  if (tries === 0) { bad(false, msg); return; }
+  ins.forEach(i => { i.disabled = true; });
+  bad(true);
+}
+
 function checkType() {
   if (answered) return;
   const E = cur, v = norm($('#inp').value);
@@ -249,7 +351,8 @@ function finish() {
     text = back ? `${g('Dokončila', 'Dokončil')} jsi to a ${back}× ses ${g('vrátila', 'vrátil')} k něčemu, co napoprvé nevyšlo. Každý takový návrat je kus učení.` : `${g('Dokončila', 'Dokončil')} jsi celou ${mode === 'lesson' ? 'lekci' : 'sadu'}. ${g('Vydržela', 'Vydržel')} jsi u toho až do konce.`;
   }
   const m = S.mist.length;
-  const next = mode === 'lesson' ? ITEMS.find(i => i.kind === 'lesson' && !S.prog[i.key]?.done) : null;
+  const undone = i => i.kind === 'lesson' && !S.prog[i.key]?.done;
+  const next = mode === 'lesson' ? (ITEMS.find(i => undone(i) && i.pack.course === it.pack.course) || ITEMS.find(undone)) : null;
   app.innerHTML = `<div class="card" style="margin-top:1rem">${head}<h2 style="text-align:center">${esc(title)}</h2><p>${text}</p>
    ${m && mode !== 'review' ? `<p class="cz">Na hlavní stránce máš ${pl(m, 'věc', 'věci', 'věcí')} k procvičení. Zkus je zítra, mozek si to mezitím uleží.</p>` : ''}
    <div class="actions"><button class="btn pink wide" id="hm">Domů</button>${next ? `<button class="btn ghost wide" id="nl">Další lekce: ${esc(next.data.title)}</button>` : ''}</div></div>`;

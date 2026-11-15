@@ -15,9 +15,11 @@ export const KINDS = {
   dialog: { list: 'dialogs', e: '🎧', label: 'Rozhovory' },
   reading: { list: 'readings', e: '📰', label: 'Čtení' },
   writing: { list: 'writing', e: '✍️', label: 'Psaní' },
-  mission: { list: 'missions', e: '🧭', label: 'Mise' }
+  mission: { list: 'missions', e: '🧭', label: 'Mise' },
+  game: { list: 'games', e: '🎮', label: 'Hry' }
 };
-const EX_TYPES = ['mc', 'listen', 'gap', 'pair', 'build', 'type', 'dict', 'speak'];
+const EX_TYPES = ['mc', 'listen', 'gap', 'pair', 'build', 'type', 'dict', 'speak', 'info', 'fill', 'num'];
+const NUM_FORMS = { int: 1, frac: 2, mixed: 3 };
 
 /* ---------- kontrola balíčku ---------- */
 export function validatePack(p) {
@@ -28,7 +30,7 @@ export function validatePack(p) {
   if (!str(p.id) || !/^[a-z0-9_-]+$/i.test(p.id)) E.push('Chybí „id“ balíčku (jen písmena, čísla, - a _).');
   if (!str(p.course)) E.push('Chybí „course“ (např. "harmonize2" nebo "nz").');
   if (!str(p.title)) E.push('Chybí „title“ balíčku.');
-  for (const k of ['lessons', 'practice', 'dialogs', 'readings', 'writing', 'missions'])
+  for (const k of ['lessons', 'practice', 'dialogs', 'readings', 'writing', 'missions', 'games'])
     if (p[k] !== undefined && !arr(p[k])) E.push(`„${k}“ musí být seznam [ … ].`);
   if (E.length) return E;
 
@@ -48,6 +50,25 @@ export function validatePack(p) {
       if (e.t === 'build') { need('cz'); need('a'); }
       if (e.t === 'type') { need('s'); need('a'); if (typeof e.a === 'string') e.a = [e.a]; }
       if (e.t === 'dict' || e.t === 'speak') need('a');
+      if (e.t === 'info') need('html');
+      if (e.t === 'fill') {
+        need('q');
+        if (!['pizza', 'box'].includes(e.shape)) E.push(`${w} (fill): „shape“ musí být "pizza" nebo "box".`);
+        const parts = e.parts, wholes = e.wholes ?? 1;
+        if (!Number.isInteger(parts) || parts < 2 || parts > 12) E.push(`${w} (fill): „parts“ musí být celé číslo 2–12.`);
+        else if (!Number.isInteger(wholes) || wholes < 1 || wholes > 4) E.push(`${w} (fill): „wholes“ musí být 1–4.`);
+        else if (!Number.isInteger(e.a) || e.a < 0 || e.a > parts * wholes) E.push(`${w} (fill): „a“ musí být počet dílků 0–${parts * wholes}.`);
+      }
+      if (e.t === 'num') {
+        need('q');
+        const n = NUM_FORMS[e.form];
+        if (!n) E.push(`${w} (num): „form“ musí být "int", "frac" nebo "mixed".`);
+        else {
+          const ok = x => arr(x) && x.length === n && x.every(Number.isInteger);
+          if (!ok(e.a)) E.push(`${w} (num): „a“ musí být seznam ${n} celých čísel.`);
+          if (e.alt !== undefined && (!arr(e.alt) || !e.alt.every(ok))) E.push(`${w} (num): „alt“ musí být seznam odpovědí ve stejném tvaru jako „a“.`);
+        }
+      }
       if (e.opts !== undefined && (!arr(e.opts) || e.opts.length < 2)) E.push(`${w}: „opts“ musí mít aspoň 2 možnosti.`);
     });
   };
@@ -81,6 +102,11 @@ export function validatePack(p) {
   });
   (p.writing || []).forEach((x, i) => { if (!x || !str(x.id) || !str(x.title) || !str(x.task)) E.push(`Psaní ${i + 1}: chybí „id“, „title“ nebo „task“.`); });
   (p.missions || []).forEach((x, i) => { if (!x || !str(x.id) || !str(x.cz)) E.push(`Mise ${i + 1}: chybí „id“ nebo „cz“.`); });
+  (p.games || []).forEach((x, i) => {
+    if (!x || !str(x.id) || !str(x.title) || !str(x.src)) { E.push(`Hra ${i + 1}: chybí „id“, „title“ nebo „src“.`); return; }
+    if (!/^hry\/[a-z0-9_-]+\.html$/i.test(x.src)) E.push(`Hra ${i + 1}: „src“ musí být soubor ve složce hry/, např. "hry/hustota.html".`);
+    uniq(x.id, `Hra ${i + 1}`);
+  });
   return E.slice(0, 12);
 }
 
@@ -105,6 +131,10 @@ export async function loadAll() {
   PACKS.sort((a, b) => co(a.course) - co(b.course) || String(a.course).localeCompare(b.course) || (a.order ?? 99) - (b.order ?? 99));
 
   for (const p of PACKS) {
+    p._subject = subjectOf(p);
+    // Balíčky, které nejsou anglicky (matika, fyzika…), se nečtou anglickým hlasem.
+    const mute = (p.lang || 'en') !== 'en';
+    for (const set of (p.lessons || []).concat(p.practice || [])) for (const e of set.ex || []) e._mute = mute;
     Object.assign(PEOPLE, p.people || {});
     for (const [kind, m] of Object.entries(KINDS))
       for (const d of p[m.list] || []) ITEMS.push({ key: `${p.id}/${kind}/${d.id}`, kind, pack: p, data: d });
@@ -161,6 +191,18 @@ export function lookupWord(raw, glossary = [], paragraph = '') {
   return null;
 }
 
+/* ---------- předměty ---------- */
+// Předměty (angličtina, matika, …) jsou v profile.json. Bez nich appka ukazuje rovnou kurzy (Robin).
+export const hasSubjects = () => Array.isArray(P.subjects) && P.subjects.length > 0;
+export function subjectOf(p) {
+  if (p.subject) return p.subject;
+  const s = (P.subjects || []).find(x => (x.courses || []).includes(p.course));
+  return s ? s.id : 'en';
+}
+export function subjects() {
+  return (P.subjects || []).map(s => ({ ...s, list: courses().filter(c => c.packs.some(p => p._subject === s.id)) }));
+}
+
 /* ---------- položky a stav ---------- */
 export const item = key => ITEMS.find(i => i.key === key) || null;
 export function courses() {
@@ -173,11 +215,12 @@ export function courses() {
 }
 export function status(it) {
   if (it.kind === 'mission') return S.missions[it.key]?.done ? 'done' : 'new';
+  if (it.kind === 'game') return S.prog[it.key]?.opened ? 'played' : 'new';
   const p = S.prog[it.key];
   if (p?.run) return 'doing';
   return p?.done ? 'done' : 'new';
 }
-export const STATUS_LABEL = { new: 'nové', doing: 'rozdělané', done: 'hotovo ✓' };
+export const STATUS_LABEL = { new: 'nové', doing: 'rozdělané', done: 'hotovo ✓', played: 'hraju' };
 export const artOf = l => l.art || ['a1', 'a2', 'a3', 'a4', 'a5', 'a6'][[...String(l.id)].reduce((s, c) => s + c.charCodeAt(0), 0) % 6];
 
 // Úloha podle odkazu "balíček|sada" a čísla.
