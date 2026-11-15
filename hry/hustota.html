@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hustota: co plave a co klesne</title>
+<style>
+:root{
+  --bg:#EAF5F4; --surface:#FFFFFF; --ink:#12324A; --soft:#4A6B80;
+  --river:#2B8FB3; --water:#8FD3E8; --water2:#5DB7D6; --coral:#F2557A; --gold:#F5B82E;
+  --ok:#1E9E6A; --okbg:#DDF5EA; --warn:#B45309; --warnbg:#FFF1D6; --line:#C9E2E4;
+  --gateG:#21A35A; --gateR:#E03B3B;
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1F2D; --surface:#15303F; --ink:#E6F2F1; --soft:#9DB8C4;
+    --river:#5DB7D6; --water:#1F6F8E; --water2:#185B76; --coral:#FF7A98; --gold:#F7C64F;
+    --ok:#4FD39B; --okbg:#123D30; --warn:#F7C64F; --warnbg:#3A2E12; --line:#25475A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1F2D; --surface:#15303F; --ink:#E6F2F1; --soft:#9DB8C4;
+  --river:#5DB7D6; --water:#1F6F8E; --water2:#185B76; --coral:#FF7A98; --gold:#F7C64F;
+  --ok:#4FD39B; --okbg:#123D30; --warn:#F7C64F; --warnbg:#3A2E12; --line:#25475A;
+  color-scheme: dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Nunito",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:1.06rem;line-height:1.5}
+h1,h2,h3{font-family:"Baloo 2","Nunito",system-ui,sans-serif;line-height:1.1;margin:0}
+.wrap{max-width:560px;margin:0 auto;padding:1rem 1rem 2.5rem}
+button{font:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;border:0;border-radius:999px;padding:.85rem 1.4rem;font-weight:800;font-size:1.05rem;background:var(--river);color:#fff;min-height:3rem}
+.btn.coral{background:var(--coral)}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.btn.small{padding:.5rem 1rem;min-height:2.4rem;font-size:.95rem}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:.6rem;flex-wrap:wrap}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
+.dots{display:flex;gap:.35rem}
+.dot{width:.8rem;height:.8rem;border-radius:50%;background:var(--line)}
+.dot.on{background:var(--river)}
+.dot.now{background:var(--coral)}
+
+/* home */
+.hero{padding:1.2rem 0 .6rem}
+.hero h1{font-size:2.3rem;font-weight:800}
+.hero p{color:var(--soft);margin:.4rem 0 0}
+.course{position:relative;margin:1.2rem 0;padding-left:.2rem}
+.course::before{content:"";position:absolute;left:2.05rem;top:0;bottom:0;width:1.1rem;border-radius:1rem;background:repeating-linear-gradient(180deg,var(--water) 0 18px,var(--water2) 18px 36px);opacity:.7}
+.gate{position:relative;display:flex;align-items:center;gap:1rem;width:100%;text-align:left;background:var(--surface);border:2px solid var(--line);border-radius:1.2rem;padding:.9rem 1rem .9rem .9rem;margin:0 0 .9rem;color:var(--ink)}
+.gate.next{border-color:var(--coral)}
+.poles{flex:none;width:2.8rem;height:3.2rem;position:relative}
+.poles i{position:absolute;top:0;width:.5rem;height:3.2rem;border-radius:.3rem}
+.poles i:first-child{left:.2rem}.poles i:last-child{right:.2rem}
+.poles.g i{background:repeating-linear-gradient(180deg,var(--gateG) 0 8px,#fff 8px 16px)}
+.poles.r i{background:repeating-linear-gradient(180deg,var(--gateR) 0 8px,#fff 8px 16px)}
+.poles b{position:absolute;inset:0;display:grid;place-items:center;font-size:1.4rem}
+.gate h3{font-size:1.25rem}
+.gate small{color:var(--soft);display:block}
+.tag{display:inline-block;font-size:.8rem;font-weight:800;border-radius:999px;padding:.1rem .6rem;margin-top:.25rem}
+.tag.done{background:var(--okbg);color:var(--ok)}
+.tag.next{background:var(--coral);color:#fff}
+.foot{color:var(--soft);font-size:.9rem;margin-top:1.5rem}
+.linkbtn{background:none;border:0;color:var(--soft);text-decoration:underline;padding:0}
+
+/* cards */
+.card{background:var(--surface);border-radius:1.4rem;padding:1.2rem;border:2px solid var(--line)}
+.card h2{font-size:1.7rem;margin-bottom:.5rem}
+.card p{margin:.5rem 0}
+.formula{font-family:"Baloo 2",serif;font-size:2.4rem;font-weight:800;text-align:center;margin:.6rem 0;color:var(--river)}
+.formula .fr{display:inline-flex;flex-direction:column;vertical-align:middle;line-height:1;font-size:2rem}
+.formula .fr span:first-child{border-bottom:3px solid currentColor;padding:0 .3rem .1rem}
+.prompt{font-size:1.2rem;font-weight:700;margin:.2rem 0 .8rem}
+.chips{display:flex;gap:.5rem;flex-wrap:wrap;margin:.4rem 0 .8rem}
+.chip{background:var(--bg);border:2px solid var(--line);border-radius:.8rem;padding:.35rem .75rem;font-weight:800}
+
+/* tank */
+.tank{position:relative;height:210px;border:4px solid var(--line);border-top:0;border-radius:0 0 1.4rem 1.4rem;overflow:hidden;background:var(--surface);margin:.4rem 0 1rem}
+.water{position:absolute;left:0;right:0;top:42%;bottom:0;background:linear-gradient(180deg,var(--water),var(--water2))}
+.water::before{content:"";position:absolute;left:0;right:0;top:-6px;height:12px;background:radial-gradient(circle at 10px -2px,transparent 9px,var(--water) 10px) 0 0/20px 12px repeat-x}
+.wlabel{position:absolute;right:.6rem;bottom:.4rem;font-size:.85rem;font-weight:800;color:#fff;opacity:.9}
+.obj{position:absolute;left:50%;transform:translateX(-50%);top:6%;font-size:3rem;line-height:1;transition:top 1.6s cubic-bezier(.3,.7,.3,1)}
+.obj.float{top:calc(42% - 2rem)}
+.obj.sink{top:calc(100% - 3.4rem)}
+.rho{position:absolute;left:.6rem;top:.5rem;font-weight:800;background:var(--bg);border-radius:.6rem;padding:.15rem .5rem;opacity:0;transition:opacity .4s}
+.rho.show{opacity:1}
+
+/* cubes */
+.scale{display:flex;flex-direction:column;align-items:center;margin:.4rem 0 1rem}
+.cubes{display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center;max-width:320px}
+.cube{width:3rem;height:3rem;border-radius:.5rem;background:var(--river);color:#fff;font-weight:800;display:grid;place-items:center;box-shadow:inset -6px -6px 0 rgba(0,0,0,.15);font-size:.95rem}
+.cube.solved{background:var(--ok)}
+.pan{margin-top:.5rem;width:100%;max-width:320px;height:.6rem;border-radius:1rem;background:var(--soft)}
+.panlabel{margin-top:.35rem;font-weight:800}
+
+/* answer */
+.answer{display:flex;align-items:center;gap:.5rem;margin:.6rem 0}
+.answer input{width:9rem;font:inherit;font-size:1.4rem;font-weight:800;padding:.55rem .8rem;border-radius:.9rem;border:3px solid var(--line);background:var(--bg);color:var(--ink)}
+.unit{font-weight:800;font-size:1.15rem}
+.choices{display:grid;gap:.6rem;margin:.6rem 0}
+.choices.two{grid-template-columns:1fr 1fr}
+.choice{border:3px solid var(--line);background:var(--bg);color:var(--ink);border-radius:1rem;padding:.8rem;font-weight:800;text-align:left;min-height:3.2rem}
+.choices.two .choice{text-align:center;font-size:1.15rem}
+.choice.right{border-color:var(--ok);background:var(--okbg)}
+.choice.wrong{border-color:var(--warn);background:var(--warnbg);opacity:.75}
+.fb{border-radius:1rem;padding:.8rem 1rem;margin:.8rem 0;font-weight:600}
+.fb.ok{background:var(--okbg);color:var(--ink);border-left:6px solid var(--ok)}
+.fb.try{background:var(--warnbg);color:var(--ink);border-left:6px solid var(--warn)}
+.hint{background:var(--bg);border:2px dashed var(--line);border-radius:1rem;padding:.7rem .9rem;margin:.6rem 0}
+.actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}
+
+/* overlays */
+.overlay{position:fixed;inset:0;background:rgba(10,30,45,.55);display:grid;place-items:center;padding:1rem;z-index:20}
+.overlay .card{max-width:420px}
+.big{font-size:4rem;text-align:center;line-height:1}
+.try-home{background:var(--warnbg);border-radius:1rem;padding:.9rem 1rem;margin-top:1rem}
+@media (prefers-reduced-motion: reduce){.obj{transition:none}.rho{transition:none}}
+</style>
+</head>
+<body>
+<main class="wrap" id="app"></main>
+<div id="ov"></div>
+<script>
+const W = 'g/cm³';
+const LEVELS = [
+ {id:'l1', title:'Plave, nebo klesne?', sub:'Tipování u vody', intro:`
+   <h2>Plave, nebo klesne?</h2>
+   <p>Hodíš do řeky pádlo a oblázek. Pádlo plave, oblázek jde ke dnu. Proč?</p>
+   <p>Tipni si u každé věci. Tady se chybou nic nezkazí — každý tip ti něco ukáže.</p>`,
+  tasks:[
+   {t:'float', e:'🪵', name:'dřevěné pádlo', rho:0.7, why:'Dřevo má v sobě spoustu malých vzduchových dutinek. Je „řídší“ než voda.'},
+   {t:'float', e:'🪨', name:'oblázek z řeky', rho:2.6, why:'Kámen je hmota natěsnaná na sebe. Je víc než dvakrát „hustší“ než voda.'},
+   {t:'float', e:'🧊', name:'kostka ledu', rho:0.92, why:'Led je jen o kousek řidší než voda. Proto plave, ale skoro celý je pod hladinou.'},
+   {t:'float', e:'🔩', name:'ocelová karabina', rho:7.8, why:'Ocel je skoro 8× hustší než voda. Do vody s ní radši ne!'},
+   {t:'float', e:'🔮', name:'malinký skleněný korálek', rho:2.5, why:'Je maličký, a stejně klesne! Nejde o velikost, ale o to, jak natěsno je hmota uvnitř.'},
+   {t:'float', e:'🍎', name:'jablko', rho:0.8, why:'Jablko má uvnitř vzduch mezi buňkami. Proto se dá na Halloween lovit pusou z kýble.'}
+  ], end:'Všimla sis pravidla? Co má hustotu menší než voda (1 g/cm³), plave. Co má větší, klesne.'},
+ {id:'l2', title:'Kostičky', sub:'Co hustota opravdu znamená', intro:`
+   <h2>Kostičky</h2>
+   <p>Představ si kostičku velkou jako kostka cukru. Její objem je <b>1 cm³</b>.</p>
+   <p><b>Hustota říká, kolik gramů váží jedna taková kostička.</b></p>
+   <p>Když víš, kolik váží všechny kostičky dohromady, rozdělíš to mezi ně rovným dílem.</p>`,
+  tasks:[
+   {t:'cubes', n:2, m:2, name:'voda nalitá do 2 kostiček'},
+   {t:'cubes', n:3, m:6, name:'kostičky z hlíny'},
+   {t:'cubes', n:4, m:12, name:'kostičky z kamene'},
+   {t:'cubes', n:4, m:32, name:'kostičky ze železa'},
+   {t:'cubes', n:5, m:45, name:'kostičky z mědi'}
+  ], end:'Přesně tohle je hustota: kolik gramů připadne na 1 cm³. A dělila jsi hmotnost počtem kostiček, tedy objemem. Skutečné hustoty bývají desetinná čísla, tady jsme je pro jednoduchost zaokrouhlili.'},
+ {id:'l3', title:'Vzorec', sub:'Hustota = hmotnost ÷ objem', intro:`
+   <h2>Vzorec</h2>
+   <p>To, co jsi dělala s kostičkami, má ve fyzice zápis:</p>
+   <div class="formula">ρ = <span class="fr"><span>m</span><span>V</span></span></div>
+   <p><b>ρ</b> (čti „ró“) je hustota, <b>m</b> hmotnost v gramech, <b>V</b> objem v cm³.</p>
+   <p>Hmotnost nahoře, objem dole. Kalkulačka je povolená.</p>`,
+  tasks:[
+   {t:'calc', name:'kamínek do náramku', m:10, V:5},
+   {t:'calc', name:'kamínek do akvária', m:9, V:3},
+   {t:'calc', name:'šroubek z dílny', m:24, V:3, note:'Pozor, tady je objem napsaný první.'},
+   {t:'pick', q:'Šroubek má hustotu 8 g/cm³. Z čeho je?', ch:[
+      ['voda (1 g/cm³)','Voda má jen 1 g/cm³. 8 je mnohem víc.'],
+      ['dřevo (0,7 g/cm³)','Dřevo je dokonce řidší než voda.'],
+      ['železo (asi 8 g/cm³)',''],
+      ['sklo (2,5 g/cm³)','Sklo je hustší než voda, ale 2,5 není 8.']], ok:2,
+    why:'Šroubky bývají ze železa nebo z oceli, což je železo s trochou uhlíku. Proto jsou na svou velikost tak těžké.'},
+   {t:'calc', name:'olověné závaží na rybářský vlasec', m:55, V:5}
+  ], end:'Teď umíš spočítat hustotu čehokoli, co zvážíš a změříš.'},
+ {id:'l4', title:'Převody jednotek', sub:'g/cm³ a kg/m³', intro:`
+   <h2>Převody jednotek</h2>
+   <p>V učebnici často uvidíš jednotku <b>kg/m³</b>. Stačí jedno kouzlo:</p>
+   <div class="formula" style="font-size:1.7rem">1 g/cm³ = 1000 kg/m³</div>
+   <p>Proč? Litr vody váží 1 kg. Do velké krychle 1 m × 1 m × 1 m se vejde 1000 litrů, tedy 1000 kg.</p>
+   <p><b>Z g/cm³ na kg/m³ násobíš 1000.</b> Zpátky dělíš 1000.</p>`,
+  tasks:[
+   {t:'conv', name:'voda', x:1, dir:'up'},
+   {t:'conv', name:'led', x:0.92, dir:'up'},
+   {t:'conv', name:'oblázek', x:2.6, dir:'up'},
+   {t:'conv', name:'ocel', x:7800, dir:'down'},
+   {t:'pick', q:'Dřevo na pádlo má hustotu 700 kg/m³. Plave?', two:true, ch:[
+      ['Plave',''],['Klesne','Voda má 1000 kg/m³. Je 700 víc, nebo míň?']], ok:0,
+    why:'700 kg/m³ je méně než 1000 kg/m³ u vody, takže plave. Je to stejné jako 0,7 g/cm³.'}
+  ], end:'Jednotky už tě nezaskočí. Číslo v kg/m³ je vždycky 1000× větší.'},
+ {id:'l5', title:'Záhada v loděnici', sub:'Finále: všechno dohromady', intro:`
+   <h2>Záhada v loděnici</h2>
+   <p>Po tréninku najdeš na dně u mola prstýnek. Majitelka tvrdí, že je stříbrný.</p>
+   <p>Jsi detektivka a máš kuchyňskou váhu a odměrku. Zjisti pravdu.</p>`,
+  tasks:[
+   {t:'calc', name:'prstýnek ze dna', m:50, V:5},
+   {t:'pick', q:'Prstýnek má hustotu asi 10 g/cm³. Z čeho je?', ch:[
+      ['zlato (19,3 g/cm³)','Zlato je skoro 2× hustší. Tohle to není.'],
+      ['stříbro (10,5 g/cm³)',''],
+      ['hliník (2,7 g/cm³)','Hliník je mnohem řidší, prstýnek by byl lehoučký.'],
+      ['ocel (7,8 g/cm³)','Ocel je řidší. Od 10 je dál než stříbro.']], ok:1,
+    why:'Nejblíž je stříbro. Majitelka mluví pravdu — je stříbrný.'},
+   {t:'conv', name:'stříbro', x:10.5, dir:'up'},
+   {t:'pick', q:'Rybářský splávek má hustotu 0,25 g/cm³. Co udělá ve vodě?', two:true, ch:[
+      ['Plave',''],['Klesne','0,25 je menší, nebo větší než 1?']], ok:0,
+    why:'0,25 je mnohem méně než 1, takže splávek plave vysoko nad hladinou. Proto je vidět, když ryba zabere.'},
+   {t:'pick', q:'Obří ledovec plave, ale malinký skleněný korálek klesne. Proč?', ch:[
+      ['Ledovec je lehčí než korálek.','Ledovec váží miliony kilogramů! O hmotnost tu nejde.'],
+      ['Korálek je moc malý na to, aby plaval.','Velikost nerozhoduje. I obří skleněná koule by klesla.'],
+      ['Led má menší hustotu než voda, sklo větší.','']], ok:2,
+    why:'Přesně tak. Rozhoduje hustota, ne velikost ani hmotnost. Tohle je to nejdůležitější z celé trati.'}
+  ], end:'Dojela jsi celou trať. Hustotu teď chápeš, ne jen počítáš.'}
+];
+
+const KEY='hustota-klaudie-v1';
+let S={done:{},pos:{}};
+try{const r=localStorage.getItem(KEY); if(r) S=Object.assign(S,JSON.parse(r));}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+
+const app=document.getElementById('app'), ov=document.getElementById('ov');
+const f=x=>String(Math.round(x*1000)/1000).replace('.',',');
+const num=s=>{const t=String(s).replace(/\s/g,'').replace(',','.'); return /^-?\d*\.?\d+$/.test(t)?parseFloat(t):NaN;};
+const near=(a,b)=>Math.abs(a-b)<=Math.max(0.011,Math.abs(b)*0.005);
+let L=null, i=0, hintN=0, solved=false, stats={hints:0,retries:0};
+
+function home(){
+  L=null;
+  const next=LEVELS.find(l=>!S.done[l.id]);
+  app.innerHTML=`<header class="hero"><h1>Hustota: co plave a co klesne</h1>
+   <p>Trať má pět branek. Každá trvá asi 5–10 minut. Projeď je postupně, klidně každý den jednu.</p></header>
+   <div class="course">${LEVELS.map((l,k)=>{
+     const d=S.done[l.id], n=next&&next.id===l.id;
+     return `<button class="gate ${n?'next':''}" data-l="${k}">
+       <span class="poles ${k%2?'r':'g'}"><i></i><i></i><b>${d?'✓':''}</b></span>
+       <span><h3>${l.title}</h3><small>${l.sub}</small>
+       ${d?'<span class="tag done">Projeto</span>':n?'<span class="tag next">Na řadě</span>':''}</span></button>`}).join('')}</div>
+   <p class="foot">Zelené branky se jedou po proudu, červené proti proudu. Postup se ukládá v tomhle prohlížeči.
+   <br><button class="linkbtn" id="reset">Začít trať znovu</button></p>`;
+  app.querySelectorAll('.gate').forEach(b=>b.onclick=()=>intro(+b.dataset.l));
+  document.getElementById('reset').onclick=()=>{if(confirm('Smazat postup a začít znovu?')){S={done:{},pos:{}};save();home();}};
+  scrollTo(0,0);
+}
+
+function intro(k){
+  L=LEVELS[k]; stats={hints:0,retries:0};
+  i=S.pos[L.id]&&!S.done[L.id]?S.pos[L.id]:0;
+  app.innerHTML=`${topbar()}<div class="card">${L.intro}
+   <div class="actions"><button class="btn coral" id="go">${i?'Pokračovat od úkolu '+(i+1):'Jdeme na to'}</button></div></div>`;
+  wireTop(); document.getElementById('go').onclick=task; scrollTo(0,0);
+}
+
+function topbar(){
+  const dots=L?L.tasks.map((_,k)=>`<span class="dot ${k<i?'on':k===i?'now':''}"></span>`).join(''):'';
+  return `<div class="top"><button class="btn ghost small" id="back">Trať</button><div class="dots">${dots}</div>
+   <button class="btn ghost small" id="pause">Pauza</button></div>`;
+}
+function wireTop(){
+  document.getElementById('back').onclick=home;
+  document.getElementById('pause').onclick=pause;
+}
+function pause(){
+  ov.innerHTML=`<div class="overlay"><div class="card"><div class="big">🧃</div><h2 style="text-align:center;margin-top:.5rem">Pauza</h2>
+   <p>Mozek si teď odpočine. Zvedni se, napij se, protáhni ruce nad hlavu a podívej se chvíli z okna.</p>
+   <p>Všechno je uložené. Pokračuj, až budeš chtít.</p>
+   <div class="actions"><button class="btn" id="resume">Pokračovat</button></div></div></div>`;
+  document.getElementById('resume').onclick=()=>ov.innerHTML='';
+}
+
+function task(){
+  const T=L.tasks[i]; hintN=0; solved=false;
+  S.pos[L.id]=i; save();
+  let body='';
+  if(T.t==='float'){
+    body=`<p class="prompt">Hodíš do vody <b>${T.name}</b>. Co udělá?</p>
+     <div class="tank"><div class="water"></div><span class="wlabel">voda: 1 g/cm³</span>
+     <span class="rho" id="rho">ρ = ${f(T.rho)} g/cm³</span><span class="obj" id="obj">${T.e}</span></div>
+     <div class="choices two"><button class="choice" data-c="f">Plave</button><button class="choice" data-c="s">Klesne</button></div>`;
+  } else if(T.t==='cubes'){
+    body=`<p class="prompt">${cap(T.name)}: ${T.n} kostiček po 1 cm³ váží dohromady ${T.m} g. Kolik váží <b>jedna</b> kostička?</p>
+     <div class="scale"><div class="cubes" id="cubes">${'<span class="cube">?</span>'.repeat(T.n)}</div>
+     <div class="pan"></div><div class="panlabel">Všechny dohromady: ${T.m} g</div></div>
+     ${inputRow('g')}`;
+  } else if(T.t==='calc'){
+    const chips=T.note?`<span class="chip">V = ${T.V} cm³</span><span class="chip">m = ${T.m} g</span>`:`<span class="chip">m = ${T.m} g</span><span class="chip">V = ${T.V} cm³</span>`;
+    body=`<p class="prompt">Spočítej hustotu: <b>${T.name}</b></p>${T.note?`<p>${T.note}</p>`:''}
+     <div class="chips">${chips}<span class="chip">ρ = ?</span></div>${inputRow(W)}`;
+  } else if(T.t==='conv'){
+    body=T.dir==='up'
+     ?`<p class="prompt">${cap(T.name)} má hustotu <b>${f(T.x)} g/cm³</b>. Kolik je to v kg/m³?</p>${inputRow('kg/m³')}`
+     :`<p class="prompt">${cap(T.name)} má hustotu <b>${f(T.x)} kg/m³</b>. Kolik je to v g/cm³?</p>${inputRow(W)}`;
+  } else if(T.t==='pick'){
+    body=`<p class="prompt">${T.q}</p><div class="choices ${T.two?'two':''}">${T.ch.map((c,k)=>`<button class="choice" data-k="${k}">${c[0]}</button>`).join('')}</div>`;
+  }
+  const hasHints=hints(T).length>0;
+  app.innerHTML=`${topbar()}<div class="card">${body}<div id="hints"></div><div id="fb"></div>
+   <div class="actions" id="acts">${T.t==='cubes'||T.t==='calc'||T.t==='conv'?'<button class="btn" id="check">Zkontrolovat</button>':''}
+   ${hasHints?'<button class="btn ghost" id="hint">Nápověda</button>':''}</div>
+   <div class="actions"><button class="btn ghost small" id="prev">← ${i>0?'Předchozí úkol':'Zpět na úvod'}</button></div></div>`;
+  wireTop();
+  document.getElementById('prev').onclick=()=>{ if(i>0){ i--; task(); } else intro(LEVELS.indexOf(L)); };
+  if(hasHints) document.getElementById('hint').onclick=()=>showHint(T);
+  if(T.t==='float') app.querySelectorAll('.choice').forEach(b=>b.onclick=()=>answerFloat(T,b));
+  if(T.t==='pick') app.querySelectorAll('.choice').forEach(b=>b.onclick=()=>answerPick(T,b));
+  const inp=document.getElementById('inp');
+  if(inp){document.getElementById('check').onclick=()=>check(T,inp.value); inp.onkeydown=e=>{if(e.key==='Enter')check(T,inp.value)};}
+  scrollTo(0,0);
+}
+const cap=s=>s[0].toUpperCase()+s.slice(1);
+const inputRow=u=>`<div class="answer"><input id="inp" inputmode="decimal" autocomplete="off" aria-label="Tvoje odpověď"><span class="unit">${u}</span></div>`;
+
+function hints(T){
+  if(T.t==='cubes') return ['Kolik je kostiček? A kolik váží všechny dohromady?',`Rozděl ${T.m} g na ${T.n} kostiček: ${T.m} ÷ ${T.n} = ?`];
+  if(T.t==='calc') return ['Hustota = hmotnost ÷ objem. Hmotnost je číslo v gramech, objem v cm³.',`Spočítej ${T.m} ÷ ${T.V}. Klidně na kalkulačce.`];
+  if(T.t==='conv') return T.dir==='up'
+    ?['Z g/cm³ na kg/m³ se násobí 1000. Číslo musí vyrůst.','Posuň desetinnou čárku o 3 místa doprava. Chybějící místa doplň nulami: 0,5 → 500.']
+    :['Z kg/m³ na g/cm³ se dělí 1000. Číslo se musí zmenšit.','Posuň desetinnou čárku o 3 místa doleva: 2700 → 2,7.'];
+  return [];
+}
+function showHint(T){
+  const h=hints(T); if(hintN>=h.length) return;
+  document.getElementById('hints').insertAdjacentHTML('beforeend',`<div class="hint">💡 ${h[hintN]}</div>`);
+  hintN++; stats.hints++;
+  const b=document.getElementById('hint'); if(hintN>=h.length&&b) b.disabled=true;
+}
+
+function fb(ok,msg){document.getElementById('fb').innerHTML=`<div class="fb ${ok?'ok':'try'}">${msg}</div>`;}
+function nextBtn(){
+  const a=document.getElementById('acts');
+  a.innerHTML=`<button class="btn coral" id="next">${i<L.tasks.length-1?'Další úkol':'Projet branku'}</button>`;
+  const n=document.getElementById('next'); n.onclick=advance; n.focus();
+}
+function advance(){i++; if(i>=L.tasks.length) finish(); else task();}
+
+function answerFloat(T,b){
+  if(solved) return; solved=true;
+  const floats=T.rho<1, guess=b.dataset.c==='f';
+  app.querySelectorAll('.choice').forEach(x=>x.disabled=true);
+  b.classList.add(guess===floats?'right':'wrong');
+  document.getElementById('obj').classList.add(floats?'float':'sink');
+  document.getElementById('rho').classList.add('show');
+  const cmp=floats?`${f(T.rho)} je méně než 1, takže plave.`:`${f(T.rho)} je víc než 1, takže klesne.`;
+  setTimeout(()=>{fb(guess===floats, (guess===floats?'Trefa! ':'Překvapení! Přesně tyhle chvíle tě naučí nejvíc. ')+T.why+' '+cmp); nextBtn();},900);
+}
+function answerPick(T,b){
+  if(solved) return;
+  const k=+b.dataset.k;
+  if(k===T.ok){
+    solved=true; b.classList.add('right');
+    app.querySelectorAll('.choice').forEach(x=>x.disabled=true);
+    fb(true,'Sedí! '+T.why); nextBtn();
+  } else {
+    stats.retries++; b.classList.add('wrong'); b.disabled=true;
+    fb(false,'Tohle ne, ale už víš o jednu možnost víc. '+T.ch[k][1]);
+  }
+}
+function check(T,raw){
+  if(solved) return;
+  const v=num(raw);
+  if(isNaN(v)){fb(false,'Napiš do políčka číslo. Desetinná čárka i tečka jsou v pořádku.');return;}
+  let right, msg='';
+  if(T.t==='cubes'){
+    right=T.m/T.n;
+    if(near(v,right)){win(`Sedí! ${T.m} g rozdělených na ${T.n} kostiček je ${f(right)} g v každé. Hustota je tedy ${f(right)} g/cm³.`); 
+      document.querySelectorAll('.cube').forEach(c=>{c.textContent=f(right)+' g';c.classList.add('solved')}); return;}
+    if(near(v,T.m)) msg=`${T.m} g váží všechny kostičky dohromady. Kolik z toho připadne na jednu?`;
+    else if(near(v,T.n/T.m)) msg='Vypadá to, že jsi dělila obráceně. Gramy rozděluješ mezi kostičky: hmotnost ÷ počet kostiček.';
+    else msg='Ještě ne. Zkus si představit, že rozděluješ korálky rovným dílem do krabiček.';
+  } else if(T.t==='calc'){
+    right=T.m/T.V;
+    if(near(v,right)){win(`Sedí! ${T.m} ÷ ${T.V} = ${f(right)}. Hustota je ${f(right)} g/cm³ — ${right<1?'menší než voda, takže by to plavalo':'větší než voda, takže by to kleslo'}.`);return;}
+    if(near(v,T.V/T.m)) msg='Dělila jsi obráceně, to se stává často. Hmotnost patří nahoru, objem dolů: m ÷ V.';
+    else if(near(v,T.m*T.V)) msg='Tady jsi násobila. Hustota se počítá dělením: hmotnost ÷ objem.';
+    else if(near(v,T.m+T.V)||near(v,Math.abs(T.m-T.V))) msg='Sčítat ani odčítat tu nepotřebuješ. Hustota je hmotnost ÷ objem.';
+    else msg='Ještě ne. Zkontroluj na kalkulačce, co jsi dělila čím.';
+  } else if(T.t==='conv'){
+    right=T.dir==='up'?T.x*1000:T.x/1000;
+    if(near(v,right)){win(`Sedí! ${f(T.x)} ${T.dir==='up'?'g/cm³':'kg/m³'} = ${f(right)} ${T.dir==='up'?'kg/m³':'g/cm³'}.`);return;}
+    const wrongDir=T.dir==='up'?T.x/1000:T.x*1000;
+    if(near(v,wrongDir)) msg=T.dir==='up'?'Dělila jsi, ale tady se násobí. V kg/m³ je číslo vždycky větší.':'Násobila jsi, ale tady se dělí. V g/cm³ je číslo vždycky menší.';
+    else if(near(v,T.dir==='up'?T.x*100:T.x/100)||near(v,T.dir==='up'?T.x*10:T.x/10)) msg='Směr je správně! Jen čárku posouváš o 3 místa, ne méně.';
+    else msg='Ještě ne. Zkus nápovědu s posouváním čárky.';
+  }
+  stats.retries++; fb(false,msg);
+}
+function win(msg){
+  solved=true;
+  const extra=hintN?' A nápovědu jsi použila přesně k tomu, k čemu je.':'';
+  fb(true,msg+extra);
+  const inp=document.getElementById('inp'); if(inp) inp.disabled=true;
+  nextBtn();
+}
+
+function finish(){
+  S.done[L.id]=true; S.pos[L.id]=0; save();
+  const k=LEVELS.indexOf(L), last=k===LEVELS.length-1;
+  const praise=stats.retries
+   ?`Když něco napoprvé nevyšlo, zkusila jsi to znovu (${stats.retries}×). Tohle je ve fyzice důležitější než mít všechno hned.`
+   :'Všechno ti vyšlo, a to jsi dávala pozor na každé zadání.';
+  const home1=k===0?`<div class="try-home"><b>Zkus doma:</b> Dej vajíčko do sklenice s vodou. Klesne. Pak přisypávej sůl a míchej. Co se stane? A proč? (Nápověda: slaná voda je hustší.)</div>`:'';
+  const teach=last?`<div class="try-home"><b>Poslední výzva:</b> Vysvětli Robinovi pomocí pádla a oblázku, proč jedno plave a druhé ne. Kdo umí něco vysvětlit, ten tomu opravdu rozumí.</div>`:'';
+  app.innerHTML=`${topbar()}<div class="card"><div class="big">${last?'🏅':'✅'}</div>
+   <h2 style="text-align:center;margin-top:.5rem">${last?'Trať je projetá!':'Branka je čistá!'}</h2>
+   <p>${L.end}</p><p>${praise}</p>${home1}${teach}
+   <div class="actions">${last?'':'<button class="btn coral" id="nx">Další branka</button>'}<button class="btn ghost" id="hm">Na trať</button></div>
+   ${last?'':'<p class="foot">Mozek se učí i ve chvílích odpočinku. Klidně si další branku nech na zítra.</p>'}</div>`;
+  wireTop();
+  document.getElementById('hm').onclick=home;
+  if(!last) document.getElementById('nx').onclick=()=>intro(k+1);
+  scrollTo(0,0);
+}
+home();
+</script>
+</body>
+</html>
