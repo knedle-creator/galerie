@@ -1,6 +1,6 @@
 /* Service worker: díky němu appka funguje bez internetu.
    Když změníš kód nebo přidáš balíček, zvyš číslo VERZE, ať si telefon stáhne novou kopii. */
-const VERZE = 'klaudie-v6';
+const VERZE = 'klaudie-v7';
 // Robinova appka běží na stejném webu (knedle-creator.github.io), proto maže jen svoje staré kopie.
 const APP = VERZE.replace(/-v\d+$/, '');
 const ZAKLAD = [
@@ -19,7 +19,14 @@ self.addEventListener('install', e => {
     // všechny balíčky z packs/index.json
     try {
       const idx = await (await fetch('packs/index.json', { cache: 'no-store' })).json();
-      await Promise.all((idx.packs || []).map(f => c.add('packs/' + f).catch(() => {})));
+      // balíčky a k nim hry (games[].src, např. hry/hustota.html)
+      await Promise.all((idx.packs || []).map(async f => {
+        try {
+          await c.add('packs/' + f);
+          const p = await (await c.match('packs/' + f)).json();
+          await Promise.all((p.games || []).map(g => c.add(g.src).catch(() => {})));
+        } catch (err) { /* jeden balíček nevadí, dočte se příště */ }
+      }));
     } catch (err) { /* offline při instalaci: balíčky se dočtou příště */ }
     // nahrané hlasy (audio/index.json + jeden .json a .bin na balíček)
     try {

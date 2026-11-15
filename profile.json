@@ -5,8 +5,18 @@
  "titleGen": "Klaudiiny galerie",
  "gender": "f",
  "theme": "galerie",
- "courses": {"harmonize2": "🎨", "nz": "🥝"},
- "courseOrder": ["harmonize2", "nz"],
+ "courses": {"harmonize2": "🎨", "nz": "🥝", "mat7": "🍕", "fyz7": "🛶"},
+ "courseOrder": ["harmonize2", "nz", "mat7", "fyz7"],
  "lessonIcon": "🎨",
- "speechRate": 160
+ "speechRate": 160,
+ "subjects": [
+  {"id": "en", "title": "Angličtina", "e": "🇬🇧", "courses": ["harmonize2", "nz"], "tools": true, "cz": "Lekce z Harmonize 2 a kurz na Nový Zéland."},
+  {"id": "mat", "title": "Matematika", "e": "🍕", "courses": ["mat7"]},
+  {"id": "cj", "title": "Čeština", "e": "📖", "courses": []},
+  {"id": "es", "title": "Španělština", "e": "🇪🇸", "courses": []},
+  {"id": "fyz", "title": "Fyzika", "e": "🧪", "courses": ["fyz7"]}
+ ],
+ "t": {
+  "tagline": "Učení po malých krocích. Jedna lekce trvá asi 5–8 minut."
+ }
 }
