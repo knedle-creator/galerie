@@ -1,0 +1,21 @@
+{
+ "schema": 1,
+ "id": "fyz7-hustota",
+ "course": "fyz7",
+ "courseTitle": "Fyzika 7",
+ "subject": "fyz",
+ "lang": "cs",
+ "order": 1,
+ "title": "Hustota",
+ "cz": "Co plave a co klesne",
+ "version": 1,
+ "games": [
+  {
+   "id": "hustota",
+   "title": "Hustota: co plave a co klesne",
+   "cz": "Hra na slalomové trati, 5 branek",
+   "e": "🛶",
+   "src": "hry/hustota.html"
+  }
+ ]
+}

@@ -1,0 +1,407 @@
+{
+ "schema": 1,
+ "id": "mat7-zlomky",
+ "course": "mat7",
+ "courseTitle": "Matematika 7",
+ "subject": "mat",
+ "lang": "cs",
+ "order": 1,
+ "title": "Zlomky: pravé a nepravé",
+ "cz": "Pizza, krabice a smíšená čísla",
+ "version": 1,
+ "lessons": [
+  {
+   "id": "z1-pizza",
+   "title": "Co je zlomek",
+   "cz": "Pizza na dílky",
+   "e": "🍕",
+   "intro": "<p>Zlomek je jako pizza rozkrojená na dílky. Vybarvíš si pár pizz a uvidíš, co znamená číslo nahoře a dole.</p><p class=\"cz\">Asi 5 minut. Když si nevíš rady, nakresli si to na papír.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>Zlomek = pizza na dílky</h3><svg class=\"tahak\" viewBox=\"0 0 350 170\" role=\"img\" aria-label=\"Pizza na 4 dílky, 3 dílky vybarvené: zlomek tři čtvrtiny\"><path d=\"M80 85L80.0 17.0A68 68 0 0 1 148.0 85.0Z\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M80 85L148.0 85.0A68 68 0 0 1 80.0 153.0Z\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M80 85L80.0 153.0A68 68 0 0 1 12.0 85.0Z\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M80 85L12.0 85.0A68 68 0 0 1 80.0 17.0Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><text x=\"185\" y=\"72\" font-size=\"42\" font-weight=\"800\" text-anchor=\"middle\" fill=\"currentColor\" fill-opacity=\"1\">3</text><line x1=\"163\" y1=\"87\" x2=\"207\" y2=\"87\" stroke=\"currentColor\" stroke-width=\"4\"/><text x=\"185\" y=\"132\" font-size=\"42\" font-weight=\"800\" text-anchor=\"middle\" fill=\"currentColor\" fill-opacity=\"1\">4</text><text x=\"214\" y=\"62\" font-size=\"17\" font-weight=\"800\" text-anchor=\"start\" fill=\"currentColor\" fill-opacity=\"1\">kolik mám</text><text x=\"214\" y=\"80\" font-size=\"14\" font-weight=\"500\" text-anchor=\"start\" fill=\"currentColor\" fill-opacity=\"0.7\">čitatel</text><text x=\"214\" y=\"118\" font-size=\"17\" font-weight=\"800\" text-anchor=\"start\" fill=\"currentColor\" fill-opacity=\"1\">na kolik dílků</text><text x=\"214\" y=\"136\" font-size=\"14\" font-weight=\"500\" text-anchor=\"start\" fill=\"currentColor\" fill-opacity=\"0.7\">jmenovatel</text></svg><p>Dole je <b>jmenovatel</b>. Říká, na kolik dílků je pizza rozkrojená, a dává dílkům jméno: čtvrtiny, osminy.</p><p>Nahoře je <b>čitatel</b>. Počítá, kolik takových dílků máš.</p><p class=\"cz\">Pomůcka: jmenovatel jmenuje, čitatel čte.</p>"
+    },
+    {
+     "t": "fill",
+     "q": "Vybarvi <span class=\"zl\"><b>1</b><b>4</b></span> pizzy.",
+     "shape": "pizza",
+     "parts": 4,
+     "a": 1
+    },
+    {
+     "t": "fill",
+     "q": "Vybarvi <span class=\"zl\"><b>3</b><b>4</b></span> pizzy.",
+     "shape": "pizza",
+     "parts": 4,
+     "a": 3
+    },
+    {
+     "t": "fill",
+     "q": "Tahle pizza je na 6 dílků. Vybarvi <span class=\"zl\"><b>5</b><b>6</b></span>.",
+     "shape": "pizza",
+     "parts": 6,
+     "a": 5
+    },
+    {
+     "t": "mc",
+     "q": "Pizza je na 8 dílků a ty máš 3. Jaký je to zlomek?",
+     "opts": [
+      "3/8",
+      "8/3",
+      "3/5"
+     ],
+     "a": "3/8",
+     "why": "Dole je, na kolik dílků je pizza rozkrojená. Nahoře, kolik jich máš."
+    },
+    {
+     "t": "num",
+     "q": "Pizza je na 6 dílků a ty máš 5. Napiš to jako zlomek.",
+     "form": "frac",
+     "a": [
+      5,
+      6
+     ]
+    },
+    {
+     "t": "fill",
+     "q": "Vybarvi <span class=\"zl\"><b>4</b><b>4</b></span> pizzy.",
+     "shape": "pizza",
+     "parts": 4,
+     "a": 4
+    },
+    {
+     "t": "info",
+     "html": "<h3>Celá pizza</h3><p><span class=\"zl\"><b>4</b><b>4</b></span> jsou všechny dílky, tedy celá pizza.</p><p>Když je nahoře i dole <b>stejné číslo</b>, zlomek se rovná <b>1</b>.</p><p><span class=\"zl\"><b>6</b><b>6</b></span> = 1 &nbsp; <span class=\"zl\"><b>8</b><b>8</b></span> = 1 &nbsp; <span class=\"zl\"><b>100</b><b>100</b></span> = 1</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Kolik je <span class=\"zl\"><b>10</b><b>10</b></span>?",
+     "opts": [
+      "1 celá",
+      "10 celých",
+      "půlka"
+     ],
+     "a": "1 celá",
+     "why": "Nahoře i dole je stejné číslo. Máš všechny dílky."
+    },
+    {
+     "t": "num",
+     "q": "Celou pizzu rozkrojenou na 8 dílků napiš jako zlomek.",
+     "form": "frac",
+     "a": [
+      8,
+      8
+     ],
+     "why": "Máš všech 8 dílků z 8."
+    }
+   ]
+  },
+  {
+   "id": "z2-krabice",
+   "title": "Pravý, nebo nepravý?",
+   "cz": "Vejde se do jedné krabice?",
+   "e": "📦",
+   "intro": "<p>Dílky pizzy dáváme do krabic. Krabice má tolik míst, kolik je jmenovatel. Zjistíš, kdy se zlomek vejde do jedné krabice.</p><p class=\"cz\">Asi 6 minut.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>Vejde se to do jedné krabice?</h3><svg class=\"tahak\" viewBox=\"0 0 330 176\" role=\"img\" aria-label=\"Tři čtvrtiny se vejdou do jedné krabice, sedm čtvrtin potřebuje dvě krabice\"><rect x=\"12\" y=\"14\" width=\"79\" height=\"79\" rx=\"8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"/><rect x=\"16\" y=\"18\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"53\" y=\"18\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"16\" y=\"55\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"53\" y=\"55\" width=\"34\" height=\"34\" rx=\"5\" fill=\"none\" stroke=\"currentColor\" stroke-opacity=\"0.45\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><rect x=\"150\" y=\"14\" width=\"79\" height=\"79\" rx=\"8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"/><rect x=\"154\" y=\"18\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"191\" y=\"18\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"154\" y=\"55\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"191\" y=\"55\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"239\" y=\"14\" width=\"79\" height=\"79\" rx=\"8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"/><rect x=\"243\" y=\"18\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"280\" y=\"18\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"243\" y=\"55\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"280\" y=\"55\" width=\"34\" height=\"34\" rx=\"5\" fill=\"none\" stroke=\"currentColor\" stroke-opacity=\"0.45\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><text x=\"51.5\" y=\"118\" font-size=\"24\" font-weight=\"800\" text-anchor=\"middle\" fill=\"currentColor\" fill-opacity=\"1\">3/4</text><text x=\"51.5\" y=\"140\" font-size=\"15\" font-weight=\"500\" text-anchor=\"middle\" fill=\"currentColor\" fill-opacity=\"0.75\">vejde se</text><text x=\"51.5\" y=\"166\" font-size=\"17\" font-weight=\"800\" text-anchor=\"middle\" fill=\"currentColor\" fill-opacity=\"1\">PRAVÝ</text><text x=\"234\" y=\"118\" font-size=\"24\" font-weight=\"800\" text-anchor=\"middle\" fill=\"currentColor\" fill-opacity=\"1\">7/4</text><text x=\"234\" y=\"140\" font-size=\"15\" font-weight=\"500\" text-anchor=\"middle\" fill=\"currentColor\" fill-opacity=\"0.75\">potřebuje 2 krabice</text><text x=\"234\" y=\"166\" font-size=\"17\" font-weight=\"800\" text-anchor=\"middle\" fill=\"currentColor\" fill-opacity=\"1\">NEPRAVÝ</text></svg><p>Krabice má tolik míst, kolik je <b>dole</b>. Když se všechny dílky vejdou do jedné krabice, je zlomek <b>pravý</b> a je menší než 1.</p><p>Když musíš otevřít další krabici, je zlomek <b>nepravý</b> a je větší než 1.</p>"
+    },
+    {
+     "t": "fill",
+     "q": "Krabice má 4 místa. Dej do ní <span class=\"zl\"><b>3</b><b>4</b></span>: vybarvi 3 dílky.",
+     "shape": "box",
+     "parts": 4,
+     "a": 3
+    },
+    {
+     "t": "fill",
+     "q": "Teď <span class=\"zl\"><b>7</b><b>4</b></span>. Jedna krabice nestačí, proto máš dvě.",
+     "shape": "box",
+     "parts": 4,
+     "a": 7,
+     "wholes": 2
+    },
+    {
+     "t": "mc",
+     "q": "7 dílků se do jedné krabice na 4 nevešlo. Jaký je tedy zlomek <span class=\"zl\"><b>7</b><b>4</b></span>?",
+     "opts": [
+      "pravý",
+      "nepravý"
+     ],
+     "a": "nepravý",
+     "why": "Pravý zlomek se vejde do jedné krabice. Tady jsi potřebovala druhou."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Bez kreslení</h3><p>Porovnej číslo nahoře a dole.</p><p>Nahoře <b>menší</b> číslo → <b>pravý</b>.<br>Nahoře <b>větší</b> číslo → <b>nepravý</b>.<br>Nahoře i dole <b>stejné</b> → <b>rovná se 1</b>.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Je zlomek <span class=\"zl\"><b>2</b><b>5</b></span> pravý, nebo nepravý?",
+     "opts": [
+      "pravý",
+      "rovná se 1",
+      "nepravý"
+     ],
+     "a": "pravý",
+     "why": "2 dílky a krabice na 5 míst. Vejdou se?"
+    },
+    {
+     "t": "mc",
+     "q": "Je zlomek <span class=\"zl\"><b>7</b><b>5</b></span> pravý, nebo nepravý?",
+     "opts": [
+      "pravý",
+      "rovná se 1",
+      "nepravý"
+     ],
+     "a": "nepravý",
+     "why": "7 dílků a krabice na 5 míst. Vejdou se, nebo potřebuješ další krabici?"
+    },
+    {
+     "t": "mc",
+     "q": "Je zlomek <span class=\"zl\"><b>5</b><b>5</b></span> pravý, nebo nepravý?",
+     "opts": [
+      "pravý",
+      "rovná se 1",
+      "nepravý"
+     ],
+     "a": "rovná se 1",
+     "why": "5 dílků a krabice na 5 míst. Krabice je přesně plná."
+    },
+    {
+     "t": "mc",
+     "q": "Je zlomek <span class=\"zl\"><b>3</b><b>8</b></span> pravý, nebo nepravý?",
+     "opts": [
+      "pravý",
+      "rovná se 1",
+      "nepravý"
+     ],
+     "a": "pravý",
+     "why": "3 dílky a krabice na 8 míst. Vejdou se?"
+    },
+    {
+     "t": "mc",
+     "q": "Je zlomek <span class=\"zl\"><b>11</b><b>8</b></span> pravý, nebo nepravý?",
+     "opts": [
+      "pravý",
+      "rovná se 1",
+      "nepravý"
+     ],
+     "a": "nepravý",
+     "why": "11 dílků a krabice na 8 míst. Vejdou se?"
+    },
+    {
+     "t": "mc",
+     "q": "Který zlomek je nepravý?",
+     "opts": [
+      "5/6",
+      "6/5",
+      "1/2"
+     ],
+     "a": "6/5",
+     "why": "Hledej zlomek, kde je nahoře větší číslo než dole."
+    },
+    {
+     "t": "mc",
+     "q": "Bez počítání: je <span class=\"zl\"><b>9</b><b>4</b></span> víc, nebo míň než 1 celá?",
+     "opts": [
+      "víc než 1 celá",
+      "míň než 1 celá"
+     ],
+     "a": "víc než 1 celá",
+     "why": "Vejde se 9 dílků do krabice na 4 místa?"
+    }
+   ]
+  },
+  {
+   "id": "z3-smisene",
+   "title": "Smíšené číslo",
+   "cz": "Plníme krabice",
+   "e": "🧺",
+   "intro": "<p>Nepravý zlomek se dá napsat i tak, jak ho řekneš nahlas: kolik plných krabic a kolik dílků navíc. Tomu se říká smíšené číslo.</p><p class=\"cz\">Asi 7 minut. Klidně si dej pauzu v půlce.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>Plníme krabice</h3><svg class=\"tahak\" viewBox=\"0 0 360 170\" role=\"img\" aria-label=\"Sedm čtvrtin: jedna plná krabice a tři čtvrtiny\"><rect x=\"40\" y=\"20\" width=\"79\" height=\"79\" rx=\"8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"/><rect x=\"44\" y=\"24\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"81\" y=\"24\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"44\" y=\"61\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"81\" y=\"61\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"149\" y=\"20\" width=\"79\" height=\"79\" rx=\"8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"/><rect x=\"153\" y=\"24\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"190\" y=\"24\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"153\" y=\"61\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"190\" y=\"61\" width=\"34\" height=\"34\" rx=\"5\" fill=\"none\" stroke=\"currentColor\" stroke-opacity=\"0.45\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><text x=\"79.5\" y=\"116\" font-size=\"18\" font-weight=\"800\" text-anchor=\"middle\" fill=\"currentColor\" fill-opacity=\"1\">1 celá</text><text x=\"188.5\" y=\"116\" font-size=\"18\" font-weight=\"800\" text-anchor=\"middle\" fill=\"currentColor\" fill-opacity=\"1\">3/4</text><text x=\"180\" y=\"156\" font-size=\"22\" font-weight=\"800\" text-anchor=\"middle\" fill=\"currentColor\" fill-opacity=\"1\">7/4 = 1 3/4</text></svg><p><span class=\"zl\"><b>7</b><b>4</b></span>: plníme krabice po 4 dílcích. Jedna krabice je plná, to je <b>1 celá</b>. Zbydou 3 dílky, to jsou <b>3/4</b>.</p><p>Píšeme <b>1 3/4</b> a čteme „jedna a tři čtvrtiny“.</p><p class=\"cz\">Tak mluvíme normálně: hodina a čtvrt, jeden a půl hrnku mouky.</p>"
+    },
+    {
+     "t": "fill",
+     "q": "Vybarvi <span class=\"zl\"><b>5</b><b>4</b></span>. Nejdřív zaplň první krabici.",
+     "shape": "box",
+     "parts": 4,
+     "a": 5,
+     "wholes": 2
+    },
+    {
+     "t": "num",
+     "q": "Kolik plných krabic a kolik dílků navíc? Napiš smíšené číslo.",
+     "form": "mixed",
+     "a": [
+      1,
+      1,
+      4
+     ],
+     "lhs": "<span class=\"zl\"><b>5</b><b>4</b></span>"
+    },
+    {
+     "t": "num",
+     "q": "Teď sedm čtvrtin. Klidně si to představ v krabicích.",
+     "form": "mixed",
+     "a": [
+      1,
+      3,
+      4
+     ],
+     "lhs": "<span class=\"zl\"><b>7</b><b>4</b></span>"
+    },
+    {
+     "t": "fill",
+     "q": "Tyhle krabice mají jen 2 místa. Vybarvi <span class=\"zl\"><b>5</b><b>2</b></span>.",
+     "shape": "box",
+     "parts": 2,
+     "a": 5,
+     "wholes": 3
+    },
+    {
+     "t": "num",
+     "q": "Kolik je to jako smíšené číslo?",
+     "form": "mixed",
+     "a": [
+      2,
+      1,
+      2
+     ],
+     "lhs": "<span class=\"zl\"><b>5</b><b>2</b></span>"
+    },
+    {
+     "t": "info",
+     "html": "<h3>Zkratka bez kreslení</h3><p>Kolikrát se číslo dole vejde do čísla nahoře? To je <b>celé číslo</b>.</p><p>Co zbude, je <b>čitatel</b> zlomku. Dole zůstává pořád stejné číslo.</p><p><span class=\"zl\"><b>11</b><b>4</b></span>: čtyřka se do jedenácti vejde 2× (to je 8) a zbudou 3. Takže <span class=\"zl\"><b>11</b><b>4</b></span> = 2 3/4.</p>"
+    },
+    {
+     "t": "num",
+     "q": "Zkus to zkratkou.",
+     "form": "mixed",
+     "a": [
+      2,
+      1,
+      4
+     ],
+     "lhs": "<span class=\"zl\"><b>9</b><b>4</b></span>",
+     "why": "Kolikrát se 4 vejde do 9? A kolik zbude?"
+    },
+    {
+     "t": "num",
+     "q": "Korálky: na jeden náramek potřebuješ 8 korálků. Máš jich 11. Kolik náramků to je?",
+     "form": "mixed",
+     "a": [
+      1,
+      3,
+      8
+     ],
+     "lhs": "<span class=\"zl\"><b>11</b><b>8</b></span>",
+     "why": "Jeden náramek je 8 korálků. Kolik korálků zbude?"
+    },
+    {
+     "t": "num",
+     "q": "Slalom: jedno kolo tratě má 4 úseky. Ujela jsi 13 úseků. Kolik je to kol?",
+     "form": "mixed",
+     "a": [
+      3,
+      1,
+      4
+     ],
+     "lhs": "<span class=\"zl\"><b>13</b><b>4</b></span>",
+     "why": "Kolikrát se 4 vejde do 13?"
+    },
+    {
+     "t": "num",
+     "q": "Pejsek sní každý den 1/3 konzervy. Za týden je to 7/3 konzervy. Kolik celých konzerv a kolik navíc?",
+     "form": "mixed",
+     "a": [
+      2,
+      1,
+      3
+     ],
+     "lhs": "<span class=\"zl\"><b>7</b><b>3</b></span>",
+     "why": "Jedna konzerva má 3 třetiny. Kolikrát se 3 vejde do 7?"
+    }
+   ]
+  },
+  {
+   "id": "z4-zpatky",
+   "title": "Zpátky na zlomek",
+   "cz": "Ze smíšeného čísla nepravý zlomek",
+   "e": "🔁",
+   "intro": "<p>Teď to obrátíme: ze smíšeného čísla uděláš zase jeden zlomek. Hodí se to, až budeš zlomky násobit a dělit.</p><p class=\"cz\">Asi 5 minut. Tuhle lekci si nech na jiný den než tu předchozí.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>Zpátky do jednoho zlomku</h3><svg class=\"tahak\" viewBox=\"0 0 380 160\" role=\"img\" aria-label=\"Dvě plné krabice po čtyřech a jeden dílek: devět čtvrtin\"><rect x=\"20\" y=\"20\" width=\"79\" height=\"79\" rx=\"8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"/><rect x=\"24\" y=\"24\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"61\" y=\"24\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"24\" y=\"61\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"61\" y=\"61\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"113\" y=\"20\" width=\"79\" height=\"79\" rx=\"8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"/><rect x=\"117\" y=\"24\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"154\" y=\"24\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"117\" y=\"61\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"154\" y=\"61\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"206\" y=\"20\" width=\"79\" height=\"79\" rx=\"8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"/><rect x=\"210\" y=\"24\" width=\"34\" height=\"34\" rx=\"5\" fill=\"#F4B400\" fill-opacity=\"0.85\" stroke=\"#A54C08\" stroke-width=\"1.5\"/><rect x=\"247\" y=\"24\" width=\"34\" height=\"34\" rx=\"5\" fill=\"none\" stroke=\"currentColor\" stroke-opacity=\"0.45\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><rect x=\"210\" y=\"61\" width=\"34\" height=\"34\" rx=\"5\" fill=\"none\" stroke=\"currentColor\" stroke-opacity=\"0.45\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><rect x=\"247\" y=\"61\" width=\"34\" height=\"34\" rx=\"5\" fill=\"none\" stroke=\"currentColor\" stroke-opacity=\"0.45\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><text x=\"106\" y=\"116\" font-size=\"18\" font-weight=\"800\" text-anchor=\"middle\" fill=\"currentColor\" fill-opacity=\"1\">4 + 4</text><text x=\"245.5\" y=\"116\" font-size=\"18\" font-weight=\"800\" text-anchor=\"middle\" fill=\"currentColor\" fill-opacity=\"1\">+ 1</text><text x=\"190\" y=\"150\" font-size=\"22\" font-weight=\"800\" text-anchor=\"middle\" fill=\"currentColor\" fill-opacity=\"1\">2 1/4 = 9/4</text></svg><p>2 1/4 jsou dvě plné krabice po 4 dílcích, to je 8 dílků. A ještě 1 dílek navíc, dohromady 9 dílků.</p><p>Takže 2 1/4 = <b>9/4</b>. Dole zůstává 4, protože krabice má pořád 4 místa.</p>"
+    },
+    {
+     "t": "fill",
+     "q": "Vybarvi 2 <span class=\"zl\"><b>1</b><b>4</b></span>: dvě plné krabice a jeden dílek navíc.",
+     "shape": "box",
+     "parts": 4,
+     "a": 9,
+     "wholes": 3
+    },
+    {
+     "t": "num",
+     "q": "Kolik je to dílků? Napiš to jako zlomek.",
+     "form": "frac",
+     "a": [
+      9,
+      4
+     ],
+     "lhs": "2 <span class=\"zl\"><b>1</b><b>4</b></span>"
+    },
+    {
+     "t": "num",
+     "q": "Hrnek a půl mouky. Kolik je to polovin hrnku?",
+     "form": "frac",
+     "a": [
+      3,
+      2
+     ],
+     "lhs": "1 <span class=\"zl\"><b>1</b><b>2</b></span>",
+     "why": "Celý hrnek jsou 2 poloviny. A ještě jedna navíc."
+    },
+    {
+     "t": "num",
+     "q": "Napiš jako nepravý zlomek.",
+     "form": "frac",
+     "a": [
+      7,
+      4
+     ],
+     "lhs": "1 <span class=\"zl\"><b>3</b><b>4</b></span>",
+     "why": "Jedna plná krabice jsou 4 dílky. Kolik je to i se třemi navíc?"
+    },
+    {
+     "t": "num",
+     "q": "Těžší: 3 plné krabice po 5 místech a ještě 2 dílky.",
+     "form": "frac",
+     "a": [
+      17,
+      5
+     ],
+     "lhs": "3 <span class=\"zl\"><b>2</b><b>5</b></span>",
+     "why": "3 krabice × 5 míst = 15 dílků. Kolik je to i s těmi dvěma?"
+    },
+    {
+     "t": "mc",
+     "q": "Hodina a čtvrt je kolik čtvrthodin?",
+     "opts": [
+      "5/4",
+      "4/5",
+      "1/4"
+     ],
+     "a": "5/4",
+     "why": "Hodina má 4 čtvrthodiny. A ještě jedna navíc."
+    }
+   ]
+  }
+ ]
+}
