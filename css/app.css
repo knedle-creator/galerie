@@ -262,3 +262,49 @@ details summary{cursor:pointer;min-height:2.4rem;padding:.3rem 0}
 [data-app="vyprava"] .piece.next .fr{outline-offset:4px}
 [data-app="vyprava"] .cap{text-align:center}
 .badge-e{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:58%;aspect-ratio:1;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-size:clamp(1.6rem,9vw,2.6rem);line-height:1;box-shadow:0 2px 0 rgba(0,0,0,.15)}
+
+/* ---------- předměty (úvodní obrazovka) ---------- */
+.subjects{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.subj{display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;background:var(--surface);border:2px solid var(--line);border-bottom-width:5px;border-radius:1.3rem;padding:.9rem 1rem;text-align:left;width:100%;min-width:0}
+.subj .e{font-size:2.1rem;line-height:1.1}
+.subj b{font-size:1.12rem;overflow-wrap:break-word}
+.subj small{color:var(--soft);line-height:1.3}
+.subj.none{opacity:.55;border-style:dashed;cursor:default}
+.chip.played{border-color:var(--sky);color:var(--ink)}
+
+/* ---------- hra v rámečku ---------- */
+.gamebox{margin:0 -1rem -3rem}
+.gamebox iframe{display:block;width:100%;height:calc(100dvh - 3.6rem - env(safe-area-inset-top,0px));border:0;background:var(--bg)}
+
+/* ---------- matika: zlomek pod sebou ---------- */
+.zl{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.05;margin:0 .15em;font-weight:800}
+.zl b{display:block;padding:0 .2em}
+.zl b:first-child{border-bottom:3px solid currentColor}
+.q .zl{font-size:1.45em}
+.info{font-size:1.1rem}
+.info h3{font-size:1.3rem;margin:.1rem 0 .5rem}
+.info p{margin:.4rem 0}
+.info svg{display:block;width:100%;height:auto;max-width:440px;margin:.6rem auto}
+.card svg.tahak{display:block;width:100%;height:auto;margin:.6rem auto}
+
+/* vybarvi dílky */
+.fillwrap{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin:.4rem 0 .2rem}
+.fillwrap svg.pz{width:min(46vw,200px);height:auto}
+.fillwrap svg.bx{max-width:100%;height:auto}
+.fillwrap .part{fill:var(--bg);stroke:var(--soft);stroke-width:2;cursor:pointer;transition:fill .08s}
+.fillwrap svg.bx .part{stroke-dasharray:5 4;stroke-width:1.5}
+.fillwrap .part.on{fill:var(--sun);stroke:var(--warn);stroke-dasharray:none;stroke-width:2}
+.fillwrap .part:focus-visible{outline:none;stroke:var(--pink);stroke-width:4}
+.fillwrap .rim{fill:none;stroke:var(--ink);stroke-width:3;pointer-events:none}
+.fillwrap.lock .part{cursor:default}
+.fcount{text-align:center;margin:.3rem 0 0}
+
+/* napiš číslo nebo zlomek */
+.numf{display:flex;align-items:center;justify-content:center;gap:.7rem;flex-wrap:wrap;margin:.6rem 0 .4rem;font-size:1.6rem;font-weight:800}
+.numf .lhs .zl{font-size:1.25em}
+.numf .eq{font-size:1.6rem}
+.nfrac{display:inline-flex;flex-direction:column;align-items:center;gap:.25rem}
+.nfrac i{display:block;width:100%;min-width:4.2rem;height:4px;border-radius:2px;background:var(--ink)}
+.ninp{width:4.2rem;height:3.6rem;text-align:center;font:inherit;font-size:1.6rem;font-weight:800;border-radius:.8rem;border:3px solid var(--line);background:var(--bg);color:var(--ink);padding:0}
+.ninp:disabled{opacity:.75}
+.fillwrap .part:focus{outline:none}
