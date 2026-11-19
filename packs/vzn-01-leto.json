@@ -1,0 +1,257 @@
+{
+ "schema": 1,
+ "id": "vzn-01-leto",
+ "course": "vzn",
+ "courseTitle": "Svět vzhůru nohama",
+ "subject": "vzn",
+ "lang": "cs",
+ "order": 1,
+ "version": 1,
+ "title": "Vánoce v plavkách",
+ "cz": "Proč je u protinožců v prosinci léto",
+ "subjects": [
+  "zeměpis",
+  "fyzika",
+  "matematika"
+ ],
+ "games": [
+  {
+   "id": "hodiny",
+   "title": "Hodiny dvou světů",
+   "cz": "Kolik je hodin doma a kolik u protinožců",
+   "e": "🕛",
+   "src": "hry/hodiny.html"
+  }
+ ],
+ "lessons": [
+  {
+   "id": "vzn1-leto",
+   "e": "🎅",
+   "title": "Vánoce v plavkách",
+   "cz": "Záhada: proč je tam v prosinci léto",
+   "intro": "<p>Na Zélandu budeš slavit Vánoce v létě. Dnes zjistíš proč.</p><p class=\"cz\">Tři stopy, asi 7 minut.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>🔍 Záhada</h3><p>Na Novém Zélandu jezdí Santa na surfu. K vánočnímu obědu se griluje na pláži a místo jedličky kvete strom <b>pōhutukawa</b> jasně červenými květy.</p><p>V prosinci je tam totiž léto. U nás mrzne. Přitom jsme na stejné Zemi a svítí na nás stejné Slunce. Jak to?</p>"
+    },
+    {
+     "t": "tip",
+     "key": "leto",
+     "q": "Jak si to vysvětluješ ty? Vyber, co si myslíš. Tady není žádná špatná odpověď.",
+     "opts": [
+      "Zéland je v prosinci blíž ke Slunci.",
+      "Země je nakloněná a v prosinci natáčí ke Slunci svou jižní polovinu.",
+      "Na jihu fouká teplý vítr z pouští.",
+      "Netuším, ale chci to zjistit."
+     ],
+     "after": "Vědci taky začínají tipem a pak hledají důkazy. Na konci lekce porovnáš svůj tip s tím, co zjistíš."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Stopa 1: vzdálenost od Slunce</h3><p>Země neobíhá Slunce v dokonalém kruhu. Někdy je mu o kousek blíž, někdy dál.</p><p><b>Nejblíž je začátkem ledna</b>, asi 147 milionů kilometrů.<br><b>Nejdál je začátkem července</b>, asi 152 milionů kilometrů.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Kdy je Země Slunci nejblíž?",
+     "opts": [
+      "Začátkem ledna",
+      "Začátkem července",
+      "O Velikonocích"
+     ],
+     "a": "Začátkem ledna",
+     "why": "Vzpomeň si na předchozí obrazovku: nejblíž je to krátce po Novém roce."
+    },
+    {
+     "t": "mc",
+     "q": "Začátkem ledna je Země Slunci nejblíž. Jaké je v tu dobu počasí v Mrsklesích?",
+     "opts": [
+      "Zima, mrzne a brzy je tma",
+      "Léto, koupeme se v řece"
+     ],
+     "a": "Zima, mrzne a brzy je tma",
+     "why": "Vzpomeň si na leden doma: sníh, nebo koupání?",
+     "more": "<b>Vzdálenost to tedy není.</b> Kdyby šlo o ni, měli bychom v lednu léto všichni na celé Zemi. Jenže my máme zimu a Kiwi léto ve stejnou chvíli. Musí v tom být něco jiného."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Stopa 2: Země je nakřivo</h3><p>Země se točí kolem své osy jako káča. Ta osa ale nestojí rovně. Je <b>nakloněná asi o 23 stupňů</b> a míří pořád stejným směrem, ať je Země na své cestě kolem Slunce kdekoli.</p><svg class=\"vz\" viewBox=\"0 0 320 170\" role=\"img\" aria-label=\"Země obíhá kolem Slunce s nakloněnou osou: v červnu míří ke Slunci sever, v prosinci jih\"><ellipse class=\"orbit\" cx=\"160\" cy=\"80\" rx=\"118\" ry=\"44\"/><circle class=\"sun\" cx=\"160\" cy=\"80\" r=\"22\"/><circle class=\"earth\" cx=\"42\" cy=\"80\" r=\"25\"/><path class=\"night\" d=\"M42 55A25 25 0 0 0 42 105Z\"/><line class=\"eq\" x1=\"19.1\" y1=\"70\" x2=\"64.9\" y2=\"90\"/><line class=\"axis\" x1=\"28.5\" y1=\"111\" x2=\"55.5\" y2=\"49\"/><circle class=\"dot cz\" cx=\"64.4\" cy=\"68.8\" r=\"4.5\"/><circle class=\"dot nz\" cx=\"53.5\" cy=\"102.2\" r=\"4.5\"/><circle class=\"earth\" cx=\"278\" cy=\"80\" r=\"25\"/><path class=\"night\" d=\"M278 55A25 25 0 0 1 278 105Z\"/><line class=\"eq\" x1=\"255.1\" y1=\"70\" x2=\"300.9\" y2=\"90\"/><line class=\"axis\" x1=\"264.5\" y1=\"111\" x2=\"291.5\" y2=\"49\"/><circle class=\"dot cz\" cx=\"270.9\" cy=\"56\" r=\"4.5\"/><circle class=\"dot nz\" cx=\"253.9\" cy=\"86.7\" r=\"4.5\"/><text class=\"lab\" x=\"6\" y=\"140\">červen</text><text class=\"sub\" x=\"6\" y=\"156\">léto na severu</text><text class=\"lab\" x=\"314\" y=\"140\" text-anchor=\"end\">prosinec</text><text class=\"sub\" x=\"314\" y=\"156\" text-anchor=\"end\">léto na jihu</text><text class=\"sub\" x=\"160\" y=\"114\" text-anchor=\"middle\">Slunce</text></svg><p class=\"cz\">Růžová tečka jsou Mrsklesy, zelená Zéland. V červnu se ke Slunci natáčí sever, v prosinci jih.</p>"
+    },
+    {
+     "t": "info",
+     "html": "<h3>Prosinec zblízka</h3><svg class=\"vz\" viewBox=\"0 0 320 200\" role=\"img\" aria-label=\"Země v prosinci: jižní polovina je natočená ke Slunci, sluneční paprsky na Zéland dopadají skoro kolmo, na Mrsklesy šikmo\"><circle class=\"sun\" cx=\"32\" cy=\"98\" r=\"26\"/><line class=\"ray\" x1=\"66\" y1=\"44\" x2=\"134\" y2=\"44\"/><line class=\"ray\" x1=\"66\" y1=\"71\" x2=\"134\" y2=\"71\"/><line class=\"ray\" x1=\"66\" y1=\"98\" x2=\"134\" y2=\"98\"/><line class=\"ray\" x1=\"66\" y1=\"125\" x2=\"134\" y2=\"125\"/><line class=\"ray\" x1=\"66\" y1=\"152\" x2=\"134\" y2=\"152\"/><circle class=\"earth\" cx=\"212\" cy=\"98\" r=\"68\"/><path class=\"night\" d=\"M212 30A68 68 0 0 1 212 166Z\"/><line class=\"eq\" x1=\"149.6\" y1=\"70.9\" x2=\"274.4\" y2=\"125.1\"/><line class=\"axis\" x1=\"175.4\" y1=\"182.2\" x2=\"248.6\" y2=\"13.8\"/><circle class=\"dot cz\" cx=\"192.7\" cy=\"32.8\" r=\"6\"/><circle class=\"dot nz\" cx=\"146.5\" cy=\"116.2\" r=\"6\"/><text class=\"sub\" x=\"256\" y=\"16\">osa Země</text></svg><p>🥝 <b>Zéland</b>: slunce svítí vysoko a skoro kolmo, den trvá skoro 15 hodin. <b>Léto.</b></p><p>🏠 <b>Mrsklesy</b>: slunce svítí nízko a šikmo, den trvá jen asi 8 hodin. <b>Zima.</b></p>"
+    },
+    {
+     "t": "pair",
+     "q": "Spoj, co k sobě patří.",
+     "pairs": [
+      [
+       "prosinec v Mrsklesích",
+       "zima ❄️"
+      ],
+      [
+       "prosinec na Zélandu",
+       "léto ☀️"
+      ],
+      [
+       "červenec v Mrsklesích",
+       "prázdniny u vody 🛶"
+      ],
+      [
+       "červenec na Zélandu",
+       "lyžování na sopce ⛷️"
+      ]
+     ]
+    },
+    {
+     "t": "info",
+     "html": "<h3>Stopa 3: proč šikmé světlo hřeje míň</h3><svg class=\"vz\" viewBox=\"0 0 320 182\" role=\"img\" aria-label=\"Baterka svítí kolmo: malá jasná skvrna. Baterka svítí šikmo: velká slabá skvrna\"><line class=\"ground\" x1=\"8\" y1=\"134\" x2=\"312\" y2=\"134\"/><polygon class=\"beam\" points=\"70,46 90,46 108,134 52,134\"/><rect class=\"torch\" x=\"68\" y=\"8\" width=\"24\" height=\"34\" rx=\"5\"/><rect class=\"torchhead\" x=\"64\" y=\"38\" width=\"32\" height=\"10\" rx=\"3\"/><ellipse class=\"spot\" cx=\"80\" cy=\"134\" rx=\"28\" ry=\"6\"/><text class=\"lab\" x=\"80\" y=\"160\" text-anchor=\"middle\">kolmo</text><text class=\"sub\" x=\"80\" y=\"172\" text-anchor=\"middle\">jasně, hřeje víc</text><g transform=\"rotate(-58 178 40)\"><rect class=\"torch\" x=\"166\" y=\"6\" width=\"24\" height=\"34\" rx=\"5\"/><rect class=\"torchhead\" x=\"162\" y=\"36\" width=\"32\" height=\"10\" rx=\"3\"/></g><polygon class=\"beam\" points=\"192,30 312,134 188,134 175,57\"/><ellipse class=\"spot2\" cx=\"250\" cy=\"134\" rx=\"62\" ry=\"7\"/><text class=\"lab\" x=\"250\" y=\"160\" text-anchor=\"middle\">šikmo</text><text class=\"sub\" x=\"250\" y=\"172\" text-anchor=\"middle\">slabě, hřeje míň</text></svg><p>Posviť baterkou kolmo na papír: vznikne malé, jasné kolečko. Posviť šikmo: stejné světlo se rozplácne do velké, slabé skvrny. Na každý kousek papíru ho dopadne míň, a tak míň hřeje.</p><p class=\"cz\">Zkus si to doma s baterkou v mobilu.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Kdy slunce hřeje víc?",
+     "opts": [
+      "Když svítí vysoko a skoro kolmo",
+      "Když svítí nízko nad obzorem a šikmo"
+     ],
+     "a": "Když svítí vysoko a skoro kolmo",
+     "why": "Vzpomeň na baterku: kdy vzniklo malé, jasné kolečko?"
+    },
+    {
+     "t": "info",
+     "tip": "leto",
+     "tipok": [
+      "Země je nakloněná a v prosinci natáčí ke Slunci svou jižní polovinu."
+     ],
+     "ifok": "<p><b>Trefa!</b> Tvůj tip se potvrdil. Přemýšlela jsi jako astronomka.</p>",
+     "ifnot": "<p>Na začátku jsi to nevěděla, nebo sis tipla něco jiného. To je v pořádku: na vzdálenost od Slunce se nachytá spousta dospělých. Ty už víš, jak to je doopravdy.</p>",
+     "html": "<h3>Záhada vyřešená</h3><p><b>Léto je tam, kam se Země zrovna natáčí ke Slunci.</b> V prosinci je to jižní polovina. Proto budeš slavit Vánoce v plavkách.</p>"
+    }
+   ]
+  },
+  {
+   "id": "vzn1-sever",
+   "e": "🧭",
+   "title": "Slunce na severu",
+   "cz": "Stíny, dlouhé dny a mýty o protinožcích",
+   "intro": "<p>Na Zélandu je všechno trochu naopak. I slunce svítí z druhé strany.</p><p class=\"cz\">Asi 6 minut.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>Slunce na druhé straně</h3><p>Doma svítí slunce v poledne z jihu. Proto mají chalupy velká okna na jih a vinice rostou na jižních svazích.</p><p>Na Zélandu je to naopak: <b>v poledne je slunce na severu.</b></p><svg class=\"vz\" viewBox=\"0 0 320 204\" role=\"img\" aria-label=\"V poledne je v Mrsklesích slunce na jihu a stín míří na sever. Na Zélandu je slunce na severu a stín míří na jih\"><text class=\"lab\" x=\"80\" y=\"14\" text-anchor=\"middle\">🏠 Mrsklesy</text><circle class=\"rose\" cx=\"80\" cy=\"108\" r=\"56\"/><text class=\"dir\" x=\"80\" y=\"65\" text-anchor=\"middle\" dominant-baseline=\"central\">S</text><text class=\"dir\" x=\"80\" y=\"151\" text-anchor=\"middle\" dominant-baseline=\"central\">J</text><text class=\"dir\" x=\"123\" y=\"108\" text-anchor=\"middle\" dominant-baseline=\"central\">V</text><text class=\"dir\" x=\"37\" y=\"108\" text-anchor=\"middle\" dominant-baseline=\"central\">Z</text><text class=\"emo\" x=\"80\" y=\"180\" text-anchor=\"middle\" dominant-baseline=\"central\">☀️</text><line class=\"shadow\" x1=\"80\" y1=\"108\" x2=\"80\" y2=\"76\"/><circle class=\"person\" cx=\"80\" cy=\"108\" r=\"7\"/><text class=\"lab\" x=\"240\" y=\"14\" text-anchor=\"middle\">🥝 Zéland</text><circle class=\"rose\" cx=\"240\" cy=\"108\" r=\"56\"/><text class=\"dir\" x=\"240\" y=\"65\" text-anchor=\"middle\" dominant-baseline=\"central\">S</text><text class=\"dir\" x=\"240\" y=\"151\" text-anchor=\"middle\" dominant-baseline=\"central\">J</text><text class=\"dir\" x=\"283\" y=\"108\" text-anchor=\"middle\" dominant-baseline=\"central\">V</text><text class=\"dir\" x=\"197\" y=\"108\" text-anchor=\"middle\" dominant-baseline=\"central\">Z</text><text class=\"emo\" x=\"240\" y=\"36\" text-anchor=\"middle\" dominant-baseline=\"central\">☀️</text><line class=\"shadow\" x1=\"240\" y1=\"108\" x2=\"240\" y2=\"140\"/><circle class=\"person\" cx=\"240\" cy=\"108\" r=\"7\"/></svg><p class=\"cz\">Stín míří vždycky od slunce.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Stojíš v poledne na pláži na Zélandu. Kam ukazuje tvůj stín?",
+     "opts": [
+      "Na jih",
+      "Na sever",
+      "Na východ"
+     ],
+     "a": "Na jih",
+     "why": "Stín míří vždycky od slunce. Kde je na Zélandu v poledne slunce?"
+    },
+    {
+     "t": "mc",
+     "q": "Kiwi rodina staví dům. Kam dá velká okna, aby v něm bylo co nejvíc slunce?",
+     "opts": [
+      "Na sever",
+      "Na jih",
+      "Na západ"
+     ],
+     "a": "Na sever",
+     "why": "Kterým směrem se tam v poledne díváš, když chceš vidět slunce?",
+     "more": "Na Zélandu se v inzerátech chlubí, že dům je <i>north-facing</i>, tedy obrácený k severu. U nás by napsali, že má okna na jih."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Dlouhé letní dny</h3><p>Kolem Vánoc trvá den v Mrsklesích jen asi 8 hodin. Na Zélandu skoro 15 hodin: slunce vychází kolem šesté ráno a zapadá skoro v devět večer.</p>"
+    },
+    {
+     "t": "num",
+     "q": "Den na Zélandu trvá asi 15 hodin, v Mrsklesích asi 8 hodin. O kolik hodin déle tam svítí slunce?",
+     "form": "int",
+     "a": [
+      7
+     ],
+     "why": "Odečti kratší den od delšího: 15 − 8."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Mýtus, nebo pravda?</h3><p>O protinožcích koluje spousta řečí. Některé jsou pravda, jiné jsou <b>mýtus</b>: hodně lidí tomu věří, ale pravda to není.</p><p>Detektivka se ptá: <b>Jak bych to mohla ověřit?</b></p>"
+    },
+    {
+     "t": "mc",
+     "q": "<b>Mýtus, nebo pravda?</b> Na jižní polokouli se voda v umyvadle točí opačně.",
+     "opts": [
+      "Mýtus",
+      "Pravda"
+     ],
+     "a": "Mýtus",
+     "why": "Představ si, jak malé je umyvadlo proti celé Zemi.",
+     "more": "Směr víru v umyvadle určí hlavně jeho tvar a to, jak do něj voda natekla. Otáčení Země je na tak malé množství vody moc slabé. Na Zélandu si to ověříš sama, máš na to misi."
+    },
+    {
+     "t": "mc",
+     "q": "<b>Mýtus, nebo pravda?</b> Protinožci chodí hlavou dolů.",
+     "opts": [
+      "Mýtus",
+      "Pravda"
+     ],
+     "a": "Mýtus",
+     "why": "Kam tě táhne gravitace? Ke středu Země, ať stojíš kdekoli.",
+     "more": "„Dole“ je pro každého směr do středu Země. Kiwi proto stojí stejně pevně jako ty. I to, co je na mapě nahoře, je jen dohoda: existují mapy, kde je jih nahoře a Zéland úplně navrchu."
+    },
+    {
+     "t": "mc",
+     "q": "<b>Mýtus, nebo pravda?</b> Země je Slunci nejblíž v lednu, kdy je u nás zima.",
+     "opts": [
+      "Mýtus",
+      "Pravda"
+     ],
+     "a": "Pravda",
+     "why": "Vzpomeň si na první stopu z minulé lekce.",
+     "more": "Pravda. A je to dobrý důkaz, že roční období nedělá vzdálenost od Slunce, ale náklon Země."
+    },
+    {
+     "t": "mc",
+     "q": "<b>Mýtus, nebo pravda?</b> Na Zélandu nežijí na souši žádní hadi.",
+     "opts": [
+      "Mýtus",
+      "Pravda"
+     ],
+     "a": "Pravda",
+     "why": "Zkus si vzpomenout, co víš o zvířatech na Zélandu.",
+     "more": "Pravda! Na souši tam nenajdeš jediného hada. Proč? To je záhada na některou z dalších kapitol."
+    }
+   ]
+  }
+ ],
+ "missions": [
+  {
+   "id": "vzn1-m-stin",
+   "where": "první slunečný den",
+   "cz": "Postav se v poledne na slunce. Kam ukazuje tvůj stín? Vyfoť ho a zapiš světovou stranu. Kvůli letnímu času je tam pravé poledne až kolem jedné odpoledne."
+  },
+  {
+   "id": "vzn1-m-umyvadlo",
+   "where": "ubytování nebo kemp",
+   "cz": "Pusť třikrát vodu z umyvadla a zapiš, kterým směrem se točí vír. Je to pokaždé stejně? Mýtus, nebo pravda?"
+  },
+  {
+   "id": "vzn1-m-pohutukawa",
+   "where": "pobřeží",
+   "cz": "Najdi kvetoucí strom pōhutukawa, novozélandský vánoční strom. Namaluj si ho do svého atlasu."
+  },
+  {
+   "id": "vzn1-m-zapad",
+   "where": "první večer",
+   "cz": "Zapiš, v kolik zapadlo slunce. Kolik bylo v tu chvíli hodin v Mrsklesích?"
+  },
+  {
+   "id": "vzn1-m-vanoce",
+   "where": "Štědrý den",
+   "cz": "Zjisti, kolik stupňů je na Zélandu a kolik doma. O kolik je u protinožců tepleji?"
+  }
+ ]
+}
