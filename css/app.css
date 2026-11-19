@@ -338,3 +338,36 @@ details summary{cursor:pointer;min-height:2.4rem;padding:.3rem 0}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .kor .t0{fill:var(--ink)}}
 .kor .lab{fill:currentColor}.kor .sub{fill:var(--soft)}.kor .ln{stroke:currentColor;stroke-width:2.5;fill:none}
 .kor .pk{fill:var(--pink)}.kor .lnp{stroke:var(--pink);stroke-width:2.5;fill:none}
+
+/* ---------- Svět vzhůru nohama: Tipni si a obrázky (třída .vz) ---------- */
+.tipbadge{display:inline-block;background:var(--hi);color:var(--violet);font-weight:800;border-radius:999px;padding:.15rem .8rem;margin:0 0 .4rem}
+.tipbox{background:var(--hi);border-left:6px solid var(--violet);border-radius:1rem;padding:.7rem 1rem;margin:0 0 .9rem}
+.tipbox.hit{border-left-color:var(--ok)}
+.tipbox small{color:var(--soft);font-weight:700}
+.tipbox p{margin:.25rem 0}
+.tipbox>p:first-of-type{font-weight:800}
+.vz .sun{fill:var(--sun)}
+.vz .ray{stroke:var(--sun);stroke-width:3;stroke-linecap:round;stroke-dasharray:3 7}
+.vz .orbit{fill:none;stroke:var(--soft);stroke-width:1.5;stroke-dasharray:4 5}
+.vz .earth{fill:var(--sky);stroke:currentColor;stroke-width:1.5}
+.vz .night{fill:#0B1030;opacity:.55}
+.vz .eq{stroke:#fff;stroke-width:1.5;stroke-dasharray:3 3;opacity:.8}
+.vz .axis{stroke:currentColor;stroke-width:2.5;stroke-linecap:round}
+.vz .dot{stroke:#fff;stroke-width:2}
+.vz .dot.cz{fill:var(--pink)}.vz .dot.nz{fill:var(--teal)}
+.vz .lab{fill:currentColor;font-weight:800;font-size:13px}
+.vz .sub{fill:var(--soft);font-weight:700;font-size:11px}
+.vz .ground{stroke:var(--soft);stroke-width:2}
+.vz .beam{fill:var(--sun);opacity:.22}
+.vz .torch{fill:var(--soft)}.vz .torchhead{fill:currentColor}
+.vz .spot{fill:var(--sun)}.vz .spot2{fill:var(--sun);opacity:.4}
+.vz .rose{fill:var(--bg);stroke:var(--line);stroke-width:2}
+.vz .dir{fill:var(--soft);font-weight:800;font-size:13px}
+.vz .emo{font-size:20px}
+.vz .shadow{stroke:var(--soft);stroke-width:6;stroke-linecap:round;opacity:.8}
+.vz .shadow2{stroke:var(--soft);stroke-width:6;stroke-linecap:round;opacity:.35}
+.vz .person,.vz .stick{fill:currentColor}
+.vz .stone{fill:var(--sun);stroke:currentColor;stroke-width:1.5}
+.vz .stonet{fill:#2A2140;font-weight:800;font-size:11px}
+.vz .arrow{stroke:var(--pink);stroke-width:2.5}
+.vz .arrowh{fill:var(--pink)}
