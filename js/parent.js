@@ -2,7 +2,7 @@
 import { $, $$, esc, pl } from './util.js';
 import { S, save, exportBackup, importBackup, resetAll, getUserPacks, setUserPacks } from './store.js';
 import { app, route, go, toHome, toast, modal } from './ui.js';
-import { PACKS, ITEMS, KINDS, LOAD_ERRORS, validatePack, loadAll, status } from './packs.js';
+import { PACKS, ITEMS, KINDS, LOAD_ERRORS, SOON, validatePack, loadAll, status, previewOn, setPreview, czDate } from './packs.js';
 import { hasTTS, voiceCount, micOK, englishVoices, voiceGender, speak, clearCast, castVoices, gendersUnknown, recCount, PEOPLE } from './speech.js';
 import { P, g, PROFILES, setProfile } from './profile.js';
 
@@ -76,6 +76,16 @@ function lock() {
 
 const fmt = iso => iso ? new Date(iso).toLocaleDateString('cs-CZ') : '';
 
+// Kapitoly s datem odemčení, po kurzech: „Svět vzhůru nohama: 4 kapitoly od 9. 12. 2026“
+function soonRows() {
+  const by = {};
+  for (const x of SOON) { const k = `${x.course}|${x.from}`; (by[k] = by[k] || []).push(x); }
+  return Object.entries(by).map(([k, xs]) => {
+    const [course, from] = k.split('|');
+    return `<div class="stat"><span>${esc(course)}<br><small class="cz">${xs.map(x => esc(x.title)).join(', ')}</small></span><span style="white-space:nowrap">od ${czDate(from)}</span></div>`;
+  }).join('');
+}
+
 function panel() {
   const rows = PACKS.map(p => {
     const its = ITEMS.filter(i => i.pack === p && i.kind !== 'mission');
@@ -127,11 +137,19 @@ function panel() {
     <div class="items">${PROFILES.map(x => `<label class="item" style="cursor:pointer"><input type="radio" name="kdo" value="${esc(x.id)}" ${x.id === P.id ? 'checked' : ''} style="width:1.3rem;height:1.3rem;flex:none">
      <span class="tx"><b>${esc(x.name)}</b></span></label>`).join('')}</div></div>` : ''}
 
+   ${SOON.length ? `<div class="card"><h2>🔒 Připravuje se</h2>
+    <p class="cz">Tyhle kapitoly ${esc(P.name)} uvidí až od uvedeného dne. Telefon si je stahuje už teď, takže na cestě fungují i bez internetu.</p>
+    ${soonRows()}
+    <label class="toggle" style="margin-top:.6rem"><input type="checkbox" id="nahled" ${previewOn() ? 'checked' : ''}> Ukázat je už teď v tomhle zařízení (náhled pro rodiče)</label>
+    <p class="cz">Náhled platí jen v zařízení, kde ho zapnete. V telefonu dítěte ho po kontrole zase vypněte.</p></div>` : ''}
+
    <div class="card"><h2>Ostatní</h2>
     <div class="actions"><button class="btn ghost" id="cpin">Změnit PIN</button><button class="btn ghost" id="rst">Smazat všechna data…</button></div></div>
    <div class="actions"><button class="btn wide" id="out">Zamknout a odejít</button></div>`;
 
   $('#snd').onchange = e => { S.sound = e.target.checked; save(); };
+  const nh = $('#nahled');
+  if (nh) nh.onchange = async e => { setPreview(e.target.checked); await loadAll(); toast(e.target.checked ? 'Náhled je zapnutý. Kapitoly jsou vidět v tomhle zařízení.' : 'Náhled je vypnutý. Kapitoly se ukážou až v daný den.'); panel(); };
   $$('[data-try]').forEach(b => b.onclick = e => {
     e.preventDefault();
     speak(SAMPLE[b.dataset.g], { force: true, voice: englishVoices().find(x => x.name === b.dataset.try) });

@@ -7,6 +7,7 @@ export const PACKS = [];        // seřazené balíčky
 export const BY_ID = {};
 export const ITEMS = [];        // všechny položky všech balíčků v pořadí
 export const LOAD_ERRORS = [];  // {file, errors[]}
+export const SOON = [];         // balíčky s datem odemčení v budoucnu {id, title, course, from, locked}
 const DICT = new Map();         // anglické slovo -> čeština
 
 export const KINDS = {
@@ -30,6 +31,7 @@ export function validatePack(p) {
   if (!str(p.id) || !/^[a-z0-9_-]+$/i.test(p.id)) E.push('Chybí „id“ balíčku (jen písmena, čísla, - a _).');
   if (!str(p.course)) E.push('Chybí „course“ (např. "harmonize2" nebo "nz").');
   if (!str(p.title)) E.push('Chybí „title“ balíčku.');
+  if (p.from !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(p.from)) E.push('„from“ musí být datum ve tvaru "2026-12-09".');
   for (const k of ['lessons', 'practice', 'dialogs', 'readings', 'writing', 'missions', 'games'])
     if (p[k] !== undefined && !arr(p[k])) E.push(`„${k}“ musí být seznam [ … ].`);
   if (E.length) return E;
@@ -122,12 +124,16 @@ export function validatePack(p) {
 
 /* ---------- načtení ---------- */
 export async function loadAll() {
-  PACKS.length = 0; ITEMS.length = 0; LOAD_ERRORS.length = 0; DICT.clear();
+  PACKS.length = 0; ITEMS.length = 0; LOAD_ERRORS.length = 0; SOON.length = 0; DICT.clear();
   for (const k in BY_ID) delete BY_ID[k];
   const add = (p, file) => {
     if (p && typeof p === 'object') genderize(p);
     const errs = validatePack(p);
     if (!errs.length && hidden(p)) return; // kurz, který tohle dítě nemá (např. Nový Zéland u bratranců)
+    if (!errs.length && p.from && isoToday() < p.from) {
+      SOON.push({ id: p.id, title: p.title, course: p.courseTitle || p.course, from: p.from, locked: locked(p.from) });
+      if (locked(p.from)) return; // ještě není ten den: dítě balíček nevidí (telefon ho má stažený)
+    }
     if (errs.length) { LOAD_ERRORS.push({ file, errors: errs }); return; }
     if (BY_ID[p.id]) { const i = PACKS.indexOf(BY_ID[p.id]); PACKS.splice(i, 1); } // nahraný balíček nahradí stejný z repa
     BY_ID[p.id] = p; PACKS.push(p);
@@ -170,6 +176,15 @@ function genderize(o) {
 // Kurzy a předměty, které profil skrývá ("hide": ["nz", "vzn", "es"]).
 const isHidden = id => (P.hide || []).includes(id);
 const hidden = p => isHidden(p.course) || isHidden(p.subject) || isHidden(subjectOf(p));
+// Odemčení podle data: "from": "2026-12-09" u balíčku nebo předmětu. Do toho dne ho dítě nevidí.
+// Rodič si ho v Pro rodiče může ukázat dřív, jen v tomhle zařízení (localStorage "<id>-nahled").
+export const isoToday = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+const ls = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } } };
+export const previewOn = () => ls.get(`${P.id}-nahled`) === '1';
+export function setPreview(on) { try { if (on) localStorage.setItem(`${P.id}-nahled`, '1'); else localStorage.removeItem(`${P.id}-nahled`); } catch (e) { /* nic */ } }
+export const locked = from => typeof from === 'string' && isoToday() < from && !previewOn();
+// „2026-12-09“ -> „9. 12. 2026“
+export const czDate = iso => { const [y, m, d] = String(iso).split('-').map(Number); return `${d}. ${m}. ${y}`; };
 function addDict(en, cz, weak) {
   const k = String(en).toLowerCase().replace(/’/g, "'").trim();
   if (k && cz && !(weak && DICT.has(k))) DICT.set(k, cz);
@@ -224,7 +239,7 @@ export function subjectOf(p) {
   return s ? s.id : 'en';
 }
 export function subjects() {
-  return (P.subjects || []).filter(s => !isHidden(s.id)).map(s => ({
+  return (P.subjects || []).filter(s => !isHidden(s.id) && !locked(s.from)).map(s => ({
     ...s, cz: (P.subjectCz || {})[s.id] ?? s.cz,
     list: courses().filter(c => c.packs.some(p => p._subject === s.id))
   }));
