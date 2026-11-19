@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hodiny dvou světů</title>
+<style>
+:root{
+  --bg:#EEF2FA; --surface:#FFFFFF; --ink:#1A2340; --soft:#56607E; --line:#D5DCEC;
+  --sun:#F5B82E; --day:#BFE0FF; --night:#24305E; --cz:#D63F7E; --nz:#1E8A5E; --cn:#C8650F;
+  --accent:#3D5FC4; --onacc:#FFFFFF; --hi:#E6ECFB;
+  --ok:#1E8A5E; --okbg:#DDF5EA; --warn:#A54C08; --warnbg:#FFF1D6;
+  color-scheme: light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0E1426; --surface:#18213A; --ink:#E8EDF8; --soft:#A3AEC9; --line:#2C3859;
+    --sun:#F7C64F; --day:#3B6EA5; --night:#070B18; --cz:#FF77AE; --nz:#4FD39B; --cn:#F2A65A;
+    --accent:#8FB0FF; --onacc:#0E1426; --hi:#24305A;
+    --ok:#4FD39B; --okbg:#123D30; --warn:#F7C64F; --warnbg:#3A2E12;
+    color-scheme: dark;
+  }
+}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Nunito",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:1.06rem;line-height:1.5;-webkit-text-size-adjust:100%}
+.wrap{max-width:560px;margin:0 auto;padding:.8rem 1rem 3rem}
+h1,h2,h3{margin:0;line-height:1.2}
+button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.btn{background:var(--accent);color:var(--onacc);border:0;border-radius:999px;padding:.75rem 1.4rem;font-weight:800;min-height:3rem;font-size:1.05rem}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.btn.small{padding:.45rem .9rem;min-height:2.6rem;font-size:.95rem}
+.btn.wide{width:100%}
+.actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}
+.linkbtn{background:none;border:0;color:var(--soft);text-decoration:underline;padding:0}
+.top{display:flex;justify-content:space-between;align-items:center;gap:.5rem;margin-bottom:.7rem}
+.dots{display:flex;gap:.35rem;flex-wrap:wrap;justify-content:center}
+.dot{width:.75rem;height:.75rem;border-radius:50%;background:var(--line)}
+.dot.on{background:var(--accent)}.dot.now{background:var(--cz)}
+.hero{padding:1rem 0 .5rem}
+.hero h1{font-size:2rem;font-weight:800}
+.hero p{color:var(--soft);margin:.4rem 0 0}
+.card{background:var(--surface);border-radius:1.4rem;padding:1.1rem;border:2px solid var(--line)}
+.card h2{font-size:1.6rem;margin-bottom:.4rem}
+.card p{margin:.5rem 0}
+.prompt{font-size:1.15rem;font-weight:700;margin:.1rem 0 .6rem}
+.stops{display:grid;gap:.8rem;margin:1rem 0}
+.stop{display:flex;align-items:center;gap:.9rem;width:100%;text-align:left;background:var(--surface);border:2px solid var(--line);border-bottom-width:5px;border-radius:1.2rem;padding:.8rem 1rem;color:var(--ink)}
+.stop.next{border-color:var(--cz)}
+.stop .e{font-size:2.2rem;line-height:1;flex:none;width:2.8rem;text-align:center}
+.stop h3{font-size:1.2rem}
+.stop small{display:block;color:var(--soft)}
+.tag{display:inline-block;font-size:.8rem;font-weight:800;border-radius:999px;padding:.1rem .6rem;margin-top:.25rem}
+.tag.done{background:var(--okbg);color:var(--ok)}
+.tag.next{background:var(--cz);color:#fff}
+.foot{color:var(--soft);font-size:.9rem;margin-top:1.4rem}
+/* svět: Země shora a hodiny */
+.world{margin:.3rem 0 .4rem}
+svg.globe,svg.axis{display:block;width:100%;height:auto;max-width:420px;margin:0 auto}
+.globe .ray{stroke:var(--sun);stroke-width:3;stroke-linecap:round;stroke-dasharray:2 8}
+.globe .sunc{fill:var(--sun)}
+.globe .earth{fill:var(--day);stroke:var(--ink);stroke-width:2}
+.globe .nighth{fill:var(--night);opacity:.85}
+.globe .pole{fill:var(--ink)}
+.globe .lab{fill:var(--soft);font-size:13px;font-weight:800}
+.globe .tick{stroke:var(--soft);stroke-width:1.5}
+.globe .pin{stroke:var(--surface);stroke-width:2.5}
+.pin.cz{fill:var(--cz)}.pin.nz{fill:var(--nz)}.pin.cn{fill:var(--cn)}
+.globe .pe{font-size:19px}
+.cap{color:var(--soft);font-size:.88rem;text-align:center;margin:.1rem 0 .5rem}
+.clocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(82px,1fr));gap:.4rem}
+.clk{background:var(--bg);border:2px solid var(--line);border-top-width:6px;border-radius:1rem;padding:.4rem .3rem;text-align:center;min-width:0}
+.clk.cz{border-top-color:var(--cz)}.clk.nz{border-top-color:var(--nz)}.clk.cn{border-top-color:var(--cn)}
+.clk b{display:block;font-size:.92rem;overflow-wrap:break-word}
+.clk .pe{font-size:1.3rem;line-height:1}
+.clk .tm{display:block;font-size:clamp(1.4rem,7vw,1.8rem);font-weight:800;line-height:1.15;font-variant-numeric:tabular-nums}
+.clk small{display:block;color:var(--soft);font-size:.78rem;line-height:1.3}
+.clk.hid .tm{color:var(--soft)}
+.ctrl{display:flex;align-items:center;gap:.5rem;margin:.8rem 0 .2rem}
+.ctrl input{flex:1;min-width:0;accent-color:var(--accent);height:2.4rem}
+.ctrl .btn{flex:none}
+.choices{display:grid;gap:.6rem;margin:.6rem 0}
+.choice{border:3px solid var(--line);border-bottom-width:5px;background:var(--surface);color:var(--ink);border-radius:1rem;padding:.75rem .9rem;font-weight:800;text-align:left;min-height:3.2rem}
+.choice.right{border-color:var(--ok);background:var(--okbg)}
+.choice.wrong{border-color:var(--warn);background:var(--warnbg);opacity:.8}
+.choice:disabled{cursor:default;color:var(--ink)}
+.answer{display:flex;align-items:center;gap:.5rem;margin:.6rem 0}
+.answer input{width:7rem;font:inherit;font-size:1.5rem;font-weight:800;padding:.5rem .8rem;border-radius:.9rem;border:3px solid var(--line);background:var(--bg);color:var(--ink)}
+.unit{font-weight:800;font-size:1.15rem}
+.fb{border-radius:1rem;padding:.8rem 1rem;margin:.8rem 0 0}
+.fb.ok{background:var(--okbg);border-left:6px solid var(--ok)}
+.fb.try{background:var(--warnbg);border-left:6px solid var(--warn)}
+.fb h3{font-size:1.1rem;margin-bottom:.2rem}
+.fb p{margin:.3rem 0}
+.zones{width:100%;border-collapse:collapse;margin:.5rem 0}
+.zones td{padding:.3rem .4rem;border-bottom:1px solid var(--line)}
+.zones td:last-child{text-align:right;font-weight:800;font-variant-numeric:tabular-nums}
+.axis .ln{stroke:var(--ink);stroke-width:2}
+.axis .tk{stroke:var(--soft);stroke-width:1.5}
+.axis .num{fill:var(--ink);font-size:12px;font-weight:800}
+.axis .sm{fill:var(--soft);font-size:10px;font-weight:700}
+.axis .pe{font-size:17px}
+.axis .zero{stroke:var(--ink);stroke-width:2.5}
+.overlay{position:fixed;inset:0;background:rgba(10,15,35,.55);display:grid;place-items:center;padding:1rem;z-index:20}
+.overlay .card{max-width:420px}
+.big{font-size:3.6rem;text-align:center;line-height:1}
+.endcard{text-align:center}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<main class="wrap" id="app"><p>Načítám…</p></main>
+<div id="ov"></div>
+<script>
+/* Hodiny dvou světů: kolik je hodin doma (Mrsklesy), v Kantonu a na Novém Zélandu.
+   Hra si přečte profil appky (../profile.json): jméno, rod oslovení a třídu (grade).
+   Zastávka „Pásma jako čísla“ (celá čísla) se ukazuje jen od 7. třídy. */
+const P = { id: 'klaudie', name: 'Klaudie', gender: 'f', grade: 0 };
+const g = (f, m) => (P.gender === 'm' ? m : f);
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const app = $('#app'), ov = $('#ov');
+
+/* ---------- čas ---------- */
+// Zimní čas: Mrsklesy UTC+1, Kanton UTC+8, Nový Zéland v prosinci letní čas UTC+13.
+const PL = {
+  cz: { e: '🏠', name: 'Mrsklesy', off: 1 },
+  cn: { e: '🏯', name: 'Kanton', off: 8 },
+  nz: { e: '🥝', name: 'Zéland', off: 13 }
+};
+const DNY = ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'];
+const BASE = Date.UTC(2026, 11, 1, 0); // čas t = hodiny od 1. 12. 2026 0:00 UTC
+// at('nz', 0, 1, 1) = čas, kdy je na Zélandu 1. ledna 0:00
+const at = (p, h, d, m) => (Date.UTC(m === 1 ? 2027 : 2026, m - 1, d, h) - BASE) / 36e5 - PL[p].off;
+function local(t, p) {
+  const x = new Date(BASE + (t + PL[p].off) * 36e5);
+  return { h: x.getUTCHours(), d: x.getUTCDate(), m: x.getUTCMonth() + 1, w: x.getUTCDay() };
+}
+const part = h => h >= 5 && h <= 8 ? 'ráno 🌅' : h >= 9 && h <= 11 ? 'dopoledne ☀️' : h === 12 ? 'poledne ☀️'
+  : h >= 13 && h <= 17 ? 'odpoledne ☀️' : h >= 18 && h <= 21 ? 'večer 🌆' : 'noc 🌙';
+
+/* ---------- zastávky ---------- */
+function levels() {
+  return [
+    { id: 'den', e: '🌗', title: 'Den a noc', sub: 'Když tady svítí slunce…', places: ['cz', 'nz'],
+      intro: `<h2>Den a noc</h2>
+       <p>Země se točí jako kolotoč. Jednou za den se otočí dokola. Polovina, která je natočená ke Slunci, má den. Druhá polovina má noc.</p>
+       <p>Mrsklesy 🏠 a Nový Zéland 🥝 jsou skoro na opačných stranách Země. Co to asi znamená?</p>`,
+      tasks: [
+        { t: 'pick', at: ['cz', 12, 10, 12], hide: ['nz'], q: 'V Mrsklesích je poledne. Podívej se na Zemi: co je teď u 🥝 na Zélandu?',
+          ch: [['Den, svítí slunce', 'Podívej se, na které polovině Země je 🥝. Je to ta světlá, nebo ta tmavá?'], ['Noc'], ['Ráno, právě vychází slunce', 'Ráno by 🥝 bylo na kraji mezi tmou a světlem. Kde je?']], ok: 1,
+          why: 'Na Zélandu je půlnoc. Když u nás svítí slunce nejvýš, Kiwi spí.' },
+        { t: 'set', start: ['cz', 12, 10, 12], goal: ['cz', 7],
+          q: `Posuň hodiny tak, aby v Mrsklesích bylo 7:00 ráno. Chystáš se do školy. Co v tu chvíli dělají na Zélandu?`,
+          hint: 'Klepej na −1 h nebo posuň jezdec a sleduj hodiny u 🏠, dokud neukážou 7:00.',
+          after: 'Na Zélandu je 19:00. Děti tam večeří a za chvíli půjdou spát. Ty teprve snídáš.' },
+        { t: 'pick', at: ['cz', 21, 10, 12], hide: ['nz'], q: 'Je 21:00 a jdeš spát. Kolik je na Zélandu?',
+          ch: [['9:00 ráno'], ['21:00 večer', 'To by byl stejný čas jako doma. Jenže 🥝 je na druhé straně Země.'], ['15:00 odpoledne', 'Zkus to spočítat: k 21 přidej 12.']], ok: 0,
+          why: '21 + 12 = 33. Den má jen 24 hodin, takže 33 − 24 = 9. Na Zélandu je 9:00 ráno, a to už dalšího dne.' },
+        { t: 'pick', at: ['cz', 8, 11, 12], q: 'Podívej se na oboje hodiny. O kolik hodin jsou na Zélandu napřed?',
+          ch: [['O 6 hodin', 'Od 8:00 do 20:00. Spočítej to na prstech, nebo odečti 20 − 8.'], ['O 12 hodin'], ['O 24 hodin', 'To by byl celý den. Je to míň.']], ok: 1,
+          why: 'Doma 8:00, na Zélandu 20:00. Rozdíl je 12 hodin, přesně půl dne.' }
+      ],
+      end: 'Rozdíl je 12 hodin. Když u nás jdeš spát, na Zélandu vstávají do nového dne.' },
+
+    { id: 'silvestr', e: '🎆', title: 'Silvestr dvakrát', sub: 'Kdo je dřív v novém roce', places: ['cz', 'nz'],
+      intro: `<h2>Silvestr dvakrát</h2>
+       <p>Nový den začíná nejdřív v Tichém oceánu. Nový Zéland je jedna z prvních zemí na světě, kde odbije půlnoc a začne nový rok.</p>
+       <p>Letos budeš slavit Silvestra na Zélandu. Kdy ho budou slavit doma?</p>`,
+      tasks: [
+        { t: 'set', start: ['nz', 18, 31, 12], goal: ['nz', 0, 1, 1],
+          q: 'Posuň hodiny tak, aby na Zélandu odbila půlnoc a začal 1. leden.',
+          hint: 'Sleduj hodiny u 🥝. Půlnoc je 0:00 a pod hodinami se změní datum na 1. 1.',
+          after: 'Šťastný nový rok! A podívej se domů: v Mrsklesích je teprve 31. prosince, poledne. Doma jsou ještě ve starém roce.' },
+        { t: 'pick', at: ['cz', 0, 1, 1], hide: ['nz'], q: 'Doma v Mrsklesích odbila půlnoc a začínají ohňostroje. Kolik je na Zélandu?',
+          ch: [['12:00 v poledne 1. ledna'], ['0:00, taky půlnoc', 'Kdyby tam byla půlnoc, slavili bychom spolu. Jenže na Zélandu jsou o 12 hodin napřed.'], ['12:00 v poledne 31. prosince', 'Na Zélandu je nový rok už dávno. Který je tam den?']], ok: 0,
+          why: 'Když doma bouchají rachejtle, na Zélandu je 1. ledna poledne. Můžete domů zavolat a popřát podruhé!' },
+        { t: 'set', start: ['nz', 8, 1, 1], goal: ['cz', 18],
+          q: 'Chceme zavolat domů, až tam bude 18:00 večer. Nastav hodiny tak, aby v Mrsklesích bylo 18:00.',
+          hint: 'Sleduj hodiny u 🏠. Můžeš jít dopředu i dozadu.',
+          after: 'Na Zélandu je v tu chvíli 6:00 ráno. Takže budíček a hurá k telefonu!' },
+        { t: 'pick', at: ['nz', 7, 25, 12], hide: ['cz'], q: 'Děti na Zélandu rozbalují dárky ráno 25. prosince v 7:00. Kolik je v tu chvíli v Mrsklesích?',
+          ch: [['19:00 večer 24. prosince'], ['7:00 ráno 25. prosince', 'To by byl stejný čas. Doma jsou o 12 hodin pozadu.'], ['19:00 večer 25. prosince', 'Odečti 12 hodin. Když přejdeš přes půlnoc dozadu, posune se i den.']], ok: 0,
+          why: 'V Mrsklesích je Štědrý večer, 19:00. Kiwi děti rozbalují dárky skoro ve stejnou chvíli jako ty pod stromečkem, jen u nich je ráno.' }
+      ],
+      end: 'Na Zélandu jste o půl dne napřed. Do nového roku tam vstoupíš o 12 hodin dřív než doma.' },
+
+    { id: 'let', e: '✈️', title: 'Let přes Kanton', sub: 'Tři místa, tři časy', places: ['cz', 'cn', 'nz'],
+      intro: `<h2>Let přes Kanton</h2>
+       <p>Na Zéland poletíme s přestupem v Kantonu v Číně. Kanton je před Mrsklesy o 7 hodin napřed, Zéland o 12.</p>
+       <p>Na každém místě ukazují hodiny něco jiného. Pomůžeš rodičům to pohlídat?</p>`,
+      tasks: [
+        { t: 'pick', at: ['cz', 10, 10, 12], hide: ['cn', 'nz'], q: 'V Mrsklesích je 10:00 dopoledne. Kolik je v Kantonu, který je o 7 hodin napřed?',
+          ch: [['17:00 odpoledne'], ['3:00 ráno', 'Kanton je napřed, ne pozadu. Přičítej.'], ['10:00 dopoledne', 'To by byl stejný čas jako doma.']], ok: 0,
+          why: '10 + 7 = 17. V Kantonu je 17:00.' },
+        { t: 'set', start: ['cz', 14, 10, 12], goal: ['cz', 2, 11, 12],
+          q: 'Řekněme, že odletíme ve 14:00 českého času a poletíme 12 hodin. Posuň čas o 12 hodin dopředu. Kolik bude doma, až přistaneme?',
+          hint: 'Klepni dvanáctkrát na +1 h a počítej nahlas. Hlídej, kdy přejdeš přes půlnoc.',
+          after: 'Doma budou 2:00 v noci, ale v Kantonu 9:00 ráno. Proto je po dlouhém letu člověku divně: tělo si myslí, že je noc, a venku je den. Tomu se říká jet lag.' },
+        { t: 'num', q: 'Na Zélandu přistaneme a hodiny na letišti ukazují 18:00. Kolik je v tu chvíli v Mrsklesích? Napiš jen číslo hodiny.',
+          a: 6, unit: 'h', hint: 'Zéland je o 12 hodin napřed. Od 18 odečti 12.', why: '18 − 12 = 6. Doma je 6:00 ráno.' },
+        { t: 'pick', q: 'Co pomáhá proti jet lagu po příletu?',
+          ch: [['Hned jít spát, i když je poledne', 'Tělo by si na nový čas zvykalo pomaleji. Co mu řekne, že je den?'], ['Být venku na světle a jít spát večer podle místních hodin'], ['Celou noc hrát hry', 'To by tělo zmátlo ještě víc.']], ok: 1,
+          why: 'Denní světlo je pro tělo signál: teď je den. Za pár dní se hodiny v těle přeřídí.' }
+      ],
+      end: 'Na cestě se hodiny posunou o 12 hodin dopředu. Tělo potřebuje pár dní, než si zvykne.' },
+
+    { id: 'cisla', e: '➕', title: 'Pásma jako čísla', sub: 'Plus a minus u hodin', grade: 7, vis: 'axis',
+      intro: `<h2>Pásma jako čísla</h2>
+       <p>Hodiny na celém světě se počítají od jednoho společného času. Říká se mu UTC a je to nula. Každé místo má k němu svoje číslo:</p>
+       <table class="zones"><tr><td>🗽 New York v zimě</td><td>−5</td></tr><tr><td>🏠 Mrsklesy v zimě</td><td>+1</td></tr>
+       <tr><td>🏯 Kanton</td><td>+8</td></tr><tr><td>🥝 Zéland v prosinci</td><td>+13</td></tr></table>
+       <p>Rozdíl dvou míst spočítáš jako u teploměru: kolik kroků je mezi nimi na číselné ose.</p>`,
+      tasks: [
+        { t: 'num', q: 'Zéland má +13, Mrsklesy +1. O kolik hodin je Zéland napřed?', a: 12, unit: 'h', hint: 'Spočítej 13 − 1.', why: '13 − 1 = 12.' },
+        { t: 'num', q: 'Kanton má +8, Mrsklesy +1. O kolik hodin je Kanton napřed?', a: 7, unit: 'h', hint: 'Spočítej 8 − 1.', why: '8 − 1 = 7.' },
+        { t: 'num', q: 'New York má −5, Mrsklesy +1. O kolik hodin jsou Mrsklesy napřed před New Yorkem?', a: 6, unit: 'h',
+          hint: 'Podívej se na osu: od −5 k nule je 5 kroků a od nuly k +1 ještě jeden.', why: '1 − (−5) = 1 + 5 = 6.' },
+        { t: 'num', q: 'Zéland má +13, New York −5. Kolik hodin je mezi nimi?', a: 18, unit: 'h',
+          hint: 'Od −5 k nule je 5 kroků, od nuly k +13 dalších 13.', why: '13 − (−5) = 13 + 5 = 18. Když je v New Yorku poledne, na Zélandu je 6:00 ráno dalšího dne.' },
+        { t: 'pick', q: 'V červenci má Zéland jen +12, v prosinci +13. Proč?',
+          ch: [['V prosinci mají letní čas a posunou hodiny o hodinu dopředu'], ['Zéland se v prosinci posune blíž k Asii', 'Ostrovy se nehýbou. Jde o hodiny, ne o místo.'], ['V prosinci se Země točí rychleji', 'Země se točí pořád stejně rychle.']], ok: 0,
+          why: 'Stejně jako my: v létě máme +2, v zimě +1. Jenže na Zélandu je léto v prosinci.' }
+      ],
+      end: 'Časová pásma jsou celá čísla na ose. Rozdíl spočítáš stejně jako rozdíl teplot.' }
+  ].filter(l => !l.grade || P.grade >= l.grade);
+}
+
+/* ---------- ukládání ---------- */
+let KEY = 'hodiny-klaudie-v1', S = { done: {}, pos: {} }, LV = [];
+function load() { try { const r = localStorage.getItem(KEY); if (r) S = Object.assign({ done: {}, pos: {} }, JSON.parse(r)); } catch (e) {} }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+/* ---------- kreslení ---------- */
+function globe(t, places) {
+  const cx = 190, cy = 100, R = 62;
+  let marks = '';
+  for (const p of places) {
+    const f = Math.PI + (local(t, p).h - 12) * Math.PI / 12; // poledne = natočeno ke Slunci (vlevo)
+    const c = Math.cos(f), s = Math.sin(f);
+    const x = cx + R * c, y = cy - R * s, lx = cx + (R + 22) * c, ly = cy - (R + 22) * s;
+    marks += `<line class="tick" x1="${(cx + (R + 7) * c).toFixed(1)}" y1="${(cy - (R + 7) * s).toFixed(1)}" x2="${(cx + (R + 12) * c).toFixed(1)}" y2="${(cy - (R + 12) * s).toFixed(1)}"/>`
+      + `<circle class="pin ${p}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="7.5"/>`
+      + `<text class="pe" x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" dominant-baseline="central">${PL[p].e}</text>`;
+  }
+  const rays = [62, 81, 100, 119, 138].map(y => `<line class="ray" x1="66" y1="${y}" x2="94" y2="${y}"/>`).join('');
+  return `<svg class="globe" viewBox="0 0 300 200" role="img" aria-label="Země shora: světlá polovina má den, tmavá noc">
+    ${rays}<circle class="sunc" cx="34" cy="100" r="24"/><text class="lab" x="34" y="144" text-anchor="middle">Slunce</text>
+    <text class="lab" x="150" y="16" text-anchor="middle">☀️ den</text><text class="lab" x="236" y="16" text-anchor="middle">🌙 noc</text>
+    <circle class="earth" cx="${cx}" cy="${cy}" r="${R}"/><path class="nighth" d="M${cx} ${cy - R} A${R} ${R} 0 0 1 ${cx} ${cy + R} Z"/>
+    <circle class="pole" cx="${cx}" cy="${cy}" r="3"/>${marks}</svg>`;
+}
+function clocks(t, places, hide) {
+  return `<div class="clocks">${places.map(p => {
+    const L = local(t, p), hid = hide.includes(p);
+    return `<div class="clk ${p}${hid ? ' hid' : ''}"><span class="pe">${PL[p].e}</span><b>${PL[p].name}</b>
+      <span class="tm">${hid ? '?' : L.h + ':00'}</span><small>${hid ? 'zjisti to' : `${DNY[L.w]} ${L.d}. ${L.m}. · ${part(L.h)}`}</small></div>`;
+  }).join('')}</div>`;
+}
+function axisSvg() {
+  const x = v => 16 + (v + 6) * 14.5; // −6 … +14
+  let tk = '';
+  for (let v = -6; v <= 14; v++) tk += `<line class="${v === 0 ? 'zero' : 'tk'}" x1="${x(v)}" y1="${v === 0 ? 40 : 44}" x2="${x(v)}" y2="${v === 0 ? 60 : 56}"/>`;
+  const m = [[-5, '🗽', '−5'], [0, '', '0'], [1, '🏠', '+1'], [8, '🏯', '+8'], [13, '🥝', '+13']];
+  return `<svg class="axis" viewBox="0 0 320 96" role="img" aria-label="Číselná osa časových pásem od −6 do +14">
+    <line class="ln" x1="10" y1="50" x2="312" y2="50"/>${tk}
+    ${m.map(([v, e, n]) => `${e ? `<text class="pe" x="${x(v)}" y="26" text-anchor="middle" dominant-baseline="central">${e}</text>` : ''}<text class="num" x="${x(v)}" y="74" text-anchor="middle">${n}</text>`).join('')}
+    <text class="sm" x="${x(0)}" y="90" text-anchor="middle">UTC</text></svg>`;
+}
+
+/* ---------- obrazovky ---------- */
+let L = null, i = 0, tries = 0, solved = false, cur = 0, hide = [], T = null;
+function home() {
+  L = null;
+  const next = LV.find(l => !S.done[l.id]);
+  app.innerHTML = `<header class="hero"><h1>Hodiny dvou světů</h1>
+    <p>Kolik je hodin doma a kolik u protinožců? ${LV.length === 4 ? 'Čtyři' : 'Tři'} zastávky, každá asi na 5 minut.</p></header>
+    <div class="stops">${LV.map((l, k) => {
+      const d = S.done[l.id], n = next && next.id === l.id;
+      return `<button class="stop ${n ? 'next' : ''}" data-l="${k}"><span class="e">${l.e}</span>
+        <span><h3>${l.title}</h3><small>${l.sub}</small>${d ? '<span class="tag done">Hotovo ✓</span>' : n ? '<span class="tag next">Na řadě</span>' : ''}</span></button>`;
+    }).join('')}</div>
+    <p class="foot">Postup se ukládá v tomhle zařízení. Každou zastávku si můžeš zahrát znovu.<br><button class="linkbtn" id="reset">Začít všechno od začátku</button></p>`;
+  $$('.stop').forEach(b => b.onclick = () => intro(+b.dataset.l));
+  $('#reset').onclick = () => { if (confirm('Smazat postup a začít znovu?')) { S = { done: {}, pos: {} }; save(); home(); } };
+  scrollTo(0, 0);
+}
+function topbar() {
+  const dots = L.tasks.map((_, k) => `<span class="dot ${k < i ? 'on' : k === i ? 'now' : ''}"></span>`).join('');
+  return `<div class="top"><button class="btn ghost small" id="back">Zastávky</button><div class="dots">${dots}</div><button class="btn ghost small" id="pause">Pauza</button></div>`;
+}
+function wireTop() { $('#back').onclick = home; $('#pause').onclick = pause; }
+function pause() {
+  ov.innerHTML = `<div class="overlay"><div class="card"><div class="big">🧃</div><h2 style="text-align:center;margin-top:.5rem">Pauza</h2>
+    <p>Zvedni se, napij se, protáhni ruce nad hlavu. Všechno je uložené a počká na tebe.</p>
+    <div class="actions"><button class="btn wide" id="resume">Pokračovat</button></div></div></div>`;
+  $('#resume').onclick = () => { ov.innerHTML = ''; };
+}
+function intro(k) {
+  L = LV[k];
+  i = S.pos[L.id] && !S.done[L.id] ? S.pos[L.id] : 0;
+  app.innerHTML = `${topbar()}<div class="card">${L.intro}
+    <div class="actions"><button class="btn wide" id="go">${i ? `Pokračovat od úkolu ${i + 1}` : 'Jdeme na to'}</button></div></div>`;
+  wireTop(); $('#go').onclick = task; scrollTo(0, 0);
+}
+function drawWorld() {
+  const w = $('#world'); if (!w) return;
+  const places = L.places;
+  w.innerHTML = `${globe(cur, places)}<p class="cap">Země shora, zjednodušeně. Točí se proti směru hodinových ručiček.</p>${clocks(cur, places, hide)}`;
+  const r = $('#rng'); if (r) r.value = cur;
+}
+function task() {
+  T = L.tasks[i]; tries = 0; solved = false; S.pos[L.id] = i; save();
+  hide = (T.hide || []).slice();
+  if (T.t === 'set') cur = at(...T.start); else if (T.at) cur = at(...T.at);
+  const world = L.vis === 'axis' ? axisSvg() : (T.at || T.t === 'set') ? '<div class="world" id="world"></div>' : '';
+  let body = '';
+  if (T.t === 'pick') body = `<div class="choices">${T.ch.map((c, k) => `<button class="choice" data-k="${k}">${c[0]}</button>`).join('')}</div>`;
+  if (T.t === 'set') body = `<div class="ctrl"><button class="btn ghost small" id="mn" aria-label="O hodinu zpět">−1 h</button>
+    <input type="range" id="rng" min="${cur - 24}" max="${cur + 24}" step="1" value="${cur}" aria-label="Posunout čas"><button class="btn ghost small" id="pl" aria-label="O hodinu dopředu">+1 h</button></div>`;
+  if (T.t === 'num') body = `<div class="answer"><input id="inp" inputmode="numeric" autocomplete="off" aria-label="Tvoje odpověď"><span class="unit">${T.unit || ''}</span></div>`;
+  app.innerHTML = `${topbar()}<div class="card"><p class="prompt">${T.q}</p>${world}${body}<div id="fb" aria-live="polite"></div>
+    <div class="actions" id="acts">${T.t === 'pick' ? '' : '<button class="btn wide" id="check">Zkontrolovat</button>'}</div></div>`;
+  wireTop(); drawWorld();
+  if (T.t === 'pick') $$('.choice').forEach(b => b.onclick = () => pick(b));
+  if (T.t === 'set') {
+    const r = $('#rng'), lo = +r.min, hi = +r.max;
+    const move = d => { if (solved) return; cur = Math.max(lo, Math.min(hi, cur + d)); drawWorld(); };
+    $('#mn').onclick = () => move(-1); $('#pl').onclick = () => move(1);
+    r.oninput = () => { if (solved) { r.value = cur; return; } cur = +r.value; drawWorld(); };
+    $('#check').onclick = checkSet;
+  }
+  if (T.t === 'num') { const inp = $('#inp'); inp.onkeydown = e => { if (e.key === 'Enter') checkNum(); }; $('#check').onclick = checkNum; }
+  scrollTo(0, 0);
+}
+const PRAISE = ['Sedí!', 'Přesně tak!', 'Trefa!', 'Výborně!'];
+const praise = () => PRAISE[Math.floor(Math.random() * PRAISE.length)];
+const fb = (ok, html) => { $('#fb').innerHTML = `<div class="fb ${ok ? 'ok' : 'try'}">${html}</div>`; };
+const again = () => tries > 0 ? `<p>Napodruhé, ale ${g('sama', 'sám')}. Tohle se počítá.</p>` : '';
+function next() {
+  solved = true; hide = []; drawWorld();
+  const last = i + 1 >= L.tasks.length;
+  $('#acts').innerHTML = `<button class="btn wide" id="nx">${last ? 'Dokončit zastávku' : 'Další úkol'}</button>`;
+  const b = $('#nx'); b.onclick = () => { if (last) finish(); else { i++; task(); } };
+  b.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+function pick(b) {
+  if (solved) return;
+  const k = +b.dataset.k;
+  if (k === T.ok) {
+    b.classList.add('right'); $$('.choice').forEach(x => x.disabled = true);
+    fb(true, `<h3>${praise()}</h3><p>${T.why}</p>${again()}`); return next();
+  }
+  b.classList.add('wrong'); b.disabled = true;
+  if (tries === 0) { tries++; fb(false, `<h3>Ještě jednou</h3><p>${T.ch[k][1] || 'Zkus to znovu. Jednu možnost už jsi vyřadil' + g('a', '') + '.'}</p>`); return; }
+  $$('.choice').forEach(x => { x.disabled = true; if (+x.dataset.k === T.ok) x.classList.add('right'); });
+  fb(false, `<h3>Tohle si zapamatuj</h3><p>Správně je: <b>${T.ch[T.ok][0]}</b></p><p>${T.why}</p>`); next();
+}
+function goalOk(t) { const G = T.goal, x = local(t, G[0]); return x.h === G[1] && (!G[2] || (x.d === G[2] && x.m === G[3])); }
+function goalT() {
+  const G = T.goal; if (G[2]) return at(...G);
+  const r = $('#rng'); let best = null;
+  for (let t = +r.min; t <= +r.max; t++) if (goalOk(t) && (best === null || Math.abs(t - cur) < Math.abs(best - cur))) best = t;
+  return best;
+}
+function checkSet() {
+  if (solved) return;
+  if (goalOk(cur)) { fb(true, `<h3>${praise()}</h3><p>${T.after}</p>${again()}`); return next(); }
+  if (tries === 0) {
+    tries++;
+    const sameHour = local(cur, T.goal[0]).h === T.goal[1];
+    fb(false, `<h3>Ještě jednou</h3><p>${sameHour ? 'Hodina sedí, ale datum ne. Podívej se na den pod hodinami.' : T.hint}</p>`); return;
+  }
+  solved = true;
+  fb(false, `<h3>Podívej, kam se hodiny posunou</h3>`);
+  animateTo(goalT(), () => { fb(false, `<h3>Tohle si zapamatuj</h3><p>${T.after}</p>`); next(); });
+}
+function animateTo(target, cb) {
+  if (target === null || matchMedia('(prefers-reduced-motion: reduce)').matches) { if (target !== null) cur = target; drawWorld(); return cb(); }
+  const step = () => { if (cur === target) return cb(); cur += Math.sign(target - cur); drawWorld(); setTimeout(step, 110); };
+  step();
+}
+function checkNum() {
+  if (solved) return;
+  const inp = $('#inp'), raw = inp.value.trim().replace('−', '-').replace(',', '.');
+  if (!raw) { fb(false, '<p>Napiš číslo do políčka.</p>'); return; }
+  const v = Number(raw);
+  if (v === T.a) { inp.disabled = true; fb(true, `<h3>${praise()}</h3><p>${T.why}</p>${again()}`); return next(); }
+  if (tries === 0) { tries++; fb(false, `<h3>Ještě jednou</h3><p>${T.hint}</p>`); return; }
+  inp.disabled = true;
+  fb(false, `<h3>Tohle si zapamatuj</h3><p>Správně je <b>${T.a} ${T.unit || ''}</b>.</p><p>${T.why}</p>`); next();
+}
+function finish() {
+  S.done[L.id] = true; delete S.pos[L.id]; save();
+  const k = LV.indexOf(L), nx = LV.slice(k + 1).find(l => !S.done[l.id]) || LV.find(l => !S.done[l.id]);
+  app.innerHTML = `<div class="card endcard" style="margin-top:1rem"><div class="big">${L.e}</div><h2 style="margin-top:.4rem">Zastávka hotová</h2>
+    <p>${L.end}</p><p>${g('Prošla', 'Prošel')} jsi všechny úkoly až do konce.</p>
+    <div class="actions">${nx ? `<button class="btn wide" id="nl">Další zastávka: ${nx.title}</button>` : ''}<button class="btn ghost wide" id="hm">Zastávky</button></div></div>`;
+  $('#hm').onclick = home;
+  const b = $('#nl'); if (b) b.onclick = () => intro(LV.indexOf(nx));
+  scrollTo(0, 0);
+}
+
+/* ---------- start ---------- */
+(async () => {
+  try { const r = await fetch('../profile.json', { cache: 'no-cache' }); if (r.ok) Object.assign(P, await r.json()); } catch (e) { /* bez profilu: výchozí hodnoty */ }
+  if (!P.grade) P.grade = P.id === 'robin' ? 4 : 7;
+  KEY = `hodiny-${P.id}-v1`; // Klaudie a Robin mají appky na stejném webu, tak ať se postup nemíchá
+  LV = levels(); load(); home();
+})();
+</script>
+</body>
+</html>
