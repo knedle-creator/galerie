@@ -1,6 +1,6 @@
 /* Service worker: díky němu appka funguje bez internetu.
    Když změníš kód nebo přidáš balíček, zvyš číslo VERZE, ať si telefon stáhne novou kopii. */
-const VERZE = 'klaudie-v10';
+const VERZE = 'klaudie-v11';
 // Robinova appka běží na stejném webu (knedle-creator.github.io), proto maže jen svoje staré kopie.
 const APP = VERZE.replace(/-v\d+$/, '');
 const ZAKLAD = [
@@ -28,6 +28,18 @@ self.addEventListener('install', e => {
         } catch (err) { /* jeden balíček nevadí, dočte se příště */ }
       }));
     } catch (err) { /* offline při instalaci: balíčky se dočtou příště */ }
+    // profily dalších dětí (profiles/index.json): bez nich by se appka po aktualizaci offline otevřela jako základní dítě
+    try {
+      const pi = await (await fetch('profiles/index.json', { cache: 'no-store' })).json();
+      await c.put('profiles/index.json', new Response(JSON.stringify(pi), { headers: { 'Content-Type': 'application/json' } }));
+      await Promise.all((pi.profiles || []).map(async x => {
+        try {
+          await c.add(`profiles/${x.id}.json`);
+          const o = await (await c.match(`profiles/${x.id}.json`)).json();
+          await Promise.all([o.manifest, o.favicon, o.touchIcon].filter(Boolean).map(u => c.add(u).catch(() => {})));
+        } catch (err) { /* jeden profil nevadí */ }
+      }));
+    } catch (err) { /* bez dalších profilů */ }
     // nahrané hlasy (audio/index.json + jeden .json a .bin na balíček)
     try {
       const a = await (await fetch('audio/index.json', { cache: 'no-store' })).json();
