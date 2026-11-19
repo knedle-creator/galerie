@@ -4,7 +4,7 @@ import { S, save, exportBackup, importBackup, resetAll, getUserPacks, setUserPac
 import { app, route, go, toHome, toast, modal } from './ui.js';
 import { PACKS, ITEMS, KINDS, LOAD_ERRORS, validatePack, loadAll, status } from './packs.js';
 import { hasTTS, voiceCount, micOK, englishVoices, voiceGender, speak, clearCast, castVoices, gendersUnknown, recCount, PEOPLE } from './speech.js';
-import { P, g } from './profile.js';
+import { P, g, PROFILES, setProfile } from './profile.js';
 
 const SAMPLE = { f: 'Hello! I can swim and I can play the piano.', m: 'Hello! I can ride a bike and I can play football.' };
 // Ukázková postava daného pohlaví z balíčků (ženy mají vyšší hlas, muži nižší).
@@ -122,6 +122,11 @@ function panel() {
     <p class="cz">Rozpoznávání řeči v Chromu posílá zvuk z mikrofonu ke zpracování na servery Googlu. Appka sama nic nikam neposílá, nemá analytiku ani reklamy a všechna data zůstávají v telefonu. Když nechcete, aby se mikrofon používal, zakažte ho této stránce v nastavení Chromu. ${esc(P.name)} pak bude mluvit „nanečisto“ a porovnávat se se vzorem.</p>
     <p class="cz">Když chybí anglický hlas: Nastavení Androidu → Usnadnění → Převod textu na řeč → nainstalovat angličtinu (Velká Británie).</p></div>
 
+   ${PROFILES.length > 1 ? `<div class="card"><h2>Komu appka patří</h2>
+    <p class="cz">Každé dítě má v zařízení vlastní postup, slovníček i PIN. Přepnutím se nic nesmaže, data ostatních dětí tu zůstávají.</p>
+    <div class="items">${PROFILES.map(x => `<label class="item" style="cursor:pointer"><input type="radio" name="kdo" value="${esc(x.id)}" ${x.id === P.id ? 'checked' : ''} style="width:1.3rem;height:1.3rem;flex:none">
+     <span class="tx"><b>${esc(x.name)}</b></span></label>`).join('')}</div></div>` : ''}
+
    <div class="card"><h2>Ostatní</h2>
     <div class="actions"><button class="btn ghost" id="cpin">Změnit PIN</button><button class="btn ghost" id="rst">Smazat všechna data…</button></div></div>
    <div class="actions"><button class="btn wide" id="out">Zamknout a odejít</button></div>`;
@@ -150,6 +155,13 @@ function panel() {
     for (const l of d.data.lines.slice(0, 3)) await speak(l.en, { force: true, who: l.who });
   };
   const fx = $('#sfx'); if (fx) fx.onchange = e => { S.sfx = e.target.checked; save(); };
+  $$('input[name=kdo]').forEach(r => r.onchange = () => {
+    const x = PROFILES.find(p => p.id === r.value); if (!x) return;
+    const c = modal(`<h2>Přepnout appku?</h2><p>V tomhle zařízení se appka otevře jako: <b>${esc(x.name)}</b>.</p><p class="cz">Nic se nesmaže. Zpátky přepnete stejnou cestou.</p>
+      <div class="actions"><button class="btn" id="yes">Přepnout</button><button class="btn ghost" data-close>Zrušit</button></div>`);
+    $('#yes', c).onclick = () => setProfile(x.id);
+    $$('[data-close]', c).forEach(b => b.addEventListener('click', () => { $$('input[name=kdo]').forEach(i => { i.checked = i.value === P.id; }); }));
+  });
   $('#out').onclick = () => { unlocked = false; toHome(); };
   $('#cpin').onclick = () => { S.pin = null; save(); unlocked = false; lock(); };
   $$('[data-rm]').forEach(b => b.onclick = async () => {

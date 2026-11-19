@@ -1,7 +1,7 @@
 // Načítání a kontrola balíčků z packs/*.json. Žádný obsah tady není natvrdo.
 import { S, getUserPacks } from './store.js';
 import { PEOPLE } from './speech.js';
-import { P } from './profile.js';
+import { P, g } from './profile.js';
 
 export const PACKS = [];        // seřazené balíčky
 export const BY_ID = {};
@@ -125,7 +125,9 @@ export async function loadAll() {
   PACKS.length = 0; ITEMS.length = 0; LOAD_ERRORS.length = 0; DICT.clear();
   for (const k in BY_ID) delete BY_ID[k];
   const add = (p, file) => {
+    if (p && typeof p === 'object') genderize(p);
     const errs = validatePack(p);
+    if (!errs.length && hidden(p)) return; // kurz, který tohle dítě nemá (např. Nový Zéland u bratranců)
     if (errs.length) { LOAD_ERRORS.push({ file, errors: errs }); return; }
     if (BY_ID[p.id]) { const i = PACKS.indexOf(BY_ID[p.id]); PACKS.splice(i, 1); } // nahraný balíček nahradí stejný z repa
     BY_ID[p.id] = p; PACKS.push(p);
@@ -156,6 +158,18 @@ export async function loadAll() {
     for (const [en, cz] of Object.entries(d)) if (!en.startsWith('_')) addDict(en, cz, true);
   } catch (e) { /* bez vestavěného slovníku to taky půjde */ }
 }
+// Rodové tvary v textech balíčků: [[ženský|mužský]], např. "Teď celé [[sama|sám]]."
+// Stejné lekce tak můžou mít Klaudie i Teo, Robin i Rózka.
+const GT = /\[\[([^|\[\]]*)\|([^|\[\]]*)\]\]/g;
+function genderize(o) {
+  if (typeof o === 'string') return o.includes('[[') ? o.replace(GT, (_, f, m) => g(f, m)) : o;
+  if (Array.isArray(o)) { for (let i = 0; i < o.length; i++) o[i] = genderize(o[i]); return o; }
+  if (o && typeof o === 'object') { for (const k of Object.keys(o)) o[k] = genderize(o[k]); }
+  return o;
+}
+// Kurzy a předměty, které profil skrývá ("hide": ["nz", "vzn", "es"]).
+const isHidden = id => (P.hide || []).includes(id);
+const hidden = p => isHidden(p.course) || isHidden(p.subject) || isHidden(subjectOf(p));
 function addDict(en, cz, weak) {
   const k = String(en).toLowerCase().replace(/’/g, "'").trim();
   if (k && cz && !(weak && DICT.has(k))) DICT.set(k, cz);
@@ -210,7 +224,10 @@ export function subjectOf(p) {
   return s ? s.id : 'en';
 }
 export function subjects() {
-  return (P.subjects || []).map(s => ({ ...s, list: courses().filter(c => c.packs.some(p => p._subject === s.id)) }));
+  return (P.subjects || []).filter(s => !isHidden(s.id)).map(s => ({
+    ...s, cz: (P.subjectCz || {})[s.id] ?? s.cz,
+    list: courses().filter(c => c.packs.some(p => p._subject === s.id))
+  }));
 }
 
 /* ---------- položky a stav ---------- */
