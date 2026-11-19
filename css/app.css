@@ -307,4 +307,34 @@ details summary{cursor:pointer;min-height:2.4rem;padding:.3rem 0}
 .nfrac i{display:block;width:100%;min-width:4.2rem;height:4px;border-radius:2px;background:var(--ink)}
 .ninp{width:4.2rem;height:3.6rem;text-align:center;font:inherit;font-size:1.6rem;font-weight:800;border-radius:.8rem;border:3px solid var(--line);background:var(--bg);color:var(--ink);padding:0}
 .ninp:disabled{opacity:.75}
+/* desetinné a periodické číslo: celé , před vzorem | vzor (s pruhem nahoře) */
+.per{display:inline-block;border-top:.12em solid currentColor;line-height:1.05;padding-top:.06em;margin-top:.05em}
+.ndec{display:inline-flex;align-items:flex-start;gap:.3rem;flex-wrap:nowrap}
+.nbox{display:inline-flex;flex-direction:column;align-items:center;gap:.2rem;position:relative}
+.nbox small{font-size:.74rem;font-weight:700;color:var(--soft);white-space:nowrap;line-height:1.1}
+.nbox.wide .ninp{width:4.9rem}
+.nper .ninp{border-color:var(--pink)}
+.nper::before{content:"";position:absolute;top:-.6rem;left:14%;right:14%;height:.3rem;border-radius:.2rem;background:var(--pink)}
+.nper small{color:var(--pink)}
+.ncomma{font-size:2.2rem;line-height:3.3rem;font-weight:800}
+.numf:has(.ndec){margin-top:1.1rem}
+@media (max-width:370px){.ninp{width:3.7rem}.nbox.wide .ninp{width:4.3rem}}
+/* dělicí stroj: řádky dělení se zbytky jako korálky */
+.stroj{display:grid;grid-template-columns:auto auto auto;gap:.25rem .7rem;justify-content:center;align-items:center;font-size:1.25rem;font-weight:800;margin:.6rem 0;font-variant-numeric:tabular-nums}
+.stroj span{white-space:nowrap}
+.stroj .zb{display:inline-flex;align-items:center;gap:.35rem;font-weight:600;font-size:1rem;color:var(--soft)}
+.stroj .zb b{display:inline-grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:var(--sun);color:#2A2140;font-size:1.1rem;font-weight:800}
+.stroj .zb b.k2{background:var(--sky);color:#fff}
+.stroj .zb b.k0{background:var(--okbg);color:var(--ok)}
+.stroj .zb em{font-style:normal;font-weight:800;color:var(--pink)}
+.vysl{font-size:1.5rem;font-weight:800;text-align:center;margin:.5rem 0}
+.vysl .zl{font-size:1.1em}
 .fillwrap .part:focus{outline:none}
+/* korálky v obrázcích k periodickým číslům */
+.kor .nit{fill:none;stroke:var(--soft);stroke-width:2}
+.kor .b1{fill:var(--pink)}.kor .b2{fill:var(--sky)}.kor .b3{fill:var(--sun)}.kor .b0{fill:var(--line);stroke:var(--soft);stroke-width:1.5}
+.kor .t{fill:var(--onacc);font-weight:800}.kor .t3,.kor .t0{fill:#2A2140;font-weight:800}
+:root[data-theme="dark"] .kor .t0{fill:var(--ink)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .kor .t0{fill:var(--ink)}}
+.kor .lab{fill:currentColor}.kor .sub{fill:var(--soft)}.kor .ln{stroke:currentColor;stroke-width:2.5;fill:none}
+.kor .pk{fill:var(--pink)}.kor .lnp{stroke:var(--pink);stroke-width:2.5;fill:none}
