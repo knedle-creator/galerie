@@ -130,7 +130,7 @@
       "nepravý"
      ],
      "a": "nepravý",
-     "why": "Pravý zlomek se vejde do jedné krabice. Tady jsi potřebovala druhou."
+     "why": "Pravý zlomek se vejde do jedné krabice. Tady jsi [[potřebovala|potřeboval]] druhou."
     },
     {
      "t": "info",
@@ -304,7 +304,7 @@
     },
     {
      "t": "num",
-     "q": "Slalom: jedno kolo tratě má 4 úseky. Ujela jsi 13 úseků. Kolik je to kol?",
+     "q": "Slalom: jedno kolo tratě má 4 úseky. [[Ujela|Ujel]] jsi 13 úseků. Kolik je to kol?",
      "form": "mixed",
      "a": [
       3,

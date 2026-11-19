@@ -98,7 +98,7 @@
     {
      "t": "num",
      "form": "dec",
-     "q": "Teď celé sama.",
+     "q": "Teď celé [[sama|sám]].",
      "lhs": "<span class=\"zl\"><b>2</b><b>5</b></span>",
      "a": [
       "0",
@@ -248,7 +248,7 @@
    "title": "Zlomek na periodické číslo",
    "cz": "Tajný trik: hlídej zbytky",
    "e": "🔍",
-   "intro": "<p>Teď budeš převádět zlomky sama. Tajný trik: hlídej zbytky. Jakmile se zbytek zopakuje, začnou se opakovat i číslice.</p><p class=\"cz\">Asi 7 minut. Dělení si klidně piš na papír.</p>",
+   "intro": "<p>Teď budeš převádět zlomky [[sama|sám]]. Tajný trik: hlídej zbytky. Jakmile se zbytek zopakuje, začnou se opakovat i číslice.</p><p class=\"cz\">Asi 7 minut. Dělení si klidně piš na papír.</p>",
    "ex": [
     {
      "t": "info",
@@ -297,7 +297,7 @@
     {
      "t": "num",
      "form": "per",
-     "q": "Teď celé sama. Hlídej zbytky.",
+     "q": "Teď celé [[sama|sám]]. Hlídej zbytky.",
      "lhs": "<span class=\"zl\"><b>1</b><b>9</b></span>",
      "a": [
       "0",
@@ -320,7 +320,7 @@
     },
     {
      "t": "mc",
-     "q": "Všimla sis? <span class=\"zl\"><b>1</b><b>9</b></span> = 0,<span class=\"per\">1</span> a <span class=\"zl\"><b>5</b><b>9</b></span> = 0,<span class=\"per\">5</span>. Kolik bude <span class=\"zl\"><b>7</b><b>9</b></span> bez počítání?",
+     "q": "[[Všimla|Všiml]] sis? <span class=\"zl\"><b>1</b><b>9</b></span> = 0,<span class=\"per\">1</span> a <span class=\"zl\"><b>5</b><b>9</b></span> = 0,<span class=\"per\">5</span>. Kolik bude <span class=\"zl\"><b>7</b><b>9</b></span> bez počítání?",
      "opts": [
       "0,[7]",
       "0,7",
@@ -336,7 +336,7 @@
     {
      "t": "num",
      "form": "per",
-     "q": "Zkus sama. Hlídej zbytky.",
+     "q": "Zkus [[sama|sám]]. Hlídej zbytky.",
      "lhs": "<span class=\"zl\"><b>2</b><b>11</b></span>",
      "a": [
       "0",
@@ -483,7 +483,7 @@
      "t": "num",
      "form": "per",
      "pre": true,
-     "q": "Poslední, celé sama. Hlídej zbytky.",
+     "q": "Poslední, celé [[sama|sám]]. Hlídej zbytky.",
      "lhs": "<span class=\"zl\"><b>2</b><b>15</b></span>",
      "a": [
       "0",
@@ -663,7 +663,7 @@
     {
      "t": "num",
      "form": "frac",
-     "q": "Celé sama. Nahoru (zapínání a vzor) minus zapínání, dolů 9 a 0. Pak zkrať.",
+     "q": "Celé [[sama|sám]]. Nahoru (zapínání a vzor) minus zapínání, dolů 9 a 0. Pak zkrať.",
      "lhs": "0,1<span class=\"per\">3</span>",
      "a": [
       2,

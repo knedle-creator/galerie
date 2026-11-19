@@ -523,7 +523,7 @@
     },
     {
      "t": "build",
-     "cz": "Chtěla bych být ilustrátorkou.",
+     "cz": "[[Chtěla|Chtěl]] bych být [[ilustrátorkou|ilustrátorem]].",
      "a": "I would like to be an illustrator.",
      "extra": [
       "illustration",
@@ -604,7 +604,7 @@
     },
     {
      "t": "build",
-     "cz": "V pět hodin jsem pádlovala na řece.",
+     "cz": "V pět hodin jsem [[pádlovala|pádloval]] na řece.",
      "a": "At five o’clock I was paddling on the river.",
      "extra": [
       "were",
@@ -680,7 +680,7 @@
       "was seeing"
      ],
      "a": "saw",
-     "why": "Uviděla jsi to v jednom okamžiku: past simple."
+     "why": "[[Uviděla|Uviděl]] jsi to v jednom okamžiku: past simple."
     },
     {
      "t": "gap",
@@ -707,7 +707,7 @@
     },
     {
      "t": "build",
-     "cz": "Pádlovala jsem, když se mi zlomilo pádlo.",
+     "cz": "[[Pádlovala|Pádloval]] jsem, když se mi zlomilo pádlo.",
      "a": "I was paddling when my paddle broke.",
      "extra": [
       "were",
@@ -743,7 +743,7 @@
    "art": "a6",
    "title": "The lost painting",
    "cz": "Finále: záhada ztraceného obrazu",
-   "intro": "<p>V italském městě Piacenza čistili zahradníci zeď galerie. Najednou ve zdi něco našli… Všechno, co ses naučila, teď použiješ dohromady.</p>",
+   "intro": "<p>V italském městě Piacenza čistili zahradníci zeď galerie. Najednou ve zdi něco našli… Všechno, co ses [[naučila|naučil]], teď použiješ dohromady.</p>",
    "words": [],
    "ex": [
     {
@@ -1214,7 +1214,7 @@
    "title": "Můj obraz",
    "e": "🖌️",
    "task": "Describe a picture you painted or drew. What is it? What colours are in it? Is it unusual? What do you like about it?",
-   "cz": "Popiš obrázek, který jsi namalovala nebo nakreslila. Stačí 3–5 vět.",
+   "cz": "Popiš obrázek, který jsi [[namalovala|namaloval]] nebo [[nakreslila|nakreslil]]. Stačí 3–5 vět.",
    "placeholder": "My picture is…",
    "focus": "adjectives from Unit 2 (huge, colourful, unusual, brilliant, pretty, strange) and materials"
   },
@@ -1223,7 +1223,7 @@
    "title": "Včera v pět",
    "e": "🕔",
    "task": "What were you doing yesterday at five o’clock? And at seven? And at nine?",
-   "cz": "Napiš 3–5 vět, co jsi včera dělala v různé hodiny. Použij was/were + -ing.",
+   "cz": "Napiš 3–5 vět, co jsi včera [[dělala|dělal]] v různé hodiny. Použij was/were + -ing.",
    "placeholder": "Yesterday at five o’clock I was…",
    "focus": "past continuous (was/were + -ing)"
   },

@@ -115,7 +115,7 @@
     },
     {
      "t": "build",
-     "cz": "Co jsi dělala v sedm hodin?",
+     "cz": "Co jsi [[dělala|dělal]] v sedm hodin?",
      "a": "What were you doing at seven o’clock?",
      "extra": [
       "was",
@@ -339,7 +339,7 @@
     },
     {
      "t": "build",
-     "cz": "Mamka pekla dort a já jsem jí pomáhala.",
+     "cz": "Mamka pekla dort a já jsem jí [[pomáhala|pomáhal]].",
      "a": "My mum was baking a cake and I was helping her.",
      "extra": [
       "were",
