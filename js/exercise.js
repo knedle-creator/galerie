@@ -1,5 +1,7 @@
-// Úvod lekce a přehrávač cvičení (mc, listen, gap, pair, build, type, dict, speak, info, fill, num).
+// Úvod lekce a přehrávač cvičení (mc, listen, gap, pair, build, type, dict, speak, info, fill, num, tip).
 // num umí i desetinné číslo (dec) a periodické číslo (per). Periodu v textu píšeme v [ ]: "0,1[6]".
+// tip = „Tipni si“: dítě vybere svůj tip, nic se nehodnotí. Info s „tip“ ho na konci lekce ukáže vedle vysvětlení.
+// more = vysvětlení, které se ukáže po odpovědi (správné i ukázané).
 import { $, $$, esc, escN, norm, shuffle, rand, safeHtml, pl, OK, SPOKE } from './util.js';
 import { S, save } from './store.js';
 import { app, route, go, toHome, setProgress, onLeave } from './ui.js';
@@ -94,7 +96,12 @@ function show(opt = {}) {
          <input class="inp" id="inp" autocomplete="off" autocapitalize="sentences" spellcheck="false" aria-label="Co slyšíš">
          <p><button class="linkbtn" id="nv">Nic neslyším</button></p>`;
   } else if (E.t === 'speak') { body = `<p class="q">Řekni nahlas.</p><div id="spk"></div>`; check = false; }
-  else if (E.t === 'info') { body = `<div class="info">${safeHtml(E.html)}</div>`; check = false; }
+  else if (E.t === 'info') { body = `${tipBox(E)}<div class="info">${safeHtml(E.html)}</div>`; check = false; }
+  else if (E.t === 'tip') {
+    // pořadí možností se nemíchá: „Netuším…“ má zůstat poslední
+    body = `<p class="tipbadge">🤔 Tipni si</p><p class="q">${safeHtml(E.q)}</p><div class="opts">${E.opts.map(v => `<button class="opt" data-v="${esc(v)}">${escN(v)}</button>`).join('')}</div>`;
+    check = false;
+  }
   else if (E.t === 'fill') {
     body = `<p class="q">${safeHtml(E.q)}</p><div class="fillwrap" id="fill">${fillSvg(E)}</div>
      <p class="cz fcount" id="fcount">Klepnutím dílek vybarvíš, dalším klepnutím ho zase odbarvíš.</p>`;
@@ -107,6 +114,7 @@ function show(opt = {}) {
   const nv = $('#nv'); if (nv) nv.onclick = () => show({ noVoice: true });
   if (E.t === 'listen' && !noVoice) setTimeout(() => cur === E && speak(E.say, { force: true }), 300);
   if (['mc', 'listen', 'gap'].includes(E.t)) $$('.opt').forEach(b => b.onclick = () => pick(b));
+  if (E.t === 'tip') $$('.opt').forEach(b => b.onclick = () => pickTip(b));
   if (E.t === 'pair') wirePairs();
   if (E.t === 'build') wireBuild();
   if (E.t === 'type' || E.t === 'dict') {
@@ -141,7 +149,7 @@ function full() {
   if (E.t === 'gap') return E.s.replace('___', E.a);
   if (E.t === 'type') return E.s.replace('___', E.a[0]);
   if (['build', 'listen', 'dict', 'speak'].includes(E.t)) return E.a;
-  if (E.t === 'mc') return /[áéíóúůýčďěňřšťž]/i.test(E.a) ? (E.say || '') : E.a;
+  if (E.t === 'mc') return E._mute ? E.a : /[áéíóúůýčďěňřšťž]/i.test(E.a) ? (E.say || '') : E.a; // česky psané balíčky ukážou odpověď vždycky
   if (E.t === 'fill') return E.show || pl(E.a, 'dílek', 'dílky', 'dílků');
   if (E.t === 'num') return E.show || numText(E.a, E.form);
   return '';
@@ -149,7 +157,7 @@ function full() {
 function good() {
   answered = true;
   const f = full();
-  fb(true, `<h3>${rand(OK)}</h3>${f ? `<p><b>${escN(f)}</b></p>` : ''}${tries > 0 ? `<p>Napodruhé, ale ${g('sama', 'sám')}. Tohle se počítá.</p>` : ''}`);
+  fb(true, `<h3>${rand(OK)}</h3>${f ? `<p><b>${escN(f)}</b></p>` : ''}${more()}${tries > 0 ? `<p>Napodruhé, ale ${g('sama', 'sám')}. Tohle se počítá.</p>` : ''}`);
   sfx.ok();
   if (f && cur.t !== 'dict' && !cur._mute) later(() => speak(f), S.sfx !== false ? 450 : 0); // nejdřív „ding“, pak věta
   if (run.mode === 'review') { S.mist = S.mist.filter(x => x !== cur.id); run.fixed++; save(); }
@@ -160,13 +168,35 @@ function good() {
 function bad(final, msg) {
   if (!final) { tries++; sfx.hint(); fb(false, `<h3>Ještě jednou</h3><p>${msg}</p>`); return; }
   answered = true;
-  fb(false, `<h3>Tohle si zapamatuj</h3><p>Správně je: <b>${escN(full())}</b></p>${msg ? `<p>${msg}</p>` : ''}${cur.why ? `<p>${escN(cur.why)}</p>` : ''}${run.mode !== 'review' ? '<p class="cz">Tahle úloha se ti ještě jednou vrátí na konci lekce.</p>' : ''}`);
+  fb(false, `<h3>Tohle si zapamatuj</h3><p>Správně je: <b>${escN(full())}</b></p>${msg ? `<p>${msg}</p>` : ''}${cur.more ? more() : cur.why ? `<p>${escN(cur.why)}</p>` : ''}${run.mode !== 'review' ? '<p class="cz">Tahle úloha se ti ještě jednou vrátí na konci lekce.</p>' : ''}`);
   sfx.reveal();
   const f = full(); if (!cur._mute) later(() => speak(f), 400);
   if (!S.mist.includes(cur.id)) { S.mist.push(cur.id); save(); }
   cont(false);
 }
 const fb = (ok, html) => { $('#fb').innerHTML = `<div class="fb ${ok ? 'ok' : 'try'}">${withKapka(ok, html)}</div>`; };
+const more = () => cur.more ? `<p>${safeHtml(cur.more)}</p>` : '';
+
+/* ---------- tipni si ---------- */
+// Tip se ukládá podle balíčku a klíče („vzn-01-leto:leto“), aby ho šlo ukázat na konci lekce i po zavření appky.
+const tipKey = k => `${String(cur.id).split('|')[0]}:${k}`;
+function pickTip(b) {
+  if (answered) return; answered = true;
+  const E = cur;
+  b.classList.add('sel'); $$('.opt').forEach(x => { x.disabled = true; });
+  (S.tips || (S.tips = {}))[tipKey(E.key)] = b.dataset.v; save();
+  sfx.tap();
+  fb(true, `<h3>Tip je uložený</h3><p>${safeHtml(E.after || 'Vědci taky začínají tipem a pak hledají důkazy. Na konci lekce uvidíš, jak to je.')}</p>`);
+  cont(true);
+}
+// Info s „tip“: nahoře ukáže, co si dítě tiplo na začátku, a podle toho text „ifok“, nebo „ifnot“.
+function tipBox(E) {
+  if (!E.tip) return '';
+  const v = (S.tips || {})[tipKey(E.tip)];
+  if (!v) return '';
+  const hit = (E.tipok || []).includes(v);
+  return `<div class="tipbox${hit ? ' hit' : ''}"><small>Tvůj tip na začátku</small><p>„${escN(v)}“</p>${safeHtml(hit ? E.ifok || '' : E.ifnot || '')}</div>`;
+}
 // Spustí akci se zpožděním, jen pokud mezitím neodešla na jinou úlohu.
 const later = (fn, ms) => { const tk = token(); setTimeout(() => { if (tk === token()) fn(); }, ms); };
 

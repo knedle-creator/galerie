@@ -15,6 +15,7 @@ export const defaults = () => ({
   texts: [],     // hotové texty
   vocab: [],     // Můj slovníček
   missions: {},  // klíč mise -> {done, note, photo}
+  tips: {},      // „Tipni si“: "balíček:klíč" -> vybraný tip
   pin: null,
   voiceF: null,  // ženský hlas vybraný rodiči (jméno)
   voiceM: null,  // mužský hlas vybraný rodiči

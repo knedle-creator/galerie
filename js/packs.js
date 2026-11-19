@@ -18,7 +18,7 @@ export const KINDS = {
   mission: { list: 'missions', e: '🧭', label: 'Mise' },
   game: { list: 'games', e: '🎮', label: 'Hry' }
 };
-const EX_TYPES = ['mc', 'listen', 'gap', 'pair', 'build', 'type', 'dict', 'speak', 'info', 'fill', 'num'];
+const EX_TYPES = ['mc', 'listen', 'gap', 'pair', 'build', 'type', 'dict', 'speak', 'info', 'fill', 'num', 'tip'];
 const NUM_FORMS = { int: 1, frac: 2, mixed: 3, dec: 2, per: 3 };
 
 /* ---------- kontrola balíčku ---------- */
@@ -50,7 +50,13 @@ export function validatePack(p) {
       if (e.t === 'build') { need('cz'); need('a'); }
       if (e.t === 'type') { need('s'); need('a'); if (typeof e.a === 'string') e.a = [e.a]; }
       if (e.t === 'dict' || e.t === 'speak') need('a');
-      if (e.t === 'info') need('html');
+      if (e.t === 'info') {
+        need('html');
+        if (e.tip !== undefined && !str(e.tip)) E.push(`${w} (info): „tip“ musí být klíč tipu z úlohy „tip“, např. "leto".`);
+        if (e.tipok !== undefined && !arr(e.tipok)) E.push(`${w} (info): „tipok“ musí být seznam tipů, které vyšly.`);
+      }
+      if (e.t === 'tip') { need('q'); need('opts'); need('key'); }
+      if (e.more !== undefined && !str(e.more)) E.push(`${w}: „more“ musí být text.`);
       if (e.t === 'fill') {
         need('q');
         if (!['pizza', 'box'].includes(e.shape)) E.push(`${w} (fill): „shape“ musí být "pizza" nebo "box".`);
