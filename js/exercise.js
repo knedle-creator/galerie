@@ -1,5 +1,6 @@
 // Úvod lekce a přehrávač cvičení (mc, listen, gap, pair, build, type, dict, speak, info, fill, num).
-import { $, $$, esc, norm, shuffle, rand, safeHtml, pl, OK, SPOKE } from './util.js';
+// num umí i desetinné číslo (dec) a periodické číslo (per). Periodu v textu píšeme v [ ]: "0,1[6]".
+import { $, $$, esc, escN, norm, shuffle, rand, safeHtml, pl, OK, SPOKE } from './util.js';
 import { S, save } from './store.js';
 import { app, route, go, toHome, setProgress, onLeave } from './ui.js';
 import { speak, hasTTS, speakWidget, token } from './speech.js';
@@ -55,7 +56,7 @@ function persist() {
   pr.run = { queue: run.queue, n: run.n, total: run.total, fixed: run.fixed, requeued: run.requeued };
   save();
 }
-const optsHtml = o => `<div class="opts">${shuffle(o).map(v => `<button class="opt" data-v="${esc(v)}">${esc(v)}</button>`).join('')}</div>`;
+const optsHtml = o => `<div class="opts">${shuffle(o).map(v => `<button class="opt" data-v="${esc(v)}">${escN(v)}</button>`).join('')}</div>`;
 
 function show(opt = {}) {
   if (!run) return;
@@ -75,8 +76,8 @@ function show(opt = {}) {
   }
   else if (E.t === 'gap') { body = `<p class="q">Doplň větu.</p><p class="sent">${esc(E.s).replace('___', '<span class="blank" id="blank">&nbsp;</span>')}</p>${optsHtml(E.opts)}`; check = false; }
   else if (E.t === 'pair') {
-    body = `<p class="q">${safeHtml(E.q || 'Spoj dvojice.')}</p><div class="pairs"><div class="col">${shuffle(E.pairs.map(p => p[0])).map(v => `<button class="opt" data-side="l" data-v="${esc(v)}">${esc(v)}</button>`).join('')}</div>
-     <div class="col">${shuffle(E.pairs.map(p => p[1])).map(v => `<button class="opt" data-side="r" data-v="${esc(v)}">${esc(v)}</button>`).join('')}</div></div>`; check = false;
+    body = `<p class="q">${safeHtml(E.q || 'Spoj dvojice.')}</p><div class="pairs"><div class="col">${shuffle(E.pairs.map(p => p[0])).map(v => `<button class="opt" data-side="l" data-v="${esc(v)}">${escN(v)}</button>`).join('')}</div>
+     <div class="col">${shuffle(E.pairs.map(p => p[1])).map(v => `<button class="opt" data-side="r" data-v="${esc(v)}">${escN(v)}</button>`).join('')}</div></div>`; check = false;
   } else if (E.t === 'build') {
     E._tiles = shuffle(E.a.replace(/[.,!?]/g, '').split(' ').concat(E.extra || []));
     body = `<p class="q">Přelož do angličtiny.</p><p class="sent">${esc(E.cz)}</p><div class="line" id="line"></div>
@@ -122,7 +123,7 @@ function show(opt = {}) {
   if (E.t === 'num') {
     $$('#numf input').forEach((i, k, all) => {
       i.onkeydown = e => { if (e.key === 'Enter') { const n = all[k + 1]; n ? n.focus() : checkNum(); } };
-      i.oninput = () => { i.value = i.value.replace(/\D/g, '').slice(0, 3); };
+      i.oninput = () => { i.value = i.value.replace(/\D/g, '').slice(0, i.maxLength > 0 ? i.maxLength : 3); };
     });
     $('#check').onclick = checkNum;
   }
@@ -148,7 +149,7 @@ function full() {
 function good() {
   answered = true;
   const f = full();
-  fb(true, `<h3>${rand(OK)}</h3>${f ? `<p><b>${esc(f)}</b></p>` : ''}${tries > 0 ? `<p>Napodruhé, ale ${g('sama', 'sám')}. Tohle se počítá.</p>` : ''}`);
+  fb(true, `<h3>${rand(OK)}</h3>${f ? `<p><b>${escN(f)}</b></p>` : ''}${tries > 0 ? `<p>Napodruhé, ale ${g('sama', 'sám')}. Tohle se počítá.</p>` : ''}`);
   sfx.ok();
   if (f && cur.t !== 'dict' && !cur._mute) later(() => speak(f), S.sfx !== false ? 450 : 0); // nejdřív „ding“, pak věta
   if (run.mode === 'review') { S.mist = S.mist.filter(x => x !== cur.id); run.fixed++; save(); }
@@ -159,7 +160,7 @@ function good() {
 function bad(final, msg) {
   if (!final) { tries++; sfx.hint(); fb(false, `<h3>Ještě jednou</h3><p>${msg}</p>`); return; }
   answered = true;
-  fb(false, `<h3>Tohle si zapamatuj</h3><p>Správně je: <b>${esc(full())}</b></p>${msg ? `<p>${msg}</p>` : ''}${cur.why ? `<p>${esc(cur.why)}</p>` : ''}${run.mode !== 'review' ? '<p class="cz">Tahle úloha se ti ještě jednou vrátí na konci lekce.</p>' : ''}`);
+  fb(false, `<h3>Tohle si zapamatuj</h3><p>Správně je: <b>${escN(full())}</b></p>${msg ? `<p>${msg}</p>` : ''}${cur.why ? `<p>${escN(cur.why)}</p>` : ''}${run.mode !== 'review' ? '<p class="cz">Tahle úloha se ti ještě jednou vrátí na konci lekce.</p>' : ''}`);
   sfx.reveal();
   const f = full(); if (!cur._mute) later(() => speak(f), 400);
   if (!S.mist.includes(cur.id)) { S.mist.push(cur.id); save(); }
@@ -186,7 +187,7 @@ function pick(b) {
   if (E.t === 'gap') $('#blank').textContent = v;
   if (v === E.a) { b.classList.add('right'); $$('.opt').forEach(x => x.disabled = true); good(); return; }
   b.classList.add('wrong'); b.disabled = true;
-  if (tries === 0) bad(false, esc(E.why || (E.t === 'gap' ? `Podívej se ještě jednou na celou větu. Jednu možnost už jsi ${g('vyřadila', 'vyřadil')}.` : E.t === 'listen' ? `Pusť si slovo ještě jednou 🔊 a poslouchej začátek. Jednu možnost už jsi ${g('vyřadila', 'vyřadil')}.` : `Zkus to ještě jednou. Jednu možnost už jsi ${g('vyřadila', 'vyřadil')}.`)));
+  if (tries === 0) bad(false, escN(E.why || (E.t === 'gap' ? `Podívej se ještě jednou na celou větu. Jednu možnost už jsi ${g('vyřadila', 'vyřadil')}.` : E.t === 'listen' ? `Pusť si slovo ještě jednou 🔊 a poslouchej začátek. Jednu možnost už jsi ${g('vyřadila', 'vyřadil')}.` : `Zkus to ještě jednou. Jednu možnost už jsi ${g('vyřadila', 'vyřadil')}.`)));
   else { $$('.opt').forEach(x => { x.disabled = true; if (x.dataset.v === E.a) x.classList.add('right'); }); bad(true); }
 }
 function wirePairs() {
@@ -268,7 +269,7 @@ function checkFill() {
   if (n === E.a) { $('#fill').classList.add('lock'); return good(); }
   const msg = (n < E.a
     ? `Máš ${pl(n, 'dílek', 'dílky', 'dílků')}. Kolik jich má být podle čísla nahoře ve zlomku?`
-    : `Máš ${pl(n, 'dílek', 'dílky', 'dílků')}, to je o ${n - E.a} víc. Klepnutím dílek zase odbarvíš.`) + (E.why ? ` ${esc(E.why)}` : '');
+    : `Máš ${pl(n, 'dílek', 'dílky', 'dílků')}, to je o ${n - E.a} víc. Klepnutím dílek zase odbarvíš.`) + (E.why ? ` ${escN(E.why)}` : '');
   if (tries === 0) { bad(false, msg); return; }
   // Ukázat správně: vybarvit přesně E.a dílků popořadě.
   $$('#fill .part').forEach((el, k) => el.classList.toggle('on', k < E.a));
@@ -277,19 +278,71 @@ function checkFill() {
 }
 
 /* ---------- napiš číslo nebo zlomek ---------- */
-const NUM_IDS = { int: ['n0'], frac: ['n1', 'n2'], mixed: ['n0', 'n1', 'n2'] };
-const numIn = (id, label) => `<input class="ninp" id="${id}" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="3" aria-label="${label}">`;
+// dec = desetinné číslo [celé, za čárkou], per = periodické číslo [celé, před periodou, perioda] (texty v uvozovkách).
+const NUM_IDS = { int: ['n0'], frac: ['n1', 'n2'], mixed: ['n0', 'n1', 'n2'], dec: ['n0', 'n3'], per: ['n0', 'n3', 'n4'] };
+const DEC = { dec: 1, per: 1 };
+const numIn = (id, label, max = 3) => `<input class="ninp" id="${id}" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="${max}" aria-label="${label}">`;
+const nbox = (inp, cap, cls = '') => `<span class="nbox ${cls}">${inp}<small>${cap}</small></span>`;
+// Políčko „před vzorem“ se ukáže, když ho odpověď potřebuje, nebo když ho úloha chce vždycky (pre: true).
+const perPre = E => E.a[1] !== '' || E.pre === true;
 function numForm(E) {
   const lhs = E.lhs ? `<span class="lhs">${safeHtml(E.lhs)}</span><span class="eq">=</span>` : '';
   const frac = `<span class="nfrac">${numIn('n1', 'čitatel (nahoře)')}<i></i>${numIn('n2', 'jmenovatel (dole)')}</span>`;
-  const right = E.form === 'int' ? numIn('n0', 'číslo') : E.form === 'frac' ? frac : `${numIn('n0', 'celé číslo')}${frac}`;
-  return `<div class="numf" id="numf">${lhs}${right}</div>${E.form === 'mixed' ? '<p class="cz">Vlevo celé číslo, vpravo zlomek.</p>' : ''}`;
+  const whole = nbox(numIn('n0', 'celá část'), 'celé'), comma = '<span class="ncomma">,</span>';
+  let right, note = '';
+  if (E.form === 'int') right = numIn('n0', 'číslo');
+  else if (E.form === 'frac') right = frac;
+  else if (E.form === 'mixed') { right = `${numIn('n0', 'celé číslo')}${frac}`; note = 'Vlevo celé číslo, vpravo zlomek.'; }
+  else if (E.form === 'dec') right = `<span class="ndec">${whole}${comma}${nbox(numIn('n3', 'za čárkou', 5), 'za čárkou', 'wide')}</span>`;
+  else {
+    const pre = perPre(E);
+    right = `<span class="ndec">${whole}${comma}${pre ? nbox(numIn('n3', 'před vzorem', 4), 'před vzorem', 'wide') : ''}${nbox(numIn('n4', 'vzor, perioda', 6), 'vzor', 'wide nper')}</span>`;
+    note = pre ? 'Do „vzoru“ patří číslice, které se opakují pořád dokola. Když se opakují hned za čárkou, nech „před vzorem“ prázdné.' : 'Do „vzoru“ patří číslice, které se opakují pořád dokola.';
+  }
+  return `<div class="numf" id="numf">${lhs}${right}</div>${note ? `<p class="cz">${note}</p>` : ''}`;
 }
-export const numText = (a, form) => form === 'int' ? `${a[0]}` : form === 'frac' ? `${a[0]}/${a[1]}` : `${a[0]} ${a[1]}/${a[2]}`;
+export const numText = (a, form) => form === 'int' ? `${a[0]}` : form === 'frac' ? `${a[0]}/${a[1]}` : form === 'dec' ? `${a[0]},${a[1]}`
+  : form === 'per' ? `${a[0]},${a[1]}[${a[2]}]` : `${a[0]} ${a[1]}/${a[2]}`;
+
+// Porovnává hodnotu, ne zápis: 0,3[3] = 0,[3], 0,[0909] = 0,[09], 0,50 = 0,5.
+export function canonDec(w, pre = '', rep = '') {
+  w = String(w).replace(/^0+(?=\d)/, ''); pre = String(pre); rep = String(rep);
+  if (/^0*$/.test(rep)) { rep = ''; pre = pre.replace(/0+$/, ''); return [w, pre, rep]; }
+  for (let L = 1; L <= rep.length; L++) if (rep.length % L === 0 && rep.slice(0, L).repeat(rep.length / L) === rep) { rep = rep.slice(0, L); break; }
+  while (pre && pre.slice(-1) === rep.slice(-1)) { pre = pre.slice(0, -1); rep = rep.slice(-1) + rep.slice(0, -1); }
+  return [w, pre, rep];
+}
+function decHint(E, v) {
+  const [aw, ap, ar] = canonDec(...E.a), [vw, vp, vr] = canonDec(...v);
+  if (vw !== aw) return 'Před čárkou to nesedí. Kolikrát se celý jmenovatel vejde do čitatele? Když vůbec, píšeš 0.';
+  if (E.form === 'dec') return vp && ap.startsWith(vp)
+    ? 'Začátek máš dobře. Dělení ale ještě neskončilo: zbytek není 0, tak k němu připiš nulu a děl dál.'
+    : 'Před čárkou to máš dobře. Za čárkou vždycky připiš ke zbytku nulu a děl dál, dokud nevyjde zbytek 0.';
+  if (vr === ar) return 'Vzor máš dobře. Podívej se ještě na začátek: opakují se číslice hned za čárkou, nebo je před vzorem něco navíc?';
+  if (vp === ap) return 'Začátek sedí. Které číslice se pak opakují pořád dokola? Ty patří do vzoru.';
+  return 'Hlídej zbytky: jakmile se zbytek zopakuje, začnou se opakovat i číslice. Klidně si to vyděl na papír.';
+}
+
 function checkNum() {
   if (answered) return;
-  const E = cur, ins = NUM_IDS[E.form].map(id => $('#' + id));
-  if (ins.some(i => i.value.trim() === '')) { fb(false, `<p>Vyplň ${ins.length > 1 ? 'všechna políčka' : 'políčko'}.</p>`); return; }
+  const E = cur, ids = NUM_IDS[E.form], ins = ids.map(id => $('#' + id));
+  const need = ins.filter((i, k) => i && !(E.form === 'per' && ids[k] === 'n3'));
+  if (need.some(i => i.value.trim() === '')) {
+    fb(false, `<p>${E.form === 'per' ? 'Vyplň celou část a vzor.' : `Vyplň ${ins.length > 1 ? 'všechna políčka' : 'políčko'}.`}</p>`); return;
+  }
+  const live = ins.filter(Boolean);
+  if (DEC[E.form]) {
+    const v = ins.map(i => i ? i.value.trim() : '');
+    if (E.form === 'dec') v.push('');
+    const want = canonDec(...E.a), got = canonDec(...v);
+    if (want.every((x, k) => x === got[k])) { live.forEach(i => { i.disabled = true; }); return good(); }
+    let msg = decHint(E, v);
+    if (E.why) msg = `${msg} ${escN(E.why)}`;
+    if (tries === 0) { bad(false, msg); return; }
+    live.forEach(i => { i.disabled = true; });
+    bad(true);
+    return;
+  }
   const v = ins.map(i => parseInt(i.value, 10));
   const same = x => x.length === v.length && x.every((k, i) => k === v[i]);
   if (same(E.a) || (E.alt || []).some(same)) { ins.forEach(i => { i.disabled = true; }); return good(); }
@@ -300,7 +353,7 @@ function checkNum() {
     else if (v[2] !== a[2]) msg = 'Celé číslo máš dobře. Dole ve zlomku zůstává, kolik míst má jedna krabice.';
     else msg = 'Celé číslo máš dobře. Teď spočítej dílky, které zbyly v poslední krabici.';
   }
-  if (E.why) msg = msg ? `${msg} ${esc(E.why)}` : esc(E.why);
+  if (E.why) msg = msg ? `${msg} ${escN(E.why)}` : escN(E.why);
   if (!msg) msg = 'Zkus to ještě jednou. Klidně si to nakresli.';
   if (tries === 0) { bad(false, msg); return; }
   ins.forEach(i => { i.disabled = true; });
@@ -315,7 +368,7 @@ function checkType() {
   let msg = 'Zkus to ještě jednou.';
   if (/ing\b/.test(v) && !/^(was|were|wasn't|weren't)\b/.test(v)) msg = 'Před tvar s -ing patří ještě was nebo were.';
   else if (/^(was|were)\b/.test(v) && !/ing\b/.test(v)) msg = 'Po was/were potřebuješ sloveso s koncovkou -ing.';
-  else if (E.why) msg = esc(E.why);
+  else if (E.why) msg = escN(E.why);
   if (tries === 0) bad(false, msg); else { $('#inp').disabled = true; bad(true); }
 }
 function checkDict() {

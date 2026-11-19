@@ -19,7 +19,7 @@ export const KINDS = {
   game: { list: 'games', e: '🎮', label: 'Hry' }
 };
 const EX_TYPES = ['mc', 'listen', 'gap', 'pair', 'build', 'type', 'dict', 'speak', 'info', 'fill', 'num'];
-const NUM_FORMS = { int: 1, frac: 2, mixed: 3 };
+const NUM_FORMS = { int: 1, frac: 2, mixed: 3, dec: 2, per: 3 };
 
 /* ---------- kontrola balíčku ---------- */
 export function validatePack(p) {
@@ -62,8 +62,12 @@ export function validatePack(p) {
       if (e.t === 'num') {
         need('q');
         const n = NUM_FORMS[e.form];
-        if (!n) E.push(`${w} (num): „form“ musí být "int", "frac" nebo "mixed".`);
-        else {
+        if (!n) E.push(`${w} (num): „form“ musí být "int", "frac", "mixed", "dec" nebo "per".`);
+        else if (e.form === 'dec' || e.form === 'per') {
+          // číslice jako text, aby se neztratily nuly: ["0", "08", "3"] = 0,083 s pruhem nad trojkou
+          const dig = (x, k) => typeof x === 'string' && (e.form === 'per' && k === 1 ? /^\d*$/ : /^\d+$/).test(x);
+          if (!arr(e.a) || e.a.length !== n || !e.a.every(dig)) E.push(`${w} (num): „a“ musí být ${e.form === 'dec' ? '["celé", "za čárkou"], např. ["0", "75"]' : '["celé", "před periodou", "perioda"], např. ["0", "1", "6"] nebo ["0", "", "3"]'}.`);
+        } else {
           const ok = x => arr(x) && x.length === n && x.every(Number.isInteger);
           if (!ok(e.a)) E.push(`${w} (num): „a“ musí být seznam ${n} celých čísel.`);
           if (e.alt !== undefined && (!arr(e.alt) || !e.alt.every(ok))) E.push(`${w} (num): „alt“ musí být seznam odpovědí ve stejném tvaru jako „a“.`);

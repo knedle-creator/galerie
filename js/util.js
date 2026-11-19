@@ -2,6 +2,8 @@
 export const $ = (s, r = document) => r.querySelector(s);
 export const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 export const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+// Jako esc, ale periodu v hranatých závorkách nakreslí s pruhem: "0,1[6]" → 0,16 s pruhem nad šestkou.
+export const escN = s => esc(s).replace(/\[(\d+)\]/g, '<span class="per">$1</span>');
 export const norm = s => String(s).toLowerCase().replace(/[’‘]/g, "'").replace(/[.,!?“”"…]/g, '').replace(/\s+/g, ' ').trim();
 export const shuffle = a => { a = a.slice(); for (let k = a.length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1)); [a[k], a[j]] = [a[j], a[k]]; } return a; };
 export const rand = a => a[Math.floor(Math.random() * a.length)];
