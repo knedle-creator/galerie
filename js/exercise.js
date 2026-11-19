@@ -366,8 +366,10 @@ function checkType() {
   if (!v) { fb(false, '<p>Napiš odpověď do políčka.</p>'); return; }
   if (E.a.some(a => norm(a) === v)) { $('#inp').disabled = true; return good(); }
   let msg = 'Zkus to ještě jednou.';
-  if (/ing\b/.test(v) && !/^(was|were|wasn't|weren't)\b/.test(v)) msg = 'Před tvar s -ing patří ještě was nebo were.';
-  else if (/^(was|were)\b/.test(v) && !/ing\b/.test(v)) msg = 'Po was/were potřebuješ sloveso s koncovkou -ing.';
+  // Nápovědy k -ing jen tam, kde se opravdu čeká was/were + -ing (ne u odpovědi „were“ nebo „will be“).
+  const cont = E.a.some(x => /^(was|were|wasn't|weren't)\b.*ing\b/.test(norm(x)));
+  if (cont && /ing\b/.test(v) && !/^(was|were|wasn't|weren't)\b/.test(v)) msg = 'Před tvar s -ing patří ještě was nebo were.';
+  else if (cont && /^(was|were)\b/.test(v) && !/ing\b/.test(v)) msg = 'Po was/were potřebuješ sloveso s koncovkou -ing.';
   else if (E.why) msg = escN(E.why);
   if (tries === 0) bad(false, msg); else { $('#inp').disabled = true; bad(true); }
 }
