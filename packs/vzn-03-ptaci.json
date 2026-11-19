@@ -1,0 +1,238 @@
+{
+ "schema": 1,
+ "id": "vzn-03-ptaci",
+ "course": "vzn",
+ "courseTitle": "Svět vzhůru nohama",
+ "lang": "cs",
+ "from": "2026-12-09",
+ "order": 3,
+ "version": 1,
+ "title": "Ptáci, kteří zapomněli létat",
+ "cz": "Endemiti, evoluce a proč tu ptáci chodí pěšky",
+ "subjects": [
+  "přírodopis",
+  "zeměpis",
+  "matematika"
+ ],
+ "lessons": [
+  {
+   "id": "vzn3-ostrov",
+   "e": "🥝",
+   "title": "Ostrov bez šelem",
+   "cz": "Záhada: proč se pták vzdá létání",
+   "intro": "<p>Na Zélandu potkáš ptáky, kteří chodí pěšky. Dnes zjistíš proč.</p><p class=\"cz\">Tři stopy, asi 8 minut.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>🔍 Záhada</h3><p>Na Zélandu žijí ptáci, kteří neumějí létat: kiwi, papoušek kākāpō nebo modrý takahē. Dřív tu chodil i obří <b>moa</b>, vyšší než basketbalový koš.</p><p>Létání je přece skvělé. Proč by se ho pták vzdal?</p>"
+    },
+    {
+     "t": "tip",
+     "key": "ptaci",
+     "q": "Co myslíš ty? Proč tu tolik ptáků nelétá?",
+     "opts": [
+      "Ptáci byli líní.",
+      "Nebylo před kým ulétat, tak létání nepotřebovali.",
+      "Bylo tu na létání moc větrno.",
+      "Netuším, ale chci to zjistit."
+     ],
+     "after": "Na konci lekce uvidíš, jak to vidí vědci."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Stopa 1: ostrov, který odplul</h3><p>Před asi 80 miliony let se kus pevniny odtrhl od obřího kontinentu Gondwana a odplul do oceánu. Nad vodu z něj dnes vyčnívá hlavně Nový Zéland.</p><p>Savci, kteří běhají po zemi, se sem nikdy nedostali. Jediní původní savci na souši jsou <b>netopýři</b>. Ti sem přiletěli.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Kteří savci žili na Zélandu odjakživa?",
+     "opts": [
+      "Jen netopýři",
+      "Jeleni a zajíci",
+      "Myši a krysy"
+     ],
+     "a": "Jen netopýři",
+     "why": "Jak se savec dostane přes oceán na ostrov?",
+     "more": "Jeden z nich, netopýr krátkoocasý, dokonce leze po zemi a hledá potravu v listí. Myši, krysy, jeleny i zajíce sem přivezli až lidé."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Stopa 2: létání je drahé</h3><p>Létat stojí spoustu energie a silné prsní svaly. Když není před kým utíkat a jídlo je na zemi, ptákům, kteří chodí pěšky, se vede líp.</p><p>Za tisíce generací se jim křídla zmenšila nebo úplně zmizela. Tomu se říká <b>evoluce</b>. Ptáci tu dokonce převzali práci savců.</p>"
+    },
+    {
+     "t": "pair",
+     "q": "Kdo dělal na Zélandu práci savců?",
+     "pairs": [
+      [
+       "moa",
+       "spásal listí jako jelen 🦌"
+      ],
+      [
+       "kiwi",
+       "čenichá v hlíně jako ježek 🦔"
+      ],
+      [
+       "orel Haastův",
+       "lovil jako velká šelma"
+      ]
+     ]
+    },
+    {
+     "t": "info",
+     "html": "<h3>Endemit</h3><p><b>Endemit</b> je druh, který žije jen na jednom místě na světě. Na Zélandu jich je spousta: kiwi, kākāpō, tuatara i kapradina ponga z dolarové mince.</p><p>Ostrov oddělený od světa je jako obří laboratoř evoluce.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Co je endemit?",
+     "opts": [
+      "Druh, který žije jen na jednom místě na světě",
+      "Druh, který už vyhynul",
+      "Pták, který neumí létat"
+     ],
+     "a": "Druh, který žije jen na jednom místě na světě",
+     "why": "Vrať se o obrazovku zpátky."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Stopa 3: obr a jeho lovec</h3><svg class=\"vz\" viewBox=\"0 0 320 214\" role=\"img\" aria-label=\"Porovnání výšky: kiwi 0,4 m, člověk 1,7 m, basketbalový koš 3,05 m, moa až 3,6 m\"><rect class=\"hbar b-kiwi\" x=\"22\" y=\"168.0\" width=\"46\" height=\"18.0\" rx=\"5\"/><text class=\"lab\" x=\"45\" y=\"162.0\" text-anchor=\"middle\">0,4 m</text><text class=\"sub\" x=\"45\" y=\"202\" text-anchor=\"middle\">kiwi</text><rect class=\"hbar b-lid\" x=\"98\" y=\"109.5\" width=\"46\" height=\"76.5\" rx=\"5\"/><text class=\"lab\" x=\"121\" y=\"103.5\" text-anchor=\"middle\">1,7 m</text><text class=\"sub\" x=\"121\" y=\"202\" text-anchor=\"middle\">člověk</text><rect class=\"hbar b-kos\" x=\"174\" y=\"48.8\" width=\"46\" height=\"137.2\" rx=\"5\"/><text class=\"lab\" x=\"197\" y=\"42.8\" text-anchor=\"middle\">3,05 m</text><text class=\"sub\" x=\"197\" y=\"202\" text-anchor=\"middle\">koš</text><rect class=\"hbar b-moa\" x=\"250\" y=\"24.0\" width=\"46\" height=\"162.0\" rx=\"5\"/><text class=\"lab\" x=\"273\" y=\"18.0\" text-anchor=\"middle\">3,6 m</text><text class=\"sub\" x=\"273\" y=\"202\" text-anchor=\"middle\">moa</text><line class=\"ground\" x1=\"8\" y1=\"186\" x2=\"312\" y2=\"186\"/></svg><p><b>Moa</b> byl nejvyšší pták, jaký kdy žil. S nataženým krkem měřil až 3,6 m a vážil přes 200 kg. Neměl vůbec křídla.</p><p>Lovil ho jediný nepřítel: <b>orel Haastův</b>, největší orel všech dob, s rozpětím křídel až 3 metry. Když lidé moa vyhubili, vyhynul i orel. Bylo to asi před 500 lety.</p>"
+    },
+    {
+     "t": "num",
+     "q": "Moa měřil až 3,6 m, dospělý člověk asi 1,7 m. O kolik metrů byl moa vyšší?",
+     "form": "dec",
+     "a": [
+      "1",
+      "9"
+     ],
+     "why": "Odečti 3,6 − 1,7. Pomůže: 3,6 − 1,6 = 2 a pak ještě o desetinu míň."
+    },
+    {
+     "t": "info",
+     "tip": "ptaci",
+     "tipok": [
+      "Nebylo před kým ulétat, tak létání nepotřebovali."
+     ],
+     "ifok": "<p><b>Trefa!</b> Přemýšlela jsi jako bioložka.</p>",
+     "ifnot": "<p>Na začátku jsi to nevěděla, nebo sis tipla jinak. To je v pořádku, vědcům to taky chvíli trvalo.</p>",
+     "html": "<h3>Záhada vyřešená</h3><p><b>Na ostrově bez šelem nebylo před kým ulétat.</b> Létání stojí hodně energie, a tak se ptákům za dlouhou dobu vyplatilo chodit.</p>"
+    }
+   ]
+  },
+  {
+   "id": "vzn3-kiwi",
+   "e": "🌿",
+   "title": "Kiwi a jeho nepřátelé",
+   "cz": "Obří vejce, kākāpō a jak se ptáci chrání",
+   "intro": "<p>Proč je kiwi tak zvláštní pták a proč ho dnes musí lidé chránit?</p><p class=\"cz\">Asi 8 minut.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>Pták, který čenichá</h3><p>Kiwi má nosní dírky <b>na špičce zobáku</b>, jako jediný pták na světě. Čenichá s nimi žížaly v hlíně. Má peří jako chlupy, je aktivní v noci a jeho kosti jsou plné dřeně jako u savců.</p>"
+    },
+    {
+     "t": "info",
+     "html": "<h3>Obří vejce</h3><p>Samice kiwi snáší obrovské vejce: váží až <b>pětinu</b> jejího těla. To je jeden z největších poměrů vejce a matky mezi všemi ptáky.</p>"
+    },
+    {
+     "t": "fill",
+     "q": "Vejce kiwi váží až pětinu samice. Samice je rozdělená na 5 stejných dílů. Vybarvi, kolik z ní váží vejce.",
+     "shape": "box",
+     "parts": 5,
+     "a": 1,
+     "why": "Pětina je 1 díl z 5."
+    },
+    {
+     "t": "num",
+     "q": "Kdyby žena vážila 60 kg a měla vejce jako kiwi, kolik by vejce vážilo?",
+     "form": "int",
+     "a": [
+      12
+     ],
+     "why": "Pětina z 60 je 60 : 5.",
+     "more": "12 kilo! To je jako dvouleté dítě."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Lidé přivezli šelmy</h3><p>S lidmi připluly krysy, kočky, lasice hranostaji a vačice (possum). Ptáci, kteří miliony let nemuseli utíkat, se neuměli bránit ani schovat.</p><p>Bez ochrany zahyne většina kiwi kuřat dřív, než dospějí.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Proč jsou kočky a lasice pro kiwi tak nebezpečné?",
+     "opts": [
+      "Kiwi se nikdy nemusel učit před šelmami utíkat",
+      "Kiwi je moc rychlý",
+      "Kočky jedí jen kapradiny"
+     ],
+     "a": "Kiwi se nikdy nemusel učit před šelmami utíkat",
+     "why": "Vzpomeň si: kdo na Zélandu žil, než přišli lidé?"
+    },
+    {
+     "t": "info",
+     "html": "<h3>Kākāpō: papoušek, který voní</h3><p>Kākāpō je <b>nejtěžší papoušek na světě</b>. Nelétá, je aktivní v noci a má výraznou sladkou vůni. Ochránci ji přirovnávají k medu nebo květinám.</p><p>V roce 1995 jich zbývalo jen 51. Lidé je přestěhovali na ostrovy bez šelem a v září 2026 jich bylo 325.</p>"
+    },
+    {
+     "t": "num",
+     "q": "Kākāpō bylo v roce 1995 jen 51. V roce 2026 jich je 325. O kolik jich přibylo?",
+     "form": "int",
+     "a": [
+      274
+     ],
+     "why": "Odečti 325 − 51."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Zéland bez šelem</h3><p>Zéland si dal velký cíl: do roku 2050 se zbavit krys, lasic a vačic. Podél stezek uvidíš dřevěné pasti. Kontrolují je i dobrovolníci, často celé rodiny.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "<b>Mýtus, nebo pravda?</b> Nejbližší příbuzný kiwi je pštros.",
+     "opts": [
+      "Mýtus",
+      "Pravda"
+     ],
+     "a": "Mýtus",
+     "why": "Nejbližší příbuzný kiwi už nežije.",
+     "more": "Mýtus. Podle DNA je nejbližším příbuzným kiwi vyhynulý obří pták z Madagaskaru. Vědci si proto myslí, že předci kiwi na Zéland kdysi přiletěli, a teprve tady létat přestali."
+    },
+    {
+     "t": "mc",
+     "q": "<b>Mýtus, nebo pravda?</b> Na Zélandu žijí jedovatí hadi.",
+     "opts": [
+      "Mýtus",
+      "Pravda"
+     ],
+     "a": "Mýtus",
+     "why": "Vzpomeň si na první kapitolu.",
+     "more": "Mýtus. Na souši tam nežije žádný had. A Zéland si to hlídá: had zachycený na letišti nebo v přístavu je poplach."
+    }
+   ]
+  }
+ ],
+ "missions": [
+  {
+   "id": "vzn3-m-kiwi",
+   "where": "kiwi house",
+   "cz": "Pozoruj kiwi a namaluj ho do atlasu. Všimni si nosních dírek na konci zobáku."
+  },
+  {
+   "id": "vzn3-m-past",
+   "where": "stezka v lese",
+   "cz": "Najdi past na predátory. Vyfoť ji a zjisti, na koho je nastražená."
+  },
+  {
+   "id": "vzn3-m-pukeko",
+   "where": "louka nebo mokřad",
+   "cz": "Najdi modrého ptáka pūkeko s červeným zobákem. Umí létat? Pozoruj ho a rozhodni sama."
+  },
+  {
+   "id": "vzn3-m-zpev",
+   "where": "ráno v lese",
+   "cz": "Poslouchej ptáky. Zkus najít tūī nebo holuba kererū a nakresli ho."
+  },
+  {
+   "id": "vzn3-m-moa",
+   "where": "muzeum",
+   "cz": "Najdi kostru nebo model moa. Postav se vedle něj: kam mu sahá tvoje hlava?"
+  }
+ ],
+ "subject": "vzn"
+}

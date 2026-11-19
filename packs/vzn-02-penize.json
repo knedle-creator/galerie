@@ -1,0 +1,251 @@
+{
+ "schema": 1,
+ "id": "vzn-02-penize",
+ "course": "vzn",
+ "courseTitle": "Svět vzhůru nohama",
+ "lang": "cs",
+ "from": "2026-12-09",
+ "order": 2,
+ "version": 1,
+ "title": "Kiwi dolary",
+ "cz": "Peníze, kurz a nakupování u protinožců",
+ "subjects": [
+  "matematika",
+  "finanční gramotnost"
+ ],
+ "lessons": [
+  {
+   "id": "vzn2-mince",
+   "e": "🪙",
+   "title": "Co je v peněžence",
+   "cz": "Mince, bankovky a kurz",
+   "intro": "<p>Než si na Zélandu koupíš první zmrzlinu, zjistíš, kolik to je v korunách.</p><p class=\"cz\">Asi 7 minut.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>🔍 Záhada</h3><p>Na Zélandu zaplatíš mincí, na které je pták kiwi. Proto se novozélandskému dolaru přezdívá <b>kiwi dolar</b>.</p><p>Je zmrzlina za 5 dolarů levná, nebo drahá? To nepoznáš, dokud nevíš, kolik je dolar v korunách.</p>"
+    },
+    {
+     "t": "tip",
+     "key": "penize",
+     "q": "Co myslíš: kolik korun je jeden novozélandský dolar?",
+     "opts": [
+      "Asi 1 koruna",
+      "Asi 12 korun",
+      "Asi 100 korun",
+      "Netuším, ale zjistím to."
+     ],
+     "after": "Na konci lekce porovnáš svůj tip se skutečností."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Mince</h3><svg class=\"vz\" viewBox=\"0 0 320 118\" role=\"img\" aria-label=\"Novozélandské mince: 10, 20 a 50 centů, 1 a 2 dolary\"><circle class=\"coin cu\" cx=\"29.0\" cy=\"52\" r=\"23.0\"/><text class=\"coint\" x=\"29.0\" y=\"52\" text-anchor=\"middle\" dominant-baseline=\"central\">10c</text><text class=\"sub\" x=\"29.0\" y=\"104\" text-anchor=\"middle\">tvář</text><circle class=\"coin ag\" cx=\"85.3\" cy=\"52\" r=\"24.4\"/><text class=\"coint\" x=\"85.3\" y=\"52\" text-anchor=\"middle\" dominant-baseline=\"central\">20c</text><text class=\"sub\" x=\"85.3\" y=\"104\" text-anchor=\"middle\">Pūkaki</text><circle class=\"coin ag\" cx=\"146.4\" cy=\"52\" r=\"27.7\"/><text class=\"coint\" x=\"146.4\" y=\"52\" text-anchor=\"middle\" dominant-baseline=\"central\">50c</text><text class=\"sub\" x=\"146.4\" y=\"104\" text-anchor=\"middle\">loď</text><circle class=\"coin au\" cx=\"208.8\" cy=\"52\" r=\"25.8\"/><text class=\"coint\" x=\"208.8\" y=\"52\" text-anchor=\"middle\" dominant-baseline=\"central\">$1</text><text class=\"sub\" x=\"208.8\" y=\"104\" text-anchor=\"middle\">kiwi 🥝</text><circle class=\"coin au\" cx=\"273.3\" cy=\"52\" r=\"29.7\"/><text class=\"coint\" x=\"273.3\" y=\"52\" text-anchor=\"middle\" dominant-baseline=\"central\">$2</text><text class=\"sub\" x=\"273.3\" y=\"104\" text-anchor=\"middle\">volavka</text></svg><p><b>100 centů = 1 dolar.</b> Mince jsou za 10, 20 a 50 centů a za 1 a 2 dolary.</p><p>Na dolaru je kiwi se stříbrnou kapradinou, na dvoudolarovce bílá volavka kōtuku, na padesáticentu loď kapitána Cooka <i>Endeavour</i> a na desetníku vyřezávaná maorská tvář.</p>"
+    },
+    {
+     "t": "pair",
+     "q": "Spoj minci s obrázkem na ní.",
+     "pairs": [
+      [
+       "1 dolar",
+       "kiwi 🥝"
+      ],
+      [
+       "2 dolary",
+       "volavka kōtuku"
+      ],
+      [
+       "50 centů",
+       "loď Endeavour ⛵"
+      ],
+      [
+       "10 centů",
+       "maorská vyřezávaná tvář"
+      ]
+     ]
+    },
+    {
+     "t": "info",
+     "html": "<h3>Bankovky z plastu</h3><p>Novozélandské bankovky jsou z plastu. Nepromoknou a vydrží i vyprání v kapse.</p><p>Na pětidolarovce je horolezec <b>Edmund Hillary</b>, jeden z prvních dvou lidí na vrcholu Everestu, a vedle něj nejvyšší hora Zélandu Aoraki. Na desetidolarovce je <b>Kate Sheppardová</b>, díky které na Zélandu jako v první zemi na světě směly volit ženy. Znáš ji z angličtiny.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Kdo je na pětidolarovce?",
+     "opts": [
+      "Horolezec Edmund Hillary",
+      "Kapitán James Cook",
+      "Kate Sheppardová"
+     ],
+     "a": "Horolezec Edmund Hillary",
+     "why": "Je to ten, kdo vylezl na Everest. Vedle něj je na bankovce hora."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Stopa: kurz</h3><p>Kurz říká, kolik korun dáš za jeden dolar. Teď je to <b>asi 12 korun</b>. Trochu se mění, před cestou ho s rodiči zkontroluj.</p><p>Kolikrát víc dolarů, tolikrát víc korun:</p><table class=\"kurz\"><tr><th>NZD</th><th>Kč</th></tr><tr><td>1</td><td>12</td></tr><tr><td>2</td><td>24</td></tr><tr><td>5</td><td>60</td></tr><tr><td>10</td><td>120</td></tr></table><p class=\"cz\">Tomu se v matice říká přímá úměrnost.</p>"
+    },
+    {
+     "t": "num",
+     "q": "Zmrzlina stojí 5 dolarů. Kolik je to korun?",
+     "form": "int",
+     "a": [
+      60
+     ],
+     "why": "Podívej se do tabulky na řádek s pětkou."
+    },
+    {
+     "t": "num",
+     "q": "Pohled domů stojí 3 dolary. Kolik je to korun?",
+     "form": "int",
+     "a": [
+      36
+     ],
+     "why": "3 × 12. Pomůže rozdělit si to: 3 × 10 = 30 a 3 × 2 = 6."
+    },
+    {
+     "t": "num",
+     "q": "Vstupenka stojí 20 dolarů. Kolik je to korun?",
+     "form": "int",
+     "a": [
+      240
+     ],
+     "why": "Dvacet je dvakrát deset. Kolik je 10 dolarů v tabulce?"
+    },
+    {
+     "t": "info",
+     "tip": "penize",
+     "tipok": [
+      "Asi 12 korun"
+     ],
+     "ifok": "<p><b>Trefa!</b> Odhadla jsi to přesně.</p>",
+     "ifnot": "<p>Na začátku jsi to nevěděla, nebo sis tipla jinak. Teď máš pravidlo, které se ti bude hodit v každém obchodě.</p>",
+     "html": "<h3>Záhada vyřešená</h3><p><b>1 kiwi dolar je asi 12 korun.</b> Rychlý trik do obchodu: cenu vynásob deseti a přičti ji ještě dvakrát. 5 dolarů → 50 + 10 = 60 Kč.</p>"
+    }
+   ]
+  },
+  {
+   "id": "vzn2-dairy",
+   "e": "🍦",
+   "title": "Nákup v dairy",
+   "cz": "Sčítání cen, drobné a co se vyplatí",
+   "intro": "<p>Dnes nakupuješ v zélandském obchůdku. Počítáš s desetinnými čísly jako v matice, jen na zmrzlinu.</p><p class=\"cz\">Asi 7 minut.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>Dairy není mlékárna</h3><p>Malému obchůdku na rohu se na Zélandu říká <b>dairy</b>. Koupíš tam zmrzlinu, pečivo i pití.</p><p>Ceny jsou desetinná čísla: <b>4,50 dolaru</b> jsou 4 dolary a 50 centů.</p>"
+    },
+    {
+     "t": "num",
+     "q": "Zmrzlina stojí 4,50 dolaru a pití 2,30 dolaru. Kolik zaplatíš celkem?",
+     "form": "dec",
+     "a": [
+      "6",
+      "80"
+     ],
+     "why": "Sečti zvlášť dolary (4 + 2) a zvlášť centy (50 + 30)."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Kam zmizely drobné?</h3><p>Na Zélandu nejsou mince za 1, 2 ani 5 centů. Když platíš hotově, cena se zaokrouhlí na desítky centů: 6,84 → 6,80 a 6,87 → 6,90. Kartou se platí přesně.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Nákup stojí 7,43 dolaru a platíš hotově. Kolik zaplatíš?",
+     "opts": [
+      "7,40",
+      "7,50",
+      "7,43"
+     ],
+     "a": "7,40",
+     "why": "Je 43 blíž ke 40, nebo k 50?"
+    },
+    {
+     "t": "mc",
+     "q": "Nákup stojí 12,48 dolaru a platíš hotově. Kolik zaplatíš?",
+     "opts": [
+      "12,50",
+      "12,40",
+      "12,00"
+     ],
+     "a": "12,50",
+     "why": "Je 48 blíž ke 40, nebo k 50?"
+    },
+    {
+     "t": "info",
+     "html": "<h3>Přepočet zpátky</h3><p>Kapesné máš v korunách. Kolik je to dolarů? Teď dělíš dvanácti:</p><p><b>120 Kč : 12 = 10 dolarů</b></p>"
+    },
+    {
+     "t": "num",
+     "q": "Máš 240 Kč. Kolik je to dolarů?",
+     "form": "int",
+     "a": [
+      20
+     ],
+     "why": "Kolikrát se 12 vejde do 240? Zkus 12 × 20."
+    },
+    {
+     "t": "num",
+     "q": "Na výlet sis našetřila 600 Kč. Kolik je to dolarů?",
+     "form": "int",
+     "a": [
+      50
+     ],
+     "why": "600 : 12. Zkus 12 × 50."
+    },
+    {
+     "t": "mc",
+     "q": "Co se vyplatí víc?",
+     "opts": [
+      "Litr džusu za 3 dolary",
+      "Půl litru džusu za 2 dolary",
+      "Je to stejné"
+     ],
+     "a": "Litr džusu za 3 dolary",
+     "why": "Kolik by stály dvě půllitrovky, tedy celý litr?",
+     "more": "Dvě půllitrovky by stály 4 dolary, litr najednou jen 3. Porovnávat cenu za stejné množství se vyplatí v každém obchodě."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Daň na účtence</h3><p>Na Zélandu je daň už v ceně na cenovce. Na účtence ji najdeš pod zkratkou <b>GST</b>. Je to 15 % z ceny bez daně.</p><p class=\"cz\">Procenta tě ve škole teprve čekají. Teď ti stačí GST najít.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "<b>Mýtus, nebo pravda?</b> Novozélandské bankovky vydrží i vyprání v kapse.",
+     "opts": [
+      "Mýtus",
+      "Pravda"
+     ],
+     "a": "Pravda",
+     "why": "Z jakého materiálu jsou?",
+     "more": "Pravda. Jsou z plastu, takže vydrží vodu líp než papírové."
+    }
+   ]
+  }
+ ],
+ "missions": [
+  {
+   "id": "vzn2-m-mince",
+   "where": "první nákup",
+   "cz": "Najdi minci s kiwi a minci s volavkou kōtuku. Kolik takových mincí máš v peněžence?"
+  },
+  {
+   "id": "vzn2-m-dairy",
+   "where": "obchůdek dairy",
+   "cz": "Přepočítej, kolik stojí zmrzlina v korunách. Je dražší, nebo levnější než doma?"
+  },
+  {
+   "id": "vzn2-m-kapesne",
+   "where": "jeden den výletu",
+   "cz": "Ráno si naplánuj, za co utratíš kapesné na dnešek. Večer si zapiš, kolik zbylo a jestli plán vyšel."
+  },
+  {
+   "id": "vzn2-m-gst",
+   "where": "kdekoli",
+   "cz": "Najdi na účtence GST. Kolik dolarů z nákupu byla daň?"
+  },
+  {
+   "id": "vzn2-m-hillary",
+   "where": "první bankovka",
+   "cz": "Najdi na pětidolarovce horu Aoraki a na druhé straně tučňáka hoiho. Namaluj si bankovku do atlasu."
+  }
+ ],
+ "subject": "vzn"
+}

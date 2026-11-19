@@ -1,0 +1,242 @@
+{
+ "schema": 1,
+ "id": "vzn-04-obloha",
+ "course": "vzn",
+ "courseTitle": "Svět vzhůru nohama",
+ "lang": "cs",
+ "from": "2026-12-09",
+ "order": 4,
+ "version": 1,
+ "title": "Obloha vzhůru nohama",
+ "cz": "Jižní kříž, Hrnec a Měsíc, který lže",
+ "subjects": [
+  "zeměpis",
+  "fyzika"
+ ],
+ "lessons": [
+  {
+   "id": "vzn4-kriz",
+   "e": "✨",
+   "title": "Hvězdy, které doma neuvidíš",
+   "cz": "Záhada: proč je obloha jiná",
+   "intro": "<p>Na Zélandu uvidíš v noci jiné nebe. Dnes zjistíš proč a jak podle něj najdeš jih.</p><p class=\"cz\">Asi 8 minut.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>🔍 Záhada</h3><p>Na Zélandu uvidíš hvězdy, které z Mrsklesí nikdy neuvidíš. A souhvězdí, která znáš, tam budou vzhůru nohama.</p><p>Jak je to možné, když je to pořád to samé nebe?</p>"
+    },
+    {
+     "t": "tip",
+     "key": "obloha",
+     "q": "Jak si to vysvětluješ ty?",
+     "opts": [
+      "Na jihu svítí jiné hvězdy.",
+      "Stojíme na kouli: z jižní poloviny vidíš jinou část nebe, a vůči nám hlavou dolů.",
+      "Hvězdy se v prosinci stěhují na jih.",
+      "Netuším, ale chci to zjistit."
+     ],
+     "after": "Na konci lekce porovnáš svůj tip."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Stopa 1: stojíme na kouli</h3><svg class=\"vz\" viewBox=\"0 0 320 214\" role=\"img\" aria-label=\"Země uprostřed hvězdné oblohy: z Mrsklesí vidíš horní polovinu nebe, ze Zélandu dolní\"><rect class=\"nebe\" x=\"0\" y=\"0\" width=\"320\" height=\"214\" rx=\"14\"/><circle class=\"hv\" cx=\"40\" cy=\"30\" r=\"1.8\"/><circle class=\"hv\" cx=\"90\" cy=\"18\" r=\"1.8\"/><circle class=\"hv\" cx=\"230\" cy=\"22\" r=\"1.8\"/><circle class=\"hv\" cx=\"280\" cy=\"40\" r=\"1.8\"/><circle class=\"hv\" cx=\"24\" cy=\"100\" r=\"1.8\"/><circle class=\"hv\" cx=\"300\" cy=\"110\" r=\"1.8\"/><circle class=\"hv\" cx=\"50\" cy=\"180\" r=\"1.8\"/><circle class=\"hv\" cx=\"110\" cy=\"196\" r=\"1.8\"/><circle class=\"hv\" cx=\"220\" cy=\"194\" r=\"1.8\"/><circle class=\"hv\" cx=\"276\" cy=\"178\" r=\"1.8\"/><text class=\"hl\" x=\"160\" y=\"22\" text-anchor=\"middle\">⭐ Polárka</text><text class=\"hl\" x=\"160\" y=\"204\" text-anchor=\"middle\">✦ Jižní kříž</text><circle class=\"earth\" cx=\"160\" cy=\"107\" r=\"36\"/><line class=\"hline\" x1=\"104\" y1=\"71\" x2=\"216\" y2=\"71\"/><line class=\"hline\" x1=\"104\" y1=\"143\" x2=\"216\" y2=\"143\"/><line class=\"man\" x1=\"160\" y1=\"71\" x2=\"160\" y2=\"54\"/><circle class=\"manh\" cx=\"160\" cy=\"50\" r=\"4\"/><line class=\"man\" x1=\"160\" y1=\"143\" x2=\"160\" y2=\"160\"/><circle class=\"manh\" cx=\"160\" cy=\"164\" r=\"4\"/><text class=\"hl\" x=\"10\" y=\"66\">Mrsklesy vidí</text><text class=\"hl\" x=\"10\" y=\"80\">horní nebe</text><text class=\"hl\" x=\"10\" y=\"140\">Zéland vidí</text><text class=\"hl\" x=\"10\" y=\"154\">dolní nebe</text></svg><p>Země je koule uprostřed hvězdného nebe. Z Mrsklesí vidíš horní polovinu nebe, ze Zélandu tu dolní. A protože člověk stojí vždycky hlavou od Země, jsi na Zélandu vůči nám hlavou dolů. Proto tam známá souhvězdí vidíš obráceně.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Proč vidí Kiwi souhvězdí Orion obráceně?",
+     "opts": [
+      "Stojí na druhé straně koule, vůči nám hlavou dolů",
+      "Orion se v prosinci převrátí",
+      "Na jihu se hvězdy točí obráceně"
+     ],
+     "a": "Stojí na druhé straně koule, vůči nám hlavou dolů",
+     "why": "Podívej se znovu na obrázek s panáčky."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Stopa 2: Jižní kříž</h3><svg class=\"vz\" viewBox=\"0 0 320 190\" role=\"img\" aria-label=\"Jižní kříž: čtyři jasné hvězdy do kříže a vedle nich dva Ukazatelé\"><rect class=\"nebe\" x=\"0\" y=\"0\" width=\"320\" height=\"190\" rx=\"14\"/><line class=\"cl\" x1=\"215\" y1=\"28\" x2=\"222\" y2=\"130\"/><line class=\"cl\" x1=\"180\" y1=\"82\" x2=\"255\" y2=\"72\"/><circle class=\"hv2\" cx=\"215.0\" cy=\"28.0\" r=\"5.5\"/><circle class=\"hv\" cx=\"222.0\" cy=\"130.0\" r=\"7\"/><circle class=\"hv\" cx=\"180.0\" cy=\"82.0\" r=\"6.5\"/><circle class=\"hv\" cx=\"255.0\" cy=\"72.0\" r=\"5\"/><circle class=\"hv\" cx=\"238.0\" cy=\"104.0\" r=\"3\"/><circle class=\"hv\" cx=\"92.0\" cy=\"112.0\" r=\"7\"/><circle class=\"hv2\" cx=\"48.0\" cy=\"128.0\" r=\"8\"/><text class=\"hl\" x=\"232\" y=\"176\" text-anchor=\"middle\">Jižní kříž</text><text class=\"hl\" x=\"70\" y=\"160\" text-anchor=\"middle\">Ukazatelé</text><text class=\"hl\" x=\"48\" y=\"106\" text-anchor=\"middle\">Alfa Kentaura</text></svg><p>Nejslavnější souhvězdí jižní oblohy jsou čtyři jasné hvězdy do kříže. Najdeš ho na vlajce Nového Zélandu i Austrálie.</p><p>Vedle kříže svítí dva <b>Ukazatelé</b>. Ten jasnější, Alfa Kentaura, je nejbližší hvězda, kterou uvidíš pouhým okem. Její světlo k nám letí asi 4 a půl roku.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Kolik hvězd Jižního kříže je na vlajce Nového Zélandu?",
+     "opts": [
+      "4",
+      "5",
+      "7"
+     ],
+     "a": "4",
+     "why": "Spočítej jasné hvězdy kříže na obrázku.",
+     "more": "Na australské vlajce je jich pět: přidali ještě malou pátou hvězdu kříže."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Jak najít jih podle hvězd</h3><svg class=\"vz\" viewBox=\"0 0 320 270\" role=\"img\" aria-label=\"Jak najít jih: prodluž dlouhou osu Jižního kříže 4,5krát, tam je jižní nebeský pól, pod ním na obzoru je jih\"><rect class=\"nebe\" x=\"0\" y=\"0\" width=\"320\" height=\"270\" rx=\"14\"/><line class=\"cl\" x1=\"110\" y1=\"30\" x2=\"128\" y2=\"62\"/><line class=\"cl\" x1=\"105.9\" y1=\"53.4\" x2=\"130.3\" y2=\"39.6\"/><circle class=\"hv2\" cx=\"110.0\" cy=\"30.0\" r=\"4.5\"/><circle class=\"hv\" cx=\"128.0\" cy=\"62.0\" r=\"5.5\"/><circle class=\"hv\" cx=\"105.9\" cy=\"53.4\" r=\"5\"/><circle class=\"hv\" cx=\"130.3\" cy=\"39.6\" r=\"4\"/><line class=\"hline\" x1=\"128\" y1=\"62\" x2=\"209.0\" y2=\"206.0\"/><circle class=\"pole\" cx=\"209.0\" cy=\"206.0\" r=\"6\"/><text class=\"hl\" x=\"199.0\" y=\"210.0\" text-anchor=\"end\">jižní pól nebe</text><text class=\"hl\" x=\"178.5\" y=\"134.0\">4,5 × délka kříže</text><polygon class=\"hory\" points=\"0,270 0,246 40,236 80,244 130,232 170,242 230,234 270,244 320,238 320,270\"/><line class=\"arrowy\" x1=\"209.0\" y1=\"214.0\" x2=\"209.0\" y2=\"236\"/><text class=\"jih\" x=\"209.0\" y=\"260\" text-anchor=\"middle\">JIH</text></svg><p>1. Najdi Jižní kříž.<br>2. Prodluž jeho dlouhou osu asi 4,5× směrem od horní hvězdy.<br>3. Tam je jižní pól nebe.<br>4. Pod ním na obzoru je jih.</p><p class=\"cz\">Měřit můžeš prsty natažené ruky.</p>"
+    },
+    {
+     "t": "num",
+     "q": "Dlouhá osa kříže je na natažené ruce široká asi 2 prsty. Kolik prstů odměříš, když ji prodloužíš 4,5×?",
+     "form": "int",
+     "a": [
+      9
+     ],
+     "why": "Vynásob 4,5 × 2. Pomůže: 4 × 2 = 8 a půlka ze dvou je 1."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Kdy se dívat</h3><p>V prosinci je Jižní kříž večer nízko nad jižním obzorem a často ho schovají kopce nebo stromy. Nejlíp ho uvidíš pozdě v noci nebo brzy ráno, kdy vystoupá výš.</p><p>Vysoko na jižní obloze uvidíš i <b>Magellanova mračna</b>: dvě mlhavé skvrny. Jsou to celé galaxie, sousedky naší Mléčné dráhy. Jejich světlo k nám letí přes 150 000 let.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Co jsou Magellanova mračna?",
+     "opts": [
+      "Dvě sousední galaxie",
+      "Mraky nad oceánem",
+      "Kouř ze sopky"
+     ],
+     "a": "Dvě sousední galaxie",
+     "why": "Vrať se o obrazovku zpátky."
+    },
+    {
+     "t": "info",
+     "tip": "obloha",
+     "tipok": [
+      "Stojíme na kouli: z jižní poloviny vidíš jinou část nebe, a vůči nám hlavou dolů."
+     ],
+     "ifok": "<p><b>Trefa!</b> Přemýšlela jsi jako astronomka.</p>",
+     "ifnot": "<p>Na začátku jsi to nevěděla, nebo sis tipla jinak. Teď už to víš, a ještě umíš najít jih podle hvězd.</p>",
+     "html": "<h3>Záhada vyřešená</h3><p><b>Nebe je pořád stejné, jen se na něj díváš z druhé strany koule.</b> Proto uvidíš jiné hvězdy a známá souhvězdí vzhůru nohama.</p>"
+    }
+   ]
+  },
+  {
+   "id": "vzn4-mesic",
+   "e": "🌙",
+   "title": "Hrnec a Měsíc, který lže",
+   "cz": "Orion vzhůru nohama, Měsíc v prosinci a Matariki",
+   "intro": "<p>Co se stane s Orionem a s Měsícem, když se na ně podíváš hlavou dolů?</p><p class=\"cz\">Asi 7 minut.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>Orion je Hrnec</h3><svg class=\"vz\" viewBox=\"0 0 320 170\" role=\"img\" aria-label=\"Orion doma a na Zélandu, kde je vzhůru nohama a pás s mečem vypadá jako hrnec\"><rect class=\"nebe\" x=\"0\" y=\"0\" width=\"320\" height=\"170\" rx=\"14\"/><text class=\"hl\" x=\"76\" y=\"16\" text-anchor=\"middle\">Orion doma</text><line class=\"cl\" x1=\"49\" y1=\"50\" x2=\"66\" y2=\"96\"/><line class=\"cl\" x1=\"102\" y1=\"55\" x2=\"86\" y2=\"88\"/><line class=\"cl\" x1=\"66\" y1=\"96\" x2=\"56\" y2=\"142\"/><line class=\"cl\" x1=\"86\" y1=\"88\" x2=\"104\" y2=\"136\"/><line class=\"cl\" x1=\"66\" y1=\"96\" x2=\"76\" y2=\"92\"/><line class=\"cl\" x1=\"76\" y1=\"92\" x2=\"86\" y2=\"88\"/><circle class=\"hv2\" cx=\"49.0\" cy=\"50.0\" r=\"5.5\"/><circle class=\"hv\" cx=\"102.0\" cy=\"55.0\" r=\"4\"/><circle class=\"hv\" cx=\"66.0\" cy=\"96.0\" r=\"3.5\"/><circle class=\"hv\" cx=\"76.0\" cy=\"92.0\" r=\"3.5\"/><circle class=\"hv\" cx=\"86.0\" cy=\"88.0\" r=\"3.5\"/><circle class=\"hv\" cx=\"74.0\" cy=\"108.0\" r=\"2\"/><circle class=\"hv\" cx=\"75.0\" cy=\"116.0\" r=\"2.6\"/><circle class=\"hv\" cx=\"76.0\" cy=\"124.0\" r=\"2\"/><circle class=\"hv\" cx=\"56.0\" cy=\"142.0\" r=\"3.5\"/><circle class=\"hv\" cx=\"104.0\" cy=\"136.0\" r=\"5.5\"/><text class=\"hl\" x=\"242\" y=\"16\" text-anchor=\"middle\">Na Zélandu: Hrnec</text><line class=\"cl\" x1=\"269\" y1=\"142\" x2=\"252\" y2=\"96\"/><line class=\"cl\" x1=\"216\" y1=\"137\" x2=\"232\" y2=\"104\"/><line class=\"cl\" x1=\"252\" y1=\"96\" x2=\"262\" y2=\"50\"/><line class=\"cl\" x1=\"232\" y1=\"104\" x2=\"214\" y2=\"56\"/><line class=\"cl\" x1=\"252\" y1=\"96\" x2=\"242\" y2=\"100\"/><line class=\"cl\" x1=\"242\" y1=\"100\" x2=\"232\" y2=\"104\"/><circle class=\"hv2\" cx=\"269.0\" cy=\"142.0\" r=\"5.5\"/><circle class=\"hv\" cx=\"216.0\" cy=\"137.0\" r=\"4\"/><circle class=\"hv\" cx=\"252.0\" cy=\"96.0\" r=\"3.5\"/><circle class=\"hv\" cx=\"242.0\" cy=\"100.0\" r=\"3.5\"/><circle class=\"hv\" cx=\"232.0\" cy=\"104.0\" r=\"3.5\"/><circle class=\"hv\" cx=\"244.0\" cy=\"84.0\" r=\"2\"/><circle class=\"hv\" cx=\"243.0\" cy=\"76.0\" r=\"2.6\"/><circle class=\"hv\" cx=\"242.0\" cy=\"68.0\" r=\"2\"/><circle class=\"hv\" cx=\"262.0\" cy=\"50.0\" r=\"3.5\"/><circle class=\"hv\" cx=\"214.0\" cy=\"56.0\" r=\"5.5\"/></svg><p>Orion znáš ze zimní oblohy doma. Na Zélandu ho uvidíš v létě, a vzhůru nohama. Kiwi mu říkají <b>Hrnec</b> (the Pot): tři hvězdy pásu jsou dno hrnce a meč je rukojeť, která trčí nahoru.</p><p class=\"cz\">V prosinci ho najdeš večer na východě, později v noci na severu.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Proč se Orionu na Zélandu říká Hrnec?",
+     "opts": [
+      "Vzhůru nohama vypadá pás s mečem jako hrnec s rukojetí",
+      "Kiwi pod ním vaří",
+      "Je to úplně jiné souhvězdí"
+     ],
+     "a": "Vzhůru nohama vypadá pás s mečem jako hrnec s rukojetí",
+     "why": "Podívej se na pravý obrázek."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Měsíc, který lže</h3><svg class=\"vz\" viewBox=\"0 0 320 168\" role=\"img\" aria-label=\"Dorůstající Měsíc: doma svítí vpravo jako písmeno D, na Zélandu vlevo jako písmeno C\"><rect class=\"nebe\" x=\"0\" y=\"0\" width=\"320\" height=\"168\" rx=\"14\"/><circle class=\"mdark\" cx=\"80\" cy=\"76\" r=\"40\"/><path class=\"mlit\" d=\"M80 36A40 40 0 0 1 80 116A18.0 40 0 0 0 80 36Z\"/><circle class=\"mdark\" cx=\"240\" cy=\"76\" r=\"40\"/><path class=\"mlit\" d=\"M240 36A40 40 0 0 1 240 116A18.0 40 0 0 0 240 36Z\" transform=\"translate(480 0) scale(-1 1)\"/><text class=\"hl\" x=\"80\" y=\"20\" text-anchor=\"middle\">Doma</text><text class=\"hl\" x=\"240\" y=\"20\" text-anchor=\"middle\">Na Zélandu</text><text class=\"hl\" x=\"80\" y=\"140\" text-anchor=\"middle\">dorůstá = D</text><text class=\"hl\" x=\"240\" y=\"140\" text-anchor=\"middle\">dorůstá = C</text><text class=\"hl\" x=\"160\" y=\"160\" text-anchor=\"middle\">oba obrázky: stejný den, stejný Měsíc</text></svg><p>Česká pomůcka říká: Měsíc ve tvaru <b>D dorůstá</b>, ve tvaru <b>C couvá</b>.</p><p>Na Zélandu to platí obráceně. Díváš se na Měsíc hlavou dolů, takže dorůstající Měsíc tam vypadá jako C. Česká pomůcka tam lže.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Na Zélandu vidíš Měsíc ve tvaru C. Co dělá?",
+     "opts": [
+      "Dorůstá",
+      "Couvá"
+     ],
+     "a": "Dorůstá",
+     "why": "Na jihu platí pomůcka obráceně.",
+     "more": "Dorůstá. Kiwi si musí pamatovat obrácenou pomůcku."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Měsíc v prosinci 2026</h3><p><b>9. prosince</b> je nov. První noci na Zélandu budou tmavé a hvězdy uvidíš skvěle.</p><p><b>17. prosince</b> večer uvidíš první čtvrť, půlku Měsíce.</p><p><b>24. prosince</b> je úplněk, a dokonce superúplněk: Měsíc bude blíž Zemi než obvykle a bude vypadat o kousek větší.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Kdy bude superúplněk?",
+     "opts": [
+      "Na Štědrý den",
+      "9. prosince",
+      "Na Silvestra"
+     ],
+     "a": "Na Štědrý den",
+     "why": "Podívej se na předchozí obrazovku."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Matariki</h3><p><b>Matariki</b> je maorské jméno hvězdokupy, které u nás říkáme Kuřátka nebo Plejády. Když se Matariki v zimě (v červnu nebo červenci) objeví ráno nad obzorem, slaví Maorové nový rok. Od roku 2022 je to na Zélandu státní svátek.</p><p class=\"cz\">V prosinci ji najdeš večer na severní obloze, nepříliš vysoko.</p>"
+    },
+    {
+     "t": "pair",
+     "q": "Spoj, co k sobě patří.",
+     "pairs": [
+      [
+       "Jižní kříž",
+       "na vlajce Zélandu"
+      ],
+      [
+       "Matariki",
+       "maorský nový rok"
+      ],
+      [
+       "Hrnec",
+       "Orion vzhůru nohama"
+      ],
+      [
+       "Magellanova mračna",
+       "sousední galaxie"
+      ]
+     ]
+    },
+    {
+     "t": "mc",
+     "q": "<b>Mýtus, nebo pravda?</b> Na jižní polokouli vychází Slunce na západě.",
+     "opts": [
+      "Mýtus",
+      "Pravda"
+     ],
+     "a": "Mýtus",
+     "why": "Kterým směrem se Země točí? Na jihu stejně jako na severu.",
+     "more": "Mýtus. Slunce vychází na východě a zapadá na západě všude na Zemi. Jen v poledne je na Zélandu na severu."
+    },
+    {
+     "t": "mc",
+     "q": "<b>Mýtus, nebo pravda?</b> Jižní kříž z Mrsklesí nikdy neuvidíš.",
+     "opts": [
+      "Mýtus",
+      "Pravda"
+     ],
+     "a": "Pravda",
+     "why": "Kde na nebi Jižní kříž je? U severního, nebo jižního pólu nebe?",
+     "more": "Pravda. Jižní kříž je blízko jižního pólu nebe a z Česka je pořád pod obzorem. Musela bys cestovat hodně na jih."
+    }
+   ]
+  }
+ ],
+ "missions": [
+  {
+   "id": "vzn4-m-kriz",
+   "where": "tmavá noc (nejlíp daleko od měst)",
+   "cz": "Najdi Jižní kříž a podle něj jih. Ověř to kompasem. Nakresli kříž do atlasu."
+  },
+  {
+   "id": "vzn4-m-hrnec",
+   "where": "večer",
+   "cz": "Najdi Hrnec (Orion vzhůru nohama) a nakresli ho tak, jak ho vidíš."
+  },
+  {
+   "id": "vzn4-m-mracna",
+   "where": "tmavá noc",
+   "cz": "Najdi Magellanova mračna. Jak vypadají? Namaluj je."
+  },
+  {
+   "id": "vzn4-m-ctvrt",
+   "where": "17. prosince večer",
+   "cz": "Nakresli Měsíc. Na které straně svítí? Vypadá jako C, nebo D?"
+  },
+  {
+   "id": "vzn4-m-uplnek",
+   "where": "Štědrý večer",
+   "cz": "Superúplněk! Vyfoť ho a zavolej domů, jestli ho vidí taky."
+  }
+ ],
+ "subject": "vzn"
+}
