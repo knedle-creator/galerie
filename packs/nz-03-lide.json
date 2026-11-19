@@ -1,0 +1,902 @@
+{
+ "schema": 1,
+ "id": "nz-03-lide",
+ "course": "nz",
+ "courseTitle": "Nový Zéland",
+ "order": 3,
+ "title": "Kiwi life",
+ "cz": "Lidé: slang, Vánoce v létě a slavní Kiwi",
+ "version": 1,
+ "subjects": [
+  "angličtina",
+  "zeměpis",
+  "dějepis"
+ ],
+ "people": {
+  "Mia": {
+   "e": "👧",
+   "pitch": 1.2,
+   "gender": "f",
+   "voice": 0
+  },
+  "Ruby": {
+   "e": "👱‍♀️",
+   "pitch": 1.3,
+   "gender": "f",
+   "voice": 0
+  }
+ },
+ "lessons": [
+  {
+   "id": "nz3-slang",
+   "art": "a4",
+   "title": "Kiwi English",
+   "cz": "Angličtina po kiwsku",
+   "intro": "<p>Lidé z Nového Zélandu si říkají <b>Kiwis</b>. Mluví anglicky, ale mají spoustu vlastních slov. Když je znáš, budeš znít skoro jako místní!</p><div class=\"rule\"><b>Sweet as!</b> = Super! V pohodě!<br><b>No worries!</b> = To nic! Není zač.</div>",
+   "words": [
+    [
+     "🩴",
+     "jandals",
+     "žabky"
+    ],
+    [
+     "👙",
+     "togs",
+     "plavky"
+    ],
+    [
+     "🧊",
+     "chilly bin",
+     "chladicí box"
+    ],
+    [
+     "🥾",
+     "tramping",
+     "turistika s batohem"
+    ],
+    [
+     "🏠",
+     "bach",
+     "chata (u moře)"
+    ],
+    [
+     "🏪",
+     "dairy",
+     "malý obchod, večerka"
+    ],
+    [
+     "👍",
+     "sweet as",
+     "super, v pohodě"
+    ],
+    [
+     "😊",
+     "no worries",
+     "to nic, není zač"
+    ],
+    [
+     "🔢",
+     "heaps",
+     "hodně, spousta"
+    ]
+   ],
+   "ex": [
+    {
+     "t": "mc",
+     "q": "🩴 Co jsou <b>jandals</b>?",
+     "opts": [
+      "žabky",
+      "kalhoty",
+      "brýle"
+     ],
+     "a": "žabky"
+    },
+    {
+     "t": "pair",
+     "q": "Spoj kiwi slovo s překladem.",
+     "pairs": [
+      [
+       "jandals",
+       "žabky"
+      ],
+      [
+       "togs",
+       "plavky"
+      ],
+      [
+       "chilly bin",
+       "chladicí box"
+      ],
+      [
+       "dairy",
+       "malý obchod"
+      ]
+     ]
+    },
+    {
+     "t": "gap",
+     "s": "Don’t forget your ___. We’re going swimming!",
+     "opts": [
+      "togs",
+      "chilly bin",
+      "bach"
+     ],
+     "a": "togs"
+    },
+    {
+     "t": "gap",
+     "s": "Let’s buy an ice cream at the ___.",
+     "opts": [
+      "dairy",
+      "bach",
+      "tramping"
+     ],
+     "a": "dairy",
+     "why": "Dairy je na Zélandu malý obchod na rohu. Mléko tam koupíš taky."
+    },
+    {
+     "t": "mc",
+     "q": "“Thank you for your help!” “___”",
+     "opts": [
+      "No worries!",
+      "Heaps!",
+      "Togs!"
+     ],
+     "a": "No worries!"
+    },
+    {
+     "t": "gap",
+     "s": "We went ___ in the mountains for three days.",
+     "opts": [
+      "tramping",
+      "jandals",
+      "dairy"
+     ],
+     "a": "tramping",
+     "why": "Tramping je kiwi slovo pro túru s batohem, často na několik dní a s přespáním na chatách."
+    },
+    {
+     "t": "mc",
+     "q": "<b>Sweet as!</b> means …",
+     "opts": [
+      "Great! / No problem!",
+      "It’s too sweet.",
+      "I don’t like it."
+     ],
+     "a": "Great! / No problem!"
+    },
+    {
+     "t": "gap",
+     "s": "There were ___ of people at the beach.",
+     "opts": [
+      "heaps",
+      "togs",
+      "bach"
+     ],
+     "a": "heaps"
+    },
+    {
+     "t": "build",
+     "cz": "Dáme jídlo do chladicího boxu.",
+     "a": "Let’s put the food in the chilly bin.",
+     "extra": [
+      "puts",
+      "on"
+     ]
+    },
+    {
+     "t": "speak",
+     "a": "We’re going to the beach. Don’t forget your hat!"
+    }
+   ]
+  },
+  {
+   "id": "nz3-xmas",
+   "art": "a5",
+   "title": "Christmas in summer",
+   "cz": "Vánoce v létě",
+   "intro": "<p>Letos budete slavit Vánoce v létě! Kiwis mají na Vánoce často grilovačku na pláži, piknik a dezert <b>pavlova</b>. A místo jedle kvete červený strom <b>pōhutukawa</b>.</p><div class=\"rule\">Plány: <b>We’re going to</b> have a barbecue.<br>Předpovědi (Unit 3): <b>It will be</b> hot. <b>It won’t</b> snow.<br><b>If</b> it rains, we <b>will</b> stay in the tent.</div>",
+   "words": [
+    [
+     "🔥",
+     "barbecue",
+     "grilovačka, gril"
+    ],
+    [
+     "🍰",
+     "pavlova",
+     "dort z pusinky s ovocem"
+    ],
+    [
+     "🧺",
+     "picnic",
+     "piknik"
+    ],
+    [
+     "🎅",
+     "Santa",
+     "Santa"
+    ],
+    [
+     "🎁",
+     "present",
+     "dárek"
+    ],
+    [
+     "🌺",
+     "pōhutukawa",
+     "pōhutukawa (kiwi vánoční strom)"
+    ],
+    [
+     "🍓",
+     "strawberries",
+     "jahody"
+    ],
+    [
+     "☀️",
+     "sunny",
+     "slunečno"
+    ],
+    [
+     "🎄",
+     "Christmas Day",
+     "Boží hod (25. 12.)"
+    ]
+   ],
+   "ex": [
+    {
+     "t": "mc",
+     "q": "🎁 When do Kiwi children open their presents?",
+     "opts": [
+      "on the morning of 25 December",
+      "on the evening of 24 December",
+      "on 6 December"
+     ],
+     "a": "on the morning of 25 December",
+     "why": "Na Zélandu i v Británii nosí dárky Santa v noci a děti je rozbalují ráno 25. prosince. U nás je nosí Ježíšek už 24. večer."
+    },
+    {
+     "t": "gap",
+     "s": "It ___ snow at Christmas in Auckland.",
+     "opts": [
+      "won’t",
+      "will",
+      "isn’t"
+     ],
+     "a": "won’t",
+     "why": "Předpověď: v létě sněžit nebude → won’t."
+    },
+    {
+     "t": "gap",
+     "s": "We’re going ___ a barbecue on the beach.",
+     "opts": [
+      "to have",
+      "have",
+      "having"
+     ],
+     "a": "to have",
+     "why": "Plán: be going to + základní tvar slovesa."
+    },
+    {
+     "t": "pair",
+     "q": "Spoj slovo s překladem.",
+     "pairs": [
+      [
+       "barbecue",
+       "grilovačka"
+      ],
+      [
+       "present",
+       "dárek"
+      ],
+      [
+       "picnic",
+       "piknik"
+      ],
+      [
+       "strawberries",
+       "jahody"
+      ]
+     ]
+    },
+    {
+     "t": "mc",
+     "q": "🍰 Pavlova is a dessert made of …",
+     "opts": [
+      "meringue, cream and fruit",
+      "chocolate and nuts",
+      "potatoes and fish"
+     ],
+     "a": "meringue, cream and fruit",
+     "why": "Pavlova je velká pusinka (meringue) se šlehačkou a ovocem. O to, kdo ji vymyslel, se Kiwis přou s Australany."
+    },
+    {
+     "t": "type",
+     "s": "Tomorrow it ___ hot and sunny.",
+     "a": [
+      "will be"
+     ],
+     "hint": "be",
+     "why": "Předpověď do budoucna: will + be."
+    },
+    {
+     "t": "gap",
+     "s": "If it rains, we ___ stay in the tent.",
+     "opts": [
+      "will",
+      "are",
+      "did"
+     ],
+     "a": "will",
+     "why": "Za if je přítomný čas (rains), ve druhé půlce will."
+    },
+    {
+     "t": "mc",
+     "q": "🌺 The pōhutukawa tree has red flowers in …",
+     "opts": [
+      "December",
+      "July",
+      "March"
+     ],
+     "a": "December"
+    },
+    {
+     "t": "build",
+     "cz": "Budeme mít piknik na pláži.",
+     "a": "We’re going to have a picnic on the beach.",
+     "extra": [
+      "will",
+      "goes"
+     ]
+    },
+    {
+     "t": "speak",
+     "a": "Merry Christmas! It’s very hot today!"
+    }
+   ]
+  },
+  {
+   "id": "nz3-famous",
+   "art": "a6",
+   "title": "Famous Kiwis",
+   "cz": "Slavní Kiwi",
+   "intro": "<p>Malá země, velcí lidé. Nový Zéland byl v roce 1893 <b>první zemí na světě</b>, kde mohly v celostátních volbách volit ženy. Na bankovkách najdeš lidi, kteří změnili svět.</p><div class=\"rule\">Past simple, jako v Unit 1 (People who changed history):<br><b>was born · climbed · won · became</b></div>",
+   "words": [
+    [
+     "🗳️",
+     "vote",
+     "volit"
+    ],
+    [
+     "👩",
+     "women",
+     "ženy"
+    ],
+    [
+     "🏔️",
+     "climb",
+     "vylézt, lézt"
+    ],
+    [
+     "🥇",
+     "gold medal",
+     "zlatá medaile"
+    ],
+    [
+     "💵",
+     "banknote",
+     "bankovka"
+    ],
+    [
+     "🐝",
+     "beekeeper",
+     "včelař"
+    ],
+    [
+     "🛶",
+     "kayaker",
+     "kajakář, kajakářka"
+    ],
+    [
+     "🥇",
+     "the first",
+     "první"
+    ],
+    [
+     "💪",
+     "brave",
+     "statečný"
+    ]
+   ],
+   "ex": [
+    {
+     "t": "mc",
+     "q": "🗳️ In 1893, New Zealand was the first country where women could …",
+     "opts": [
+      "vote",
+      "drive",
+      "swim"
+     ],
+     "a": "vote",
+     "why": "Ženy na Zélandu mohly volit jako první na světě. Zasloužila se o to hlavně Kate Sheppard. Najdeš ji na bankovce 10 dolarů."
+    },
+    {
+     "t": "gap",
+     "s": "Edmund Hillary ___ to the top of Mount Everest in 1953.",
+     "opts": [
+      "climbed",
+      "climb",
+      "was climb"
+     ],
+     "a": "climbed"
+    },
+    {
+     "t": "mc",
+     "q": "🐝 Before Everest, Edmund Hillary worked as a …",
+     "opts": [
+      "beekeeper",
+      "pilot",
+      "teacher"
+     ],
+     "a": "beekeeper",
+     "why": "Hillary byl včelař, stejně jako jeho táta. Na vrchol Everestu vystoupil s Tenzingem Norgayem."
+    },
+    {
+     "t": "pair",
+     "q": "Spoj sloveso s minulým tvarem.",
+     "pairs": [
+      [
+       "climb",
+       "climbed"
+      ],
+      [
+       "win",
+       "won"
+      ],
+      [
+       "become",
+       "became"
+      ],
+      [
+       "be",
+       "was / were"
+      ]
+     ]
+    },
+    {
+     "t": "gap",
+     "s": "Lisa Carrington is a kayaker. She ___ eight Olympic gold medals.",
+     "opts": [
+      "won",
+      "win",
+      "wins"
+     ],
+     "a": "won"
+    },
+    {
+     "t": "mc",
+     "q": "🛶 Who is Lisa Carrington?",
+     "opts": [
+      "a kayaker with eight Olympic gold medals",
+      "a famous singer",
+      "a volcano scientist"
+     ],
+     "a": "a kayaker with eight Olympic gold medals",
+     "why": "Je to nejúspěšnější novozélandská olympionička. Taky začínala jako holka, která ráda jezdila na vodě."
+    },
+    {
+     "t": "gap",
+     "s": "Kate Sheppard was very ___. She fought for women’s rights.",
+     "opts": [
+      "brave",
+      "lazy",
+      "rude"
+     ],
+     "a": "brave"
+    },
+    {
+     "t": "type",
+     "s": "Edmund Hillary ___ born in Auckland in 1919.",
+     "a": [
+      "was"
+     ],
+     "hint": "be",
+     "why": "Jeden člověk (he) → was."
+    },
+    {
+     "t": "build",
+     "cz": "Vylezl na nejvyšší horu světa.",
+     "a": "He climbed the highest mountain in the world.",
+     "extra": [
+      "climb",
+      "high"
+     ]
+    },
+    {
+     "t": "speak",
+     "a": "Edmund Hillary was a brave climber."
+    }
+   ]
+  }
+ ],
+ "practice": [],
+ "dialogs": [
+  {
+   "id": "nz3-d1",
+   "title": "A new friend at the campsite",
+   "cz": "Nová kamarádka v kempu",
+   "people": [
+    "Ruby",
+    "Mia"
+   ],
+   "lines": [
+    {
+     "who": "Ruby",
+     "en": "Hi! Are you staying at this campsite too?",
+     "cz": "Ahoj! Taky bydlíte v tomhle kempu?"
+    },
+    {
+     "who": "Mia",
+     "en": "Yes, we are. We’re in the blue tent next to the lake.",
+     "cz": "Jo. Jsme v modrém stanu u jezera."
+    },
+    {
+     "who": "Ruby",
+     "en": "Cool! I’m Ruby. Where are you from? Your accent is different.",
+     "cz": "Super! Já jsem Ruby. Odkud jsi? Máš jiný přízvuk."
+    },
+    {
+     "who": "Mia",
+     "en": "I’m Mia, from the Czech Republic. It’s in the middle of Europe.",
+     "cz": "Já jsem Mia, z Česka. To je uprostřed Evropy."
+    },
+    {
+     "who": "Ruby",
+     "en": "Wow, that’s far! What do you like doing?",
+     "cz": "Páni, to je daleko! Co ráda děláš?"
+    },
+    {
+     "who": "Mia",
+     "en": "I love paddling. I do canoe slalom. And I like making things with beads.",
+     "cz": "Miluju pádlování. Jezdím vodní slalom. A ráda vyrábím věci z korálků."
+    },
+    {
+     "who": "Ruby",
+     "en": "No way! I do waka ama at my school. Do you want to try a kayak on the lake tomorrow?",
+     "cz": "To snad ne! Já jezdím waka ama ve škole. Chceš zítra zkusit kajak na jezeře?"
+    },
+    {
+     "who": "Mia",
+     "en": "Yes, sweet as! What time?",
+     "cz": "Jo, super! V kolik?"
+    },
+    {
+     "who": "Ruby",
+     "en": "After breakfast, at nine o’clock. See you tomorrow!",
+     "cz": "Po snídani, v devět. Uvidíme se zítra!"
+    },
+    {
+     "who": "Mia",
+     "en": "See you! Ka kite anō!",
+     "cz": "Ahoj! Na viděnou!"
+    }
+   ],
+   "qs": [
+    {
+     "q": "Where is Mia’s tent?",
+     "opts": [
+      "next to the lake",
+      "next to the shop",
+      "on the beach"
+     ],
+     "a": "next to the lake",
+     "line": 1
+    },
+    {
+     "q": "What does Mia love doing?",
+     "opts": [
+      "paddling",
+      "running",
+      "cooking"
+     ],
+     "a": "paddling",
+     "line": 5
+    },
+    {
+     "q": "What does Ruby do at school?",
+     "opts": [
+      "waka ama",
+      "rugby",
+      "drama"
+     ],
+     "a": "waka ama",
+     "line": 6
+    },
+    {
+     "q": "When are they going to meet?",
+     "opts": [
+      "at nine o’clock, after breakfast",
+      "in the evening",
+      "at lunchtime"
+     ],
+     "a": "at nine o’clock, after breakfast",
+     "line": 8
+    }
+   ]
+  }
+ ],
+ "readings": [
+  {
+   "id": "nz3-r1",
+   "title": "A Kiwi Christmas",
+   "cz": "Vánoce po kiwsku",
+   "subject": "zeměpis",
+   "paragraphs": [
+    {
+     "en": "In New Zealand, Christmas is in summer. The days are long and warm, and the schools are closed for the big summer holiday.",
+     "cz": "Na Novém Zélandu jsou Vánoce v létě. Dny jsou dlouhé a teplé a školy jsou zavřené, protože začínají velké letní prázdniny."
+    },
+    {
+     "en": "Many families go to the beach or to their bach. They have a barbecue with sausages, fish and salads.",
+     "cz": "Spousta rodin jede k moři nebo na chatu (bach). Grilují klobásy a ryby a dělají saláty."
+    },
+    {
+     "en": "For dessert there is often pavlova with cream, strawberries and kiwifruit. Kiwis and Australians both say: we invented it!",
+     "cz": "Jako dezert bývá pavlova se šlehačkou, jahodami a kiwi. Kiwis i Australané tvrdí: vymysleli jsme ji my!"
+    },
+    {
+     "en": "On Kiwi Christmas cards, Santa often wears shorts and jandals.",
+     "cz": "Na kiwi vánočních přáníčkách nosí Santa často kraťasy a žabky."
+    },
+    {
+     "en": "And the Christmas tree? Many Kiwis decorate a pine tree, but their real Christmas tree is the pōhutukawa. It has bright red flowers in December.",
+     "cz": "A vánoční stromek? Hodně Kiwis zdobí borovici, ale jejich skutečný vánoční strom je pōhutukawa. V prosinci má zářivě červené květy."
+    }
+   ],
+   "glossary": [
+    [
+     "closed",
+     "zavřený"
+    ],
+    [
+     "holiday",
+     "prázdniny"
+    ],
+    [
+     "bach",
+     "chata"
+    ],
+    [
+     "sausages",
+     "klobásy"
+    ],
+    [
+     "dessert",
+     "dezert"
+    ],
+    [
+     "cream",
+     "šlehačka"
+    ],
+    [
+     "kiwifruit",
+     "kiwi (ovoce)"
+    ],
+    [
+     "invented",
+     "vymysleli"
+    ],
+    [
+     "cards",
+     "přáníčka"
+    ],
+    [
+     "shorts",
+     "kraťasy"
+    ],
+    [
+     "decorate",
+     "zdobit"
+    ],
+    [
+     "pine tree",
+     "borovice"
+    ],
+    [
+     "bright",
+     "zářivý"
+    ]
+   ],
+   "qs": [
+    {
+     "q": "When is Christmas in New Zealand?",
+     "opts": [
+      "in summer",
+      "in winter",
+      "in spring"
+     ],
+     "a": "in summer"
+    },
+    {
+     "q": "What is pavlova?",
+     "opts": [
+      "a dessert",
+      "a beach",
+      "a tree"
+     ],
+     "a": "a dessert"
+    },
+    {
+     "q": "What does Santa wear on Kiwi Christmas cards?",
+     "opts": [
+      "shorts and jandals",
+      "a big warm coat",
+      "a swimsuit and goggles"
+     ],
+     "a": "shorts and jandals"
+    },
+    {
+     "q": "What colour are pōhutukawa flowers?",
+     "opts": [
+      "red",
+      "white",
+      "blue"
+     ],
+     "a": "red"
+    }
+   ],
+   "think": "Co z kiwi Vánoc bys chtěla přivézt domů? A co z našich Vánoc bys ukázala Kiwis?"
+  },
+  {
+   "id": "nz3-r2",
+   "title": "Kate Sheppard and the vote",
+   "cz": "Kate Sheppard a volební právo žen",
+   "subject": "dějepis",
+   "paragraphs": [
+    {
+     "en": "In the 1880s, women in New Zealand couldn’t vote. Only men chose the government.",
+     "cz": "V 80. letech 19. století nesměly ženy na Novém Zélandu volit. Vládu vybírali jen muži."
+    },
+    {
+     "en": "Kate Sheppard thought this was wrong. She wrote letters, gave speeches and organised petitions.",
+     "cz": "Kate Sheppardová si myslela, že je to špatně. Psala dopisy, mluvila na shromážděních a organizovala petice."
+    },
+    {
+     "en": "In 1893, almost 32,000 women signed. The biggest petition was a roll of paper more than 270 metres long!",
+     "cz": "V roce 1893 podepsalo petice skoro 32 000 žen. Ta největší byla role papíru dlouhá přes 270 metrů!"
+    },
+    {
+     "en": "The same year, New Zealand became the first country in the world where all women could vote in elections.",
+     "cz": "Ještě ten rok se Nový Zéland stal první zemí na světě, kde mohly ve volbách volit všechny ženy."
+    },
+    {
+     "en": "Today, Kate Sheppard is on the ten-dollar note. Look at your money when you pay!",
+     "cz": "Dnes je Kate Sheppard na bankovce deset dolarů. Podívej se na peníze, až budeš platit!"
+    }
+   ],
+   "glossary": [
+    [
+     "couldn’t",
+     "nemohly, nesměly"
+    ],
+    [
+     "chose",
+     "vybírali"
+    ],
+    [
+     "government",
+     "vláda"
+    ],
+    [
+     "wrong",
+     "špatně"
+    ],
+    [
+     "letters",
+     "dopisy"
+    ],
+    [
+     "speeches",
+     "projevy"
+    ],
+    [
+     "petitions",
+     "petice"
+    ],
+    [
+     "signed",
+     "podepsaly"
+    ],
+    [
+     "roll",
+     "role, svitek"
+    ],
+    [
+     "elections",
+     "volby"
+    ],
+    [
+     "note",
+     "bankovka"
+    ]
+   ],
+   "qs": [
+    {
+     "q": "Who chose the government before 1893?",
+     "opts": [
+      "only men",
+      "only women",
+      "everyone"
+     ],
+     "a": "only men"
+    },
+    {
+     "q": "What did Kate Sheppard do?",
+     "opts": [
+      "She wrote letters and organised petitions.",
+      "She climbed Mount Everest.",
+      "She invented pavlova."
+     ],
+     "a": "She wrote letters and organised petitions."
+    },
+    {
+     "q": "How long was the biggest petition?",
+     "opts": [
+      "more than 270 metres",
+      "about 27 centimetres",
+      "about 2 kilometres"
+     ],
+     "a": "more than 270 metres"
+    },
+    {
+     "q": "Where can you see Kate Sheppard today?",
+     "opts": [
+      "on the ten-dollar note",
+      "on the New Zealand flag",
+      "on a Czech stamp"
+     ],
+     "a": "on the ten-dollar note"
+    }
+   ],
+   "think": "Ženy v Česku poprvé volily v roce 1919. O kolik let později než na Zélandu to bylo?"
+  }
+ ],
+ "writing": [
+  {
+   "id": "nz3-w1",
+   "title": "Zpráva kamarádkám domů",
+   "e": "💌",
+   "task": "Write a message to your friends from the canoe club. Where are you? What did you do yesterday? What are you going to do tomorrow?",
+   "cz": "Napiš kamarádkám z oddílu zprávu z Nového Zélandu: kde jsi, co jsi včera dělala a co plánuješ zítra (4–6 vět). Použij aspoň jedno kiwi slovo.",
+   "placeholder": "Kia ora from New Zealand! Yesterday I … Tomorrow we’re going to …",
+   "focus": "past simple, going to, Kiwi words"
+  }
+ ],
+ "missions": [
+  {
+   "id": "nz3-m1",
+   "where": "dairy",
+   "cz": "Kup si zmrzlinu hokey pokey (vanilka s kousky karamelu) a řekni: Can I have a hokey pokey ice cream, please?"
+  },
+  {
+   "id": "nz3-m2",
+   "where": "kdekoli",
+   "cz": "Zeptej se nějakého Kiwi na jeho oblíbené kiwi slovo. Zapiš si ho do Mého slovníčku."
+  },
+  {
+   "id": "nz3-m3",
+   "where": "peníze",
+   "cz": "Najdi Edmunda Hillaryho na bankovce 5 dolarů a Kate Sheppard na bankovce 10 dolarů. Jaký pták je na druhé straně?"
+  },
+  {
+   "id": "nz3-m4",
+   "where": "Vánoce",
+   "cz": "Na Boží hod napiš do deníku 3 rozdíly mezi Vánocemi u nás a na Zélandu."
+  },
+  {
+   "id": "nz3-m5",
+   "where": "kemp",
+   "cz": "Když budeš chtít, zkus se seznámit s někým v kempu: Hi! I’m Klaudie. Where are you from?"
+  }
+ ]
+}

@@ -1,0 +1,741 @@
+{
+ "schema": 1,
+ "id": "nz-05-ostrov",
+ "course": "nz",
+ "courseTitle": "Nový Zéland",
+ "order": 5,
+ "title": "The North Island",
+ "cz": "Severní ostrov: města, sopky a řeky",
+ "version": 1,
+ "subjects": [
+  "angličtina",
+  "zeměpis"
+ ],
+ "people": {
+  "Mia": {
+   "e": "👧",
+   "pitch": 1.2,
+   "gender": "f",
+   "voice": 0
+  },
+  "Kiri": {
+   "e": "👩🏽",
+   "pitch": 1.1,
+   "gender": "f",
+   "voice": 0
+  }
+ },
+ "lessons": [
+  {
+   "id": "nz5-map",
+   "art": "a3",
+   "title": "Te Ika-a-Māui",
+   "cz": "Severní ostrov na mapě",
+   "intro": "<p>Severní ostrov se maorsky jmenuje <b>Te Ika-a-Māui</b>, Māuiho ryba. Podle pověsti ho hrdina Māui vylovil z moře. Žijí na něm asi tři čtvrtiny všech obyvatel Zélandu.</p><div class=\"rule\"><b>the capital</b> = hlavní město · <b>the coast</b> = pobřeží<br><b>There are</b> about five million people in New Zealand.</div>",
+   "words": [
+    [
+     "🗺️",
+     "country",
+     "země, stát"
+    ],
+    [
+     "🏛️",
+     "capital",
+     "hlavní město"
+    ],
+    [
+     "👥",
+     "population",
+     "počet obyvatel"
+    ],
+    [
+     "🏖️",
+     "coast",
+     "pobřeží"
+    ],
+    [
+     "🏝️",
+     "island",
+     "ostrov"
+    ],
+    [
+     "🧭",
+     "north / south",
+     "sever / jih"
+    ],
+    [
+     "🧭",
+     "east / west",
+     "východ / západ"
+    ],
+    [
+     "🌊",
+     "Tasman Sea",
+     "Tasmanovo moře"
+    ],
+    [
+     "🐑",
+     "sheep",
+     "ovce"
+    ]
+   ],
+   "ex": [
+    {
+     "t": "mc",
+     "q": "🏛️ What is the capital of New Zealand?",
+     "opts": [
+      "Wellington",
+      "Auckland",
+      "Sydney"
+     ],
+     "a": "Wellington",
+     "why": "Hlavní město je Wellington na jihu Severního ostrova. Auckland je největší město, ale hlavní není."
+    },
+    {
+     "t": "gap",
+     "s": "There ___ about five million people in New Zealand.",
+     "opts": [
+      "are",
+      "is",
+      "was"
+     ],
+     "a": "are",
+     "why": "People = víc lidí → there are."
+    },
+    {
+     "t": "mc",
+     "q": "Where do most New Zealanders live?",
+     "opts": [
+      "on the North Island",
+      "on the South Island",
+      "on small islands"
+     ],
+     "a": "on the North Island"
+    },
+    {
+     "t": "gap",
+     "s": "Auckland is ___ than Wellington.",
+     "opts": [
+      "bigger",
+      "biggest",
+      "big"
+     ],
+     "a": "bigger"
+    },
+    {
+     "t": "mc",
+     "q": "Which sea is between New Zealand and Australia?",
+     "opts": [
+      "the Tasman Sea",
+      "the Red Sea",
+      "the North Sea"
+     ],
+     "a": "the Tasman Sea"
+    },
+    {
+     "t": "pair",
+     "q": "Spoj slovo s překladem.",
+     "pairs": [
+      [
+       "capital",
+       "hlavní město"
+      ],
+      [
+       "coast",
+       "pobřeží"
+      ],
+      [
+       "population",
+       "počet obyvatel"
+      ],
+      [
+       "country",
+       "země"
+      ]
+     ]
+    },
+    {
+     "t": "mc",
+     "q": "<b>Te Ika-a-Māui</b> means …",
+     "opts": [
+      "the fish of Māui",
+      "the land of fire",
+      "the long white cloud"
+     ],
+     "a": "the fish of Māui"
+    },
+    {
+     "t": "gap",
+     "s": "There ___ more sheep than people in New Zealand.",
+     "opts": [
+      "are",
+      "is",
+      "has"
+     ],
+     "a": "are",
+     "why": "Sheep má stejný tvar pro jednu i víc ovcí: one sheep, two sheep. Víc ovcí → there are. Na jednoho Kiwi připadají asi čtyři ovce."
+    },
+    {
+     "t": "type",
+     "s": "In 1642, the Dutch explorer Abel Tasman ___ New Zealand.",
+     "a": [
+      "saw"
+     ],
+     "hint": "see",
+     "why": "See je nepravidelné sloveso: see → saw."
+    },
+    {
+     "t": "speak",
+     "a": "There are more sheep than people in New Zealand."
+    }
+   ]
+  },
+  {
+   "id": "nz5-fire",
+   "art": "a4",
+   "title": "Fire and water",
+   "cz": "Sopky, gejzíry a horké prameny",
+   "intro": "<p>Pod Severním ostrovem se setkávají dvě zemské desky. Proto je tu tolik sopek, gejzírů a horkých pramenů. Jezero <b>Taupō</b> je ve skutečnosti kráter obří sopky, která vybuchla asi před 26 500 lety.</p><div class=\"rule\">Ve vyprávění pomůže past continuous:<br><b>We were walking</b> when the geyser <b>erupted</b>.</div>",
+   "words": [
+    [
+     "🌋",
+     "volcano",
+     "sopka"
+    ],
+    [
+     "💥",
+     "erupt / eruption",
+     "vybuchnout / výbuch"
+    ],
+    [
+     "⛲",
+     "geyser",
+     "gejzír"
+    ],
+    [
+     "♨️",
+     "hot spring",
+     "horký pramen"
+    ],
+    [
+     "🟤",
+     "mud pool",
+     "bahenní jezírko"
+    ],
+    [
+     "🧩",
+     "plate",
+     "zemská deska"
+    ],
+    [
+     "🕳️",
+     "crater",
+     "kráter"
+    ],
+    [
+     "💨",
+     "steam",
+     "pára"
+    ],
+    [
+     "⚡",
+     "electricity",
+     "elektřina"
+    ]
+   ],
+   "ex": [
+    {
+     "t": "mc",
+     "q": "🕳️ Lake Taupō is in the … of a huge volcano.",
+     "opts": [
+      "crater",
+      "kitchen",
+      "garden"
+     ],
+     "a": "crater"
+    },
+    {
+     "t": "mc",
+     "q": "Why are there so many volcanoes on the North Island?",
+     "opts": [
+      "Two plates of the Earth meet under it.",
+      "It is very near the Sun.",
+      "There is a lot of rain."
+     ],
+     "a": "Two plates of the Earth meet under it."
+    },
+    {
+     "t": "gap",
+     "s": "We ___ walking in Rotorua when the geyser erupted.",
+     "opts": [
+      "were",
+      "was",
+      "did"
+     ],
+     "a": "were",
+     "why": "We → were."
+    },
+    {
+     "t": "gap",
+     "s": "The ground was hot and steam ___ coming out of the mud.",
+     "opts": [
+      "was",
+      "were"
+     ],
+     "a": "was",
+     "why": "Steam = pára, jedna věc (it) → was."
+    },
+    {
+     "t": "gap",
+     "s": "The geyser ___ when I was taking a photo.",
+     "opts": [
+      "erupted",
+      "was erupt",
+      "erupting"
+     ],
+     "a": "erupted",
+     "why": "Výbuch přišel náhle (past simple), focení zrovna probíhalo (past continuous)."
+    },
+    {
+     "t": "pair",
+     "q": "Spoj slovo s překladem.",
+     "pairs": [
+      [
+       "geyser",
+       "gejzír"
+      ],
+      [
+       "hot spring",
+       "horký pramen"
+      ],
+      [
+       "crater",
+       "kráter"
+      ],
+      [
+       "steam",
+       "pára"
+      ]
+     ]
+    },
+    {
+     "t": "mc",
+     "q": "⚡ What does New Zealand make from the hot ground?",
+     "opts": [
+      "electricity",
+      "chocolate",
+      "wool"
+     ],
+     "a": "electricity",
+     "why": "Geotermální elektrárny u Taupō vyrábějí elektřinu z horké páry z podzemí."
+    },
+    {
+     "t": "gap",
+     "s": "Mount Ruapehu is the ___ mountain on the North Island.",
+     "opts": [
+      "highest",
+      "higher",
+      "high"
+     ],
+     "a": "highest"
+    },
+    {
+     "t": "type",
+     "s": "While we ___ in the hot pool, it started to rain.",
+     "a": [
+      "were swimming"
+     ],
+     "hint": "swim",
+     "why": "We → were + -ing. Swim má dvě m: swimming."
+    },
+    {
+     "t": "speak",
+     "a": "We were walking when the geyser erupted."
+    }
+   ]
+  }
+ ],
+ "practice": [],
+ "dialogs": [
+  {
+   "id": "nz5-d1",
+   "title": "At the information centre",
+   "cz": "V informačním centru",
+   "people": [
+    "Kiri",
+    "Mia"
+   ],
+   "lines": [
+    {
+     "who": "Kiri",
+     "en": "Kia ora! How can I help you?",
+     "cz": "Kia ora! S čím vám můžu pomoct?"
+    },
+    {
+     "who": "Mia",
+     "en": "Hi! We’re going to drive to Rotorua tomorrow. How long will it take?",
+     "cz": "Dobrý den! Zítra pojedeme autem do Rotoruy. Jak dlouho to potrvá?"
+    },
+    {
+     "who": "Kiri",
+     "en": "About three hours. You’ll see heaps of sheep on the way!",
+     "cz": "Asi tři hodiny. Cestou uvidíte spoustu ovcí!"
+    },
+    {
+     "who": "Mia",
+     "en": "What can we do there?",
+     "cz": "Co se tam dá dělat?"
+    },
+    {
+     "who": "Kiri",
+     "en": "You can watch the Pōhutu geyser and visit the mud pools. In the evening there’s a hāngi dinner and a cultural show.",
+     "cz": "Můžete se podívat na gejzír Pōhutu a k bahenním jezírkům. Večer je večeře hāngi a kulturní představení."
+    },
+    {
+     "who": "Mia",
+     "en": "What’s a hāngi?",
+     "cz": "Co je hāngi?"
+    },
+    {
+     "who": "Kiri",
+     "en": "It’s food that is cooked in the ground with hot stones. It tastes smoky and delicious.",
+     "cz": "Je to jídlo upečené v zemi na horkých kamenech. Chutná kouřově a výborně."
+    },
+    {
+     "who": "Mia",
+     "en": "Sounds great! Will it be hot tomorrow?",
+     "cz": "To zní skvěle! Bude zítra horko?"
+    },
+    {
+     "who": "Kiri",
+     "en": "Yes, it will. It’ll be about 25 degrees. Don’t forget your sunhat!",
+     "cz": "Ano, bude. Kolem 25 stupňů. Nezapomeňte klobouk!"
+    },
+    {
+     "who": "Mia",
+     "en": "Thank you! Ka kite anō!",
+     "cz": "Děkuju! Na viděnou!"
+    }
+   ],
+   "qs": [
+    {
+     "q": "How long will the drive to Rotorua take?",
+     "opts": [
+      "about three hours",
+      "about three days",
+      "about thirty minutes"
+     ],
+     "a": "about three hours",
+     "line": 2
+    },
+    {
+     "q": "What will they see on the way?",
+     "opts": [
+      "heaps of sheep",
+      "penguins",
+      "snow"
+     ],
+     "a": "heaps of sheep",
+     "line": 2
+    },
+    {
+     "q": "How is a hāngi cooked?",
+     "opts": [
+      "in the ground with hot stones",
+      "in a microwave",
+      "on a boat"
+     ],
+     "a": "in the ground with hot stones",
+     "line": 6
+    },
+    {
+     "q": "What does Mia need to take?",
+     "opts": [
+      "a sunhat",
+      "a warm coat",
+      "an umbrella"
+     ],
+     "a": "a sunhat",
+     "line": 8
+    }
+   ]
+  }
+ ],
+ "readings": [
+  {
+   "id": "nz5-r1",
+   "title": "Rangitoto, the youngest volcano",
+   "cz": "Rangitoto, nejmladší sopka",
+   "subject": "zeměpis",
+   "paragraphs": [
+    {
+     "en": "Auckland is built on a volcanic field. There are about 50 volcanoes in and around the city.",
+     "cz": "Auckland stojí na sopečném poli. Ve městě a kolem něj je asi 50 sopek."
+    },
+    {
+     "en": "Most of them erupted only once and they aren’t active now. But the field is still alive, and one day a new volcano could appear.",
+     "cz": "Většina z nich vybuchla jen jednou a teď nejsou činné. Sopečné pole ale pořád žije a jednou se tu může objevit nová sopka."
+    },
+    {
+     "en": "The youngest volcano is Rangitoto, an island in the sea near the city. It erupted about 600 years ago.",
+     "cz": "Nejmladší sopka je Rangitoto, ostrov v moři kousek od města. Vybuchla asi před 600 lety."
+    },
+    {
+     "en": "Māori people were living nearby at that time. Scientists found their footprints in the ash on the next island, Motutapu.",
+     "cz": "Maorové tehdy žili nedaleko. Vědci našli jejich stopy v popelu na sousedním ostrově Motutapu."
+    },
+    {
+     "en": "Today you can take a ferry to Rangitoto and walk to the top in about an hour. From the crater you can see the whole city.",
+     "cz": "Dnes se na Rangitoto dostaneš trajektem a na vrchol vyjdeš asi za hodinu. Od kráteru uvidíš celé město."
+    }
+   ],
+   "glossary": [
+    [
+     "built on",
+     "postavený na"
+    ],
+    [
+     "volcanic field",
+     "sopečné pole"
+    ],
+    [
+     "erupted",
+     "vybuchla"
+    ],
+    [
+     "once",
+     "jednou"
+    ],
+    [
+     "active",
+     "činný"
+    ],
+    [
+     "alive",
+     "živý"
+    ],
+    [
+     "appear",
+     "objevit se"
+    ],
+    [
+     "youngest",
+     "nejmladší"
+    ],
+    [
+     "nearby",
+     "nedaleko"
+    ],
+    [
+     "footprints",
+     "stopy"
+    ],
+    [
+     "ash",
+     "popel"
+    ],
+    [
+     "ferry",
+     "trajekt"
+    ],
+    [
+     "top",
+     "vrchol"
+    ],
+    [
+     "whole",
+     "celý"
+    ]
+   ],
+   "qs": [
+    {
+     "q": "How many volcanoes are there in and around Auckland?",
+     "opts": [
+      "about 50",
+      "about 5",
+      "about 500"
+     ],
+     "a": "about 50"
+    },
+    {
+     "q": "When did Rangitoto erupt?",
+     "opts": [
+      "about 600 years ago",
+      "last year",
+      "a million years ago"
+     ],
+     "a": "about 600 years ago"
+    },
+    {
+     "q": "What did scientists find in the ash?",
+     "opts": [
+      "footprints",
+      "gold",
+      "dinosaur bones"
+     ],
+     "a": "footprints"
+    },
+    {
+     "q": "How long does it take to walk to the top?",
+     "opts": [
+      "about an hour",
+      "about a day",
+      "about five minutes"
+     ],
+     "a": "about an hour"
+    }
+   ],
+   "think": "Podle čeho asi vědci poznali, že stopy v popelu jsou staré 600 let? Co všechno může prozradit stopa?"
+  },
+  {
+   "id": "nz5-r2",
+   "title": "The river that is a person",
+   "cz": "Řeka, která je osobou",
+   "subject": "zeměpis",
+   "paragraphs": [
+    {
+     "en": "The Whanganui is one of the longest rivers in New Zealand. It flows about 290 kilometres from the mountains to the sea.",
+     "cz": "Whanganui je jedna z nejdelších řek Nového Zélandu. Teče asi 290 kilometrů od hor až k moři."
+    },
+    {
+     "en": "Many people paddle down the river in canoes. The trip takes three to five days, and you sleep in huts and campsites on the riverbank.",
+     "cz": "Spousta lidí sjíždí řeku na kánoích. Cesta trvá tři až pět dní a spí se na chatách a tábořištích na břehu."
+    },
+    {
+     "en": "For the Māori people of the river, the Whanganui is an ancestor. They say: “I am the river, and the river is me.”",
+     "cz": "Pro Maory, kteří u řeky žijí, je Whanganui předek. Říkají: Já jsem řeka a řeka jsem já."
+    },
+    {
+     "en": "In 2017, New Zealand made a special law. The river became a legal person, with its own rights, like a human.",
+     "cz": "V roce 2017 přijal Nový Zéland zvláštní zákon. Řeka se stala osobou podle práva, má vlastní práva jako člověk."
+    },
+    {
+     "en": "If someone pollutes the river, it is like hurting a person. Two guardians speak for the river.",
+     "cz": "Když někdo řeku znečistí, je to jako by ublížil člověku. Za řeku mluví dva strážci."
+    }
+   ],
+   "glossary": [
+    [
+     "flows",
+     "teče"
+    ],
+    [
+     "paddle down",
+     "sjíždět (na lodi)"
+    ],
+    [
+     "trip",
+     "výprava, cesta"
+    ],
+    [
+     "huts",
+     "chaty"
+    ],
+    [
+     "riverbank",
+     "břeh řeky"
+    ],
+    [
+     "ancestor",
+     "předek"
+    ],
+    [
+     "law",
+     "zákon"
+    ],
+    [
+     "legal person",
+     "osoba podle práva"
+    ],
+    [
+     "rights",
+     "práva"
+    ],
+    [
+     "pollutes",
+     "znečistí"
+    ],
+    [
+     "hurting",
+     "ubližování"
+    ],
+    [
+     "guardians",
+     "strážci"
+    ]
+   ],
+   "qs": [
+    {
+     "q": "How long is the Whanganui River?",
+     "opts": [
+      "about 290 kilometres",
+      "about 29 kilometres",
+      "about 2,900 kilometres"
+     ],
+     "a": "about 290 kilometres"
+    },
+    {
+     "q": "Where do people sleep on the canoe trip?",
+     "opts": [
+      "in huts and campsites",
+      "in hotels in the city",
+      "in their canoes"
+     ],
+     "a": "in huts and campsites"
+    },
+    {
+     "q": "What happened in 2017?",
+     "opts": [
+      "The river became a legal person.",
+      "The river disappeared.",
+      "People built a big bridge."
+     ],
+     "a": "The river became a legal person."
+    },
+    {
+     "q": "Who speaks for the river?",
+     "opts": [
+      "two guardians",
+      "the tourists",
+      "the fish"
+     ],
+     "a": "two guardians"
+    }
+   ],
+   "think": "Kdyby Morava v Olomouci byla osoba, co by asi chtěla? Napiš tři její přání."
+  }
+ ],
+ "writing": [
+  {
+   "id": "nz5-w1",
+   "title": "Deník: den na Severním ostrově",
+   "e": "📔",
+   "task": "Write about one day of your trip. Where were you? What were you doing when something surprising happened? How did you feel?",
+   "cz": "Napiš do deníku jeden den z cesty (5–6 vět). Použij past simple i past continuous: co jste zrovna dělali, když se stalo něco překvapivého?",
+   "placeholder": "Yesterday we were in Rotorua. We were walking near the geyser when suddenly…",
+   "focus": "past continuous + past simple, feelings"
+  }
+ ],
+ "missions": [
+  {
+   "id": "nz5-m1",
+   "where": "mapa",
+   "cz": "Každý den zakresli do mapy v deníku trasu a napiš anglicky, kterým směrem jste jeli: north, south, east, west."
+  },
+  {
+   "id": "nz5-m2",
+   "where": "Rotorua",
+   "cz": "U gejzíru Pōhutu si zapiš, v kolik hodin vybuchl a jak dlouho stříkal."
+  },
+  {
+   "id": "nz5-m3",
+   "where": "sopka",
+   "cz": "Vylez na sopku a z vrcholu popiš anglicky 3 věci, které vidíš: I can see…"
+  },
+  {
+   "id": "nz5-m4",
+   "where": "řeka",
+   "cz": "U řeky Whanganui (nebo jiné) vymysli, co by řeka chtěla, kdyby byla člověk. Napiš to anglicky."
+  }
+ ]
+}

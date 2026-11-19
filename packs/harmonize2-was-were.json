@@ -1,0 +1,472 @@
+{
+ "schema": 1,
+ "id": "harmonize2-was-were",
+ "course": "harmonize2",
+ "order": 2.6,
+ "title": "Was, or were?",
+ "cz": "Slalom tří branek: was, nebo were?",
+ "version": 1,
+ "lessons": [
+  {
+   "id": "ww1",
+   "art": "a2",
+   "title": "Gate 1: YOU = were",
+   "cz": "Branka 1: k „you“ patří vždycky were",
+   "intro": "<p>Představ si slalomovou trať se třemi záludnými brankami. Kdo jimi projede čistě, umí was/were. <b>Branka 1: YOU.</b></p><div class=\"rule\">Pomůže přítomný čas:<br>I <b>am</b> → I <b>was</b> · she <b>is</b> → she <b>was</b><br>you <b>are</b> → you <b>were</b> · they <b>are</b> → they <b>were</b></div><div class=\"rule\"><b>You</b> je „ty“ i „vy“. V obou případech je to <b>were</b>.<br>❌ you was · ✅ you were<br>❌ Was you…? · ✅ Were you…?</div>",
+   "ex": [
+    {
+     "t": "mc",
+     "q": "I <b>am</b> tired. → Yesterday I ___ tired.",
+     "opts": [
+      "was",
+      "were"
+     ],
+     "a": "was",
+     "why": "I am → I was."
+    },
+    {
+     "t": "mc",
+     "q": "You <b>are</b> tired. → Yesterday you ___ tired.",
+     "opts": [
+      "were",
+      "was"
+     ],
+     "a": "were",
+     "why": "Are se v minulosti mění na were. A protože se říká you are, je to i you were."
+    },
+    {
+     "t": "pair",
+     "q": "Spoj přítomný a minulý tvar.",
+     "pairs": [
+      [
+       "I am",
+       "I was"
+      ],
+      [
+       "you are",
+       "you were"
+      ],
+      [
+       "she is",
+       "she was"
+      ],
+      [
+       "we are",
+       "we were"
+      ]
+     ]
+    },
+    {
+     "t": "gap",
+     "s": "___ you sleeping when I called?",
+     "opts": [
+      "Were",
+      "Was"
+     ],
+     "a": "Were",
+     "why": "You → were, i když se ptáš jednoho člověka."
+    },
+    {
+     "t": "gap",
+     "s": "Klaudie, ___ you painting yesterday afternoon?",
+     "opts": [
+      "were",
+      "was"
+     ],
+     "a": "were",
+     "why": "Mluvíš na jednu holku, ale pořád je to you → were."
+    },
+    {
+     "t": "gap",
+     "s": "You ___ studying all day, right?",
+     "opts": [
+      "were",
+      "was"
+     ],
+     "a": "were"
+    },
+    {
+     "t": "mc",
+     "q": "Which question is correct?",
+     "opts": [
+      "Were you having breakfast at half past seven?",
+      "Was you having breakfast at half past seven?"
+     ],
+     "a": "Were you having breakfast at half past seven?",
+     "why": "Was you neexistuje. You → were."
+    },
+    {
+     "t": "type",
+     "s": "___ you studying too?",
+     "a": [
+      "were"
+     ],
+     "hint": "be",
+     "why": "You → were, i když jde o jednoho člověka."
+    },
+    {
+     "t": "type",
+     "s": "Your mum said that you ___ sleeping.",
+     "a": [
+      "were"
+     ],
+     "hint": "be",
+     "why": "You → were. Stejně jako you are."
+    },
+    {
+     "t": "build",
+     "cz": "Co jsi dělala v sedm hodin?",
+     "a": "What were you doing at seven o’clock?",
+     "extra": [
+      "was",
+      "did"
+     ]
+    },
+    {
+     "t": "speak",
+     "a": "Were you sleeping? No, I wasn’t."
+    }
+   ]
+  },
+  {
+   "id": "ww2",
+   "art": "a4",
+   "title": "Gate 2: more people = were",
+   "cz": "Branka 2: víc lidí → were",
+   "intro": "<p><b>Branka 2: víc lidí.</b> Když je ve větě víc lidí nebo věcí, je to <b>were</b>. Pomůže trik: nahraď je slovem <b>they</b>, <b>we</b>, <b>he</b>, <b>she</b> nebo <b>it</b>.</p><div class=\"rule\"><b>your friends</b> → they → <b>were</b><br><b>Tom and Mike</b> → they → <b>were</b><br><b>my sister</b> → she → <b>was</b><br><b>Mum and I</b> → we → <b>were</b></div><div class=\"rule\">Krátká odpověď použije stejné slovo jako trik:<br>Were your friends wearing jeans? – Yes, <b>they were</b>. / No, <b>they weren’t</b>.</div>",
+   "ex": [
+    {
+     "t": "mc",
+     "q": "<b>Tom and Mike</b> = …",
+     "opts": [
+      "they",
+      "he",
+      "she"
+     ],
+     "a": "they"
+    },
+    {
+     "t": "mc",
+     "q": "<b>My mother</b> = …",
+     "opts": [
+      "she",
+      "they",
+      "we"
+     ],
+     "a": "she"
+    },
+    {
+     "t": "gap",
+     "s": "Tom and Mike ___ playing football.",
+     "opts": [
+      "were",
+      "was"
+     ],
+     "a": "were",
+     "why": "Tom and Mike = they → were."
+    },
+    {
+     "t": "gap",
+     "s": "Your friends ___ wearing jeans today.",
+     "opts": [
+      "were",
+      "was"
+     ],
+     "a": "were",
+     "why": "Your friends = they → were."
+    },
+    {
+     "t": "gap",
+     "s": "My sister ___ chatting on the phone.",
+     "opts": [
+      "was",
+      "were"
+     ],
+     "a": "was",
+     "why": "My sister = she → was."
+    },
+    {
+     "t": "mc",
+     "q": "Were your friends wearing jeans today? – Yes, …",
+     "opts": [
+      "they were.",
+      "she was.",
+      "he was."
+     ],
+     "a": "they were.",
+     "why": "Ptáš se na friends, to jsou they. I odpověď je tedy they were."
+    },
+    {
+     "t": "mc",
+     "q": "Was your dog sleeping? – No, …",
+     "opts": [
+      "it wasn’t.",
+      "they weren’t.",
+      "I wasn’t."
+     ],
+     "a": "it wasn’t.",
+     "why": "Dog = it → it wasn’t."
+    },
+    {
+     "t": "gap",
+     "s": "Mum and I ___ watching TV.",
+     "opts": [
+      "were",
+      "was"
+     ],
+     "a": "were",
+     "why": "Mum and I = we → were."
+    },
+    {
+     "t": "type",
+     "s": "Mum and Dad ___ cooking dinner at seven.",
+     "a": [
+      "were"
+     ],
+     "hint": "be",
+     "why": "Mum and Dad = they → were."
+    },
+    {
+     "t": "type",
+     "s": "___ the girls dancing at the party? – Yes, they were.",
+     "a": [
+      "were"
+     ],
+     "hint": "be",
+     "why": "The girls = they → Were…?"
+    },
+    {
+     "t": "speak",
+     "a": "Were your friends wearing jeans? Yes, they were."
+    }
+   ]
+  },
+  {
+   "id": "ww3",
+   "art": "a6",
+   "title": "Gate 3: -ing never goes alone",
+   "cz": "Branka 3: -ing nikdy nejede samo",
+   "intro": "<p><b>Branka 3.</b> Tvar s -ing nikdy nejede sám. Potřebuje před sebou <b>was</b> nebo <b>were</b>, jako kánoe potřebuje pádlo.</p><div class=\"rule\">❌ I studying all day.<br>✅ I <b>was studying</b> all day.<br>❌ My sister chatting on the phone.<br>✅ My sister <b>was chatting</b> on the phone.</div><div class=\"rule\">Pravopis -ing:<br>chat → cha<b>tt</b>ing · swim → swi<b>mm</b>ing · sit → si<b>tt</b>ing<br>make → mak<b>ing</b> (e zmizí) · study → stud<b>ying</b></div>",
+   "ex": [
+    {
+     "t": "mc",
+     "q": "Which sentence is correct?",
+     "opts": [
+      "I was studying all day.",
+      "I studying all day."
+     ],
+     "a": "I was studying all day.",
+     "why": "Studying potřebuje před sebou was nebo were."
+    },
+    {
+     "t": "gap",
+     "s": "My mother ___ cakes for the village fair.",
+     "opts": [
+      "was baking",
+      "baking",
+      "were baking"
+     ],
+     "a": "was baking",
+     "why": "Mother = she → was. A k -ing patří vždycky was/were."
+    },
+    {
+     "t": "gap",
+     "s": "Dad ___ the dog a bath.",
+     "opts": [
+      "was giving",
+      "giving",
+      "were giving"
+     ],
+     "a": "was giving"
+    },
+    {
+     "t": "mc",
+     "q": "chat + ing = …",
+     "opts": [
+      "chatting",
+      "chating",
+      "chatin"
+     ],
+     "a": "chatting",
+     "why": "Krátké sloveso, které končí jednou souhláskou: souhláska se zdvojí. chat → chatting."
+    },
+    {
+     "t": "mc",
+     "q": "make + ing = …",
+     "opts": [
+      "making",
+      "makeing",
+      "makking"
+     ],
+     "a": "making",
+     "why": "Němé e na konci zmizí: make → making."
+    },
+    {
+     "t": "type",
+     "s": "When I finished, my sister ___ on the phone.",
+     "a": [
+      "was chatting"
+     ],
+     "hint": "chat",
+     "why": "My sister = she → was. A chat → chatting (dvě t)."
+    },
+    {
+     "t": "type",
+     "s": "I ___ all day yesterday.",
+     "a": [
+      "was studying"
+     ],
+     "hint": "study",
+     "why": "I → was + studying."
+    },
+    {
+     "t": "type",
+     "s": "My friends ___ in the lake.",
+     "a": [
+      "were swimming"
+     ],
+     "hint": "swim",
+     "why": "My friends = they → were. Swim → swimming (dvě m)."
+    },
+    {
+     "t": "type",
+     "s": "Klaudie and her friends ___ on the river.",
+     "a": [
+      "were paddling"
+     ],
+     "hint": "paddle",
+     "why": "Klaudie and her friends = they → were. Paddle → paddling (e zmizí)."
+    },
+    {
+     "t": "build",
+     "cz": "Mamka pekla dort a já jsem jí pomáhala.",
+     "a": "My mum was baking a cake and I was helping her.",
+     "extra": [
+      "were",
+      "help"
+     ]
+    },
+    {
+     "t": "speak",
+     "a": "I was studying and my sister was chatting."
+    }
+   ]
+  },
+  {
+   "id": "ww4",
+   "art": "a1",
+   "title": "The final run",
+   "cz": "Finále: celá trať najednou",
+   "intro": "<p><b>Finále.</b> Napíšeš e-mail kamarádce. U každé mezery si v duchu projeď všechny tři branky.</p><div class=\"rule\">🟢 <b>Branka 1:</b> you → <b>were</b><br>🔴 <b>Branka 2:</b> víc lidí → <b>were</b><br>🟢 <b>Branka 3:</b> -ing nikdy samo → <b>was/were + -ing</b></div><p class=\"cz\">Nespěchej. Na trati taky vyhrává ten, kdo jede čistě, ne ten, kdo jede nejrychleji.</p>",
+   "ex": [
+    {
+     "t": "type",
+     "s": "Hi Ema! Sorry I didn’t answer. I ___ all afternoon.",
+     "a": [
+      "was painting"
+     ],
+     "hint": "paint",
+     "why": "I → was + painting."
+    },
+    {
+     "t": "type",
+     "s": "What ___ you doing at four o’clock?",
+     "a": [
+      "were"
+     ],
+     "hint": "be",
+     "why": "Branka 1: you → were."
+    },
+    {
+     "t": "type",
+     "s": "My brother ___ for lizards in the garden.",
+     "a": [
+      "was looking"
+     ],
+     "hint": "look",
+     "why": "My brother = he → was + looking."
+    },
+    {
+     "t": "type",
+     "s": "Mum and Dad ___ a film.",
+     "a": [
+      "were watching"
+     ],
+     "hint": "watch",
+     "why": "Branka 2: Mum and Dad = they → were."
+    },
+    {
+     "t": "type",
+     "s": "Our dog ___ on the sofa.",
+     "a": [
+      "was sleeping"
+     ],
+     "hint": "sleep",
+     "why": "Dog = it → was + sleeping."
+    },
+    {
+     "t": "gap",
+     "s": "It ___ raining, so we didn’t go out.",
+     "opts": [
+      "wasn’t",
+      "weren’t"
+     ],
+     "a": "wasn’t",
+     "why": "It → was, zápor wasn’t."
+    },
+    {
+     "t": "gap",
+     "s": "___ your friends making bracelets at the art club?",
+     "opts": [
+      "Were",
+      "Was"
+     ],
+     "a": "Were",
+     "why": "Your friends = they → Were…?"
+    },
+    {
+     "t": "mc",
+     "q": "Were your friends making bracelets? – Yes, …",
+     "opts": [
+      "they were.",
+      "she was.",
+      "we was."
+     ],
+     "a": "they were."
+    },
+    {
+     "t": "type",
+     "s": "When you called, I ___ in the bath!",
+     "a": [
+      "was sitting"
+     ],
+     "hint": "sit",
+     "why": "I → was. Sit → sitting (dvě t)."
+    },
+    {
+     "t": "dict",
+     "a": "We were watching a film when you called."
+    },
+    {
+     "t": "speak",
+     "a": "What were you doing yesterday at five o’clock?"
+    }
+   ]
+  }
+ ],
+ "practice": [],
+ "dialogs": [],
+ "readings": [],
+ "writing": [
+  {
+   "id": "ww-w1",
+   "title": "Co dělala moje rodina včera v šest",
+   "e": "⏰",
+   "task": "What were your family doing at six o’clock yesterday? Write about four people (and your pet!).",
+   "cz": "Napiš, co kdo z rodiny dělal včera v šest hodin. Aspoň 4 věty. U každé si zkontroluj všechny tři branky.",
+   "placeholder": "At six o’clock yesterday, Mum was… Dad and Robin were… I was…",
+   "focus": "was/were + -ing"
+  }
+ ],
+ "missions": []
+}

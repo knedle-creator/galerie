@@ -1,0 +1,614 @@
+{
+ "schema": 1,
+ "id": "nz-04-zvirata",
+ "course": "nz",
+ "courseTitle": "Nový Zéland",
+ "order": 4,
+ "title": "Wild Aotearoa",
+ "cz": "Zvířata: ptáci, kteří neumí létat, a jak je chránit",
+ "version": 1,
+ "subjects": [
+  "angličtina",
+  "přírodopis"
+ ],
+ "people": {
+  "Mia": {
+   "e": "👧",
+   "pitch": 1.2,
+   "gender": "f",
+   "voice": 0
+  },
+  "Ranger": {
+   "e": "🧢",
+   "pitch": 0.85,
+   "gender": "m",
+   "voice": 1
+  }
+ },
+ "lessons": [
+  {
+   "id": "nz4-birds",
+   "art": "a1",
+   "title": "Birds that can’t fly",
+   "cz": "Ptáci, kteří neumí létat",
+   "intro": "<p>Než na Zéland připluli lidé, žili tam ze savců na souši jen netopýři. Ptáci neměli na zemi nepřátele, a tak mnozí přestali létat: kiwi, papoušek <b>kākāpō</b> nebo slípka <b>takahē</b>. Žil tu i obří pták <b>moa</b>, vysoký až 3,6 metru.</p><div class=\"rule\">Porovnávání: big → <b>bigger</b> → <b>the biggest</b><br>heavy → <b>heavier</b> → <b>the heaviest</b></div>",
+   "words": [
+    [
+     "🦤",
+     "flightless",
+     "nelétavý"
+    ],
+    [
+     "🪶",
+     "feathers",
+     "peří"
+    ],
+    [
+     "🥚",
+     "egg",
+     "vejce"
+    ],
+    [
+     "👃",
+     "nostrils",
+     "nosní dírky"
+    ],
+    [
+     "🦜",
+     "parrot",
+     "papoušek"
+    ],
+    [
+     "🌙",
+     "nocturnal",
+     "aktivní v noci"
+    ],
+    [
+     "⚖️",
+     "heavy",
+     "těžký"
+    ],
+    [
+     "🦴",
+     "extinct",
+     "vyhynulý"
+    ],
+    [
+     "🛡️",
+     "protect",
+     "chránit"
+    ]
+   ],
+   "ex": [
+    {
+     "t": "mc",
+     "q": "🦤 Co znamená <b>flightless</b>?",
+     "opts": [
+      "nelétavý, neumí létat",
+      "rychlý",
+      "barevný"
+     ],
+     "a": "nelétavý, neumí létat"
+    },
+    {
+     "t": "mc",
+     "q": "Why did many New Zealand birds stop flying?",
+     "opts": [
+      "There were no land mammals to hunt them.",
+      "The wind was too strong.",
+      "They were too lazy."
+     ],
+     "a": "There were no land mammals to hunt them.",
+     "why": "Na zemi jim nic nehrozilo, takže létat nepotřebovali a šetřili energii."
+    },
+    {
+     "t": "gap",
+     "s": "The kākāpō is the ___ parrot in the world.",
+     "opts": [
+      "heaviest",
+      "heavier",
+      "heavy"
+     ],
+     "a": "heaviest",
+     "why": "Nejtěžší ze všech = the heaviest (y se mění na i a přidá se -est)."
+    },
+    {
+     "t": "gap",
+     "s": "A kiwi egg is very big. It’s ___ than a chicken egg.",
+     "opts": [
+      "bigger",
+      "biggest",
+      "big"
+     ],
+     "a": "bigger",
+     "why": "Porovnáváš dvě věci → bigger than. Kiwi snáší vejce, které má asi pětinu její váhy."
+    },
+    {
+     "t": "mc",
+     "q": "👃 Where are a kiwi’s nostrils?",
+     "opts": [
+      "at the end of its beak",
+      "on top of its head",
+      "under its wings"
+     ],
+     "a": "at the end of its beak",
+     "why": "Kiwi je jediný pták na světě, který má nosní dírky na konci zobáku. Čichem hledá v zemi žížaly a hmyz."
+    },
+    {
+     "t": "pair",
+     "q": "Spoj ptáka s popisem.",
+     "pairs": [
+      [
+       "moa",
+       "vyhynulý obří pták"
+      ],
+      [
+       "kākāpō",
+       "nejtěžší papoušek"
+      ],
+      [
+       "kiwi",
+       "symbol Zélandu"
+      ],
+      [
+       "takahē",
+       "modrozelená slípka"
+      ]
+     ]
+    },
+    {
+     "t": "gap",
+     "s": "The moa was a huge bird. It ___ up to 3.6 metres tall.",
+     "opts": [
+      "was",
+      "were",
+      "is"
+     ],
+     "a": "was",
+     "why": "The moa = jeden pták (it) → was."
+    },
+    {
+     "t": "gap",
+     "s": "The moas ___ extinct about 600 years ago.",
+     "opts": [
+      "became",
+      "become",
+      "becomes"
+     ],
+     "a": "became",
+     "why": "Stalo se to v minulosti: become → became."
+    },
+    {
+     "t": "type",
+     "s": "Last night we ___ for kiwis in the forest.",
+     "a": [
+      "were looking"
+     ],
+     "hint": "look",
+     "why": "We → were + -ing: were looking."
+    },
+    {
+     "t": "speak",
+     "a": "The kiwi is a flightless bird."
+    }
+   ]
+  },
+  {
+   "id": "nz4-predators",
+   "art": "a2",
+   "title": "Predator Free 2050",
+   "cz": "Zéland bez predátorů",
+   "intro": "<p>Lidé na Zéland přivezli krysy, hermelíny a vačice. Jedí vejce a mláďata ptáků, kteří neumí utéct. Proto si Zéland dal cíl <b>Predator Free 2050</b>: do roku 2050 se zbavit krys, hermelínů a vačic.</p><div class=\"rule\">První kondicionál z Unit 3:<br><b>If</b> we remove the rats, more birds <b>will</b> survive.</div>",
+   "words": [
+    [
+     "🐀",
+     "rat",
+     "krysa"
+    ],
+    [
+     "🦡",
+     "stoat",
+     "hermelín"
+    ],
+    [
+     "🐾",
+     "possum",
+     "vačice"
+    ],
+    [
+     "🪤",
+     "trap",
+     "past"
+    ],
+    [
+     "🐣",
+     "chick",
+     "mládě (ptačí)"
+    ],
+    [
+     "🌳",
+     "native",
+     "původní"
+    ],
+    [
+     "🚢",
+     "ship",
+     "loď"
+    ],
+    [
+     "🚧",
+     "fence",
+     "plot"
+    ],
+    [
+     "⚠️",
+     "danger",
+     "nebezpečí"
+    ]
+   ],
+   "ex": [
+    {
+     "t": "mc",
+     "q": "🐀 Jak se řekne <b>krysa</b>?",
+     "opts": [
+      "rat",
+      "cat",
+      "bat"
+     ],
+     "a": "rat"
+    },
+    {
+     "t": "mc",
+     "q": "How did rats come to New Zealand?",
+     "opts": [
+      "on ships with people",
+      "they swam",
+      "they flew"
+     ],
+     "a": "on ships with people"
+    },
+    {
+     "t": "gap",
+     "s": "Stoats eat birds’ eggs and ___.",
+     "opts": [
+      "chicks",
+      "rocks",
+      "leaves"
+     ],
+     "a": "chicks"
+    },
+    {
+     "t": "gap",
+     "s": "If we ___ traps, there will be fewer rats.",
+     "opts": [
+      "put",
+      "will put",
+      "putting"
+     ],
+     "a": "put",
+     "why": "Ve větě s if je přítomný čas. Will patří až do druhé půlky věty."
+    },
+    {
+     "t": "gap",
+     "s": "If there are no rats, more birds ___ survive.",
+     "opts": [
+      "will",
+      "are",
+      "did"
+     ],
+     "a": "will"
+    },
+    {
+     "t": "pair",
+     "q": "Spoj slovo s překladem.",
+     "pairs": [
+      [
+       "trap",
+       "past"
+      ],
+      [
+       "fence",
+       "plot"
+      ],
+      [
+       "chick",
+       "mládě"
+      ],
+      [
+       "native",
+       "původní"
+      ]
+     ]
+    },
+    {
+     "t": "mc",
+     "q": "What is a sanctuary like Zealandia?",
+     "opts": [
+      "a safe place with a fence that keeps predators out",
+      "a big zoo with lions",
+      "a shopping centre"
+     ],
+     "a": "a safe place with a fence that keeps predators out",
+     "why": "Zealandia ve Wellingtonu je les obehnaný plotem, přes který se nedostanou krysy, kočky ani hermelíni."
+    },
+    {
+     "t": "gap",
+     "s": "We ___ going to visit a bird sanctuary next week.",
+     "opts": [
+      "are",
+      "is",
+      "was"
+     ],
+     "a": "are",
+     "why": "We → are (a v minulosti were)."
+    },
+    {
+     "t": "type",
+     "s": "Tomorrow the volunteers ___ the traps.",
+     "a": [
+      "are going to check",
+      "will check"
+     ],
+     "hint": "check",
+     "why": "Plán na zítra: are going to check (nebo will check)."
+    },
+    {
+     "t": "speak",
+     "a": "If we protect the birds, they will survive."
+    }
+   ]
+  }
+ ],
+ "practice": [],
+ "dialogs": [
+  {
+   "id": "nz4-d1",
+   "title": "In the bird sanctuary",
+   "cz": "V ptačí rezervaci",
+   "people": [
+    "Ranger",
+    "Mia"
+   ],
+   "lines": [
+    {
+     "who": "Ranger",
+     "en": "Kia ora! Did you see any birds on the track?",
+     "cz": "Kia ora! Viděla jsi na stezce nějaké ptáky?"
+    },
+    {
+     "who": "Mia",
+     "en": "Yes! When we were walking near the lake, a blue bird with a red beak crossed the path.",
+     "cz": "Ano! Když jsme šli kolem jezera, přešel přes cestu modrý pták s červeným zobákem."
+    },
+    {
+     "who": "Ranger",
+     "en": "That was a takahē. They were almost extinct. People found them again in 1948.",
+     "cz": "To byla takahē. Skoro vyhynuly. Lidé je znovu našli v roce 1948."
+    },
+    {
+     "who": "Mia",
+     "en": "Wow! And what was that loud noise? It sounded like a phone.",
+     "cz": "Páni! A co byl ten hlasitý zvuk? Znělo to jako telefon."
+    },
+    {
+     "who": "Ranger",
+     "en": "Ha! That was probably a tūī. They can copy lots of sounds.",
+     "cz": "Ha! To byl nejspíš tūī. Umí napodobit spoustu zvuků."
+    },
+    {
+     "who": "Mia",
+     "en": "Why is there a big fence around the park?",
+     "cz": "Proč je kolem parku velký plot?"
+    },
+    {
+     "who": "Ranger",
+     "en": "It keeps out rats, stoats and cats. Inside the fence, the birds are safe.",
+     "cz": "Nepustí dovnitř krysy, hermelíny ani kočky. Uvnitř plotu jsou ptáci v bezpečí."
+    },
+    {
+     "who": "Mia",
+     "en": "Can I help birds at home in the Czech Republic?",
+     "cz": "Můžu pomáhat ptákům i doma v Česku?"
+    },
+    {
+     "who": "Ranger",
+     "en": "Of course! Make a bird feeder or plant some flowers. Every little thing helps.",
+     "cz": "Jasně! Vyrob krmítko nebo zasaď květiny. Pomůže každá maličkost."
+    }
+   ],
+   "qs": [
+    {
+     "q": "What were they doing when they saw the blue bird?",
+     "opts": [
+      "They were walking near the lake.",
+      "They were eating lunch.",
+      "They were sleeping."
+     ],
+     "a": "They were walking near the lake.",
+     "line": 1
+    },
+    {
+     "q": "When did people find takahē again?",
+     "opts": [
+      "in 1948",
+      "in 2048",
+      "in 1848"
+     ],
+     "a": "in 1948",
+     "line": 2
+    },
+    {
+     "q": "What can tūī do?",
+     "opts": [
+      "copy lots of sounds",
+      "swim under water",
+      "carry fish"
+     ],
+     "a": "copy lots of sounds",
+     "line": 4
+    },
+    {
+     "q": "Why is there a fence?",
+     "opts": [
+      "It keeps out rats, stoats and cats.",
+      "It keeps the birds inside.",
+      "It stops the wind."
+     ],
+     "a": "It keeps out rats, stoats and cats.",
+     "line": 6
+    }
+   ]
+  }
+ ],
+ "readings": [
+  {
+   "id": "nz4-r1",
+   "title": "The kākāpō",
+   "cz": "Kākāpō: papoušek, který voní po medu",
+   "subject": "přírodopis",
+   "paragraphs": [
+    {
+     "en": "The kākāpō is a big green parrot from New Zealand. It can’t fly, but it’s a very good climber.",
+     "cz": "Kākāpō je velký zelený papoušek z Nového Zélandu. Neumí létat, ale skvěle šplhá."
+    },
+    {
+     "en": "It’s the heaviest parrot in the world. It sleeps in the day and looks for food at night.",
+     "cz": "Je to nejtěžší papoušek na světě. Ve dne spí a v noci hledá potravu."
+    },
+    {
+     "en": "Kākāpō have a sweet smell, a bit like honey. Unfortunately, cats and stoats can smell them too.",
+     "cz": "Kākāpō voní sladce, trochu jako med. Bohužel je cítí i kočky a hermelíni."
+    },
+    {
+     "en": "When a kākāpō is scared, it doesn’t run away. It stands still and hopes that nobody can see it. This worked well against birds, but not against cats.",
+     "cz": "Když se kākāpō lekne, neuteče. Ztuhne a doufá, že ho nikdo neuvidí. Proti dravým ptákům to fungovalo, proti kočkám ne."
+    },
+    {
+     "en": "In 1995, there were only 51 kākāpō. Today there are about 325. They live on islands with no predators, and most of them have their own name.",
+     "cz": "V roce 1995 žilo jen 51 papoušků kākāpō. Dnes jich je asi 325. Žijí na ostrovech bez predátorů a většina z nich má své jméno."
+    }
+   ],
+   "glossary": [
+    [
+     "climber",
+     "šplhavec"
+    ],
+    [
+     "heaviest",
+     "nejtěžší"
+    ],
+    [
+     "smell",
+     "vůně; cítit"
+    ],
+    [
+     "honey",
+     "med"
+    ],
+    [
+     "unfortunately",
+     "bohužel"
+    ],
+    [
+     "scared",
+     "vyděšený"
+    ],
+    [
+     "run away",
+     "utéct"
+    ],
+    [
+     "stands still",
+     "nehýbe se"
+    ],
+    [
+     "hopes",
+     "doufá"
+    ],
+    [
+     "worked",
+     "fungovalo"
+    ],
+    [
+     "against",
+     "proti"
+    ],
+    [
+     "predators",
+     "predátoři, šelmy"
+    ]
+   ],
+   "qs": [
+    {
+     "q": "Can a kākāpō fly?",
+     "opts": [
+      "No, but it’s a good climber.",
+      "Yes, very fast."
+     ],
+     "a": "No, but it’s a good climber."
+    },
+    {
+     "q": "What does a kākāpō smell like?",
+     "opts": [
+      "honey",
+      "fish",
+      "smoke"
+     ],
+     "a": "honey"
+    },
+    {
+     "q": "What does it do when it’s scared?",
+     "opts": [
+      "It stands still.",
+      "It flies away.",
+      "It bites."
+     ],
+     "a": "It stands still."
+    },
+    {
+     "q": "How many kākāpō are there today?",
+     "opts": [
+      "about 325",
+      "about 3 million",
+      "only 3"
+     ],
+     "a": "about 325"
+    }
+   ],
+   "think": "Proč je sladká vůně pro kākāpō nebezpečná? Jak mu lidé pomohli, že jich je dnes šestkrát víc než v roce 1995?"
+  }
+ ],
+ "writing": [
+  {
+   "id": "nz4-w1",
+   "title": "Plakát na ochranu zvířete",
+   "e": "🛡️",
+   "task": "Make a poster about a New Zealand animal. What is it like? Why is it in danger? What will happen if we help it?",
+   "cz": "Vyber zvíře (kiwi, kākāpō, tuatara…) a napiš text na plakát: jaké je, proč je v nebezpečí a co se stane, když mu pomůžeme. Plakát pak nakresli.",
+   "placeholder": "The kākāpō is a green parrot. It can’t fly. It’s in danger because… If we …, it will…",
+   "focus": "first conditional, can/can’t, adjectives"
+  }
+ ],
+ "missions": [
+  {
+   "id": "nz4-m1",
+   "where": "stezka v lese",
+   "cz": "Najdi u stezky past na predátory (dřevěná krabička). Vyfoť ji, ale nesahej na ni."
+  },
+  {
+   "id": "nz4-m2",
+   "where": "les",
+   "cz": "Poslouchej ptáka tūī. Popiš jeho písničku anglicky třemi přídavnými jmény."
+  },
+  {
+   "id": "nz4-m3",
+   "where": "kiwi house",
+   "cz": "V tmavém domečku pro kiwi potichu pozoruj kiwi. Zapiš si: What was it doing?"
+  },
+  {
+   "id": "nz4-m4",
+   "where": "deník",
+   "cz": "Nakresli ptáka moa vedle sebe ve stejném měřítku. Byl vysoký až 3,6 metru!"
+  }
+ ]
+}

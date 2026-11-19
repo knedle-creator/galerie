@@ -1,0 +1,955 @@
+{
+ "schema": 1,
+ "id": "nz-02-maori",
+ "course": "nz",
+ "courseTitle": "Nový Zéland",
+ "order": 2,
+ "title": "Kia ora! Māori culture",
+ "cz": "Maorská kultura: jazyk, waka a umění",
+ "version": 1,
+ "subjects": [
+  "angličtina",
+  "dějepis",
+  "výtvarná výchova"
+ ],
+ "people": {
+  "Mia": {
+   "e": "👧",
+   "pitch": 1.2,
+   "gender": "f",
+   "voice": 0
+  },
+  "Tama": {
+   "e": "👦🏽",
+   "pitch": 0.95,
+   "gender": "m",
+   "voice": 1
+  }
+ },
+ "lessons": [
+  {
+   "id": "nz2-reo",
+   "art": "a1",
+   "title": "Te reo Māori",
+   "cz": "Maorština: první slova",
+   "intro": "<p>Na Novém Zélandu se mluví hlavně anglicky, ale úředním jazykem je i <b>te reo Māori</b>, jazyk Maorů. Jeho slova uslyšíš každý den a uvidíš je na cedulích.</p><div class=\"rule\"><b>Kia ora!</b> = Ahoj! / Díky!<br><b>Ka kite anō!</b> = Na viděnou!<br>Maorsky se čte skoro jako česky. Čárka nad písmenem (ā) znamená dlouhou samohlásku.</div>",
+   "words": [
+    [
+     "👋",
+     "Kia ora!",
+     "Ahoj! / Díky!"
+    ],
+    [
+     "🙋",
+     "Ka kite anō!",
+     "Na viděnou!"
+    ],
+    [
+     "👨‍👩‍👧‍👦",
+     "whānau",
+     "rodina (maorsky)"
+    ],
+    [
+     "🍽️",
+     "kai",
+     "jídlo (maorsky)"
+    ],
+    [
+     "❤️",
+     "aroha",
+     "láska (maorsky)"
+    ],
+    [
+     "🛶",
+     "waka",
+     "kánoe, loď (maorsky)"
+    ],
+    [
+     "🏝️",
+     "Aotearoa",
+     "Nový Zéland (maorsky)"
+    ],
+    [
+     "🗣️",
+     "language",
+     "jazyk (řeč)"
+    ],
+    [
+     "🪧",
+     "sign",
+     "cedule, nápis"
+    ]
+   ],
+   "ex": [
+    {
+     "t": "mc",
+     "q": "👋 Jak tě Maorové pozdraví?",
+     "opts": [
+      "Kia ora!",
+      "Kimono!",
+      "Ciao!"
+     ],
+     "a": "Kia ora!"
+    },
+    {
+     "t": "pair",
+     "q": "Spoj maorské slovo s překladem.",
+     "pairs": [
+      [
+       "whānau",
+       "rodina"
+      ],
+      [
+       "kai",
+       "jídlo"
+      ],
+      [
+       "aroha",
+       "láska"
+      ],
+      [
+       "waka",
+       "kánoe"
+      ]
+     ]
+    },
+    {
+     "t": "mc",
+     "q": "🏝️ What is <b>Aotearoa</b>?",
+     "opts": [
+      "the Māori name for New Zealand",
+      "a volcano",
+      "a bird"
+     ],
+     "a": "the Māori name for New Zealand",
+     "why": "Aotearoa je maorský název Nového Zélandu. Často se překládá jako Země dlouhého bílého mraku."
+    },
+    {
+     "t": "gap",
+     "s": "Te reo Māori is a ___. People speak it in New Zealand.",
+     "opts": [
+      "language",
+      "volcano",
+      "food"
+     ],
+     "a": "language"
+    },
+    {
+     "t": "gap",
+     "s": "Let’s have some ___. I’m hungry!",
+     "opts": [
+      "kai",
+      "waka",
+      "aroha"
+     ],
+     "a": "kai",
+     "why": "Kai je maorsky jídlo. Na Zélandu to slovo používají i lidé, kteří maorsky nemluví."
+    },
+    {
+     "t": "mc",
+     "q": "Your <b>whānau</b> is …",
+     "opts": [
+      "your family",
+      "your house",
+      "your dog"
+     ],
+     "a": "your family"
+    },
+    {
+     "t": "mc",
+     "q": "🪧 Where can you see Māori words in New Zealand?",
+     "opts": [
+      "on signs, in shops and at school",
+      "only in museums",
+      "nowhere"
+     ],
+     "a": "on signs, in shops and at school"
+    },
+    {
+     "t": "gap",
+     "s": "“Here’s your ice cream.” “___!”",
+     "opts": [
+      "Kia ora",
+      "Ka kite anō",
+      "Whānau"
+     ],
+     "a": "Kia ora",
+     "why": "Kia ora znamená ahoj, ale taky díky."
+    },
+    {
+     "t": "build",
+     "cz": "Maorové žili na Novém Zélandu jako první.",
+     "a": "Māori people were the first people in New Zealand.",
+     "extra": [
+      "was",
+      "last"
+     ]
+    },
+    {
+     "t": "speak",
+     "a": "Hello! Nice to meet you. I’m from the Czech Republic."
+    }
+   ]
+  },
+  {
+   "id": "nz2-waka",
+   "art": "a2",
+   "title": "Waka: the first sailors",
+   "cz": "Waka: první mořeplavci",
+   "intro": "<p>Asi před 700 lety připluli na Nový Zéland první lidé, předkové Maorů. Přepluli Tichý oceán ve velkých kánoích <b>waka</b> a cestu hledali podle hvězd, vln a ptáků.</p><div class=\"rule\">Procvičíš si <b>past simple</b> z Unit 1:<br>sail → <b>sailed</b> · find → <b>found</b> · come → <b>came</b> · see → <b>saw</b></div>",
+   "words": [
+    [
+     "🛶",
+     "canoe / waka",
+     "kánoe"
+    ],
+    [
+     "⛵",
+     "sail",
+     "plout, plachta"
+    ],
+    [
+     "⭐",
+     "stars",
+     "hvězdy"
+    ],
+    [
+     "🌊",
+     "waves",
+     "vlny"
+    ],
+    [
+     "🧭",
+     "find the way",
+     "najít cestu"
+    ],
+    [
+     "🌏",
+     "Pacific Ocean",
+     "Tichý oceán"
+    ],
+    [
+     "🏝️",
+     "island",
+     "ostrov"
+    ],
+    [
+     "🚣",
+     "paddle",
+     "pádlo, pádlovat"
+    ],
+    [
+     "🏁",
+     "race",
+     "závod"
+    ]
+   ],
+   "ex": [
+    {
+     "t": "mc",
+     "q": "🛶 Jak se maorsky řekne <b>kánoe</b>?",
+     "opts": [
+      "waka",
+      "kai",
+      "kiwi"
+     ],
+     "a": "waka"
+    },
+    {
+     "t": "gap",
+     "s": "The first people ___ to New Zealand about 700 years ago.",
+     "opts": [
+      "came",
+      "come",
+      "coming"
+     ],
+     "a": "came",
+     "why": "Stalo se to dávno a skončilo to: past simple. Come je nepravidelné: came."
+    },
+    {
+     "t": "gap",
+     "s": "They ___ across the Pacific Ocean in big canoes.",
+     "opts": [
+      "sailed",
+      "sail",
+      "were sail"
+     ],
+     "a": "sailed",
+     "why": "Pravidelné sloveso: sail + -ed = sailed."
+    },
+    {
+     "t": "mc",
+     "q": "⭐ How did they find the way?",
+     "opts": [
+      "They looked at the stars, the waves and the birds.",
+      "They used a phone.",
+      "They followed a big ship."
+     ],
+     "a": "They looked at the stars, the waves and the birds.",
+     "why": "Neměli mapy ani kompas. Navigátoři znali hvězdy, vlny i cesty ptáků."
+    },
+    {
+     "t": "pair",
+     "q": "Spoj sloveso s minulým tvarem.",
+     "pairs": [
+      [
+       "sail",
+       "sailed"
+      ],
+      [
+       "find",
+       "found"
+      ],
+      [
+       "come",
+       "came"
+      ],
+      [
+       "see",
+       "saw"
+      ]
+     ]
+    },
+    {
+     "t": "gap",
+     "s": "They didn’t ___ any maps.",
+     "opts": [
+      "have",
+      "had",
+      "having"
+     ],
+     "a": "have",
+     "why": "Po didn’t je vždycky základní tvar: didn’t have."
+    },
+    {
+     "t": "mc",
+     "q": "🏁 What is <b>waka ama</b> today?",
+     "opts": [
+      "a canoe racing sport",
+      "a kind of food",
+      "a dance"
+     ],
+     "a": "a canoe racing sport",
+     "why": "Waka ama jsou závody v kánoích s plovákem po straně. Na Zélandu je jezdí spousta dětí ze škol, podobně jako ty slalom."
+    },
+    {
+     "t": "type",
+     "s": "Klaudie ___ a medal in a canoe race.",
+     "a": [
+      "won"
+     ],
+     "hint": "win",
+     "why": "Win je nepravidelné sloveso: win → won."
+    },
+    {
+     "t": "listen",
+     "say": "paddle",
+     "cz": "pádlo",
+     "opts": [
+      "paddle",
+      "puddle",
+      "battle"
+     ],
+     "a": "paddle"
+    },
+    {
+     "t": "build",
+     "cz": "Pluli přes oceán podle hvězd.",
+     "a": "They sailed across the ocean by the stars.",
+     "extra": [
+      "sail",
+      "was"
+     ]
+    },
+    {
+     "t": "speak",
+     "a": "They sailed across the Pacific Ocean."
+    }
+   ]
+  },
+  {
+   "id": "nz2-art",
+   "art": "a3",
+   "title": "Patterns and greenstone",
+   "cz": "Vzory, řezby a zelený kámen",
+   "intro": "<p>Maorské umění poznáš podle vzorů. Nejznámější je <b>koru</b>, spirála podle rozvíjejícího se listu kapradiny. Znamená nový začátek a růst. Maorové vyřezávají do dřeva, pletou ze lnu <b>harakeke</b> a brousí zelený kámen <b>pounamu</b>.</p><div class=\"rule\">Z Unit 2 znáš: It’s <b>made of</b> wood / stone.<br><b>colourful · unusual · huge = enormous</b></div>",
+   "words": [
+    [
+     "🌀",
+     "pattern",
+     "vzor"
+    ],
+    [
+     "🌿",
+     "koru",
+     "koru (spirála podle kapradiny)"
+    ],
+    [
+     "🪵",
+     "wood",
+     "dřevo"
+    ],
+    [
+     "🪨",
+     "stone",
+     "kámen"
+    ],
+    [
+     "💚",
+     "greenstone",
+     "zelený kámen (pounamu)"
+    ],
+    [
+     "🔪",
+     "carving",
+     "řezba"
+    ],
+    [
+     "🧺",
+     "weaving",
+     "pletení, tkaní"
+    ],
+    [
+     "📿",
+     "necklace",
+     "náhrdelník"
+    ],
+    [
+     "🎁",
+     "gift",
+     "dárek"
+    ]
+   ],
+   "ex": [
+    {
+     "t": "mc",
+     "q": "🌀 Jak se řekne <b>vzor</b>?",
+     "opts": [
+      "pattern",
+      "painting",
+      "paper"
+     ],
+     "a": "pattern"
+    },
+    {
+     "t": "mc",
+     "q": "🌿 What does the koru look like?",
+     "opts": [
+      "a new fern leaf",
+      "a fish",
+      "a star"
+     ],
+     "a": "a new fern leaf",
+     "why": "Koru je stočený mladý list kapradiny. Vypadá jako spirála."
+    },
+    {
+     "t": "gap",
+     "s": "This carving is made of ___.",
+     "opts": [
+      "wood",
+      "cotton",
+      "glass"
+     ],
+     "a": "wood"
+    },
+    {
+     "t": "gap",
+     "s": "The necklace is made of green ___.",
+     "opts": [
+      "stone",
+      "paper",
+      "leather"
+     ],
+     "a": "stone"
+    },
+    {
+     "t": "pair",
+     "q": "Spoj slovo s překladem.",
+     "pairs": [
+      [
+       "carving",
+       "řezba"
+      ],
+      [
+       "weaving",
+       "pletení"
+      ],
+      [
+       "pattern",
+       "vzor"
+      ],
+      [
+       "gift",
+       "dárek"
+      ]
+     ]
+    },
+    {
+     "t": "mc",
+     "q": "🎁 Many Kiwis say: don’t buy pounamu for yourself. It’s better as a …",
+     "opts": [
+      "gift",
+      "game",
+      "snack"
+     ],
+     "a": "gift",
+     "why": "Podle tradice má pounamu větší sílu, když ho dostaneš darem od někoho, kdo tě má rád."
+    },
+    {
+     "t": "gap",
+     "s": "The patterns in the meeting house are very ___: red, black and white.",
+     "opts": [
+      "colourful",
+      "boring",
+      "tired"
+     ],
+     "a": "colourful",
+     "why": "Malované vzory na trámech domu setkání se jmenují kōwhaiwhai a bývají červené, černé a bílé."
+    },
+    {
+     "t": "mc",
+     "q": "The carved meeting house was <b>huge</b>. Which word means the same?",
+     "opts": [
+      "enormous",
+      "pretty",
+      "strange"
+     ],
+     "a": "enormous",
+     "why": "Synonyma z Unit 2: huge = enormous."
+    },
+    {
+     "t": "type",
+     "s": "Yesterday I ___ a koru pattern in my notebook.",
+     "a": [
+      "drew"
+     ],
+     "hint": "draw",
+     "why": "Draw je nepravidelné sloveso: draw → drew."
+    },
+    {
+     "t": "build",
+     "cz": "Ten náhrdelník je vyrobený ze zeleného kamene.",
+     "a": "The necklace is made of green stone.",
+     "extra": [
+      "make",
+      "wood"
+     ]
+    },
+    {
+     "t": "speak",
+     "a": "I love this pattern. It’s beautiful!"
+    }
+   ]
+  }
+ ],
+ "practice": [],
+ "dialogs": [
+  {
+   "id": "nz2-d1",
+   "title": "At the cultural evening",
+   "cz": "Na kulturním večeru",
+   "people": [
+    "Tama",
+    "Mia"
+   ],
+   "lines": [
+    {
+     "who": "Tama",
+     "en": "Kia ora! Welcome to our marae. My name is Tama.",
+     "cz": "Kia ora! Vítej na našem marae. Jmenuju se Tama."
+    },
+    {
+     "who": "Mia",
+     "en": "Kia ora, Tama! I’m Mia. I’m from the Czech Republic.",
+     "cz": "Kia ora, Tamo! Já jsem Mia. Jsem z Česka."
+    },
+    {
+     "who": "Tama",
+     "en": "Welcome, Mia. Did you see the haka at the welcome?",
+     "cz": "Vítej, Mio. Viděla jsi při uvítání haku?"
+    },
+    {
+     "who": "Mia",
+     "en": "Yes, I did! It was amazing. The dancers were shouting and stamping.",
+     "cz": "Ano! Bylo to úžasné. Tanečníci křičeli a dupali."
+    },
+    {
+     "who": "Tama",
+     "en": "Thanks! My sister was dancing too. She’s the girl with the poi.",
+     "cz": "Díky! Moje sestra tančila taky. To je ta dívka s poi."
+    },
+    {
+     "who": "Mia",
+     "en": "What’s a poi?",
+     "cz": "Co je poi?"
+    },
+    {
+     "who": "Tama",
+     "en": "It’s a soft ball on a string. Women and girls swing it when they dance. Do you want to try?",
+     "cz": "Je to měkký míček na provázku. Ženy a dívky s ním při tanci točí. Chceš to zkusit?"
+    },
+    {
+     "who": "Mia",
+     "en": "Yes, please! Oops! I hit my head!",
+     "cz": "Ano, prosím! Jejda! Praštila jsem se do hlavy!"
+    },
+    {
+     "who": "Tama",
+     "en": "Don’t worry. Everyone does that the first time!",
+     "cz": "Nevadí. To se poprvé stane každému!"
+    }
+   ],
+   "qs": [
+    {
+     "q": "Where is Mia from?",
+     "opts": [
+      "the Czech Republic",
+      "New Zealand",
+      "Australia"
+     ],
+     "a": "the Czech Republic",
+     "line": 1
+    },
+    {
+     "q": "What were the dancers doing?",
+     "opts": [
+      "shouting and stamping",
+      "sleeping",
+      "eating"
+     ],
+     "a": "shouting and stamping",
+     "line": 3
+    },
+    {
+     "q": "What is a poi?",
+     "opts": [
+      "a soft ball on a string",
+      "a kind of food",
+      "a canoe"
+     ],
+     "a": "a soft ball on a string",
+     "line": 6
+    },
+    {
+     "q": "What happened when Mia tried the poi?",
+     "opts": [
+      "She hit her head.",
+      "She won a prize.",
+      "She lost it."
+     ],
+     "a": "She hit her head.",
+     "line": 7
+    }
+   ]
+  }
+ ],
+ "readings": [
+  {
+   "id": "nz2-r1",
+   "title": "The haka",
+   "cz": "Haka: tanec, který mluví",
+   "subject": "dějepis",
+   "paragraphs": [
+    {
+     "en": "The haka is a traditional Māori dance. The dancers shout, stamp their feet and slap their legs and arms.",
+     "cz": "Haka je tradiční maorský tanec. Tanečníci křičí, dupou a plácají se do nohou a paží."
+    },
+    {
+     "en": "In the past, warriors performed a haka before a battle. It showed their strength and it scared the enemy.",
+     "cz": "V minulosti předváděli haku bojovníci před bitvou. Ukazovali tím svou sílu a strašili nepřítele."
+    },
+    {
+     "en": "Today, there are many different haka. People perform them at weddings, birthdays and funerals, and to welcome important guests.",
+     "cz": "Dnes existuje mnoho různých hak. Předvádějí se na svatbách, narozeninách, pohřbech a na uvítání vzácných hostů."
+    },
+    {
+     "en": "The most famous haka is “Ka Mate”. The New Zealand rugby team, the All Blacks, often performs it before a match.",
+     "cz": "Nejznámější haka je Ka Mate. Novozélandský ragbyový tým All Blacks ji často předvádí před zápasem."
+    },
+    {
+     "en": "Girls and women perform haka too. A haka isn’t only about fighting. It’s about feelings: pride, joy, sadness and respect.",
+     "cz": "Haku předvádějí i dívky a ženy. Haka není jen o boji. Je o pocitech: hrdosti, radosti, smutku a úctě."
+    }
+   ],
+   "glossary": [
+    [
+     "traditional",
+     "tradiční"
+    ],
+    [
+     "shout",
+     "křičet"
+    ],
+    [
+     "stamp",
+     "dupat"
+    ],
+    [
+     "slap",
+     "plácat"
+    ],
+    [
+     "warriors",
+     "bojovníci"
+    ],
+    [
+     "battle",
+     "bitva"
+    ],
+    [
+     "strength",
+     "síla"
+    ],
+    [
+     "scared",
+     "vystrašil, vyděsil"
+    ],
+    [
+     "enemy",
+     "nepřítel"
+    ],
+    [
+     "weddings",
+     "svatby"
+    ],
+    [
+     "funerals",
+     "pohřby"
+    ],
+    [
+     "guests",
+     "hosté"
+    ],
+    [
+     "perform",
+     "předvádět"
+    ],
+    [
+     "pride",
+     "hrdost"
+    ],
+    [
+     "joy",
+     "radost"
+    ],
+    [
+     "respect",
+     "úcta"
+    ]
+   ],
+   "qs": [
+    {
+     "q": "What do the dancers do in a haka?",
+     "opts": [
+      "They shout, stamp their feet and slap their legs.",
+      "They sing quietly and sit down.",
+      "They paint pictures."
+     ],
+     "a": "They shout, stamp their feet and slap their legs."
+    },
+    {
+     "q": "Why did warriors perform a haka?",
+     "opts": [
+      "to show their strength",
+      "to win money",
+      "to say goodbye"
+     ],
+     "a": "to show their strength"
+    },
+    {
+     "q": "Who often performs “Ka Mate” before a match?",
+     "opts": [
+      "the All Blacks",
+      "the tourists",
+      "the teachers"
+     ],
+     "a": "the All Blacks"
+    },
+    {
+     "q": "Is the haka only for men?",
+     "opts": [
+      "No, girls and women perform haka too.",
+      "Yes, only men can do it."
+     ],
+     "a": "No, girls and women perform haka too."
+    }
+   ],
+   "think": "Kdybys měla vymyslet haku pro svůj slalomový oddíl, jaký pocit by měla ukázat? Jaké pohyby by v ní byly?"
+  },
+  {
+   "id": "nz2-r2",
+   "title": "Visiting a marae",
+   "cz": "Návštěva na marae",
+   "subject": "občanská výchova",
+   "paragraphs": [
+    {
+     "en": "A marae is a special meeting place for a Māori family or tribe. In the middle there is a big carved meeting house, the wharenui.",
+     "cz": "Marae je zvláštní místo setkávání maorské rodiny nebo kmene. Uprostřed stojí velký vyřezávaný dům setkání, wharenui."
+    },
+    {
+     "en": "Visitors don’t just walk in. First there is a welcome ceremony, the pōwhiri, with speeches and songs.",
+     "cz": "Návštěvníci nevejdou jen tak. Nejdřív je uvítací obřad pōwhiri s projevy a zpěvy."
+    },
+    {
+     "en": "Then people greet each other with a hongi. They press their noses and foreheads together and share a breath.",
+     "cz": "Potom se lidé pozdraví hongi. Přitisknou k sobě nosy a čela a sdílejí dech."
+    },
+    {
+     "en": "There are some rules. Take off your shoes before you go into the wharenui. Don’t sit on tables, and don’t eat inside the meeting house.",
+     "cz": "Platí pár pravidel. Před vstupem do wharenui si zuj boty. Nesedej si na stoly a v domě setkání nejez."
+    },
+    {
+     "en": "After the ceremony, everyone eats together. Now you aren’t a stranger any more. You are part of the group.",
+     "cz": "Po obřadu všichni společně jedí. Teď už nejsi cizí. Patříš ke skupině."
+    }
+   ],
+   "glossary": [
+    [
+     "meeting place",
+     "místo setkání"
+    ],
+    [
+     "tribe",
+     "kmen"
+    ],
+    [
+     "carved",
+     "vyřezávaný"
+    ],
+    [
+     "visitors",
+     "návštěvníci"
+    ],
+    [
+     "welcome ceremony",
+     "uvítací obřad"
+    ],
+    [
+     "speeches",
+     "projevy"
+    ],
+    [
+     "greet",
+     "pozdravit"
+    ],
+    [
+     "each other",
+     "navzájem"
+    ],
+    [
+     "press",
+     "přitisknout"
+    ],
+    [
+     "foreheads",
+     "čela"
+    ],
+    [
+     "share",
+     "sdílet"
+    ],
+    [
+     "breath",
+     "dech"
+    ],
+    [
+     "rules",
+     "pravidla"
+    ],
+    [
+     "take off",
+     "sundat, zout"
+    ],
+    [
+     "inside",
+     "uvnitř"
+    ],
+    [
+     "stranger",
+     "cizinec"
+    ],
+    [
+     "any more",
+     "už ne"
+    ]
+   ],
+   "qs": [
+    {
+     "q": "What is a wharenui?",
+     "opts": [
+      "a carved meeting house",
+      "a kind of canoe",
+      "a dance"
+     ],
+     "a": "a carved meeting house"
+    },
+    {
+     "q": "How do people greet with a hongi?",
+     "opts": [
+      "They press their noses and foreheads together.",
+      "They shake hands and kiss.",
+      "They bow."
+     ],
+     "a": "They press their noses and foreheads together."
+    },
+    {
+     "q": "What must you take off before you go in?",
+     "opts": [
+      "your shoes",
+      "your jacket",
+      "your necklace"
+     ],
+     "a": "your shoes"
+    },
+    {
+     "q": "What happens after the ceremony?",
+     "opts": [
+      "Everyone eats together.",
+      "Everyone goes home.",
+      "Everyone goes to sleep."
+     ],
+     "a": "Everyone eats together."
+    }
+   ],
+   "think": "Jaké nepsané pravidlo platí u nás, když jdeš někomu na návštěvu? Podobá se něčemu z marae?"
+  }
+ ],
+ "writing": [
+  {
+   "id": "nz2-w1",
+   "title": "Můj maorský vzor",
+   "e": "🌀",
+   "task": "Design your own pattern with a koru. What does it look like? What colours are there? What is it made of? What does it mean for you?",
+   "cz": "Navrhni vlastní vzor s koru (na papír nebo z korálků) a popiš ho 4–5 větami.",
+   "placeholder": "My pattern has got three koru. It’s red, black and white. I made it from beads…",
+   "focus": "has got, made of, adjectives, past simple"
+  }
+ ],
+ "missions": [
+  {
+   "id": "nz2-m1",
+   "where": "kdekoli",
+   "cz": "Pozdrav někoho Kia ora! a na rozloučenou řekni Ka kite anō!"
+  },
+  {
+   "id": "nz2-m2",
+   "where": "cedule",
+   "cz": "Najdi 3 cedule s maorskými slovy. Vyfoť je a zjisti, co znamenají."
+  },
+  {
+   "id": "nz2-m3",
+   "where": "kulturní večer",
+   "cz": "Nauč se jeden pohyb z haky nebo zkus točit s poi. Doma ho ukaž Robinovi."
+  },
+  {
+   "id": "nz2-m4",
+   "where": "muzeum nebo obchod",
+   "cz": "Najdi vzor koru na řezbě, tričku nebo náhrdelníku a nakresli ho do deníku."
+  },
+  {
+   "id": "nz2-m5",
+   "where": "hāngi",
+   "cz": "Ochutnej jídlo upečené v zemi (hāngi). Napiš do deníku 3 přídavná jména, jak chutnalo."
+  }
+ ]
+}

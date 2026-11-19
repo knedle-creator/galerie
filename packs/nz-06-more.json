@@ -1,0 +1,607 @@
+{
+ "schema": 1,
+ "id": "nz-06-more",
+ "course": "nz",
+ "courseTitle": "Nový Zéland",
+ "order": 6,
+ "title": "The sea",
+ "cz": "Moře: delfíni, velryby a bezpečné koupání",
+ "version": 1,
+ "subjects": [
+  "angličtina",
+  "přírodopis",
+  "tělesná výchova"
+ ],
+ "people": {
+  "Mia": {
+   "e": "👧",
+   "pitch": 1.2,
+   "gender": "f",
+   "voice": 0
+  },
+  "Lifeguard": {
+   "e": "🛟",
+   "pitch": 0.9,
+   "gender": "m",
+   "voice": 1
+  }
+ },
+ "lessons": [
+  {
+   "id": "nz6-ocean",
+   "art": "a5",
+   "title": "Ocean giants",
+   "cz": "Velryby, delfíni a lachtani",
+   "intro": "<p>V moři kolem Zélandu bylo zaznamenáno skoro <b>půl všech druhů velryb a delfínů</b> na světě. Žije tu i jeden z nejmenších delfínů světa, <b>Hectorův delfín</b>, a nejmenší tučňák, <b>kororā</b>.</p><div class=\"rule\">Co se děje právě teď: <b>Look! The dolphins are jumping!</b><br>Co se dělo, když…: <b>We were watching</b> the whales when one <b>jumped</b>.</div>",
+   "words": [
+    [
+     "🐋",
+     "whale",
+     "velryba"
+    ],
+    [
+     "🐬",
+     "dolphin",
+     "delfín"
+    ],
+    [
+     "🦭",
+     "fur seal",
+     "lachtan"
+    ],
+    [
+     "🐧",
+     "penguin",
+     "tučňák"
+    ],
+    [
+     "🐳",
+     "orca",
+     "kosatka"
+    ],
+    [
+     "🌊",
+     "wave",
+     "vlna"
+    ],
+    [
+     "🫁",
+     "breathe",
+     "dýchat"
+    ],
+    [
+     "🍼",
+     "mammal",
+     "savec"
+    ],
+    [
+     "🚤",
+     "boat",
+     "loď, člun"
+    ]
+   ],
+   "ex": [
+    {
+     "t": "mc",
+     "q": "🐳 Jak se řekne <b>kosatka</b>?",
+     "opts": [
+      "orca",
+      "octopus",
+      "otter"
+     ],
+     "a": "orca"
+    },
+    {
+     "t": "mc",
+     "q": "Is a dolphin a fish?",
+     "opts": [
+      "No, it’s a mammal. It breathes air.",
+      "Yes, it is."
+     ],
+     "a": "No, it’s a mammal. It breathes air.",
+     "why": "Delfíni a velryby jsou savci: dýchají vzduch a mláďata krmí mlékem."
+    },
+    {
+     "t": "gap",
+     "s": "Look! The dolphins ___ next to our boat!",
+     "opts": [
+      "are swimming",
+      "is swimming",
+      "swimming"
+     ],
+     "a": "are swimming",
+     "why": "Dolphins = víc delfínů → are + -ing. Děje se to právě teď."
+    },
+    {
+     "t": "gap",
+     "s": "Hector’s dolphin is one of the ___ dolphins in the world.",
+     "opts": [
+      "smallest",
+      "smaller",
+      "small"
+     ],
+     "a": "smallest"
+    },
+    {
+     "t": "pair",
+     "q": "Spoj slovo s překladem.",
+     "pairs": [
+      [
+       "whale",
+       "velryba"
+      ],
+      [
+       "fur seal",
+       "lachtan"
+      ],
+      [
+       "orca",
+       "kosatka"
+      ],
+      [
+       "wave",
+       "vlna"
+      ]
+     ]
+    },
+    {
+     "t": "mc",
+     "q": "Why must boats go slowly near dolphins?",
+     "opts": [
+      "so they don’t hurt them",
+      "so the dolphins can win a race",
+      "because dolphins are slow"
+     ],
+     "a": "so they don’t hurt them"
+    },
+    {
+     "t": "gap",
+     "s": "We ___ watching the whales when one of them jumped out of the water!",
+     "opts": [
+      "were",
+      "was"
+     ],
+     "a": "were",
+     "why": "We → were."
+    },
+    {
+     "t": "gap",
+     "s": "A blue whale is ___ than a bus.",
+     "opts": [
+      "longer",
+      "longest",
+      "long"
+     ],
+     "a": "longer",
+     "why": "Plejtvák obrovský měří až kolem 30 metrů, autobus asi 12."
+    },
+    {
+     "t": "type",
+     "s": "When we arrived, a fur seal ___ on the rocks.",
+     "a": [
+      "was sleeping"
+     ],
+     "hint": "sleep",
+     "why": "A fur seal = jeden lachtan (it) → was + -ing."
+    },
+    {
+     "t": "speak",
+     "a": "Look! The dolphins are jumping!"
+    }
+   ]
+  },
+  {
+   "id": "nz6-safety",
+   "art": "a6",
+   "title": "Surf safe",
+   "cz": "Bezpečně v moři",
+   "intro": "<p>Zélandské pláže jsou nádherné, ale moře je tam silné. Na hlídaných plážích označí plavčíci bezpečné místo <b>červenožlutými vlajkami</b>. A když tě chytí proud, který táhne do moře (<b>rip</b>), pamatuj si 3R.</p><div class=\"rule\"><b>Relax and float</b> · <b>Raise your hand</b> · <b>Ride the rip</b><br>Uklidni se a lehni na vodu · Zvedni ruku · Nech se nést</div>",
+   "words": [
+    [
+     "🛟",
+     "lifeguard",
+     "plavčík"
+    ],
+    [
+     "🚩",
+     "flag",
+     "vlajka"
+    ],
+    [
+     "🌀",
+     "rip",
+     "proud, který táhne do moře"
+    ],
+    [
+     "🫧",
+     "float",
+     "ležet na vodě"
+    ],
+    [
+     "✋",
+     "raise your hand",
+     "zvednout ruku"
+    ],
+    [
+     "🥵",
+     "sunburn",
+     "spálení od slunce"
+    ],
+    [
+     "🧴",
+     "sunscreen",
+     "opalovací krém"
+    ],
+    [
+     "🏄",
+     "surf",
+     "surfovat"
+    ],
+    [
+     "⚠️",
+     "dangerous",
+     "nebezpečný"
+    ]
+   ],
+   "ex": [
+    {
+     "t": "mc",
+     "q": "🚩 Where is the safest place to swim?",
+     "opts": [
+      "between the red and yellow flags",
+      "near the rocks",
+      "far from the lifeguards"
+     ],
+     "a": "between the red and yellow flags"
+    },
+    {
+     "t": "mc",
+     "q": "What is a rip?",
+     "opts": [
+      "a strong current that pulls you out to sea",
+      "a big wave",
+      "a kind of fish"
+     ],
+     "a": "a strong current that pulls you out to sea"
+    },
+    {
+     "t": "mc",
+     "q": "You are in a rip. What should you do first?",
+     "opts": [
+      "Relax and float.",
+      "Swim against it as fast as you can.",
+      "Shout and panic."
+     ],
+     "a": "Relax and float.",
+     "why": "Proti proudu se neplave, je silnější než nejlepší plavec. Znáš to z divoké vody: s proudem nebojuj, nech se nést a zvedni ruku."
+    },
+    {
+     "t": "gap",
+     "s": "If you need help, ___ your hand.",
+     "opts": [
+      "raise",
+      "rise",
+      "raised"
+     ],
+     "a": "raise"
+    },
+    {
+     "t": "gap",
+     "s": "If you swim between the flags, the lifeguards ___ see you.",
+     "opts": [
+      "will",
+      "are",
+      "did"
+     ],
+     "a": "will"
+    },
+    {
+     "t": "pair",
+     "q": "Spoj slovo s překladem.",
+     "pairs": [
+      [
+       "lifeguard",
+       "plavčík"
+      ],
+      [
+       "sunscreen",
+       "opalovací krém"
+      ],
+      [
+       "dangerous",
+       "nebezpečný"
+      ],
+      [
+       "flag",
+       "vlajka"
+      ]
+     ]
+    },
+    {
+     "t": "gap",
+     "s": "The sun in New Zealand is very strong. You ___ wear a hat.",
+     "opts": [
+      "should",
+      "shouldn’t",
+      "aren’t"
+     ],
+     "a": "should",
+     "why": "Should = měla bys. Je to dobrá rada."
+    },
+    {
+     "t": "mc",
+     "q": "<b>Slip, Slop, Slap and Wrap</b>: put on a T-shirt, sunscreen, a hat and …",
+     "opts": [
+      "sunglasses",
+      "a scarf",
+      "gloves"
+     ],
+     "a": "sunglasses",
+     "why": "Tohle heslo zná na Zélandu každé dítě: tričko, krém, klobouk a brýle."
+    },
+    {
+     "t": "build",
+     "cz": "Když jsi v proudu, zvedni ruku.",
+     "a": "If you are in a rip, raise your hand.",
+     "extra": [
+      "will",
+      "rise"
+     ]
+    },
+    {
+     "t": "speak",
+     "a": "Relax and float, raise your hand, ride the rip."
+    }
+   ]
+  }
+ ],
+ "practice": [],
+ "dialogs": [
+  {
+   "id": "nz6-d1",
+   "title": "At the surf club",
+   "cz": "U plavčíků",
+   "people": [
+    "Lifeguard",
+    "Mia"
+   ],
+   "lines": [
+    {
+     "who": "Lifeguard",
+     "en": "Morning! Are you going for a swim?",
+     "cz": "Dobré ráno! Jdeš se koupat?"
+    },
+    {
+     "who": "Mia",
+     "en": "Yes, I am. Is it safe today?",
+     "cz": "Ano. Je dnes bezpečno?"
+    },
+    {
+     "who": "Lifeguard",
+     "en": "The waves are quite big. You should swim between the flags, and don’t go too deep.",
+     "cz": "Vlny jsou dost velké. Plav mezi vlajkami a nechoď moc hluboko."
+    },
+    {
+     "who": "Mia",
+     "en": "OK. Where were you yesterday? There weren’t any flags.",
+     "cz": "Dobře. Kde jste byli včera? Nebyly tu žádné vlajky."
+    },
+    {
+     "who": "Lifeguard",
+     "en": "We were at a training day. When there are no flags, there are no lifeguards. It’s better not to swim.",
+     "cz": "Měli jsme školení. Když nejsou vlajky, nejsou tu ani plavčíci. Pak je lepší se nekoupat."
+    },
+    {
+     "who": "Mia",
+     "en": "I paddle on rivers at home. Can I try surfing?",
+     "cz": "Doma jezdím na řece. Můžu zkusit surfovat?"
+    },
+    {
+     "who": "Lifeguard",
+     "en": "Sure! You’ll be good at it. River paddlers can read water well.",
+     "cz": "Jasně! Půjde ti to. Kdo jezdí na řece, umí číst vodu."
+    },
+    {
+     "who": "Mia",
+     "en": "Thanks! And what’s that red flag over there?",
+     "cz": "Díky! A co znamená ta červená vlajka támhle?"
+    },
+    {
+     "who": "Lifeguard",
+     "en": "It means danger. Never swim there. There’s a rip.",
+     "cz": "Nebezpečí. Tam se nikdy nekoupej, je tam proud."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Where should Mia swim?",
+     "opts": [
+      "between the flags",
+      "near the red flag",
+      "far from the beach"
+     ],
+     "a": "between the flags",
+     "line": 2
+    },
+    {
+     "q": "Where were the lifeguards yesterday?",
+     "opts": [
+      "at a training day",
+      "at the beach",
+      "on holiday in Europe"
+     ],
+     "a": "at a training day",
+     "line": 4
+    },
+    {
+     "q": "Why will Mia be good at surfing?",
+     "opts": [
+      "River paddlers can read water well.",
+      "She is very tall.",
+      "She has got a new board."
+     ],
+     "a": "River paddlers can read water well.",
+     "line": 6
+    },
+    {
+     "q": "What does the red flag mean?",
+     "opts": [
+      "danger",
+      "free ice cream",
+      "the lifeguards are here"
+     ],
+     "a": "danger",
+     "line": 8
+    }
+   ]
+  }
+ ],
+ "readings": [
+  {
+   "id": "nz6-r1",
+   "title": "Goat Island: an underwater park",
+   "cz": "Goat Island: park pod vodou",
+   "subject": "přírodopis",
+   "paragraphs": [
+    {
+     "en": "Goat Island is a small island near Leigh, about 90 minutes north of Auckland. The sea around it was New Zealand’s first marine reserve.",
+     "cz": "Goat Island je malý ostrov u městečka Leigh, asi 90 minut na sever od Aucklandu. Moře kolem něj bylo první mořskou rezervací na Zélandu."
+    },
+    {
+     "en": "In a marine reserve, you mustn’t fish or take anything: no shells, no stones, no animals.",
+     "cz": "V mořské rezervaci se nesmí rybařit ani nic brát: žádné mušle, kameny ani zvířata."
+    },
+    {
+     "en": "The reserve opened in 1975. Since then, the fish have grown bigger and there are many more of them.",
+     "cz": "Rezervace vznikla v roce 1975. Od té doby ryby vyrostly a je jich mnohem víc."
+    },
+    {
+     "en": "Visitors can snorkel near the beach. They see big snappers, bright blue fish and crayfish under the rocks.",
+     "cz": "Návštěvníci se můžou u pláže potápět se šnorchlem. Vidí velké pražmy, zářivě modré ryby a langusty pod kameny."
+    },
+    {
+     "en": "Scientists say that marine reserves help the whole sea. Fish from the reserve swim out and make the sea outside richer too.",
+     "cz": "Vědci říkají, že mořské rezervace pomáhají celému moři. Ryby z rezervace odplavou ven a moře kolem je taky bohatší."
+    }
+   ],
+   "glossary": [
+    [
+     "marine reserve",
+     "mořská rezervace"
+    ],
+    [
+     "mustn’t",
+     "nesmíš"
+    ],
+    [
+     "take",
+     "brát"
+    ],
+    [
+     "since then",
+     "od té doby"
+    ],
+    [
+     "grown",
+     "vyrostly"
+    ],
+    [
+     "snorkel",
+     "šnorchlovat"
+    ],
+    [
+     "snappers",
+     "pražmy (ryby)"
+    ],
+    [
+     "bright",
+     "zářivý"
+    ],
+    [
+     "crayfish",
+     "langusty"
+    ],
+    [
+     "whole",
+     "celý"
+    ],
+    [
+     "richer",
+     "bohatší"
+    ]
+   ],
+   "qs": [
+    {
+     "q": "What was the sea around Goat Island?",
+     "opts": [
+      "New Zealand’s first marine reserve",
+      "a big harbour",
+      "a volcano"
+     ],
+     "a": "New Zealand’s first marine reserve"
+    },
+    {
+     "q": "What mustn’t you do in a marine reserve?",
+     "opts": [
+      "fish or take anything",
+      "swim",
+      "look at the fish"
+     ],
+     "a": "fish or take anything"
+    },
+    {
+     "q": "What happened to the fish after 1975?",
+     "opts": [
+      "They grew bigger and there are more of them.",
+      "They all swam away.",
+      "They became smaller."
+     ],
+     "a": "They grew bigger and there are more of them."
+    },
+    {
+     "q": "How do marine reserves help the whole sea?",
+     "opts": [
+      "Fish swim out and make the sea outside richer.",
+      "They keep all the fish inside.",
+      "They make the water warmer."
+     ],
+     "a": "Fish swim out and make the sea outside richer."
+    }
+   ],
+   "think": "Proč rezervace pomáhá i rybářům, kteří chytají ryby mimo ni? Zkus to vysvětlit Robinovi, rád rybaří."
+  }
+ ],
+ "writing": [
+  {
+   "id": "nz6-w1",
+   "title": "Bezpečně u moře: rady pro malé",
+   "e": "🛟",
+   "task": "Write five beach safety rules for younger children. Use should, shouldn’t, must and mustn’t.",
+   "cz": "Napiš pět pravidel bezpečného koupání pro malé děti, třeba pro bratránky. Použij should, shouldn’t, must a mustn’t.",
+   "placeholder": "1 You must swim between the flags. 2 You shouldn’t…",
+   "focus": "should, must, imperatives"
+  }
+ ],
+ "missions": [
+  {
+   "id": "nz6-m1",
+   "where": "pláž",
+   "cz": "Najdi plavčíky a vlajky a zeptej se: Is it safe to swim today?"
+  },
+  {
+   "id": "nz6-m2",
+   "where": "loď nebo pobřeží",
+   "cz": "Když uvidíš delfíny, lachtany nebo tučňáky, napiš do deníku, co zrovna dělali: They were…"
+  },
+  {
+   "id": "nz6-m3",
+   "where": "šnorchlování",
+   "cz": "Při šnorchlování spočítej, kolik různých ryb uvidíš, a tu nejbarevnější nakresli."
+  },
+  {
+   "id": "nz6-m4",
+   "where": "pláž",
+   "cz": "Zkus z vln přečíst, kde je rip: bývá to klidnější, tmavší pruh vody mezi vlnami. Ukaž ho tátovi."
+  }
+ ]
+}
