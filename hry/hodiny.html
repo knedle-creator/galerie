@@ -403,7 +403,10 @@ function finish() {
 
 /* ---------- start ---------- */
 (async () => {
-  try { const r = await fetch('../profile.json', { cache: 'no-cache' }); if (r.ok) Object.assign(P, await r.json()); } catch (e) { /* bez profilu: výchozí hodnoty */ }
+  // Profil z appky (hra běží v jejím okně, i pro bratrance). Samostatně otevřená hra si přečte ../profile.json.
+  let ap = null; try { ap = window.parent !== window && window.parent.APP_PROFILE; } catch (e) { ap = null; }
+  if (ap) Object.assign(P, ap);
+  else try { const r = await fetch('../profile.json', { cache: 'no-cache' }); if (r.ok) Object.assign(P, await r.json()); } catch (e) { /* bez profilu: výchozí hodnoty */ }
   if (!P.grade) P.grade = P.id === 'robin' ? 4 : 7;
   KEY = `hodiny-${P.id}-v1`; // Klaudie a Robin mají appky na stejném webu, tak ať se postup nemíchá
   LV = levels(); load(); home();

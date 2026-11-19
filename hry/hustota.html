@@ -127,6 +127,9 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--coral);outline-
 <main class="wrap" id="app"></main>
 <div id="ov"></div>
 <script>
+// Profil z appky (hra běží v jejím okně): jméno a rod. Hra otevřená samostatně = Klaudie.
+const P = Object.assign({ id: 'klaudie', name: 'Klaudie', gender: 'f' }, (() => { try { return (window.parent !== window && window.parent.APP_PROFILE) || {}; } catch (e) { return {}; } })());
+const g = (f, m) => (P.gender === 'm' ? m : f);
 const W = 'g/cm³';
 const LEVELS = [
  {id:'l1', title:'Plave, nebo klesne?', sub:'Tipování u vody', intro:`
@@ -140,7 +143,7 @@ const LEVELS = [
    {t:'float', e:'🔩', name:'ocelová karabina', rho:7.8, why:'Ocel je skoro 8× hustší než voda. Do vody s ní radši ne!'},
    {t:'float', e:'🔮', name:'malinký skleněný korálek', rho:2.5, why:'Je maličký, a stejně klesne! Nejde o velikost, ale o to, jak natěsno je hmota uvnitř.'},
    {t:'float', e:'🍎', name:'jablko', rho:0.8, why:'Jablko má uvnitř vzduch mezi buňkami. Proto se dá na Halloween lovit pusou z kýble.'}
-  ], end:'Všimla sis pravidla? Co má hustotu menší než voda (1 g/cm³), plave. Co má větší, klesne.'},
+  ], end:g('Všimla','Všiml')+' sis pravidla? Co má hustotu menší než voda (1 g/cm³), plave. Co má větší, klesne.'},
  {id:'l2', title:'Kostičky', sub:'Co hustota opravdu znamená', intro:`
    <h2>Kostičky</h2>
    <p>Představ si kostičku velkou jako kostka cukru. Její objem je <b>1 cm³</b>.</p>
@@ -152,10 +155,10 @@ const LEVELS = [
    {t:'cubes', n:4, m:12, name:'kostičky z kamene'},
    {t:'cubes', n:4, m:32, name:'kostičky ze železa'},
    {t:'cubes', n:5, m:45, name:'kostičky z mědi'}
-  ], end:'Přesně tohle je hustota: kolik gramů připadne na 1 cm³. A dělila jsi hmotnost počtem kostiček, tedy objemem. Skutečné hustoty bývají desetinná čísla, tady jsme je pro jednoduchost zaokrouhlili.'},
+  ], end:'Přesně tohle je hustota: kolik gramů připadne na 1 cm³. A '+g('dělila','dělil')+' jsi hmotnost počtem kostiček, tedy objemem. Skutečné hustoty bývají desetinná čísla, tady jsme je pro jednoduchost zaokrouhlili.'},
  {id:'l3', title:'Vzorec', sub:'Hustota = hmotnost ÷ objem', intro:`
    <h2>Vzorec</h2>
-   <p>To, co jsi dělala s kostičkami, má ve fyzice zápis:</p>
+   <p>To, co jsi ${g('dělala','dělal')} s kostičkami, má ve fyzice zápis:</p>
    <div class="formula">ρ = <span class="fr"><span>m</span><span>V</span></span></div>
    <p><b>ρ</b> (čti „ró“) je hustota, <b>m</b> hmotnost v gramech, <b>V</b> objem v cm³.</p>
    <p>Hmotnost nahoře, objem dole. Kalkulačka je povolená.</p>`,
@@ -207,10 +210,10 @@ const LEVELS = [
       ['Korálek je moc malý na to, aby plaval.','Velikost nerozhoduje. I obří skleněná koule by klesla.'],
       ['Led má menší hustotu než voda, sklo větší.','']], ok:2,
     why:'Přesně tak. Rozhoduje hustota, ne velikost ani hmotnost. Tohle je to nejdůležitější z celé trati.'}
-  ], end:'Dojela jsi celou trať. Hustotu teď chápeš, ne jen počítáš.'}
+  ], end:g('Dojela','Dojel')+' jsi celou trať. Hustotu teď chápeš, ne jen počítáš.'}
 ];
 
-const KEY='hustota-klaudie-v1';
+const KEY='hustota-'+P.id+'-v1'; // Klaudie zůstává hustota-klaudie-v1
 let S={done:{},pos:{}};
 try{const r=localStorage.getItem(KEY); if(r) S=Object.assign(S,JSON.parse(r));}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
@@ -361,20 +364,20 @@ function check(T,raw){
     if(near(v,right)){win(`Sedí! ${T.m} g rozdělených na ${T.n} kostiček je ${f(right)} g v každé. Hustota je tedy ${f(right)} g/cm³.`); 
       document.querySelectorAll('.cube').forEach(c=>{c.textContent=f(right)+' g';c.classList.add('solved')}); return;}
     if(near(v,T.m)) msg=`${T.m} g váží všechny kostičky dohromady. Kolik z toho připadne na jednu?`;
-    else if(near(v,T.n/T.m)) msg='Vypadá to, že jsi dělila obráceně. Gramy rozděluješ mezi kostičky: hmotnost ÷ počet kostiček.';
+    else if(near(v,T.n/T.m)) msg='Vypadá to, že jsi '+g('dělila','dělil')+' obráceně. Gramy rozděluješ mezi kostičky: hmotnost ÷ počet kostiček.';
     else msg='Ještě ne. Zkus si představit, že rozděluješ korálky rovným dílem do krabiček.';
   } else if(T.t==='calc'){
     right=T.m/T.V;
     if(near(v,right)){win(`Sedí! ${T.m} ÷ ${T.V} = ${f(right)}. Hustota je ${f(right)} g/cm³ — ${right<1?'menší než voda, takže by to plavalo':'větší než voda, takže by to kleslo'}.`);return;}
-    if(near(v,T.V/T.m)) msg='Dělila jsi obráceně, to se stává často. Hmotnost patří nahoru, objem dolů: m ÷ V.';
-    else if(near(v,T.m*T.V)) msg='Tady jsi násobila. Hustota se počítá dělením: hmotnost ÷ objem.';
+    if(near(v,T.V/T.m)) msg=g('Dělila','Dělil')+' jsi obráceně, to se stává často. Hmotnost patří nahoru, objem dolů: m ÷ V.';
+    else if(near(v,T.m*T.V)) msg='Tady jsi '+g('násobila','násobil')+'. Hustota se počítá dělením: hmotnost ÷ objem.';
     else if(near(v,T.m+T.V)||near(v,Math.abs(T.m-T.V))) msg='Sčítat ani odčítat tu nepotřebuješ. Hustota je hmotnost ÷ objem.';
-    else msg='Ještě ne. Zkontroluj na kalkulačce, co jsi dělila čím.';
+    else msg='Ještě ne. Zkontroluj na kalkulačce, co jsi '+g('dělila','dělil')+' čím.';
   } else if(T.t==='conv'){
     right=T.dir==='up'?T.x*1000:T.x/1000;
     if(near(v,right)){win(`Sedí! ${f(T.x)} ${T.dir==='up'?'g/cm³':'kg/m³'} = ${f(right)} ${T.dir==='up'?'kg/m³':'g/cm³'}.`);return;}
     const wrongDir=T.dir==='up'?T.x/1000:T.x*1000;
-    if(near(v,wrongDir)) msg=T.dir==='up'?'Dělila jsi, ale tady se násobí. V kg/m³ je číslo vždycky větší.':'Násobila jsi, ale tady se dělí. V g/cm³ je číslo vždycky menší.';
+    if(near(v,wrongDir)) msg=T.dir==='up'?g('Dělila','Dělil')+' jsi, ale tady se násobí. V kg/m³ je číslo vždycky větší.':g('Násobila','Násobil')+' jsi, ale tady se dělí. V g/cm³ je číslo vždycky menší.';
     else if(near(v,T.dir==='up'?T.x*100:T.x/100)||near(v,T.dir==='up'?T.x*10:T.x/10)) msg='Směr je správně! Jen čárku posouváš o 3 místa, ne méně.';
     else msg='Ještě ne. Zkus nápovědu s posouváním čárky.';
   }
@@ -382,7 +385,7 @@ function check(T,raw){
 }
 function win(msg){
   solved=true;
-  const extra=hintN?' A nápovědu jsi použila přesně k tomu, k čemu je.':'';
+  const extra=hintN?' A nápovědu jsi '+g('použila','použil')+' přesně k tomu, k čemu je.':'';
   fb(true,msg+extra);
   const inp=document.getElementById('inp'); if(inp) inp.disabled=true;
   nextBtn();
@@ -392,10 +395,10 @@ function finish(){
   S.done[L.id]=true; S.pos[L.id]=0; save();
   const k=LEVELS.indexOf(L), last=k===LEVELS.length-1;
   const praise=stats.retries
-   ?`Když něco napoprvé nevyšlo, zkusila jsi to znovu (${stats.retries}×). Tohle je ve fyzice důležitější než mít všechno hned.`
-   :'Všechno ti vyšlo, a to jsi dávala pozor na každé zadání.';
+   ?`Když něco napoprvé nevyšlo, ${g('zkusila','zkusil')} jsi to znovu (${stats.retries}×). Tohle je ve fyzice důležitější než mít všechno hned.`
+   :'Všechno ti vyšlo, a to jsi '+g('dávala','dával')+' pozor na každé zadání.';
   const home1=k===0?`<div class="try-home"><b>Zkus doma:</b> Dej vajíčko do sklenice s vodou. Klesne. Pak přisypávej sůl a míchej. Co se stane? A proč? (Nápověda: slaná voda je hustší.)</div>`:'';
-  const teach=last?`<div class="try-home"><b>Poslední výzva:</b> Vysvětli Robinovi pomocí pádla a oblázku, proč jedno plave a druhé ne. Kdo umí něco vysvětlit, ten tomu opravdu rozumí.</div>`:'';
+  const teach=last?`<div class="try-home"><b>Poslední výzva:</b> Vysvětli ${P.komu || 'Robinovi'} pomocí pádla a oblázku, proč jedno plave a druhé ne. Kdo umí něco vysvětlit, ten tomu opravdu rozumí.</div>`:'';
   app.innerHTML=`${topbar()}<div class="card"><div class="big">${last?'🏅':'✅'}</div>
    <h2 style="text-align:center;margin-top:.5rem">${last?'Trať je projetá!':'Branka je čistá!'}</h2>
    <p>${L.end}</p><p>${praise}</p>${home1}${teach}
