@@ -1,0 +1,37 @@
+{
+ "_": "Teo, bratranec a spolužák Klaudie (7. třída). Má stejné lekce jako Klaudie, jen bez Nového Zélandu a španělštiny. Odkaz: https://knedle-creator.github.io/galerie/?kdo=teo",
+ "id": "teo",
+ "name": "Teo",
+ "title": "Teova výprava",
+ "titleGen": "Teovy výpravy",
+ "gender": "m",
+ "theme": "vyprava",
+ "lessonIcon": "🧭",
+ "bg": {
+  "light": "#F1F6FA",
+  "dark": "#0F1B26"
+ },
+ "hide": [
+  "nz",
+  "vzn",
+  "es"
+ ],
+ "courses": {
+  "harmonize2": "🧭"
+ },
+ "subjectCz": {
+  "en": "Lekce z učebnice Harmonize 2."
+ },
+ "komu": "někomu doma",
+ "manifest": "profiles/teo.webmanifest",
+ "favicon": "profiles/icons/icon.svg",
+ "touchIcon": "profiles/icons/icon-192.png",
+ "t": {
+  "tagline": "Učení po malých krocích. Jedna lekce trvá asi 5–8 minut.",
+  "allDone": "Máš všechny odznaky 🏅",
+  "courseCount": "odznaků",
+  "courseHint": "Za každou hotovou lekci dostaneš odznak. Všechno jde kdykoli otevřít znovu.",
+  "lessonDone": "Máš nový odznak!",
+  "listenSkill": "Přesně tohle se ti bude hodit ve škole i na cestách."
+ }
+}
