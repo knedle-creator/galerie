@@ -1,0 +1,848 @@
+{
+ "schema": 1,
+ "id": "mat7-periodicka",
+ "course": "mat7",
+ "courseTitle": "Matematika 7",
+ "subject": "mat",
+ "lang": "cs",
+ "order": 2,
+ "title": "Periodická čísla",
+ "cz": "Zlomek, dělení a korálkový vzor",
+ "version": 1,
+ "lessons": [
+  {
+   "id": "p1-deleni",
+   "title": "Zlomek je dělení",
+   "cz": "Ze zlomku desetinné číslo",
+   "e": "➗",
+   "intro": "<p>Zlomková čára je ve skutečnosti dělení. Díky tomu ze zlomku uděláš desetinné číslo.</p><p class=\"cz\">Asi 6 minut. Papír a tužka se hodí.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>Zlomková čára = děleno</h3><p class=\"vysl\"><span class=\"zl\"><b>3</b><b>4</b></span> = 3 : 4</p><p>Zlomek <b>tři čtvrtiny</b> znamená: <b>3 rozděl na 4 stejné díly</b>. Třeba 3 pizzy spravedlivě pro 4 kamarádky.</p><p class=\"cz\">Číslo nahoře dělíš číslem dole.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Jak zapíšeš <span class=\"zl\"><b>1</b><b>2</b></span> jako dělení?",
+     "opts": [
+      "1 : 2",
+      "2 : 1",
+      "1 · 2"
+     ],
+     "a": "1 : 2",
+     "why": "Nahoře je to, co dělíš. Dole je, čím dělíš."
+    },
+    {
+     "t": "mc",
+     "q": "A <span class=\"zl\"><b>7</b><b>10</b></span>?",
+     "opts": [
+      "7 : 10",
+      "10 : 7",
+      "7 − 10"
+     ],
+     "a": "7 : 10",
+     "why": "Číslo nahoře dělíš číslem dole."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Když se to nevejde</h3><p>3 : 4. Čtyřka se do trojky celá nevejde, proto napíšeš <b>0 celých a čárku</b>.</p><p>Pak ke zbytku <b>připíšeš nulu</b> a dělíš dál:</p><div class=\"stroj\"><span>3 : 4</span><span>= 0</span><span class=\"zb\">zbytek <b>3</b> <em>píšu 0,</em></span><span>30 : 4</span><span>= 7</span><span class=\"zb\">zbytek <b class=\"k2\">2</b></span><span>20 : 4</span><span>= 5</span><span class=\"zb\">zbytek <b class=\"k0\">0</b> <em>konec</em></span></div><p class=\"vysl\"><span class=\"zl\"><b>3</b><b>4</b></span> = 0,75</p><p class=\"cz\">Dělení končí, když vyjde zbytek 0.</p>"
+    },
+    {
+     "t": "num",
+     "form": "int",
+     "q": "Teď ty: <span class=\"zl\"><b>1</b><b>4</b></span>. Do jedničky se čtyřka nevejde, takže 0 celých a zbytek 1. Připiš nulu. Kolik je 10 : 4?",
+     "a": [
+      2
+     ],
+     "why": "Kolikrát se 4 vejde do 10? 4, 8, 12… 12 už je moc."
+    },
+    {
+     "t": "num",
+     "form": "int",
+     "q": "10 : 4 = 2. Kolik zbude?",
+     "a": [
+      2
+     ],
+     "why": "2 × 4 = 8. Kolik chybí do 10?"
+    },
+    {
+     "t": "num",
+     "form": "int",
+     "q": "Ke zbytku 2 připiš nulu. Kolik je 20 : 4?",
+     "a": [
+      5
+     ]
+    },
+    {
+     "t": "num",
+     "form": "dec",
+     "q": "Zbytek je 0, hotovo. Napiš výsledek.",
+     "lhs": "<span class=\"zl\"><b>1</b><b>4</b></span>",
+     "a": [
+      "0",
+      "25"
+     ],
+     "why": "Před čárkou 0. Za čárkou to, co ti vyšlo: 2 a 5."
+    },
+    {
+     "t": "num",
+     "form": "dec",
+     "q": "Voňavka: 1 litr parfému rozliješ do 2 lahviček. Kolik litrů bude v každé?",
+     "lhs": "<span class=\"zl\"><b>1</b><b>2</b></span>",
+     "a": [
+      "0",
+      "5"
+     ],
+     "why": "Jednička se do dvojky nevejde: 0 celých, zbytek 1. Pak 10 : 2 = 5."
+    },
+    {
+     "t": "num",
+     "form": "dec",
+     "q": "Teď celé sama.",
+     "lhs": "<span class=\"zl\"><b>2</b><b>5</b></span>",
+     "a": [
+      "0",
+      "4"
+     ],
+     "why": "0 celých, zbytek 2. Pak 20 : 5."
+    },
+    {
+     "t": "num",
+     "form": "dec",
+     "q": "Na soustředění máš 3 litry pití na 4 tréninky. Kolik litrů na jeden trénink?",
+     "lhs": "<span class=\"zl\"><b>3</b><b>4</b></span>",
+     "a": [
+      "0",
+      "75"
+     ]
+    },
+    {
+     "t": "num",
+     "form": "dec",
+     "q": "Těžší: tady se čtyřka do pětky jednou celá vejde.",
+     "lhs": "<span class=\"zl\"><b>5</b><b>4</b></span>",
+     "a": [
+      "1",
+      "25"
+     ],
+     "why": "5 : 4 = 1, zbytek 1. Pak 10 : 4 = 2, zbytek 2. Pak 20 : 4 = 5."
+    }
+   ]
+  },
+  {
+   "id": "p2-koralky",
+   "title": "Číslo, které nikdy neskončí",
+   "cz": "Korálkový vzor: perioda",
+   "e": "📿",
+   "intro": "<p>Některé dělení nikdy neskončí. Číslice se opakují dokola jako vzor na náramku z korálků.</p><p class=\"cz\">Asi 6 minut.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>Zkusíme 1 : 3</h3><p class=\"vysl\"><span class=\"zl\"><b>1</b><b>3</b></span> = 1 : 3</p><p>Trojka se do jedničky nevejde: <b>0 celých</b>, zbytek 1. Připíšeš nulu a dělíš dál. Zkus to.</p>"
+    },
+    {
+     "t": "num",
+     "form": "int",
+     "q": "Kolik je 10 : 3?",
+     "a": [
+      3
+     ],
+     "why": "3 × 3 = 9. 4 × 3 = 12, to už je moc."
+    },
+    {
+     "t": "num",
+     "form": "int",
+     "q": "10 : 3 = 3. Kolik zbude?",
+     "a": [
+      1
+     ],
+     "why": "3 × 3 = 9. Kolik chybí do 10?"
+    },
+    {
+     "t": "mc",
+     "q": "Zbytek je zase 1. Připíšeš nulu a máš zase 10 : 3. Co vyjde?",
+     "opts": [
+      "zase 3 a zbytek 1",
+      "4 a zbytek 0",
+      "dělení skončí"
+     ],
+     "a": "zase 3 a zbytek 1",
+     "why": "Je to úplně stejný příklad jako před chvílí."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Nikdy to neskončí</h3><div class=\"stroj\"><span>10 : 3</span><span>= 3</span><span class=\"zb\">zbytek <b>1</b></span><span>10 : 3</span><span>= 3</span><span class=\"zb\">zbytek <b>1</b> <em>zase!</em></span><span>10 : 3</span><span>= 3</span><span class=\"zb\">zbytek <b>1</b> <em>zase!</em></span></div><p class=\"vysl\"><span class=\"zl\"><b>1</b><b>3</b></span> = 0,3333…</p><p>Zbytek je pořád 1, takže trojky se opakují <b>donekonečna</b>. Takové číslo je <b>periodické</b>.</p>"
+    },
+    {
+     "t": "info",
+     "html": "<h3>Perioda = vzor na náramku</h3><svg class=\"tahak kor\" viewBox=\"0 0 300 190\" role=\"img\" aria-label=\"Dva náramky z korálků: u prvního se opakuje trojka, u druhého dvojice 2 a 7\"><text class=\"lab\" x=\"4\" y=\"46\" font-size=\"24\" font-weight=\"800\" text-anchor=\"start\">0,</text><line class=\"nit\" x1=\"32\" y1=\"40\" x2=\"232\" y2=\"40\"/><circle class=\"b1\" cx=\"46\" cy=\"40\" r=\"15\"/><text class=\"t\" x=\"46\" y=\"46\" font-size=\"17\" text-anchor=\"middle\">3</text><circle class=\"b1\" cx=\"79\" cy=\"40\" r=\"15\"/><text class=\"t\" x=\"79\" y=\"46\" font-size=\"17\" text-anchor=\"middle\">3</text><circle class=\"b1\" cx=\"112\" cy=\"40\" r=\"15\"/><text class=\"t\" x=\"112\" y=\"46\" font-size=\"17\" text-anchor=\"middle\">3</text><circle class=\"b1\" cx=\"145\" cy=\"40\" r=\"15\"/><text class=\"t\" x=\"145\" y=\"46\" font-size=\"17\" text-anchor=\"middle\">3</text><circle class=\"b1\" cx=\"178\" cy=\"40\" r=\"15\"/><text class=\"t\" x=\"178\" y=\"46\" font-size=\"17\" text-anchor=\"middle\">3</text><circle class=\"b1\" cx=\"211\" cy=\"40\" r=\"15\"/><text class=\"t\" x=\"211\" y=\"46\" font-size=\"17\" text-anchor=\"middle\">3</text><text class=\"lab\" x=\"238\" y=\"46\" font-size=\"20\" font-weight=\"800\" text-anchor=\"start\">…</text><text class=\"sub\" x=\"30\" y=\"80\" font-size=\"14\" font-weight=\"600\" text-anchor=\"start\">vzor má 1 korálek: 3</text><line class=\"lnp\" x1=\"38\" y1=\"114\" x2=\"98\" y2=\"114\"/><text class=\"pk\" x=\"68\" y=\"108\" font-size=\"14\" font-weight=\"800\" text-anchor=\"middle\">vzor</text><text class=\"lab\" x=\"4\" y=\"146\" font-size=\"24\" font-weight=\"800\" text-anchor=\"start\">0,</text><line class=\"nit\" x1=\"32\" y1=\"140\" x2=\"232\" y2=\"140\"/><circle class=\"b2\" cx=\"46\" cy=\"140\" r=\"15\"/><text class=\"t\" x=\"46\" y=\"146\" font-size=\"17\" text-anchor=\"middle\">2</text><circle class=\"b3\" cx=\"79\" cy=\"140\" r=\"15\"/><text class=\"t3\" x=\"79\" y=\"146\" font-size=\"17\" text-anchor=\"middle\">7</text><circle class=\"b2\" cx=\"112\" cy=\"140\" r=\"15\"/><text class=\"t\" x=\"112\" y=\"146\" font-size=\"17\" text-anchor=\"middle\">2</text><circle class=\"b3\" cx=\"145\" cy=\"140\" r=\"15\"/><text class=\"t3\" x=\"145\" y=\"146\" font-size=\"17\" text-anchor=\"middle\">7</text><circle class=\"b2\" cx=\"178\" cy=\"140\" r=\"15\"/><text class=\"t\" x=\"178\" y=\"146\" font-size=\"17\" text-anchor=\"middle\">2</text><circle class=\"b3\" cx=\"211\" cy=\"140\" r=\"15\"/><text class=\"t3\" x=\"211\" y=\"146\" font-size=\"17\" text-anchor=\"middle\">7</text><text class=\"lab\" x=\"238\" y=\"146\" font-size=\"20\" font-weight=\"800\" text-anchor=\"start\">…</text><text class=\"sub\" x=\"30\" y=\"180\" font-size=\"14\" font-weight=\"600\" text-anchor=\"start\">vzor má 2 korálky: 2 a 7</text></svg><p>Číslice, které se pořád opakují, jsou <b>perioda</b>. Je to jako vzor korálků, který navlékáš pořád dokola.</p><p>Vzor napíšeš <b>jen jednou</b> a uděláš nad ním <b>pruh</b>:</p><p class=\"vysl\">0,3333… = 0,<span class=\"per\">3</span></p><p class=\"vysl\">0,2727… = 0,<span class=\"per\">27</span></p>"
+    },
+    {
+     "t": "mc",
+     "q": "Které číslice tvoří vzor (periodu) v čísle 0,454545…?",
+     "opts": [
+      "45",
+      "4",
+      "5"
+     ],
+     "a": "45",
+     "why": "Opakuje se dvojice korálků: 45, 45, 45…"
+    },
+    {
+     "t": "mc",
+     "q": "Jak se správně zapíše 0,7777…?",
+     "opts": [
+      "0,[7]",
+      "0,7",
+      "0,07"
+     ],
+     "a": "0,[7]",
+     "why": "0,7 je jen sedm desetin a končí. Tady sedmičky pokračují pořád dál."
+    },
+    {
+     "t": "num",
+     "form": "per",
+     "q": "Napiš s pruhem: 0,4444…",
+     "a": [
+      "0",
+      "",
+      "4"
+     ]
+    },
+    {
+     "t": "num",
+     "form": "per",
+     "q": "Napiš s pruhem: 0,151515…",
+     "a": [
+      "0",
+      "",
+      "15"
+     ],
+     "why": "Vzor má dva korálky: 1 a 5."
+    },
+    {
+     "t": "num",
+     "form": "per",
+     "q": "Číslo s celou částí: 2,8888…",
+     "a": [
+      "2",
+      "",
+      "8"
+     ],
+     "why": "Před čárkou je 2. Pak se opakuje osmička."
+    },
+    {
+     "t": "mc",
+     "q": "Je 0,25 periodické číslo?",
+     "opts": [
+      "ne, končí",
+      "ano"
+     ],
+     "a": "ne, končí",
+     "why": "Za pětkou už nic nepokračuje. Periodické číslo se opakuje donekonečna."
+    }
+   ]
+  },
+  {
+   "id": "p3-zlomek-perioda",
+   "title": "Zlomek na periodické číslo",
+   "cz": "Tajný trik: hlídej zbytky",
+   "e": "🔍",
+   "intro": "<p>Teď budeš převádět zlomky sama. Tajný trik: hlídej zbytky. Jakmile se zbytek zopakuje, začnou se opakovat i číslice.</p><p class=\"cz\">Asi 7 minut. Dělení si klidně piš na papír.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>Trik: hlídej zbytky</h3><p>1. Děl číslo nahoře číslem dole.</p><p>2. Ke každému zbytku připiš nulu a děl dál.</p><p>3. Zbytky si hlídej jako korálky.</p><p>4. <b>Když se zbytek zopakuje</b>, číslice se od té chvíle opakují taky. Můžeš přestat počítat.</p>"
+    },
+    {
+     "t": "num",
+     "form": "int",
+     "q": "<span class=\"zl\"><b>2</b><b>3</b></span>: 0 celých, zbytek 2. Kolik je 20 : 3?",
+     "a": [
+      6
+     ],
+     "why": "6 × 3 = 18. 7 × 3 = 21, to je moc."
+    },
+    {
+     "t": "num",
+     "form": "int",
+     "q": "20 : 3 = 6. Kolik zbude?",
+     "a": [
+      2
+     ],
+     "why": "6 × 3 = 18. Kolik chybí do 20?"
+    },
+    {
+     "t": "mc",
+     "q": "Zbytek je zase 2. Co to znamená?",
+     "opts": [
+      "šestky se budou opakovat pořád",
+      "dělení skončilo",
+      "další číslice bude 7"
+     ],
+     "a": "šestky se budou opakovat pořád",
+     "why": "Stejný zbytek znamená stejný příklad. A ten dá zase šestku."
+    },
+    {
+     "t": "num",
+     "form": "per",
+     "q": "Napiš <span class=\"zl\"><b>2</b><b>3</b></span> jako periodické číslo.",
+     "lhs": "<span class=\"zl\"><b>2</b><b>3</b></span>",
+     "a": [
+      "0",
+      "",
+      "6"
+     ]
+    },
+    {
+     "t": "num",
+     "form": "per",
+     "q": "Teď celé sama. Hlídej zbytky.",
+     "lhs": "<span class=\"zl\"><b>1</b><b>9</b></span>",
+     "a": [
+      "0",
+      "",
+      "1"
+     ],
+     "why": "10 : 9 = 1, zbytek 1. A zase 10 : 9…"
+    },
+    {
+     "t": "num",
+     "form": "per",
+     "q": "A tohle?",
+     "lhs": "<span class=\"zl\"><b>5</b><b>9</b></span>",
+     "a": [
+      "0",
+      "",
+      "5"
+     ],
+     "why": "50 : 9 = 5, zbytek 5. A zase 50…"
+    },
+    {
+     "t": "mc",
+     "q": "Všimla sis? <span class=\"zl\"><b>1</b><b>9</b></span> = 0,<span class=\"per\">1</span> a <span class=\"zl\"><b>5</b><b>9</b></span> = 0,<span class=\"per\">5</span>. Kolik bude <span class=\"zl\"><b>7</b><b>9</b></span> bez počítání?",
+     "opts": [
+      "0,[7]",
+      "0,7",
+      "0,[9]"
+     ],
+     "a": "0,[7]",
+     "why": "U devítin se opakuje číslo, které je nahoře."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Vzor ze dvou korálků</h3><p class=\"vysl\"><span class=\"zl\"><b>4</b><b>11</b></span></p><div class=\"stroj\"><span>4 : 11</span><span>= 0</span><span class=\"zb\">zbytek <b class=\"k2\">4</b></span><span>40 : 11</span><span>= 3</span><span class=\"zb\">zbytek <b>7</b></span><span>70 : 11</span><span>= 6</span><span class=\"zb\">zbytek <b class=\"k2\">4</b> <em>zase 4!</em></span></div><p class=\"vysl\"><span class=\"zl\"><b>4</b><b>11</b></span> = 0,3636… = 0,<span class=\"per\">36</span></p><p>Zbytky se střídají 4, 7, 4, 7… Proto se střídají i číslice 3 a 6.</p>"
+    },
+    {
+     "t": "num",
+     "form": "per",
+     "q": "Zkus sama. Hlídej zbytky.",
+     "lhs": "<span class=\"zl\"><b>2</b><b>11</b></span>",
+     "a": [
+      "0",
+      "",
+      "18"
+     ],
+     "why": "20 : 11 = 1, zbytek 9. 90 : 11 = 8, zbytek 2. A zase 20…"
+    },
+    {
+     "t": "num",
+     "form": "per",
+     "q": "Voňavka: 1 litr parfému rozliješ do 3 lahviček. Kolik litrů bude v jedné?",
+     "lhs": "<span class=\"zl\"><b>1</b><b>3</b></span>",
+     "a": [
+      "0",
+      "",
+      "3"
+     ]
+    },
+    {
+     "t": "num",
+     "form": "per",
+     "q": "Pejsek sní za 3 dny 5 konzerv. Kolik konzerv je to na den?",
+     "lhs": "<span class=\"zl\"><b>5</b><b>3</b></span>",
+     "a": [
+      "1",
+      "",
+      "6"
+     ],
+     "why": "5 : 3 = 1, zbytek 2. Pak 20 : 3 = 6, zbytek 2…"
+    }
+   ]
+  },
+  {
+   "id": "p4-predperioda",
+   "title": "Předperioda: zapínání náramku",
+   "cz": "Když vzor nezačne hned za čárkou",
+   "e": "🔗",
+   "intro": "<p>Někdy se vzor neopakuje hned od čárky. Nejdřív je tam číslice navíc, jako zapínání na náramku. Až pak začne vzor.</p><p class=\"cz\">Asi 7 minut.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>Zapínání a vzor</h3><svg class=\"tahak kor\" viewBox=\"0 0 300 110\" role=\"img\" aria-label=\"Náramek se zapínáním: jednička je předperioda, šestky jsou perioda\"><text class=\"sub\" x=\"50\" y=\"24\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\">zapínání</text><text class=\"sub\" x=\"50\" y=\"40\" font-size=\"12\" font-weight=\"600\" text-anchor=\"middle\">(předperioda)</text><line class=\"lnp\" x1=\"86\" y1=\"34\" x2=\"240\" y2=\"34\"/><text class=\"pk\" x=\"163\" y=\"26\" font-size=\"14\" font-weight=\"800\" text-anchor=\"middle\">vzor (perioda)</text><text class=\"lab\" x=\"4\" y=\"86\" font-size=\"24\" font-weight=\"800\" text-anchor=\"start\">0,</text><line class=\"nit\" x1=\"32\" y1=\"80\" x2=\"246\" y2=\"80\"/><circle class=\"b0\" cx=\"50\" cy=\"80\" r=\"15\"/><text class=\"t0\" x=\"50\" y=\"86\" font-size=\"17\" text-anchor=\"middle\">1</text><circle class=\"b1\" cx=\"90\" cy=\"80\" r=\"15\"/><text class=\"t\" x=\"90\" y=\"86\" font-size=\"17\" text-anchor=\"middle\">6</text><circle class=\"b1\" cx=\"123\" cy=\"80\" r=\"15\"/><text class=\"t\" x=\"123\" y=\"86\" font-size=\"17\" text-anchor=\"middle\">6</text><circle class=\"b1\" cx=\"156\" cy=\"80\" r=\"15\"/><text class=\"t\" x=\"156\" y=\"86\" font-size=\"17\" text-anchor=\"middle\">6</text><circle class=\"b1\" cx=\"189\" cy=\"80\" r=\"15\"/><text class=\"t\" x=\"189\" y=\"86\" font-size=\"17\" text-anchor=\"middle\">6</text><circle class=\"b1\" cx=\"222\" cy=\"80\" r=\"15\"/><text class=\"t\" x=\"222\" y=\"86\" font-size=\"17\" text-anchor=\"middle\">6</text><text class=\"lab\" x=\"256\" y=\"86\" font-size=\"20\" font-weight=\"800\" text-anchor=\"start\">…</text></svg><p class=\"vysl\">0,1666… = 0,1<span class=\"per\">6</span></p><p>V čísle 0,1666… se jednička neopakuje. Je to <b>předperioda</b>, zapínání. Šestky se opakují pořád, to je <b>perioda</b>, vzor.</p><p>Pruh děláš <b>jen nad vzorem</b>: 0,1<span class=\"per\">6</span>.</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Která číslice je vzor (perioda) v čísle 0,83333…?",
+     "opts": [
+      "3",
+      "8",
+      "83"
+     ],
+     "a": "3",
+     "why": "Co se opakuje pořád dokola?"
+    },
+    {
+     "t": "mc",
+     "q": "A která číslice je zapínání (předperioda) v čísle 0,25555…?",
+     "opts": [
+      "2",
+      "5",
+      "25"
+     ],
+     "a": "2",
+     "why": "Zapínání je to, co se neopakuje. Je před vzorem."
+    },
+    {
+     "t": "num",
+     "form": "per",
+     "q": "Napiš s pruhem: 0,74444…",
+     "a": [
+      "0",
+      "7",
+      "4"
+     ],
+     "why": "7 je zapínání, 4 je vzor."
+    },
+    {
+     "t": "num",
+     "form": "per",
+     "q": "Napiš s pruhem: 0,58333…",
+     "a": [
+      "0",
+      "58",
+      "3"
+     ],
+     "why": "Zapínání má dvě číslice: 5 a 8. Opakuje se jen trojka."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Jak to vznikne: <span class=\"zl\"><b>1</b><b>6</b></span></h3><div class=\"stroj\"><span>1 : 6</span><span>= 0</span><span class=\"zb\">zbytek <b>1</b></span><span>10 : 6</span><span>= 1</span><span class=\"zb\">zbytek <b class=\"k2\">4</b></span><span>40 : 6</span><span>= 6</span><span class=\"zb\">zbytek <b class=\"k2\">4</b> <em>zase 4!</em></span></div><p class=\"vysl\"><span class=\"zl\"><b>1</b><b>6</b></span> = 0,1666… = 0,1<span class=\"per\">6</span></p><p>Nejdřív byl zbytek 1, pak už pořád 4. Proto se jednička neopakuje a šestka ano.</p>"
+    },
+    {
+     "t": "num",
+     "form": "int",
+     "q": "Teď <span class=\"zl\"><b>5</b><b>6</b></span>: 0 celých, zbytek 5. Kolik je 50 : 6?",
+     "a": [
+      8
+     ],
+     "why": "8 × 6 = 48. 9 × 6 = 54, to je moc."
+    },
+    {
+     "t": "num",
+     "form": "int",
+     "q": "50 : 6 = 8. Kolik zbude?",
+     "a": [
+      2
+     ],
+     "why": "8 × 6 = 48. Kolik chybí do 50?"
+    },
+    {
+     "t": "num",
+     "form": "int",
+     "q": "Připiš nulu. Kolik je 20 : 6?",
+     "a": [
+      3
+     ],
+     "why": "3 × 6 = 18."
+    },
+    {
+     "t": "num",
+     "form": "per",
+     "q": "20 : 6 = 3, zbytek 2. A zase 20… Napiš <span class=\"zl\"><b>5</b><b>6</b></span> s pruhem.",
+     "lhs": "<span class=\"zl\"><b>5</b><b>6</b></span>",
+     "a": [
+      "0",
+      "8",
+      "3"
+     ],
+     "why": "Osmička se neopakuje, trojky ano."
+    },
+    {
+     "t": "mc",
+     "q": "Číslo se vzorem hned za čárkou (0,<span class=\"per\">3</span>) je <b>ryze periodické</b>. Se zapínáním (0,1<span class=\"per\">6</span>) je <b>neryze periodické</b>. Jaké je 0,4<span class=\"per\">2</span>?",
+     "opts": [
+      "neryze periodické",
+      "ryze periodické",
+      "není periodické"
+     ],
+     "a": "neryze periodické",
+     "why": "Je před vzorem nějaké zapínání?"
+    },
+    {
+     "t": "num",
+     "form": "per",
+     "pre": true,
+     "q": "Poslední, celé sama. Hlídej zbytky.",
+     "lhs": "<span class=\"zl\"><b>2</b><b>15</b></span>",
+     "a": [
+      "0",
+      "1",
+      "3"
+     ],
+     "why": "20 : 15 = 1, zbytek 5. 50 : 15 = 3, zbytek 5. A zase 50…"
+    }
+   ]
+  },
+  {
+   "id": "p5-zpatky",
+   "title": "Zpátky na zlomek",
+   "cz": "Z desetinného čísla zlomek",
+   "e": "🔁",
+   "intro": "<p>Teď to obrátíme: z desetinného čísla uděláš zlomek. U periodických čísel ti pomůžou devítky.</p><p class=\"cz\">Asi 7 minut. Tuhle lekci si dej až jiný den než tu předchozí.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>Číslo, které končí</h3><p>Přečti ho nahlas a máš zlomek:</p><p class=\"vysl\">0,7 = sedm desetin = <span class=\"zl\"><b>7</b><b>10</b></span></p><p class=\"vysl\">0,25 = dvacet pět setin = <span class=\"zl\"><b>25</b><b>100</b></span></p><p class=\"cz\">Jedno místo za čárkou jsou desetiny (dole 10), dvě místa setiny (dole 100).</p>"
+    },
+    {
+     "t": "num",
+     "form": "frac",
+     "q": "Napiš jako zlomek.",
+     "lhs": "0,3",
+     "a": [
+      3,
+      10
+     ],
+     "why": "Tři desetiny."
+    },
+    {
+     "t": "num",
+     "form": "frac",
+     "q": "Dvě místa za čárkou, tedy setiny.",
+     "lhs": "0,45",
+     "a": [
+      45,
+      100
+     ],
+     "alt": [
+      [
+       9,
+       20
+      ]
+     ],
+     "why": "Čtyřicet pět setin."
+    },
+    {
+     "t": "num",
+     "form": "frac",
+     "q": "Zkrať na základní tvar: obě čísla vyděl 25.",
+     "lhs": "<span class=\"zl\"><b>25</b><b>100</b></span>",
+     "a": [
+      1,
+      4
+     ],
+     "why": "25 : 25 = 1 a 100 : 25 = 4."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Trik s devítkami</h3><svg class=\"tahak kor\" viewBox=\"0 0 330 120\" role=\"img\" aria-label=\"Trik s devítkami: vzor 2 a 7 jde nahoru, dolů dvě devítky, 27 lomeno 99\"><text class=\"lab\" x=\"4\" y=\"50\" font-size=\"24\" font-weight=\"800\" text-anchor=\"start\">0,</text><line class=\"nit\" x1=\"32\" y1=\"44\" x2=\"104\" y2=\"44\"/><circle class=\"b2\" cx=\"46\" cy=\"44\" r=\"15\"/><text class=\"t\" x=\"46\" y=\"50\" font-size=\"17\" text-anchor=\"middle\">2</text><circle class=\"b3\" cx=\"82\" cy=\"44\" r=\"15\"/><text class=\"t3\" x=\"82\" y=\"50\" font-size=\"17\" text-anchor=\"middle\">7</text><text class=\"lab\" x=\"108\" y=\"50\" font-size=\"20\" font-weight=\"800\" text-anchor=\"start\">…</text><line class=\"lnp\" x1=\"36\" y1=\"20\" x2=\"92\" y2=\"20\"/><text class=\"pk\" x=\"64\" y=\"14\" font-size=\"13\" font-weight=\"800\" text-anchor=\"middle\">vzor</text><text class=\"sub\" x=\"64\" y=\"86\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">2 korálky</text><path class=\"ln\" d=\"M132 50 H172 M164 43 L173 50 L164 57\"/><text class=\"lab\" x=\"226\" y=\"40\" font-size=\"30\" font-weight=\"800\" text-anchor=\"middle\">27</text><line class=\"ln\" x1=\"178\" y1=\"52\" x2=\"274\" y2=\"52\"/><text class=\"lab\" x=\"226\" y=\"88\" font-size=\"30\" font-weight=\"800\" text-anchor=\"middle\">99</text><text class=\"sub\" x=\"226\" y=\"112\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">2 korálky = 2 devítky</text></svg><p class=\"vysl\">0,<span class=\"per\">27</span> = <span class=\"zl\"><b>27</b><b>99</b></span> &nbsp; 0,<span class=\"per\">5</span> = <span class=\"zl\"><b>5</b><b>9</b></span></p><p>U <b>ryze periodického</b> čísla dáš <b>vzor nahoru</b>. Dolů napíšeš <b>tolik devítek, kolik korálků má vzor</b>.</p>"
+    },
+    {
+     "t": "num",
+     "form": "frac",
+     "q": "Vzor je jeden korálek, takže dole jedna devítka.",
+     "lhs": "0,<span class=\"per\">4</span>",
+     "a": [
+      4,
+      9
+     ]
+    },
+    {
+     "t": "num",
+     "form": "frac",
+     "q": "Vzor má dva korálky.",
+     "lhs": "0,<span class=\"per\">13</span>",
+     "a": [
+      13,
+      99
+     ],
+     "why": "Nahoru 13, dolů dvě devítky."
+    },
+    {
+     "t": "mc",
+     "q": "Kolik je 0,<span class=\"per\">8</span> jako zlomek?",
+     "opts": [
+      "8/9",
+      "8/10",
+      "9/8"
+     ],
+     "a": "8/9",
+     "why": "8/10 je 0,8, a to končí. Tady se osmičky opakují, takže dole devítka."
+    },
+    {
+     "t": "num",
+     "form": "frac",
+     "q": "0,<span class=\"per\">3</span> = 3/9. Zkrať to: obě čísla vyděl 3.",
+     "lhs": "<span class=\"zl\"><b>3</b><b>9</b></span>",
+     "a": [
+      1,
+      3
+     ]
+    },
+    {
+     "t": "mc",
+     "q": "Na začátku ti dělením vyšlo <span class=\"zl\"><b>1</b><b>3</b></span> = 0,<span class=\"per\">3</span>. Teď ti trik s devítkami dal zpátky <span class=\"zl\"><b>1</b><b>3</b></span>. Sedí to?",
+     "opts": [
+      "ano, je to pořád stejné číslo",
+      "ne, něco je špatně"
+     ],
+     "a": "ano, je to pořád stejné číslo",
+     "why": "Převod tam a zpátky dá vždycky totéž číslo. Tak si můžeš výsledek zkontrolovat."
+    },
+    {
+     "t": "num",
+     "form": "frac",
+     "q": "Poslední: napiš jako zlomek a zkrať.",
+     "lhs": "0,<span class=\"per\">18</span>",
+     "a": [
+      2,
+      11
+     ],
+     "alt": [
+      [
+       18,
+       99
+      ]
+     ],
+     "why": "Nahoru 18, dolů 99. Pak obě čísla vyděl 9."
+    }
+   ]
+  },
+  {
+   "id": "p6-bonus",
+   "title": "Bonus: zapínání zpátky na zlomek",
+   "cz": "Těžší, jen když to probíráte ve škole",
+   "e": "⭐",
+   "intro": "<p>Tohle je těžší. Dělej to, jen když to probíráte ve škole. Je to stejný trik s devítkami, jen zapínání přidá nulu.</p><p class=\"cz\">Asi 6 minut.</p>",
+   "ex": [
+    {
+     "t": "info",
+     "html": "<h3>Devítky a nuly</h3><svg class=\"tahak kor\" viewBox=\"0 0 330 130\" role=\"img\" aria-label=\"Zapínání zpátky na zlomek: 16 minus 1 lomeno 90\"><text class=\"lab\" x=\"4\" y=\"50\" font-size=\"24\" font-weight=\"800\" text-anchor=\"start\">0,</text><line class=\"nit\" x1=\"32\" y1=\"44\" x2=\"104\" y2=\"44\"/><circle class=\"b0\" cx=\"46\" cy=\"44\" r=\"15\"/><text class=\"t0\" x=\"46\" y=\"50\" font-size=\"17\" text-anchor=\"middle\">1</text><circle class=\"b1\" cx=\"82\" cy=\"44\" r=\"15\"/><text class=\"t\" x=\"82\" y=\"50\" font-size=\"17\" text-anchor=\"middle\">6</text><text class=\"lab\" x=\"108\" y=\"50\" font-size=\"20\" font-weight=\"800\" text-anchor=\"start\">…</text><line class=\"lnp\" x1=\"70\" y1=\"20\" x2=\"94\" y2=\"20\"/><text class=\"lab\" x=\"46\" y=\"88\" font-size=\"24\" font-weight=\"800\" text-anchor=\"middle\">0</text><text class=\"pk\" x=\"82\" y=\"88\" font-size=\"24\" font-weight=\"800\" text-anchor=\"middle\">9</text><text class=\"sub\" x=\"64\" y=\"116\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\">dolů 90</text><path class=\"ln\" d=\"M132 50 H172 M164 43 L173 50 L164 57\"/><text class=\"lab\" x=\"236\" y=\"40\" font-size=\"28\" font-weight=\"800\" text-anchor=\"middle\">16 − 1</text><line class=\"ln\" x1=\"188\" y1=\"52\" x2=\"284\" y2=\"52\"/><text class=\"lab\" x=\"236\" y=\"88\" font-size=\"28\" font-weight=\"800\" text-anchor=\"middle\">90</text></svg><p><b>Nahoru:</b> zapínání i vzor jako jedno číslo, minus zapínání: 16 − 1 = 15.</p><p><b>Dolů:</b> za každý korálek vzoru <b>9</b>, za každý korálek zapínání <b>0</b>.</p><p class=\"vysl\">0,1<span class=\"per\">6</span> = <span class=\"zl\"><b>15</b><b>90</b></span> = <span class=\"zl\"><b>1</b><b>6</b></span></p>"
+    },
+    {
+     "t": "num",
+     "form": "int",
+     "q": "0,8<span class=\"per\">3</span>: zapínání je 8, vzor 3. Kolik je 83 − 8?",
+     "a": [
+      75
+     ]
+    },
+    {
+     "t": "mc",
+     "q": "Co bude dole u 0,8<span class=\"per\">3</span>?",
+     "opts": [
+      "90",
+      "99",
+      "9"
+     ],
+     "a": "90",
+     "why": "Vzor má jeden korálek (9), zapínání taky jeden (0)."
+    },
+    {
+     "t": "num",
+     "form": "frac",
+     "q": "Takže 75/90. Zkrať to: obě čísla vyděl 15.",
+     "lhs": "<span class=\"zl\"><b>75</b><b>90</b></span>",
+     "a": [
+      5,
+      6
+     ],
+     "why": "75 : 15 = 5 a 90 : 15 = 6. A 5/6 = 0,83… přesně jako v lekci o zapínání."
+    },
+    {
+     "t": "num",
+     "form": "frac",
+     "q": "Celé sama. Nahoru (zapínání a vzor) minus zapínání, dolů 9 a 0. Pak zkrať.",
+     "lhs": "0,1<span class=\"per\">3</span>",
+     "a": [
+      2,
+      15
+     ],
+     "alt": [
+      [
+       12,
+       90
+      ]
+     ],
+     "why": "13 − 1 = 12, dole 90. Pak obě čísla vyděl 6."
+    },
+    {
+     "t": "num",
+     "form": "frac",
+     "q": "Poslední.",
+     "lhs": "0,2<span class=\"per\">7</span>",
+     "a": [
+      5,
+      18
+     ],
+     "alt": [
+      [
+       25,
+       90
+      ]
+     ],
+     "why": "27 − 2 = 25, dole 90. Pak obě čísla vyděl 5."
+    }
+   ]
+  }
+ ],
+ "practice": [
+  {
+   "id": "p-mix",
+   "title": "Mix na procvičení",
+   "cz": "Všechno dohromady, i zaokrouhlování",
+   "e": "🎲",
+   "ex": [
+    {
+     "t": "num",
+     "form": "dec",
+     "q": "Rozcvička.",
+     "lhs": "<span class=\"zl\"><b>3</b><b>5</b></span>",
+     "a": [
+      "0",
+      "6"
+     ],
+     "why": "30 : 5 = 6, zbytek 0."
+    },
+    {
+     "t": "num",
+     "form": "per",
+     "pre": true,
+     "q": "Políčko „před vzorem“ nech prázdné, když ho nepotřebuješ.",
+     "lhs": "<span class=\"zl\"><b>1</b><b>3</b></span>",
+     "a": [
+      "0",
+      "",
+      "3"
+     ]
+    },
+    {
+     "t": "num",
+     "form": "per",
+     "pre": true,
+     "q": "Hlídej zbytky.",
+     "lhs": "<span class=\"zl\"><b>1</b><b>6</b></span>",
+     "a": [
+      "0",
+      "1",
+      "6"
+     ],
+     "why": "10 : 6 = 1, zbytek 4. 40 : 6 = 6, zbytek 4…"
+    },
+    {
+     "t": "num",
+     "form": "per",
+     "pre": true,
+     "q": "Devítiny znáš.",
+     "lhs": "<span class=\"zl\"><b>7</b><b>9</b></span>",
+     "a": [
+      "0",
+      "",
+      "7"
+     ]
+    },
+    {
+     "t": "mc",
+     "q": "Které číslo je větší?",
+     "opts": [
+      "0,[3]",
+      "0,3"
+     ],
+     "a": "0,[3]",
+     "why": "0,333… má za trojkou další trojky. 0,3 tam končí."
+    },
+    {
+     "t": "info",
+     "html": "<h3>Zaokrouhlování</h3><p>Periodické číslo nikdy neskončí, proto ho často zaokrouhlíme. Rozhoduje číslice <b>hned za místem</b>, na které zaokrouhluješ: 0 až 4 dolů, 5 až 9 nahoru.</p><p class=\"vysl\">0,<span class=\"per\">6</span> = 0,666… ≈ 0,67</p>"
+    },
+    {
+     "t": "mc",
+     "q": "Zaokrouhli 0,<span class=\"per\">3</span> na setiny (dvě místa za čárkou).",
+     "opts": [
+      "0,33",
+      "0,34",
+      "0,3"
+     ],
+     "a": "0,33",
+     "why": "0,333… Třetí číslice je 3, takže dolů."
+    },
+    {
+     "t": "mc",
+     "q": "Zaokrouhli 0,8<span class=\"per\">3</span> na setiny.",
+     "opts": [
+      "0,83",
+      "0,84",
+      "0,8"
+     ],
+     "a": "0,83",
+     "why": "0,8333… Třetí číslice je 3, takže dolů."
+    },
+    {
+     "t": "mc",
+     "q": "Zaokrouhli 0,<span class=\"per\">6</span> na desetiny (jedno místo).",
+     "opts": [
+      "0,7",
+      "0,6",
+      "0,67"
+     ],
+     "a": "0,7",
+     "why": "0,666… Druhá číslice je 6, takže nahoru."
+    },
+    {
+     "t": "pair",
+     "q": "Spoj zlomek s číslem.",
+     "pairs": [
+      [
+       "1/3",
+       "0,[3]"
+      ],
+      [
+       "1/2",
+       "0,5"
+      ],
+      [
+       "1/6",
+       "0,1[6]"
+      ],
+      [
+       "1/4",
+       "0,25"
+      ]
+     ]
+    },
+    {
+     "t": "num",
+     "form": "frac",
+     "q": "Zpátky na zlomek.",
+     "lhs": "0,<span class=\"per\">2</span>",
+     "a": [
+      2,
+      9
+     ]
+    },
+    {
+     "t": "mc",
+     "q": "Slalom: kilometr dlouhá trať má 3 stejné úseky. Jak dlouhý je jeden úsek?",
+     "opts": [
+      "0,[3] km",
+      "0,3 km",
+      "3 km"
+     ],
+     "a": "0,[3] km",
+     "why": "1 : 3 = 0,333… a trojky se opakují pořád."
+    }
+   ]
+  }
+ ]
+}
